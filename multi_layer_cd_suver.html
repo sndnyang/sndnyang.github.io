@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang" />
+        <meta name="copyright" content="sndnyang" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="论文, 多目标进化算法, 社区发现, 研究, " />
+
+<meta property="og:title" content="多层网络社区发现综述 "/>
+<meta property="og:url" content="/multi_layer_cd_suver.html" />
+<meta property="og:description" content="多层社区发现, 聚落检测综述" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang" />
+<meta property="og:article:published_time" content="2016-03-14T00:00:00+08:00" />
+<meta name="twitter:title" content="多层网络社区发现综述 ">
+<meta name="twitter:description" content="多层社区发现, 聚落检测综述">
+
+
+        <title>多层网络社区发现综述  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/multi_layer_cd_suver.html">
+                        多层网络社区发现综述  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<h2>摘要</h2>
+<p>Community Detection in Multi-Layer Graphs: A Survey</p>
+<p>本文介绍多层网络下聚落检测问题， 并对相应算法做综述</p>
+<h2>导论 - 过</h2>
+<h1>背景知识</h1>
+<h2>群落/社区 community</h2>
+<ol>
+<li>densely-connected components/subgraph</li>
+<li>relative/similar</li>
+</ol>
+<p>比如：</p>
+<ol>
+<li>同校、 同系、 同班是一个 community</li>
+<li>同一个社团、 公司</li>
+<li>同一领域的研究</li>
+</ol>
+<h2>多层网络模型</h2>
+<p>关系的不同方面就可以表达成多个独立图组成的多层图， 里面的每个、每层图就代表了一个方面</p>
+<p>比如：</p>
+<ol>
+<li>同学关系</li>
+<li>微信好友</li>
+<li>微博好友</li>
+</ol>
+<h2>单层图定义</h2>
+<ol>
+<li>a weighted graph (V,w) </li>
+<li>V is a set of vertices</li>
+<li>w is a set of edge weights: (V × V ) → [0,1].</li>
+</ol>
+<h2>点映射(图层之间)</h2>
+<ol>
+<li>node mapping is a function</li>
+<li>from a graph layer L1 = (V1 ,w1 ) to another graph layer L2 = (V2 ,w2 ) </li>
+<li>V1 × V2 → [0,1]. </li>
+<li>For each u ∈ V 1 , the set C(u) = {v ∈ V2 |f(u,v) &gt; 0} is the set of V2 vertices corresponding to u.</li>
+</ol>
+<p>对于一个facebook上的账号（个人）：</p>
+<ol>
+<li>twitter 上没有账号</li>
+<li>twitter 上只有一个号--pillar(柱型) multi-layer graph</li>
+<li>twitter 上多个号</li>
+</ol>
+<h2>多层图定义</h2>
+<ol>
+<li>a tuple MLN = (L1 ,...,Ll ,IM) </li>
+<li>where Li = (Vi ,wi ),i ∈ 1,...,l are graph layers </li>
+<li>IM (Identity Mapping) is an l ×l matrix of node mappings, with $ IM_{i,j} : V_i ×V_j → [0,1] $</li>
+</ol>
+<p>例：</p>
+<ol>
+<li>症状</li>
+<li>疾病名</li>
+<li>细菌、病毒或基因</li>
+</ol>
+<h2>信息网络定义：</h2>
+<ol>
+<li>是个有向图， </li>
+<li>存在“点”到“点类别” 的函数映射 </li>
+<li>及 “边”到“关系(边)类别”的函数映射</li>
+</ol>
+<h2>异构信息网络</h2>
+<p>Heterogeneous Information Networks </p>
+<p>点的类别 或 关系的类别个数大于1的信息网络。</p>
+<hr>
+<p><strong>异构信息网络与多层网络模型 等价</strong></p>
+<p>但强调不太相同</p>
+<p>heterogeneous information networks emphasize heterogeneous types of entities connected by different relationships</p>
+<h1>主要方法</h1>
+<h2>分类</h2>
+<ol>
+<li>聚类扩展 cluster expansion</li>
+<li>矩阵分解 matrix factorization</li>
+<li>统一距离？ unified distance</li>
+<li>基于概率模型 model based</li>
+<li>模式挖掘 pattern mining</li>
+<li>图合并 graph merging</li>
+</ol>
+<h2>特点</h2>
+<ol>
+<li>多数只支持两层图</li>
+<li>一层是图的原始拓扑结构信息</li>
+<li>其他层一般是利用点的属性信息来计算相似度</li>
+</ol>
+<h1>聚类扩展</h1>
+<h2>Cluster Expansion</h2>
+<p>论文： Scalable community discovery on textual data with relations</p>
+<p>基于关系（文章引用）与文本属性</p>
+<h2>针对的问题</h2>
+<p>大型文档语料 -- large cocument corpus</p>
+<ol>
+<li>没有同时考虑 textual attribute 和 relations(文献里的引用？)</li>
+<li>大数据集的可扩展性scalability</li>
+<li>多数算法基于一堆要（人工）设定的参数</li>
+</ol>
+<h2>思路</h2>
+<p>非监督方法</p>
+<ol>
+<li>快速地找到初始的核， 作为群落的种子</li>
+<li>核进行扩展（或合并merge)， 扩展成群落，（提高scalability)</li>
+</ol>
+<p>cores dictate the formation and topics of communities</p>
+<p>核 用来表示 社区的构造和主题</p>
+<h2>步骤</h2>
+<p>4 steps:</p>
+<ol>
+<li>core probing </li>
+<li>core merging, 根据主题相似度进行合并</li>
+<li>affiliation,  利用关系信息，将core扩展成初始社区</li>
+<li>classification， 主题不相关的成员从社区中移除</li>
+</ol>
+<h2>第一步 Core Probing</h2>
+<h3>基本思想</h3>
+<p>co-occurrence analysis: multiple objects are linked simultaneously by others, they are more likely to be able to define a coherent topic scope</p>
+<hr>
+<h3>prob 步骤</h3>
+<ol>
+<li>生成每个点的outgoing relations</li>
+<li>用关联规则来计算频繁项集(Apriori)</li>
+</ol>
+<p><img alt="original" src="img/cikm2008_original.png"></p>
+<hr>
+<h3>与 Apriori 的不同点</h3>
+<ol>
+<li>不使用固定的过滤阈值， 根据项集的长度决定阈值</li>
+<li>项集存在包含关系，如果项集 S1 和 S2存在 $ S1 \in S2 $, 不保留S1</li>
+</ol>
+<h2>core merging</h2>
+<p>保证了合并后核的高度一致性， 不受过滤阈值的影响</p>
+<p>证明过程略</p>
+<hr>
+<h3>步骤</h3>
+<p>输入参数: core probing 返回的核</p>
+<p>迭代：</p>
+<ol>
+<li>对S中任意一对核Ki, Kj， 如果重叠， 转2</li>
+<li>计算p-min, p-max, p-</li>
+<li>如果 Ki, Kj的交集不为空，且 pi- 或 pj- 属于 该交集， 转4</li>
+<li>从S 中移除Ki, 和 Kj, 加入Ki,Kj的并集。</li>
+<li>如果遍历完， S 没有变化， 则退出</li>
+</ol>
+<hr>
+<h3>计算 p-min, p-max, p-</h3>
+<p><img alt="pvalue" src="img/cikm2008_pvalue.png"></p>
+<ol>
+<li>p-min, pmax: 在特征空间内， 为 core生成了边界框</li>
+<li>p- : 中心</li>
+</ol>
+<hr>
+<h3>图示：</h3>
+<p><img alt="merge-view" src="img/cikm2008_merge_view.png"></p>
+<h2>Affiliation Propagation</h2>
+<p>完成cores probe后，剩余的点作为 affiliated members</p>
+<p>初始化社区C = 找到的核K ， 迭代处理：</p>
+<ol>
+<li>对K中的每个点d，把所有的、其他的、能连到d的点u 加到C中</li>
+<li>设定迭代次数， 避免关系环</li>
+<li>或迭代中 没有新的点加入</li>
+</ol>
+<hr>
+<h3>相关概念</h3>
+<p>好像没什么用</p>
+<ol>
+<li>两个社区的公共成员则为 interdisciplinary member</li>
+<li>点和社区间的相近度(closeness)用迭代时的次数代表</li>
+</ol>
+<h2>Intra-Community Classification</h2>
+<p>只根据relation找到的社区 很可能误判(false hits)</p>
+<p>要根据属性分析， 将当前的C 划分成两个集合， C' 和 C-</p>
+<hr>
+<h3>步骤</h3>
+<ol>
+<li>核K 视作是 positive example正例， 即肯定属于这个社区</li>
+<li>选择社区C的核K（正例） 和 其他社区的核（negative example)</li>
+<li>将所有点转换成 特征向量（feature vector）来代表它们的topical position</li>
+<li>使用 LDA（Latent Dirichlet Allocation）来降维</li>
+<li>使用某种分类器（SVM），将负标签的点都移除</li>
+</ol>
+<h2>图示</h2>
+<p><img alt="original" src="img/cikm2008_original.png">
+<img alt="prob" src="img/cikm2008_probing.png"></p>
+<hr>
+<p><img alt="merge" src="img/cikm2008_merge.png">
+<img alt="affiliation" src="img/cikm2008_affiliation.png">
+<img alt="classification" src="img/cikm2008_classification.png"></p>
+<h2>主要贡献</h2>
+<ol>
+<li>用关联规则、频繁项集来初始化</li>
+</ol>
+<h1>统一距离</h1>
+<h2>Unified Distance</h2>
+<p>structural and attribute similarities using a unified distance measure</p>
+<p>SA-Cluster</p>
+<h2>步骤</h2>
+<ol>
+<li>建立统一距离度量， 新的图</li>
+<li>用新的图 进行聚类， 类k-means</li>
+</ol>
+<hr>
+<h3>unified distance measure</h3>
+<p>基于属性增广图(attribute-argmented graph), 使用Random Walk with Restart (RWR)</p>
+<hr>
+<h4>邻点随机游走距离 Neighborhood Random Walk Distance</h4>
+<p><img alt="rwd" src="img/28-rwd.png"></p>
+<ol>
+<li>l as the length that a random walk can go</li>
+<li>c ∈ (0, 1) as the restart probability</li>
+</ol>
+<hr>
+<h4>attribute-argmented graph</h4>
+<ol>
+<li>添加属性点（attribute vertices），代表属性的值。</li>
+<li>原始的点连接到对应的属性点上</li>
+<li>两点上共同的属性点越多， 两点相似度直觉上就越高。</li>
+</ol>
+<p><img alt="augment graph" src="img/28-augmented-graph.png"></p>
+<h2>聚类算法</h2>
+<p>利用unified distance measure， 进行 k-medoids clustering（类似 k-means）</p>
+<ol>
+<li>选择每个聚簇(cluster)最中心的点</li>
+<li>其余点分配给最近的中心点。</li>
+<li>迭代， 调整边的权重</li>
+</ol>
+<h2>聚类中心初始化</h2>
+<p>思想： 从vi走 l 步能到的点越多， vi越可能是中心</p>
+<ol>
+<li>计算点的密度函数： <img alt="density" src="img/28-density-function.png"></li>
+<li>降序排列， 选择前k点作为聚类中心</li>
+</ol>
+<h2>聚类过程</h2>
+<ol>
+<li>分配点到最近的中心，即有最大random walk distance的中心点</li>
+<li>对每个cluster ,用随机游走距离 计算“平均点”</li>
+<li>寻找新的中心点，距“平均点”最近</li>
+<li>不停迭代， 直到 聚类目标函数 收敛</li>
+</ol>
+<h2>聚类目标函数</h2>
+<p>目标是最大化</p>
+<p><img alt="obj function" src="img/28-objective-function.png"></p>
+<p><img alt="set distance" src="img/28-set-distance.png"></p>
+<hr>
+<h3>问题转化</h3>
+<p>有以上的目标函数后， 可转化成三个子问题</p>
+<ol>
+<li>聚类分配</li>
+<li>中心更新</li>
+<li>权重调整</li>
+</ol>
+<h2>权重自我调整</h2>
+<p>在每次迭代时， 进行权重调整</p>
+<p>属性 ai 权重在第t+1次迭代的计算公式为：</p>
+<p><img alt="weight-adjust" src="img/28-weight-adjust.png"></p>
+<p><img alt="delta-weight" src="img/28-delta-weight.png"></p>
+<hr>
+<h3>投票机制 majority voting mechanism</h3>
+<p>counts the number of vertices within clusters that share the same attribute values with the centroids on ai</p>
+<p><img alt="voting" src="img/28-voting.png"></p>
+<h2>主要贡献</h2>
+<ol>
+<li>一个统一的距离评估方式， 将结构和属性相似度结合</li>
+<li>带权重的自调整方法， 调节结构属性相似度的重要度</li>
+</ol>
+<h1>基于模型方法</h1>
+<h2>Model-Based Method</h2>
+<p>model-based community detection approach based on both structural and attribute aspects of a graph</p>
+<h2>步骤关键点</h2>
+<ol>
+<li>概率模型的构建， 结合结构和属性信息， 不使用人工定义的距离</li>
+<li>变分法(variational approach)解决模型</li>
+</ol>
+<h2>构建概率模型</h2>
+<p>聚类属性图定义：</p>
+<ol>
+<li>X: n x n 的邻接矩阵</li>
+<li>Y: n x t 的属性矩阵</li>
+<li>Z: n x 1 的聚类向量， 即每个点所属的聚类</li>
+</ol>
+<h2>目标：</h2>
+<p>求最优化：<img alt="map" src="img/26-map.png"></p>
+<p>其中</p>
+<p><img alt="posterior" src="img/26-posterior.png"></p>
+<hr>
+<p>联合概率分布 </p>
+<p><img alt="joint-prob" src="img/26-joint-prob.png"></p>
+<ol>
+<li>alpha - 每个聚类的点分布（vertex distribution)</li>
+<li>theta - 属性分布(attribute distribution)</li>
+<li>phi - 类间 边出现概率(edge occurrence prob)</li>
+</ol>
+<h2>两大问题</h2>
+<ol>
+<li>Z 的N个变量最大化 计算量过大， 全局最优基本不可能</li>
+<li>计算Z的后验概率分布时， 不存在 p(Z|X,Y)的closed-form expression</li>
+</ol>
+<h2>变分法 variational algorithm</h2>
+<p>使用variational distribution q(α, θ, φ, Z) 来逼近原分布</p>
+<p>并且对 variational distribution 作限制</p>
+<p><img alt="var-distri" src="img/26-var-distri.png"></p>
+<hr>
+<p>全局最优就转成求局部最优</p>
+<p><img alt="local-max" src="img/26-local-maximum.png"></p>
+<h2>两个新问题</h2>
+<ol>
+<li>如何定义the family of variational distributions</li>
+<li>如何从中找出最优分布， 最接近p(α, θ, φ, Z|X, Y)</li>
+</ol>
+<hr>
+<h3>Parametric Family</h3>
+<p><img alt="map-simple" src="img/26-map-simple.png"></p>
+<hr>
+<h3>Optimizing Variational Parameters</h3>
+<p>measure the distance between a variational distribution q(α, θ, φ, Z) and the true posterior p(α, θ, φ, Z|X, Y)</p>
+<p><img alt="kl-divergence" src="img/26-kl-divergence.png"></p>
+<hr>
+<p>等价于 最大化</p>
+<p><img alt="kl-maxim" src="img/26-kl-maxim.png"></p>
+<p>关系式：</p>
+<p><img alt="kl-relate" src="img/26-kl-relate.png"></p>
+<h1>图合并</h1>
+<h2>Graph Merging</h2>
+<p>combine structural and attribute information using the graph merging process</p>
+<p>CODICIL</p>
+<h2>步骤</h2>
+<ol>
+<li>创建内容边 create content edges</li>
+<li>边组合 combining edges</li>
+<li>边采样 sampling edges with bias</li>
+<li>聚类 clustering</li>
+</ol>
+<hr>
+<h3>creating content edges</h3>
+<ol>
+<li>对每个点vi, 用cosine相似度， 计算k 内容最近邻</li>
+<li>在vi 和 k近邻间 建立content edges</li>
+</ol>
+<hr>
+<h3>combining edges</h3>
+<p>将新创建的content edges 和 初始的拓扑边集进行简单的联合(unified)</p>
+<hr>
+<h3>sampling edges with bias</h3>
+<p>对每个点 vi， 从邻点选择要保留的边， 通过 cosine 相似度或Jaccard 相似度</p>
+<hr>
+<h4>clustering</h4>
+<p>因为图合并部分独立于community detection， 所以任意 community detection 都可以，</p>
+<p>这块不是本文的重点</p>
+<h2>主要贡献</h2>
+<p>通过 用内容信息消除连接结构里的噪音， 来强化社区信号</p>
+<h1>矩阵分解</h1>
+<h2>Matrix Factorization</h2>
+<p>论文： Community Detection with Edge Content in Social Media Networks</p>
+<p>Edge-Induced Matrix Factorization </p>
+<h2>主要idea</h2>
+<ol>
+<li>通过从多层图中抽取相同因子(common factors)</li>
+<li>把不同信息进行结合</li>
+<li>使用通用的聚类方法处理</li>
+</ol>
+<h2>方法</h2>
+<ol>
+<li>使用 低秩矩阵因子分解(low-rank matrix factorization) 来逼近目标矩阵O， <img alt="o=PAP'" src="img/25-matrix-factors.png"></li>
+<li>P: n x n 的特征矩阵</li>
+<li>lambda(大写的？): n x n 特征值矩阵</li>
+</ol>
+<h2>目标</h2>
+<p>对于多个目标矩阵O^i, i = 1,-,l</p>
+<p>要算出一个common factor matrix</p>
+<hr>
+<h3>求最小化：</h3>
+<p><img alt="obj-mini" src="img/25-obj-minimize.png"></p>
+<ol>
+<li>P: n x n的所有层 公因子矩阵</li>
+<li>Λ^i: n x n 矩阵， 第i层的特征</li>
+<li>|| ·|| is the Frobenius norm</li>
+<li>α: regularization 参数</li>
+</ol>
+<h2>全局转局部最优</h2>
+<p>迭代处理：</p>
+<ol>
+<li>固定P , 优化 Λ^i</li>
+<li>固定Λ^i , 优化 P</li>
+<li>直到 收敛</li>
+</ol>
+<h1>模式挖掘</h1>
+<h2>Pattern Mining</h2>
+<p>Coherent Closed Quasi-Clique Discovery from Large Dense Graph Databases</p>
+<p>Cocain</p>
+<h2>方法</h2>
+<p>子图挖掘算法， 搜索多层图中频率高于某给定阈值的 quasi-cliques</p>
+<h2>基础定义</h2>
+<p><img alt="formation" src="img/27-pattern-mining-notation.png"></p>
+<hr>
+<h4>gamma(γ)-Quasi-clique</h4>
+<p><img alt="Quasi-clique" src="img/quasi-clique.png"></p>
+<hr>
+<h4>cross-graph quasi-clique:</h4>
+<p>a set of vertices</p>
+<ol>
+<li>belonging to a quasi-clique </li>
+<li>appears on all layers </li>
+<li>must be the maximal set</li>
+</ol>
+<hr>
+<h4>Edge Cut, Edge Connectivity</h4>
+<ol>
+<li>edge cut is a set of edges Ec such that G'=(V ,E-Ec) is disconnected</li>
+<li>A minimum cut is the smallest set among all edge cuts. </li>
+<li>The edge connectivity of G, denoted by κ(G), is the size of the minimum cut</li>
+</ol>
+<p>coherent subgraph: a subgraph that satisfies a minimum cut bound</p>
+<hr>
+<h4>gamma(γ)-Isomorphism 同构</h4>
+<p>若两个图G1, G2是 gamma同构， 当且仅当：</p>
+<ol>
+<li>都是 γgamma-quasi-cliques</li>
+<li>点个数相同</li>
+<li>存在 biject f:V1-&gt;V2, 对V1中的每个点v, 满足F1(v) = F2(f(v))</li>
+</ol>
+<hr>
+<h4>multiset</h4>
+<ol>
+<li>点的标签的集合(a bag of vertex labels)</li>
+<li>忽略顺序</li>
+<li>突出多样性</li>
+<li>定义为 M(G)， G的multiset</li>
+</ol>
+<hr>
+<h4>string of a graph</h4>
+<p>Given a k-graph g, any sequence of all elements in M(g)</p>
+<p>给定 k-graph g, M(g)的任意一种序列</p>
+<hr>
+<h4>canonical form of a graph</h4>
+<p>the minimum string among all its strings and denoted by CF(G)</p>
+<p>图的最小 string, 记作 CF(G)</p>
+<p>有引理：</p>
+<p>两个γ-quasi-cliques Q1 Q2 是γ同构， 当且仅当 CF(Q1) = CF(Q2)</p>
+<h2>步骤</h2>
+<ol>
+<li>将子图转成 canonical forms</li>
+<li>枚举γ-quasi-cliques可行解(feasible candidate for γ-quasi-cliques), 用DFS策略进行剪枝</li>
+<li>基于 闭包检查规划(closure-checking scheme)， 选择出闭包的 γ-quasi-cliques</li>
+</ol>
+<hr>
+<h3>枚举策略</h3>
+<ol>
+<li>枚举树</li>
+<li>满足： 子代必须能归入祖先</li>
+</ol>
+<p>关键：</p>
+<p>对每个 quasi-clique Q, 处理完它的子代后， 进行闭包检查</p>
+<h2>主要贡献</h2>
+<p>find cross-graph quasi-cliques in a multi-layer graph that are frequent, coherent, and closed</p>
+<h1>另一篇模式挖掘</h1>
+<h2>论文</h2>
+<p>论文： Mining Coherent Subgraphs in Multi-Layer Graphs with Edge Labels</p>
+<h2>本文贡献</h2>
+<ol>
+<li>提出了带边标签的多层图聚类的新范式</li>
+<li>提出了MLCS, 避免了结果集的冗余</li>
+<li>提出了最好优先搜索算法MiMAG 来求MLCS聚类的近似解</li>
+</ol>
+<hr>
+<h3>multi-layer coherent subgraph (MLCS) model</h3>
+<p>clusters of vertices that are densely connected by edges with similar labels in a subset of the graph layers</p>
+<p>找聚类， 满足条件：在某层的图中，不仅边的密度高，且具有相似的标签。</p>
+<p>the edge labels represent characteristics of the relations</p>
+<h2>quasi-clique</h2>
+<p>One-dimensional MLCS cluster</p>
+<h2>One-dimensional MLCS cluster</h2>
+<p>某一图（层）的点集满足以下条件：</p>
+<ol>
+<li>形成一个 0.5-quasi-clique</li>
+<li>点集的每条边的两个顶点： dist(l_i(x), l_i(y)) &lt;= w, edge label 为连续值时需要w, 不然置为0.</li>
+</ol>
+<h2>多层 MLCS cluster</h2>
+<h2>冗余关系 redundancey relation</h2>
+<h2>MiMAG 算法</h2>
+<p>Mining Multi-layered, Attributed Graphs</p>
+<p>计算出最大化、 无冗余、 高质量（不是最优质量）的聚类</p>
+<p>基于寻找quasi-cliques的快速算法。</p>
+<h1>总结</h1>
+<h2></h2>
+<ol>
+<li>Apriori 频繁项集的， 特例或通用</li>
+<li>随机游走</li>
+<li>概率模型</li>
+<li>矩阵分解</li>
+<li>clique</li>
+</ol>
+<p>community 没有严格定义</p>
+<h1>未来研究方向</h1>
+<h2>通用多层图的适应性</h2>
+<p>General multi-layer graph applicability</p>
+<p>当前算法一般仅研究了 pillar(柱形)多层图</p>
+<p>现实世界不保证不同层之间正好一一对应</p>
+<p>所以现有算法的泛化， 对通用多层图的适应性非常有意义</p>
+<h2>多层图的不确定性</h2>
+<p>Uncertainty in multi-layer graphs</p>
+<p>现有的研究都假定 图数据已经清理完毕， 缺少噪音、歧义的研究</p>
+<p>constructing multi-layer graphs with entity resolution and/or trustworthy analysis certainly enhances the quality of the community detection process</p>
+<h2>可扩展性问题</h2>
+<p>所以可能要考虑并行及分布式之类的方法</p>
+<p>或是对多层图的特征向量矩阵（feature-vector matrices）进行采样</p>
+<h2>Temporal analysis</h2>
+<p>图是随时间变化的。</p>
+<p>目前存在一些对单层图的时间变化的研究， 但基本不可用于多层图</p>
+<h1>谢谢！</h1>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2016-03-14T00:00:00+08:00">Mar 14, 2016</time>
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#yan-jiu-ref">研究</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#duo-mu-biao-jin-hua-suan-fa-ref">多目标进化算法
+                            <span>3</span>
+</a></li>
+                        <li><a href="/tags.html#lun-wen-ref">论文
+                            <span>40</span>
+</a></li>
+                        <li><a href="/tags.html#she-qu-fa-xian-ref">社区发现
+                            <span>11</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

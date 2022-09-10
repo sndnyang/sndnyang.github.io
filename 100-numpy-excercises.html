@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang" />
+        <meta name="copyright" content="sndnyang" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="CS, 数据分析, python, 数据分析, " />
+
+<meta property="og:title" content="100个numpy小练习 "/>
+<meta property="og:url" content="/100-numpy-excercises.html" />
+<meta property="og:description" content="100 个numpy小练习 The goal is both to offer a quick reference for new and old users and to provide also a set of exercices for those who teach. If you remember having asked or answered a (short) problem, you can send a pull request. The format is: 本教程的目标是为新手老手提供快速参考及一系列练习题。 . Find indices …" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang" />
+<meta property="og:article:published_time" content="2017-04-11T21:15:00+08:00" />
+<meta name="twitter:title" content="100个numpy小练习 ">
+<meta name="twitter:description" content="100 个numpy小练习 The goal is both to offer a quick reference for new and old users and to provide also a set of exercices for those who teach. If you remember having asked or answered a (short) problem, you can send a pull request. The format is: 本教程的目标是为新手老手提供快速参考及一系列练习题。 . Find indices …">
+
+
+        <title>100个numpy小练习  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/100-numpy-excercises.html">
+                        100个numpy小练习  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <h1>100 个numpy小练习</h1>
+<p>The goal is both to offer a quick reference for new and old users and to
+provide also a set of exercices for those who teach. If you remember
+having asked or answered a (short) problem, you can send a pull request.
+The format is:</p>
+<p>本教程的目标是为新手老手提供快速参考及一系列练习题。</p>
+<h1>. Find indices of non-zero elements from [1,2,0,0,4,0]</h1>
+<p>.. code:: python</p>
+<div class="highlight"><pre><span></span><code>  # Author: Somebody
+
+  print np.nonzero([1,2,0,0,4,0])
+</code></pre></div>
+
+<p>Here is what the page looks like so far:
+<a href="http://www.loria.fr/~rougier/teaching/numpy.100/index.html">http://www.loria.fr/~rougier/teaching/numpy.100/index.html</a></p>
+<h2>译者注</h2>
+<p>前面是基础应用， 所以可以练一练， 但后面部分感觉偏 科学计算， 我没怎么遇到这样的问题， 所以也没翻译下来， 另外， 我有一些地方没看懂。</p>
+<h1>Note</h1>
+<p>这段Note 我就不管了</p>
+<p>The level names came from an old-game (Dungeon Master)</p>
+<p>Repository is at: <a href="https://github.com/rougier/numpy-100">https://github.com/rougier/numpy-100</a></p>
+<p>The corresponding <a href="https://github.com/rougier/numpy-100/blob/master/README.ipynb">IPython
+notebook</a>
+is available from the github repo, thanks to the
+<a href="https://github.com/esc/rst2ipynb">rst2ipynb</a> conversion tool by
+<a href="http://haenel.co">Valentin Haenel</a></p>
+<p>Thanks to Michiaki Ariga, there is now a <a href="https://github.com/chezou/julia-100-exercises">Julia
+version</a>.</p>
+<h2>Neophyte 新手</h2>
+<p>Import the numpy package under the name <code>np</code></p>
+<p>导入numpy包， 命名为np</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">neophyte</span> <span class="kn">import</span> <span class="o">*</span>
+</code></pre></div>
+
+<p>Print the numpy version and the configuration.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">__version__</span>
+</code></pre></div>
+
+<p>请编写相应代码（一般就一行或几行）， 使 assert 通过。</p>
+<p>练习使用示例：</p>
+<p>将 [1,2,5,6,90] 转成 np.array</p>
+<p>练习1 Create a null vector of size 10</p>
+<p>创建一个 长度为10，每个值都为0的向量 （或长度为任意）， 重点是 零向量、0向量的生成</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 给 your_xxx 赋值</span>
+<span class="n">your_vector</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">assert</span> <span class="n">check1</span><span class="p">(</span><span class="n">your_vector</span><span class="p">),</span> <span class="s2">&quot;0 向量生成出错&quot;</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">your_vector</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">),</span> <span class="s2">&quot;转换 np.array 失败&quot;</span>
+</code></pre></div>
+
+<p>练习2 Create a null vector of size 10 but the fifth value which is 1</p>
+<p>生成一个长度为10的0向量， 修改第5个元素的值 = 1。 重点：向量按下标修改、赋值</p>
+<div class="highlight"><pre><span></span><code><span class="n">your_vector</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">assert</span> <span class="n">check2</span><span class="p">(</span><span class="n">your_vector</span><span class="p">),</span> <span class="s2">&quot;向量下标修改出错&quot;</span>
+</code></pre></div>
+
+<p>练习3. Create a vector with values ranging from 10 to 49</p>
+<p>创建从 10到49的向量， 重点是区间范围， 如 range()</p>
+<div class="highlight"><pre><span></span><code><span class="n">your_vector</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check3</span><span class="p">(</span><span class="n">your_vector</span><span class="p">),</span> <span class="s2">&quot;生成某区间向量出错&quot;</span>
+</code></pre></div>
+
+<p>练习4. Create a 3x3 matrix with values ranging from 0 to 8</p>
+<p>创建3x3矩阵， 值从0到8。 重点是array的变形， 数组、矩阵的size变换</p>
+<div class="highlight"><pre><span></span><code><span class="n">your_vector</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check4</span><span class="p">(</span><span class="n">your_vector</span><span class="p">),</span> <span class="s2">&quot;某区间向量转换成指定行列矩阵出错&quot;</span>
+</code></pre></div>
+
+<p>练习5. Find indices of non-zero elements from [1,2,0,0,4,0]</p>
+<p>查找 [1,2,0,0,4,0] 里的非零元素，并返回下标。</p>
+<p>重点： numpy 里 非零 非0 函数</p>
+<div class="highlight"><pre><span></span><code><span class="n">test_case</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">your_vector</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check5</span><span class="p">(</span><span class="n">your_vector</span><span class="p">,</span> <span class="n">test_case</span><span class="p">),</span> <span class="s2">&quot;向量非0元素索引出错&quot;</span>
+</code></pre></div>
+
+<p>练习6. Create a 3x3 identity matrix</p>
+<p>生成单位矩阵的方法</p>
+<div class="highlight"><pre><span></span><code><span class="n">your_matrix</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check6</span><span class="p">(</span><span class="n">your_vector</span><span class="p">),</span> <span class="s2">&quot;生成单位矩阵出错&quot;</span>
+</code></pre></div>
+
+<p>练习7. Create a 5x5 matrix with values 1,2,3,4 just below the diagonal</p>
+<p>对角矩阵 ， 对角线下</p>
+<div class="highlight"><pre><span></span><code><span class="n">your_matrix</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check7</span><span class="p">(</span><span class="n">your_matrix</span><span class="p">),</span> <span class="s2">&quot;对角矩阵变换出错&quot;</span>
+</code></pre></div>
+
+<p>练习8. Create a 3x3x3 array with random values</p>
+<p>多维array, 随机数值。 随机初始化</p>
+<div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">dim</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">your_array</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check8</span><span class="p">(</span><span class="n">your_array</span><span class="p">,</span> <span class="n">dim</span><span class="p">),</span> <span class="s2">&quot;生成指定维度 随机数值 array 出错&quot;</span>
+</code></pre></div>
+
+<p>下面可以对比代码</p>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">load</span> <span class="n">neophyte</span><span class="o">.</span><span class="n">py</span>
+</code></pre></div>
+
+<h2>Novice 新手2</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">novice</span> <span class="kn">import</span> <span class="o">*</span>
+</code></pre></div>
+
+<p>2.1 Create a 8x8 matrix and fill it with a checkerboard pattern</p>
+<p>创建8x8矩阵， 赋值模式：</p>
+<p>[[0 1 0 1 0 1 0 1]<br>
+ [1 0 1 0 1 0 1 0]<br>
+ [0 1 0 1 0 1 0 1]<br>
+ [1 0 1 0 1 0 1 0]<br>
+ [0 1 0 1 0 1 0 1]<br>
+ [1 0 1 0 1 0 1 0]<br>
+ [0 1 0 1 0 1 0 1]<br>
+ [1 0 1 0 1 0 1 0]]</p>
+<p>重点， array 下标 步调， 批量赋值</p>
+<div class="highlight"><pre><span></span><code><span class="n">your_matrix</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check1</span><span class="p">(</span><span class="n">your_matrix</span><span class="p">),</span> <span class="s2">&quot;checkerboard模板失败&quot;</span>
+</code></pre></div>
+
+<p>2.2 Create a 10x10 array with random values and find the minimum and maximum
+values</p>
+<p>10x10 随机矩阵中的最大最小值</p>
+<div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">your_vector</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">check2</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">),</span> <span class="s2">&quot;最值检查&quot;</span>
+</code></pre></div>
+
+<p>2.3 Create a checkerboard 8x8 matrix using the tile function</p>
+<p>使用 tile 函数实现 2.1 的矩阵。</p>
+<div class="highlight"><pre><span></span><code><span class="n">your_matrix</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check3</span><span class="p">(</span><span class="n">your_matrix</span><span class="p">),</span> <span class="s2">&quot;checkerboard模板失败&quot;</span>
+</code></pre></div>
+
+<p>2.4 Normalize a 5x5 random matrix (between 0 and 1)</p>
+<p>对5x5随机矩阵进行归一化</p>
+<div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">your_matrix</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check4</span><span class="p">(</span><span class="n">your_matrix</span><span class="p">),</span> <span class="s2">&quot;矩阵归一化失败&quot;</span>
+</code></pre></div>
+
+<p>2.5 Multiply a 5x3 matrix by a 3x2 matrix (real matrix product)</p>
+<p>数组、矩阵相乘， 矩阵乘法， 非对位相乘</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">your_matrix</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check5</span><span class="p">(</span><span class="n">your_matrix</span><span class="p">),</span> <span class="s2">&quot;矩阵相乘错误&quot;</span>
+</code></pre></div>
+
+<p>2.6 Create a 5x5 matrix with row values ranging from 0 to 4</p>
+<p>创建矩阵， 每行都是 0到4， 不知道这个重点是什么。</p>
+<p>矩阵matrix和数组（向量vector）相加的结果</p>
+<div class="highlight"><pre><span></span><code><span class="n">Z</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check6</span><span class="p">(</span><span class="n">Z</span><span class="p">),</span> <span class="s2">&quot;错误&quot;</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">[[ 0.  1.  2.  3.  4.]</span>
+ <span class="k">[ 0.  1.  2.  3.  4.]</span>
+ <span class="k">[ 0.  1.  2.  3.  4.]</span>
+ <span class="k">[ 0.  1.  2.  3.  4.]</span>
+ <span class="k">[ 0.  1.  2.  3.  4.]]</span>
+<span class="k">[0 1 2 3 4]</span>
+</code></pre></div>
+
+<p>2.7 Create a vector of size 10 with values ranging from 0 to 1, both
+excluded</p>
+<p>创建向量， 平均分， 值范围0到1，但不含0与1.</p>
+<p>重点 线性空间 方法 line space</p>
+<div class="highlight"><pre><span></span><code><span class="n">Z</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check7</span><span class="p">(</span><span class="n">Z</span><span class="p">),</span> <span class="s2">&quot;矩阵错误&quot;</span>
+</code></pre></div>
+
+<p>2.8 Create a random vector of size 10 and sort it</p>
+<p>创建长度为10的向量， 并排序</p>
+<div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check8</span><span class="p">(</span><span class="n">Z</span><span class="p">),</span> <span class="s2">&quot;矩阵错误&quot;</span>
+</code></pre></div>
+
+<p>2.9 Consider two random array A anb B, check if they are equal.</p>
+<p>判断浮点数数组、矩阵、向量的相近， 是否相等</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">equal</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check9</span><span class="p">(</span><span class="n">equal</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">),</span> <span class="s2">&quot;错误&quot;</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">NameErrorTraceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="kr">last</span><span class="p">)</span>
+
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="n">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="n">a48e828cbe69</span><span class="o">&gt;</span> <span class="kr">in</span> <span class="o">&lt;</span><span class="kr">module</span><span class="o">&gt;</span><span class="p">()</span>
+      <span class="mi">2</span> <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+      <span class="mi">3</span> <span class="n">equal</span> <span class="o">=</span> <span class="n">None</span>
+<span class="o">----&gt;</span> <span class="mi">4</span> <span class="kr">assert</span> <span class="n">check9</span><span class="p">(</span><span class="n">equal</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">),</span> <span class="s">&quot;错误&quot;</span>
+
+
+<span class="n">NameError</span><span class="o">:</span> <span class="n">name</span> <span class="s">&#39;check9&#39;</span> <span class="n">is</span> <span class="kr">not</span> <span class="n">defined</span>
+</code></pre></div>
+
+<p>2.10 Create a random vector of size 30 and find the mean value</p>
+<p>平均值 方法</p>
+<div class="highlight"><pre><span></span><code><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check9</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="s2">&quot;错误&quot;</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">load</span> <span class="n">novice</span><span class="o">.</span><span class="n">py</span>
+</code></pre></div>
+
+<h2>Apprentice 新手3</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">apprentice</span> <span class="kn">import</span> <span class="o">*</span>
+</code></pre></div>
+
+<p>3.1 Make an array immutable (read-only)</p>
+<p>使 数组、矩阵 不可改</p>
+<div class="highlight"><pre><span></span><code><span class="n">Z</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check1</span><span class="p">(</span><span class="n">Z</span><span class="p">),</span> <span class="s2">&quot;错误&quot;</span>
+</code></pre></div>
+
+<p>3.2 Consider a random 10x2 matrix representing cartesian coordinates,
+convert them to polar coordinates</p>
+<p>创建 笛卡儿坐标数据 10x2 , 转成 极坐标</p>
+<div class="highlight"><pre><span></span><code><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">R</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">T</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">assert</span> <span class="n">check2</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">T</span><span class="p">),</span> <span class="s2">&quot;错误&quot;</span>
+</code></pre></div>
+
+<p>3.3 Create random vector of size 10 and replace the maximum value by 0</p>
+<p>寻找最大值 及 坐标， 同理 最小值、 平均值等</p>
+<div class="highlight"><pre><span></span><code><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">Z</span><span class="p">[</span><span class="n">Z</span><span class="o">.</span><span class="n">argmax</span><span class="p">()]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span> <span class="n">Z</span>
+</code></pre></div>
+
+<p>3.4 Create a structured array with <code>x</code> and <code>y</code> coordinates covering the
+[0,1]x[0,1] area.</p>
+<p>看不懂， 结构数组 x,y坐标， 覆盖 什么鬼</p>
+<div class="highlight"><pre><span></span><code><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="p">[(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="nb">float</span><span class="p">),(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="nb">float</span><span class="p">)])</span>
+<span class="n">Z</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">Z</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span>
+                             <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span> <span class="n">Z</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[[( 0.        ,  0.        ) ( 0.11111111,  0.        )
+  ( 0.22222222,  0.        ) ( 0.33333333,  0.        )
+  ( 0.44444444,  0.        ) ( 0.55555556,  0.        )
+  ( 0.66666667,  0.        ) ( 0.77777778,  0.        )
+  ( 0.88888889,  0.        ) ( 1.        ,  0.        )]
+ [( 0.        ,  0.11111111) ( 0.11111111,  0.11111111)
+  ( 0.22222222,  0.11111111) ( 0.33333333,  0.11111111)
+  ( 0.44444444,  0.11111111) ( 0.55555556,  0.11111111)
+  ( 0.66666667,  0.11111111) ( 0.77777778,  0.11111111)
+  ( 0.88888889,  0.11111111) ( 1.        ,  0.11111111)]
+ [( 0.        ,  0.22222222) ( 0.11111111,  0.22222222)
+  ( 0.22222222,  0.22222222) ( 0.33333333,  0.22222222)
+  ( 0.44444444,  0.22222222) ( 0.55555556,  0.22222222)
+  ( 0.66666667,  0.22222222) ( 0.77777778,  0.22222222)
+  ( 0.88888889,  0.22222222) ( 1.        ,  0.22222222)]
+ [( 0.        ,  0.33333333) ( 0.11111111,  0.33333333)
+  ( 0.22222222,  0.33333333) ( 0.33333333,  0.33333333)
+  ( 0.44444444,  0.33333333) ( 0.55555556,  0.33333333)
+  ( 0.66666667,  0.33333333) ( 0.77777778,  0.33333333)
+  ( 0.88888889,  0.33333333) ( 1.        ,  0.33333333)]
+ [( 0.        ,  0.44444444) ( 0.11111111,  0.44444444)
+  ( 0.22222222,  0.44444444) ( 0.33333333,  0.44444444)
+  ( 0.44444444,  0.44444444) ( 0.55555556,  0.44444444)
+  ( 0.66666667,  0.44444444) ( 0.77777778,  0.44444444)
+  ( 0.88888889,  0.44444444) ( 1.        ,  0.44444444)]
+ [( 0.        ,  0.55555556) ( 0.11111111,  0.55555556)
+  ( 0.22222222,  0.55555556) ( 0.33333333,  0.55555556)
+  ( 0.44444444,  0.55555556) ( 0.55555556,  0.55555556)
+  ( 0.66666667,  0.55555556) ( 0.77777778,  0.55555556)
+  ( 0.88888889,  0.55555556) ( 1.        ,  0.55555556)]
+ [( 0.        ,  0.66666667) ( 0.11111111,  0.66666667)
+  ( 0.22222222,  0.66666667) ( 0.33333333,  0.66666667)
+  ( 0.44444444,  0.66666667) ( 0.55555556,  0.66666667)
+  ( 0.66666667,  0.66666667) ( 0.77777778,  0.66666667)
+  ( 0.88888889,  0.66666667) ( 1.        ,  0.66666667)]
+ [( 0.        ,  0.77777778) ( 0.11111111,  0.77777778)
+  ( 0.22222222,  0.77777778) ( 0.33333333,  0.77777778)
+  ( 0.44444444,  0.77777778) ( 0.55555556,  0.77777778)
+  ( 0.66666667,  0.77777778) ( 0.77777778,  0.77777778)
+  ( 0.88888889,  0.77777778) ( 1.        ,  0.77777778)]
+ [( 0.        ,  0.88888889) ( 0.11111111,  0.88888889)
+  ( 0.22222222,  0.88888889) ( 0.33333333,  0.88888889)
+  ( 0.44444444,  0.88888889) ( 0.55555556,  0.88888889)
+  ( 0.66666667,  0.88888889) ( 0.77777778,  0.88888889)
+  ( 0.88888889,  0.88888889) ( 1.        ,  0.88888889)]
+ [( 0.        ,  1.        ) ( 0.11111111,  1.        )
+  ( 0.22222222,  1.        ) ( 0.33333333,  1.        )
+  ( 0.44444444,  1.        ) ( 0.55555556,  1.        )
+  ( 0.66666667,  1.        ) ( 0.77777778,  1.        )
+  ( 0.88888889,  1.        ) ( 1.        ,  1.        )]]
+</code></pre></div>
+
+<p>3.5 Print the minimum and maximum representable value for each numpy scalar type</p>
+<p>最大可表示值</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">dtype</span> <span class="ow">in</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">]:</span>
+   <span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">min</span>
+   <span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">max</span>
+<span class="k">for</span> <span class="n">dtype</span> <span class="ow">in</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+   <span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">min</span>
+   <span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">max</span>
+   <span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
+</code></pre></div>
+
+<p>Create a structured array representing a position (x,y) and a color
+(r,g,b)</p>
+<div class="highlight"><pre><span></span><code> <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span> <span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">,</span> <span class="p">[</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                                   <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]),</span>
+                    <span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span>    <span class="p">[</span> <span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                                   <span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                                   <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])])</span>
+<span class="nb">print</span> <span class="n">Z</span>
+</code></pre></div>
+
+<p>3.6 Consider a random vector with shape (100,2) representing coordinates,
+find point by point distances</p>
+<p>100个平面点间的距离计算， scipy 科学计算的接口</p>
+<div class="highlight"><pre><span></span><code><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">X</span><span class="p">,</span><span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">Z</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">Z</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span><span class="n">X</span><span class="o">-</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">Y</span><span class="o">-</span><span class="n">Y</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">D</span>
+
+<span class="c1"># Much faster with scipy</span>
+<span class="kn">import</span> <span class="nn">scipy.spatial</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">cdist</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="n">Z</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">D</span>
+</code></pre></div>
+
+<p>3.7 Generate a generic 2D Gaussian-like array</p>
+<p>2维高斯数组</p>
+<div class="highlight"><pre><span></span><code><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">X</span><span class="o">*</span><span class="n">X</span><span class="o">+</span><span class="n">Y</span><span class="o">*</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">sigma</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span> <span class="p">(</span><span class="n">D</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span> <span class="n">G</span>
+</code></pre></div>
+
+<p>3.8 How to tell if a given 2D array has null columns ?</p>
+<p>两维数组 是否存在 null列，空列， 那空行呢？</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Warren Weckesser</span>
+
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,(</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="o">~</span><span class="n">Z</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+</code></pre></div>
+
+<p>3.9 Find the nearest value from a given value in an array</p>
+<p>寻找 数组（向量）中 与给定值最接近， flat 接口</p>
+<div class="highlight"><pre><span></span><code><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Z</span> <span class="o">-</span> <span class="n">z</span><span class="p">)</span><span class="o">.</span><span class="n">argmin</span><span class="p">()]</span>
+<span class="nb">print</span> <span class="n">m</span>
+</code></pre></div>
+
+<h2>Journeyman</h2>
+<p>Consider the following file:</p>
+<p>1,2,3,4,5
+6,,,7,8
+,,9,10,11
+How to read it ?</p>
+<p>numpy 读取 csv、矩阵 文件</p>
+<div class="highlight"><pre><span></span><code><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s2">&quot;missing.dat&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Consider a generator function that generates 10 integers and use it to
+build an array</p>
+<p>用生成器来创建数组</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">x</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span><span class="n">generate</span><span class="p">(),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span><span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">Z</span>
+</code></pre></div>
+
+<p>Consider a given vector, how to add 1 to each element indexed by a
+second vector (be careful with repeated indices) ?</p>
+<p>给定一个向量， 用另一个向量作为下标， 给相应下标的该向量 +1 加一</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Brett Olsen</span>
+
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">Z</span><span class="p">),</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">minlength</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">Z</span><span class="p">))</span>
+<span class="nb">print</span> <span class="n">Z</span>
+</code></pre></div>
+
+<p>How to accumulate elements of a vector (X) to an array (F) based on an
+index list (I) ?</p>
+<p>看不懂</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Alan G Isaac</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">I</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">I</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">F</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[ 0.  7.  0.  6.  5.  0.  0.  0.  0.  3.]
+</code></pre></div>
+
+<p>Considering a (w,h,3) image of (dtype=ubyte), compute the number of
+unique colors</p>
+<p>寻找 特殊（独一） unique</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Nadav Horesh</span>
+
+<span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span><span class="mi">16</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,(</span><span class="n">h</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ubyte</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">I</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">256</span><span class="o">*</span><span class="mi">256</span> <span class="o">+</span> <span class="n">I</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">256</span> <span class="o">+</span><span class="n">I</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">F</span><span class="p">))</span>
+<span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Considering a four dimensions array, how to get sum over the last two
+axis at once ?</p>
+<p>四维数组， 如何一次对后两维？axis 求和。</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">sum</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span>
+</code></pre></div>
+
+<p>Considering a one-dimensional vector D, how to compute means of subsets
+of D using a vector S of same size describing subset indices ?</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Jaime Fernández del Río</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">D_sums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">D</span><span class="p">)</span>
+<span class="n">D_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<span class="n">D_means</span> <span class="o">=</span> <span class="n">D_sums</span> <span class="o">/</span> <span class="n">D_counts</span>
+<span class="nb">print</span> <span class="n">D_means</span>
+</code></pre></div>
+
+<p>Consider the vector [1, 2, 3, 4, 5], how to build a new vector with 3
+consecutive zeros interleaved between each value ?</p>
+<p>在向量所有值之间插入</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Warren Weckesser</span>
+
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">nz</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">Z0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">nz</span><span class="p">))</span>
+<span class="n">Z0</span><span class="p">[::</span><span class="n">nz</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Z</span>
+<span class="nb">print</span> <span class="n">Z0</span>
+</code></pre></div>
+
+<p>Consider an array of dimension (5,5,3), how to mulitply it by an array
+with dimensions (5,5) ?</p>
+<p>5x5x3维数组， 与 5x5组数组 相乘， 高维与低维相乘， 像卷积神经网络里的？</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span> <span class="n">A</span> <span class="o">*</span> <span class="n">B</span><span class="p">[:,:,</span><span class="kc">None</span><span class="p">]</span>
+</code></pre></div>
+
+<p>How to swap two rows of an array ?</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Eelco Hoogendoorn</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">A</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span>
+<span class="nb">print</span> <span class="n">A</span>
+</code></pre></div>
+
+<h2>Craftsman</h2>
+<p>Consider a one-dimensional array Z, build a two-dimensional array whose
+first row is (Z[0],Z[1],Z[2]) and each subsequent row is shifted by 1
+(last row should be (Z[-3],Z[-2],Z[-1])</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Joe Kington / Erik Rigtorp</span>
+<span class="kn">from</span> <span class="nn">numpy.lib</span> <span class="kn">import</span> <span class="n">stride_tricks</span>
+
+<span class="k">def</span> <span class="nf">rolling</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">window</span><span class="p">):</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="n">window</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="p">)</span>
+    <span class="n">strides</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">itemsize</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">stride_tricks</span><span class="o">.</span><span class="n">as_strided</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="n">strides</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">rolling</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">Z</span>
+</code></pre></div>
+
+<p>Consider a set of 10 triplets describing 10 triangles (with shared
+vertices), find the set of unique line segments composing all the
+triangles.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Nicolas P. Rougier</span>
+
+<span class="n">faces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">faces</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">F</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">view</span><span class="p">(</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;p0&#39;</span><span class="p">,</span><span class="n">F</span><span class="o">.</span><span class="n">dtype</span><span class="p">),(</span><span class="s1">&#39;p1&#39;</span><span class="p">,</span><span class="n">F</span><span class="o">.</span><span class="n">dtype</span><span class="p">)]</span> <span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">G</span>
+</code></pre></div>
+
+<p>Given an array C that is a bincount, how to produce an array A such that
+np.bincount(A) == C ?</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Jaime Fernández del Río</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">C</span><span class="p">)),</span> <span class="n">C</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">A</span>
+</code></pre></div>
+
+<p>How to compute averages using a sliding window over an array ?</p>
+<p>如何使用 滑动窗口计算平均值</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Jaime Fernández del Río</span>
+
+<span class="k">def</span> <span class="nf">moving_average</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">ret</span><span class="p">[</span><span class="n">n</span><span class="p">:]</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[</span><span class="n">n</span><span class="p">:]</span> <span class="o">-</span> <span class="n">ret</span><span class="p">[:</span><span class="o">-</span><span class="n">n</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">ret</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">/</span> <span class="n">n</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">moving_average</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Artisan</h2>
+<p>Considering a 10x3 matrix, extract rows with unequal values (e.g.
+[2,2,3])</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Robert Kern</span>
+
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">Z</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="n">Z</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">Z</span><span class="p">[</span><span class="o">~</span><span class="n">E</span><span class="p">]</span>
+<span class="nb">print</span> <span class="n">Z</span>
+<span class="nb">print</span> <span class="n">U</span>
+</code></pre></div>
+
+<p>Convert a vector of ints into a matrix binary representation.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Warren Weckesser</span>
+
+<span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">((</span><span class="n">I</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">B</span><span class="p">[:,::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Author: Daniel T. McDonald</span>
+
+<span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">unpackbits</span><span class="p">(</span><span class="n">I</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Adept</h2>
+<p>Consider an arbitrary array, write a function that extract a subpart
+with a fixed shape and centered on a given element (pad with a <code>fill</code>
+value when necessary)</p>
+<h1>Author: Nicolas Rougier</h1>
+<p>Z = np.random.randint(0,10,(10,10))
+shape = (5,5)
+fill  = 0
+position = (1,1)</p>
+<p>R = np.ones(shape, dtype=Z.dtype)*fill
+P  = np.array(list(position)).astype(int)
+Rs = np.array(list(R.shape)).astype(int)
+Zs = np.array(list(Z.shape)).astype(int)</p>
+<p>R_start = np.zeros((len(shape),)).astype(int)
+R_stop  = np.array(list(shape)).astype(int)
+Z_start = (P-Rs//2)
+Z_stop  = (P+Rs//2)+Rs%2</p>
+<p>R_start = (R_start - np.minimum(Z_start,0)).tolist()
+Z_start = (np.maximum(Z_start,0)).tolist()
+R_stop = np.maximum(R_start, (R_stop - np.maximum(Z_stop-Zs,0))).tolist()
+Z_stop = (np.minimum(Z_stop,Zs)).tolist()</p>
+<p>r = [slice(start,stop) for start,stop in zip(R_start,R_stop)]
+z = [slice(start,stop) for start,stop in zip(Z_start,Z_stop)]
+R[r] = Z[z]
+print Z
+print R
+Consider an array Z = [1,2,3,4,5,6,7,8,9,10,11,12,13,14], how to
+generate an array R = [[1,2,3,4], [2,3,4,5], [3,4,5,6], ...,
+[11,12,13,14]] ?</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Stéfan van der Walt</span>
+
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">uint32</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">stride_tricks</span><span class="o">.</span><span class="n">as_strided</span><span class="p">(</span><span class="n">Z</span><span class="p">,(</span><span class="mi">11</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span> <span class="n">R</span>
+</code></pre></div>
+
+<h2>Expert</h2>
+<p>Consider two arrays A and B of shape (8,3) and (2,2). How to find rows
+of A that contain elements of each row of B regardless of the order of
+the elements in B ?</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Gabe Schwartz</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,(</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">==</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">&gt;=</span> <span class="n">B</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span> <span class="n">rows</span>
+</code></pre></div>
+
+<p>Extract all the contiguous 3x3 blocks from a random 10x10 matrix.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Chris Barker</span>
+
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">j</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">stride_tricks</span><span class="o">.</span><span class="n">as_strided</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">strides</span><span class="o">=</span><span class="n">Z</span><span class="o">.</span><span class="n">strides</span> <span class="o">+</span> <span class="n">Z</span><span class="o">.</span><span class="n">strides</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">C</span>
+</code></pre></div>
+
+<p>Create a 2D array subclass such that Z[i,j] == Z[j,i]</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Eric O. Lebigot</span>
+<span class="c1"># Note: only works for 2d array and value setting using indices</span>
+
+<span class="k">class</span> <span class="nc">Symetric</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Symetric</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">((</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span> <span class="n">value</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Symetric</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">((</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">),</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">symetric</span><span class="p">(</span><span class="n">Z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">Z</span> <span class="o">+</span> <span class="n">Z</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">diagonal</span><span class="p">()))</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">Symetric</span><span class="p">)</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="n">symetric</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)))</span>
+<span class="n">S</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="nb">print</span> <span class="n">S</span>
+</code></pre></div>
+
+<p>Consider a set of p matrices wich shape (n,n) and a set of p vectors
+with shape (n,1). How to compute the sum of of the p matrix products at
+once ? (result has shape (n,1))</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Stéfan van der Walt</span>
+
+<span class="n">p</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">p</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">p</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tensordot</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="nb">print</span> <span class="n">S</span>
+
+<span class="c1"># It works, because:</span>
+<span class="c1"># M is (p,n,n)</span>
+<span class="c1"># V is (p,n,1)</span>
+<span class="c1"># Thus, summing over the paired axes 0 and 0 (of M and V independently),</span>
+<span class="c1"># and 2 and 1, to remain with a (n,1) vector.</span>
+</code></pre></div>
+
+<h2>Master</h2>
+<p>Given a two dimensional array, how to extract unique rows ?</p>
+<h2>Note</h2>
+<p>See
+<a href="http://stackoverflow.com/questions/16970982/find-unique-rows-in-numpy-array/">stackoverflow</a>
+for explanations.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Author: Jaime Fernández del Río</span>
+
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">void</span><span class="p">,</span> <span class="n">Z</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">*</span> <span class="n">Z</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">return_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">uZ</span> <span class="o">=</span> <span class="n">Z</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+<span class="nb">print</span> <span class="n">uZ</span>
+</code></pre></div>
+
+<h2>Archmaster</h2>
+<p>（原文仅到Archmaster, 后续自己添加的) 恭喜完成本练习， 对 numpy 应该掌握得比较好了。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># %load checker.py</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">check1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">check2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">right</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">check3</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">check4</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="n">right</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="n">right</span>
+    <span class="k">assert</span> <span class="n">check4</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+</code></pre></div>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2017-04-11T21:15:00+08:00">Apr 11, 2017</time>
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#shu-ju-fen-xi-ref">数据分析</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#cs-ref">CS
+                            <span>22</span>
+</a></li>
+                        <li><a href="/tags.html#python-ref">python
+                            <span>15</span>
+</a></li>
+                        <li><a href="/tags.html#shu-ju-fen-xi-ref">数据分析
+                            <span>2</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang (sndnyangd@gmail.com)" />
+        <meta name="copyright" content="sndnyang (sndnyangd@gmail.com)" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="flask, python, PostgreSQL, Redis, Nginx, git, web, web开发, " />
+
+<meta property="og:title" content="Vultr配置flask运行环境 "/>
+<meta property="og:url" content="/Vultr-config-flask-production-environment.html" />
+<meta property="og:description" content="Vultr, flask, python27, SQLAlchemy, PostgreSQL, Redis, Supervisor, Gunicorn, Nginx, DNS, git, virtualenv 配置汇总" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang (sndnyangd@gmail.com)" />
+<meta property="og:article:published_time" content="2017-08-28T15:31:35+08:00" />
+<meta name="twitter:title" content="Vultr配置flask运行环境 ">
+<meta name="twitter:description" content="Vultr, flask, python27, SQLAlchemy, PostgreSQL, Redis, Supervisor, Gunicorn, Nginx, DNS, git, virtualenv 配置汇总">
+
+
+        <title>Vultr配置flask运行环境  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/Vultr-config-flask-production-environment.html">
+                        Vultr配置flask运行环境  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<h1>总结</h1>
+<p>花了1天半才配置成~~~</p>
+<p>从Openshift迁移到Vultr的 CentOS 7</p>
+<p>涉及内容：</p>
+<ol>
+<li>ss</li>
+<li>git</li>
+<li>PostgreSQL</li>
+<li>Redis</li>
+<li>Nginx</li>
+<li>virtualenv+flask+SQLAlchemy</li>
+<li>Supervisor+Gunicorn+gevent</li>
+<li>DNS</li>
+</ol>
+<h1>Vultr</h1>
+<p>1个月5美元， 1G内存，1核CPU， 1000G流量， 25G SSD硬盘， 洛杉矶（达拉斯也不错）</p>
+<h1>ss配置</h1>
+<p>略</p>
+<h1>git</h1>
+<p><a href="/config-centOS-install-git.html">git安装</a></p>
+<p>各种浪费时间</p>
+<ol>
+<li>自带版本安装后，是 post-update，弄了个 post-receive， 感觉不太好， 装最新版</li>
+<li>最新版安装路径不对， prefix用不对</li>
+<li>照样还是 post-update.sample， 还是没有 post-receive， 还是没有反应， 用post-update也行，但没有反应。</li>
+<li>发现要先 ./hooks/post-update</li>
+<li>checkout各种失败， 发现要先clone到运行库文件夹， 或从运行环境pull， 但此时文件夹已经装了 virtualenv， 删了重来， 这样弄了两三次， 能checkout了</li>
+<li>在5之前，共享库配置好，本地上传失败，删了重新建 git init --bare， 后来发现是文件夹名多带.git的问题，服务器的共享库文件夹有.git就有，没有就没有，不要乱加</li>
+<li>共享库上传分支错误，删了重来~~~</li>
+</ol>
+<h1>PostgreSQL</h1>
+<p><a href="/config-centOS-install-postgresql.html">PostgreSQL安装</a></p>
+<p>命令没有执行（没发现要；）， 修改用户权限后没加载重启， 浪费了很多时间</p>
+<h2>数据迁移</h2>
+<p><a href="http://blog.zhimind.com/postgresql-migration.html">PostgreSQL数据迁移</a></p>
+<p>第一遍导出 PostgreSQL自定义格式文件， 结果拥有者用户等问题导入失败（应该是，反正就是停在那里不动了）， 因为 openshift用户名是随机的，我在 Vultr上换了新名字。</p>
+<p>之后导出无格式文件， 并把 owner及constraint语句去掉就成功了， 因为我之前执行过 flask 程序，里面已经 db.create_all()过， 所以数据表早就创建好了。</p>
+<h1>Redis</h1>
+<p><a href="/config-centOS-install-Redis%E5%AE%89%E8%A3%85.html">Redis安装</a></p>
+<p>安装一遍后， 忘记如何重启、 配置文件（找密码）</p>
+<h1>Nginx</h1>
+<p><a href="/config-centOS-install-Nginx.html">Nginx安装</a></p>
+<p>不知道文件(被nginx.conf include)的格式， 纠结了半天， 这个重启倒挺顺利， 导证书时</p>
+<h1>virtualenv+flask+SQLAlchemy</h1>
+<p>CentOS 7 自带 python2.7， 自带PIP， 所以很简单， 直接</p>
+<div class="highlight"><pre><span></span><code>pip install virtualenv
+</code></pre></div>
+
+<p>先用git clone 或 init创建运行库文件夹production， 再：</p>
+<div class="highlight"><pre><span></span><code>virtualenv production
+或
+cd production
+virtualenv .
+</code></pre></div>
+
+<p>flask等第三方库写在 requirements.txt里，激活虚拟环境 </p>
+<div class="highlight"><pre><span></span><code>source production/bin/activate
+或
+source production Scripts/activate  // windows
+</code></pre></div>
+
+<p>运行</p>
+<div class="highlight"><pre><span></span><code>pip install -r requirements
+</code></pre></div>
+
+<p><a href="https://github.com/sndnyang/zhimind/blob/master/requirements.txt">requirements文件</a></p>
+<p>有个 baidu-aip是百度大脑的接口外， 其他几个大概都能用， 不过版本不少不是最新的。</p>
+<h1>Supervisor+Gunicorn+gevent</h1>
+<p><a href="/Supervisor+Gunicorn+gevent.html">Supervisor+Gunicorn+gevent</a></p>
+<p>这个也非常费时， 一直没搞清楚哪个启动哪个的顺序关系， 改了配置文件、gunicorn运行文件gun.py却忘了重启，删了重装过几次，遇到连不上、已占用等问题。</p>
+<h1>域名DNS</h1>
+<p>Godaddy买的域名， Vultr有免费DNS， 于是我混乱过几分钟——DNS都免费，域名为什么这么贵，忘了要先注册域名，以为DNS随便填了。</p>
+<p>Godaddy之前主要是CNAME记录， 转到 openshift\github.io\google app engine等处</p>
+<p>对Godaddy DNS设置里的 @ 符号没认清， 如果它写成 "*" 号就不会认错了， 结果不知道是要修改A记录，而CNAME又不支持IP，又是一通好找。</p>
+<p>实际上就是，用子域名 sub.domain.com里的 sub 写记录， A记录连IP， CNAME则连域名（比如openshift\google app engine都有）， A记录优先级高于CNAME， 比如都有 www的话，发到A记录的IP。</p>
+<p>现在的问题是， 主域名 www 这个可以了， 但另一个连 google app engine的data失败了（本来是好的）， 尴尬。</p>
+<p>突然还发现了另一问题， 我之前为什么在 google app engine那边设置了DNS？它已经有 域名了， 我在 godaddy上直接设置CNAME就行了~~~</p>
+<h1>debug 2 threads</h1>
+<p>怎么只调用一次</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;WERKZEUG_RUN_MAIN&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span><span class="p">:</span>
+</code></pre></div>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2017-08-28T15:31:35+08:00">Aug 28, 2017</time>
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#webkai-fa-ref">web开发</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#flask-ref">flask
+                            <span>3</span>
+</a></li>
+                        <li><a href="/tags.html#git-ref">git
+                            <span>6</span>
+</a></li>
+                        <li><a href="/tags.html#nginx-ref">Nginx
+                            <span>2</span>
+</a></li>
+                        <li><a href="/tags.html#postgresql-ref">PostgreSQL
+                            <span>2</span>
+</a></li>
+                        <li><a href="/tags.html#python-ref">python
+                            <span>15</span>
+</a></li>
+                        <li><a href="/tags.html#redis-ref">Redis
+                            <span>2</span>
+</a></li>
+                        <li><a href="/tags.html#web-ref">web
+                            <span>11</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

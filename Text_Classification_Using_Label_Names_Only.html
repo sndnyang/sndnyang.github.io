@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="蜻蜓点论文" />
+        <meta name="copyright" content="蜻蜓点论文" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="论文, 自然语言处理, 自然语言处理, " />
+
+<meta property="og:title" content="Text Classification Using Label Names Only A Language Model Self-Training Approach "/>
+<meta property="og:url" content="/Text_Classification_Using_Label_Names_Only.html" />
+<meta property="og:description" content="" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="蜻蜓点论文" />
+<meta property="og:article:published_time" content="2020-10-19T19:48:09+08:00" />
+<meta name="twitter:title" content="Text Classification Using Label Names Only A Language Model Self-Training Approach ">
+<meta name="twitter:description" content="">
+
+
+        <title>Text Classification Using Label Names Only A Language Model Self-Training Approach  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/Text_Classification_Using_Label_Names_Only.html">
+                        Text Classification Using Label Names Only A Language Model Self-Training Approach  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<p><img alt="image-20201019195239055" src="./images/image-20201019195239055.png"></p>
+<p>发表于 EMNLP2020 ，<a href="https://arxiv.org/abs/2010.07245v1">Arxiv</a>  <a href="https://github.com/yumeng5/LOTClass">github</a> </p>
+<h1>问题 Motivation</h1>
+<p>给数据加标签，成本很高。</p>
+<p>Assigning labels to data can be costly and difficult to obtain those labels in real applications.</p>
+<p>人只需要基本的类别的描述、形容，即可进行分类，不需要标签</p>
+<p>Human can do classification task only based on a small set of words describing the categories to be classified.</p>
+<p>所以，这篇论文就试图研究，如何做到只使用每个类的标签名字（体育、娱乐、时事、金融）去做无监督分类。 only using the label name of each class to train classification models on un- labeled data</p>
+<p><em>注意</em> ， 本文是NLP的，不是CV的</p>
+<p>已知标签、标签名字，</p>
+<p>从单词一级思考</p>
+<p>再从句子一级思考做分类训练</p>
+<ol>
+<li>句子里的单词 和 标签名字 的语义关系</li>
+<li>找哪些词表示了类别 category-indicative words，并训练网络</li>
+<li>用自训练self-training(伪标签 pseudo label)对模型进行泛化</li>
+</ol>
+<p>LOTClass： Label-Name-Only Text Classification</p>
+<h1>方法</h1>
+<p><strong>想：</strong>  我记得这篇论文 The Natural Language Decathlon: Multitask Learning as Question Answering <a href="https://decanlp.com/">decaNLP</a> 把所有NLP处理问题都视作QA</p>
+<p><strong>想：</strong> 还有另一篇 0-标签识别  <a href="https://arxiv.org/abs/1803.08035">Zero-shot Recognition via Semantic Embeddings and Knowledge Graphs</a></p>
+<h2>怎么找单词</h2>
+<p>考虑BERT的掩码</p>
+<p>用BERT的MLM(masked language model掩码语言模型)，预测哪些单词在大多数语境下能替换 <em>标签名 label name</em></p>
+<p><img alt="find_word" src="./images/find_word.png"></p>
+<p>对每次出现在语料里的标签名， 有一个语境嵌入（表征）向量 $h \in \mathcal{R}^h$, BERT训练出来的，把这个向量传给 MLM的头部元， 得到一个对所有单词V的概率分布， 即每个单词出现在该位置的似然值。
+$$
+p(w|\bold{h}) = Softmax(W_2\sigma(W_1\bold{h) + \bold{b}}))
+$$</p>
+<p><img alt="the bert" src="./images/image-20201019190115596.png"></p>
+<p><img src="./images/sim_words.png" alt="words" style="zoom:50%;" /></p>
+<p>这篇论文里， 每句里选前50， 最终 能替换标签名那个词 最多的 前100个单词， 作为类别相关的词汇表。</p>
+<h2>给句子做无标签的类别预测</h2>
+<p>就看句子里是否有以上的类别指示词（category-indicative words)， 很简单， 但很容易错 error-prone</p>
+<p><img alt="two_meanings" src="./images/image-20201019185114434.png"></p>
+<p>需要掩码训练， 在单词被掩掉的情况下， 预测这个单词对应的类别。 这是有语境的，词一级的，有类别这个监督信息的训练。</p>
+<p>定义， $w$的预测TOP50单词视作可行替换词，  $w$ 是不是类别 $c_w$的对应词呢？ 那么 $w$ 的50个可行替换词中，有20个正好也出现在 之前学到的$c_w$ 100个类别对应词汇表， 40%的相似词出现在词汇表里，大概率是了。</p>
+<p>按以上方式，对所有语料里每个词进行验证， 就能找到 各个类别的对应词——这里不是类别词汇表了——以及$S_{ind}$ 作为类别标签</p>
+<p>$$
+L_{MCP} = - \sum_{w,c_w \in S_{ind}} \log P(c_w | \bold{h}_w) \
+p(c|\bold{h}) = Softmax(W_c \bold{h} + \bold{b}_c)
+$$</p>
+<p>mask out the category-indicative word for category prediction 类别对应词必须掩掉，避免模型就是简单记住。</p>
+<h2>自训练 self-training</h2>
+<p>当前预测分布 $P$ 和 一个伪标签分布 $Q$ 求 KL 散度</p>
+<p>$Q$ 可以用 Hard labeling， soft labeling。</p>
+<p>Hard labeling: 高于某阀值的那个类别（one-hot） $q_{ij} = \mathbf{1}(p_{ij} &gt; \tau)$</p>
+<p>Soft labeling: 不说了~~~$q_{ij} =\frac{p^2_{ij} / f_j}{\sum_{j'} (p^2_{ij'} / f_{j'})}, f_j=\sum_i p_{ij}$</p>
+<h1>总结</h1>
+<p>这篇论文干了什么事？</p>
+<ol>
+<li>标签名 -&gt;在bert里 -&gt; 50个相近词 -&gt; 每个类别的100词的词汇表</li>
+<li>每个单词 $w$ -&gt;在bert里 -&gt; 50个相近词 -&gt; 20/50 词在词汇表里出现的话， $w$ 就是该类的对应词， 训练</li>
+<li>self-training</li>
+</ol>
+<p>想法：无</p>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2020-10-19T19:48:09+08:00">Oct 19, 2020</time>
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#zi-ran-yu-yan-chu-li-ref">自然语言处理</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#lun-wen-ref">论文
+                            <span>40</span>
+</a></li>
+                        <li><a href="/tags.html#zi-ran-yu-yan-chu-li-ref">自然语言处理
+                            <span>4</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

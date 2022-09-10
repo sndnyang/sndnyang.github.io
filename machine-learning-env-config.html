@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang" />
+        <meta name="copyright" content="sndnyang" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="CS, 机器学习, 人工智能, 机器学习, " />
+
+<meta property="og:title" content="机器学习练习环境配置 "/>
+<meta property="og:url" content="/machine-learning-env-config.html" />
+<meta property="og:description" content="[TOC] 为了节省环境配置工作， 可以使用网上配置好的虚拟机——个人使用足够。 数据科学工具箱 链接见： 数据科学工具箱 下载安装步骤 下载安装vbox 链接地址 下载安装vagrant 链接地址 下载和启动数据科学工具箱，使用的是命令行方式 登录，在Vagrantfile所在路径，输入： vagrant ssh 如果是windows用户， 网站推荐使用putty，但我推荐 mysy-git 给右键菜单添加git bash。 设置ipython notebook环境，补充说明： 在运行dst setup base，自定一个密码后，要exit，才能继续执行vagrant load(vagrant 命令是在windows下的，而vagrant ssh意味着已经连入虚拟机内)，不过先完成后续步骤，再exit和reload 安装额外工具包，如果采用下方网盘中的box（太老旧了），起码需要sudo pip install -U pip ipython …" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang" />
+<meta property="og:article:published_time" content="2016-10-20T12:53:50+08:00" />
+<meta property="" content="2016-10-20T17:53:50+08:00" />
+<meta name="twitter:title" content="机器学习练习环境配置 ">
+<meta name="twitter:description" content="[TOC] 为了节省环境配置工作， 可以使用网上配置好的虚拟机——个人使用足够。 数据科学工具箱 链接见： 数据科学工具箱 下载安装步骤 下载安装vbox 链接地址 下载安装vagrant 链接地址 下载和启动数据科学工具箱，使用的是命令行方式 登录，在Vagrantfile所在路径，输入： vagrant ssh 如果是windows用户， 网站推荐使用putty，但我推荐 mysy-git 给右键菜单添加git bash。 设置ipython notebook环境，补充说明： 在运行dst setup base，自定一个密码后，要exit，才能继续执行vagrant load(vagrant 命令是在windows下的，而vagrant ssh意味着已经连入虚拟机内)，不过先完成后续步骤，再exit和reload 安装额外工具包，如果采用下方网盘中的box（太老旧了），起码需要sudo pip install -U pip ipython …">
+
+
+        <title>机器学习练习环境配置  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/machine-learning-env-config.html">
+                        机器学习练习环境配置  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<p>为了节省环境配置工作， 可以使用网上配置好的虚拟机——个人使用足够。</p>
+<h1>数据科学工具箱</h1>
+<p>链接见： <a href="http://datasciencetoolbox.org/#local">数据科学工具箱</a></p>
+<h2>下载安装步骤</h2>
+<ol>
+<li>下载安装vbox <a href="https://www.virtualbox.org/wiki/Downloads">链接地址</a></li>
+<li>下载安装vagrant <a href="http://www.vagrantup.com/downloads.html">链接地址</a></li>
+<li>下载和启动数据科学工具箱，使用的是命令行方式 </li>
+<li>登录，在Vagrantfile所在路径，输入： vagrant ssh  <br>
+    如果是windows用户， 网站推荐使用putty，但我推荐 <a href="https://git-for-windows.github.io/">mysy-git</a> 给右键菜单添加git bash。</li>
+<li>设置ipython notebook环境，补充说明：<br>
+    在运行dst setup base，自定一个密码后，要exit，才能继续执行vagrant load(vagrant 命令是在windows下的，而vagrant ssh意味着已经连入虚拟机内)，不过先完成后续步骤，再exit和reload</li>
+<li>安装额外工具包，如果采用下方网盘中的box（太老旧了），起码需要sudo pip install -U pip ipython jupyter notebook</li>
+</ol>
+<h2>网盘下载</h2>
+<p>由于网络原因，若网站上的命令下载过慢，可使用我已经下载好的文件 <a href="http://pan.baidu.com/s/1pLjKNpx">链接</a> 密码: 6jei ，使用方法:</p>
+<ol>
+<li>vagrant init data-science-toolbox/dst // 这一步和网站上所写一致， 应该是生成Vagrantfile</li>
+<li>打开 Vagrantfile 文件，查看 config.vm.box = // 即找到对应box名字， 我这里的是 datascience</li>
+<li>vagrant.exe box add ./data-science-tool.box --name datascience //即vagrant box添加一个名字叫datascience的box， 对应路径是你下载文件所在路径</li>
+<li>在Vagrantfile中找 config.vm.network "forwarded_port", guest: 8888, host: 8888， 没有则添加这一行</li>
+</ol>
+<h2>安装工具包</h2>
+<p>这块有点复杂， 主要是网络状况影响（没办法）， 需要自行研究各路软件的更新方式。</p>
+<p>比如我现在的网络访问 pypi就很不方便，需要设置pip 的访问路径, 参考<a href="http://blog.csdn.net/langb2014/article/details/52413834">pip配置</a> 建议使用豆瓣源</p>
+<p>然而好像还是有问题</p>
+<h1>spark工具包</h1>
+<p>同理，可使用edx课程的spark.box <a href="http://pan.baidu.com/s/1o77Tiki">spark.box</a> 密码: cjpm， 带一个现成的vagrantfile，只需要box add， 即可使用。虚拟机里若缺什么工具包，请用vagrant ssh 登录安装。</p>
+<h1>vagrant 简要使用</h1>
+<ol>
+<li>vagrant up，启动虚拟机，之前设置好的话， 可以用浏览器访问 localhost:指定端口 访问 ipython notebook， 也是主要的练习方式。不过 ipython notebook是否自动启动，我也不太清楚</li>
+<li>vagrant ssh，登录虚拟机，如果要安装什么新软件的话</li>
+<li>vagrant halt， 有up就要有down</li>
+<li>vagrant -h， 帮助。</li>
+</ol>
+<h1>一些问题</h1>
+<p>data-science-toolbox升级ipython 到 jupyter后，外部访问会有问题， 网站的命令不管用了，要使用</p>
+<div class="highlight"><pre><span></span><code>jupyter notebook --no-browser --ip=0.0.0.0
+</code></pre></div>
+
+<p>最好是在 Vagrantfile 里添加 </p>
+<div class="highlight"><pre><span></span><code>  config.vm.provision &quot;shell&quot;, run: &quot;always&quot;, inline: &lt;&lt;-SHELL
+    jupyter notebook --notebook-dir=/vagrant/notebook --no-browser --ip=0.0.0.0 &amp;
+  SHELL
+</code></pre></div>
+
+<p>这样应该能在vagrant up时，自动运行 jupyter notebook了</p>
+<h1>notebook使用</h1>
+<p>打开浏览器后， 会有上传功能， ipynb和其他文件都可以在这里上传</p>
+<p>配置部分大概这么些</p>
+<p>另外有个网站 <a href="https://www.shiyanlou.com/">实验楼</a> 也不错，可以推荐</p>
+<h1>深度学习环境的配置</h1>
+<h2>方案一 vagrant</h2>
+<p><a href="https://github.com/dimchansky/tensorflow-udacity-vagrant">github</a></p>
+<p>不熟悉github，可以点页面中绿色按钮clone or download , 选download zip。 下载解压， 然后和上面一样，vagrant up 或先下载box（<a href="http://pan.baidu.com/s/1jIhTlS6">链接</a> 密码: sfde）后 vagrant box add</p>
+<p>但网络不通， 最起码我下不来， 设置了代理也成</p>
+<h2>方案二 docker 直接</h2>
+<p><a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/README.md">github</a></p>
+<p>同上， 下不来。</p>
+<h2>方案三 使用daocloud加速器</h2>
+<p><a href="http://chuansong.me/n/341282551745">指南</a></p>
+<ol>
+<li>注册daocloud帐号 http://www.daocloud.io/</li>
+<li>登陆后取得专属加速器地址，类似这样http://xxxxxx.m.daocloud.io, 在控制台（个人首页）商标daocloud 那一排有个加速器，然后找——你的操作系统</li>
+<li>安装docker windows（其他系统差不多，还简单一点，只有网络问题）</li>
+<li>创建新的docker，可以是执行桌面上的Docker Quickstart Terminal，也可以是命令行docker-machine create -d virtualbox  mydocker   // mydocker可以是任意名字</li>
+<li>环境设置docker-machine.exe env daocloud， 成功会提示你Run this command to configure your shell，运行下面那行命令</li>
+<li>配置 Docker 加速器，参照<a href="http://docs.daocloud.io/faq/what-is-daocloud-accelerator#docker-toolbox">链接</a>。   </li>
+<li>下载docker镜像， docker search udacity  或  docker search tensorflow <br>
+    注意，下载之前可能要先 docker-machine ssh 名字，不然好像也是连不上。</li>
+<li>docker pull kyoungrok0517/tensorflow-udacity（感觉这个比较好）</li>
+</ol>
+<h2>方案四 使用daocloud在线环境</h2>
+<p><a href="http://blog.csdn.net/hangzhouhao/article/details/50011401">博客</a></p>
+<p>没试过</p>
+<h2>方案五 使用cloud9在线环境</h2>
+<p><a href="https://github.com/hpssjellis/fourth-tensorflow">指南</a></p>
+<p>也没试过</p>
+<h2>方案六 大学镜像</h2>
+<p><a href="https://lug.ustc.edu.cn/wiki/mirrors/help/docker">指南</a></p>
+<p>但步骤不是很明确，操作不太明白。</p>
+<h2>执行</h2>
+<p>windows: winpty docker run -p 8888:8888 --name 名字 -it kyoungrok0517/tensorflow-udacity</p>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2016-10-20T12:53:50+08:00">Oct 20, 2016</time>
+
+<h4>Last Updated</h4>
+<time datetime="2016-10-20T17:53:50+08:00">Oct 20, 2016</time>
+
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#ji-qi-xue-xi-ref">机器学习</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#cs-ref">CS
+                            <span>22</span>
+</a></li>
+                        <li><a href="/tags.html#ji-qi-xue-xi-ref">机器学习
+                            <span>14</span>
+</a></li>
+                        <li><a href="/tags.html#ren-gong-zhi-neng-ref">人工智能
+                            <span>30</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

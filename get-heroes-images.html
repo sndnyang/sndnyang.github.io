@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang sndnyang.github.io" />
+        <meta name="copyright" content="sndnyang sndnyang.github.io" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="数据挖掘, 爬虫, Kaggle, 数据挖掘, " />
+
+<meta property="og:title" content="爬取Dota2英雄图片 "/>
+<meta property="og:url" content="/get-heroes-images.html" />
+<meta property="og:description" content="[TOC] Dota2数据集 为了与数据集相对应， 做出比较好看的效果， 到 Dota2的网站上爬取所有英雄的头像——也许在可视化里就能好看点 注 如果想重复利用，当做练习、练手加强熟练度的话， 请点 File - Make a copy， 每次在副本里回答 如果已经足够熟悉，觉得本篇内容太过简单， 就不需要了 前期准备 要从网络上爬取图片， 从程序来说，有几步？ ，自然需要打开页面进行下载， from quiz import * your_answer = 步数 steps = [&#39;&#39;, &#39;&#39; ... ] print(check_steps(your_answer, steps)) Python标准库里使用哪个模块可以打开网页？ 应该使用哪个模块查找链接？ 保存就不用说了。 module_openpages = &#39;&#39; module_findlinks = &#39;&#39; assert check_openpages(module_openpages), &#39;看来，标准库不够熟悉啊&#39; print(check_findlinks(module_findlinks)) 但我们不用标准库里的， 因为有更好的第三方库 …" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang sndnyang.github.io" />
+<meta property="og:article:published_time" content="2017-04-18T21:21:09+08:00" />
+<meta property="" content="2017-04-18T21:22:28+08:00" />
+<meta name="twitter:title" content="爬取Dota2英雄图片 ">
+<meta name="twitter:description" content="[TOC] Dota2数据集 为了与数据集相对应， 做出比较好看的效果， 到 Dota2的网站上爬取所有英雄的头像——也许在可视化里就能好看点 注 如果想重复利用，当做练习、练手加强熟练度的话， 请点 File - Make a copy， 每次在副本里回答 如果已经足够熟悉，觉得本篇内容太过简单， 就不需要了 前期准备 要从网络上爬取图片， 从程序来说，有几步？ ，自然需要打开页面进行下载， from quiz import * your_answer = 步数 steps = [&#39;&#39;, &#39;&#39; ... ] print(check_steps(your_answer, steps)) Python标准库里使用哪个模块可以打开网页？ 应该使用哪个模块查找链接？ 保存就不用说了。 module_openpages = &#39;&#39; module_findlinks = &#39;&#39; assert check_openpages(module_openpages), &#39;看来，标准库不够熟悉啊&#39; print(check_findlinks(module_findlinks)) 但我们不用标准库里的， 因为有更好的第三方库 …">
+
+
+        <title>爬取Dota2英雄图片  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/get-heroes-images.html">
+                        爬取Dota2英雄图片  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<h1>Dota2数据集</h1>
+<p>为了与数据集相对应， 做出比较好看的效果， 到 Dota2的网站上爬取所有英雄的头像——也许在可视化里就能好看点</p>
+<p><strong>注</strong></p>
+<p>如果想重复利用，当做练习、练手加强熟练度的话， 请点 File - Make a copy， 每次在副本里回答</p>
+<p>如果已经足够熟悉，觉得本篇内容太过简单， 就不需要了</p>
+<h2>前期准备</h2>
+<p>要从网络上爬取图片， 从程序来说，有几步？</p>
+<p>，自然需要打开页面进行下载，</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">quiz</span> <span class="kn">import</span> <span class="o">*</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">your_answer</span> <span class="o">=</span> <span class="n">步数</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span> <span class="o">...</span> <span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">check_steps</span><span class="p">(</span><span class="n">your_answer</span><span class="p">,</span> <span class="n">steps</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Python标准库里使用哪个模块可以打开网页？ 应该使用哪个模块查找链接？ 保存就不用说了。</p>
+<div class="highlight"><pre><span></span><code><span class="n">module_openpages</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<span class="n">module_findlinks</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<span class="k">assert</span> <span class="n">check_openpages</span><span class="p">(</span><span class="n">module_openpages</span><span class="p">),</span> <span class="s1">&#39;看来，标准库不够熟悉啊&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">check_findlinks</span><span class="p">(</span><span class="n">module_findlinks</span><span class="p">))</span>
+</code></pre></div>
+
+<p>但我们不用标准库里的， 因为有更好的第三方库， 分别是</p>
+<ol>
+<li>requests</li>
+<li>beautifulsoup4</li>
+</ol>
+<p>安装：</p>
+<div class="highlight"><pre><span></span><code>pip(2 or 3) install requests, bs4
+</code></pre></div>
+
+<p>然后导入</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+</code></pre></div>
+
+<h2>下载网页内容</h2>
+<p>开始介绍使用 requests 读取网页内容</p>
+<p><a href="http://www.dota2.com.cn/heroes/index.htm">Dota2英雄列表网址</a></p>
+<p>MOOC资源： <a href="http://www.icourse163.org/course/BIT-1001870001">Python网络爬虫与信息提取</a></p>
+<div class="highlight"><pre><span></span><code><span class="n">dota2_main_page</span> <span class="o">=</span> <span class="s1">&#39;http://www.dota2.com.cn&#39;</span>
+<span class="n">dota2_heroes_index</span> <span class="o">=</span> <span class="n">dota2_main_page</span> <span class="o">+</span> <span class="s1">&#39;/heroes/index.htm&#39;</span>
+</code></pre></div>
+
+<p>Requests 是一个非常优雅的 HTTP 库， HTTP是什么? &gt;<a href="http://baike.baidu.com/link?url=01N5pk_h_vChNIkEpbMuXuFrAc1tr6Vnb0xeGJUMoXV4aOXMMAbaEKqxuVsycT1h9zbVZY0h6s_hpdegz24JDa">HTTP百度百科</a></p>
+<p>我们不管这个，只管HTTP是如何向网站发送请求，并拿到网页数据的。 协议规定了 &gt;<a href="http://www.runoob.com/http/http-methods.html">HTTP请求方法</a></p>
+<p>requests的方法和HTTP协议一致， 也有这么几种（或少一种？没注意），但最常用的是</p>
+<ol>
+<li>get()</li>
+<li>post()</li>
+</ol>
+<p>本篇只是爬取内容， 所以， 用哪个方法呢？ 函数、方法的参数是什么呢？ 没有额外参数</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 懒得验证了，毕竟太明显</span>
+<span class="n">parameter</span> <span class="o">=</span> <span class="err">???</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="err">???</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>培养好习惯， 建立代码规范</h3>
+<p>打开网页后， 最好检查下是否成功， 不成功则按现在的开发来说， 应该抛个异常， 所以我们需要：</p>
+<ol>
+<li>判断网页打开状态,  r.raise_for_status()</li>
+<li><a href="http://www.cnblogs.com/fnng/p/3518202.html">Python异常处理</a> 或 个人博客版本 <a href="http://blog.zhimind.com/python-exception.html">Python异常处理#TODO</a></li>
+</ol>
+<p><a href="http://blog.zhimind.com/debug-assert-meaning.html#_2">Python异常处理的意义</a></p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="err">???</span><span class="p">(</span><span class="err">???</span><span class="p">)</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+    <span class="c1"># MOOC里有介绍的编码部分略过，因为没遇到</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OH MY GOD!&quot;</span><span class="p">)</span>
+
+<span class="c1"># 从 Python 变量的作用域来说，这段当然有问题， 只是给个示例， 借此由头复习 Python异常处理机制</span>
+<span class="c1"># 可以直接跳过</span>
+</code></pre></div>
+
+<h3>网页内容</h3>
+<p>此时打开的网页已经保存在 变量 r 中， 来看看 r 是个什么东西</p>
+<div class="highlight"><pre><span></span><code><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>requests.models.Response
+</code></pre></div>
+
+<p>看看 这个东西 有什么属性</p>
+<div class="highlight"><pre><span></span><code><span class="nb">dir</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[&#39;__attrs__&#39;,
+ &#39;__bool__&#39;,
+ &#39;__class__&#39;,
+ &#39;__delattr__&#39;,
+ &#39;__dict__&#39;,
+ &#39;__dir__&#39;,
+ &#39;__doc__&#39;,
+ &#39;__eq__&#39;,
+ &#39;__format__&#39;,
+ &#39;__ge__&#39;,
+ &#39;__getattribute__&#39;,
+ &#39;__getstate__&#39;,
+ &#39;__gt__&#39;,
+ &#39;__hash__&#39;,
+ &#39;__init__&#39;,
+ &#39;__init_subclass__&#39;,
+ &#39;__iter__&#39;,
+ &#39;__le__&#39;,
+ &#39;__lt__&#39;,
+ &#39;__module__&#39;,
+ &#39;__ne__&#39;,
+ &#39;__new__&#39;,
+ &#39;__nonzero__&#39;,
+ &#39;__reduce__&#39;,
+ &#39;__reduce_ex__&#39;,
+ &#39;__repr__&#39;,
+ &#39;__setattr__&#39;,
+ &#39;__setstate__&#39;,
+ &#39;__sizeof__&#39;,
+ &#39;__str__&#39;,
+ &#39;__subclasshook__&#39;,
+ &#39;__weakref__&#39;,
+ &#39;_content&#39;,
+ &#39;_content_consumed&#39;,
+ &#39;apparent_encoding&#39;,
+ &#39;close&#39;,
+ &#39;connection&#39;,
+ &#39;content&#39;,
+ &#39;cookies&#39;,
+ &#39;elapsed&#39;,
+ &#39;encoding&#39;,
+ &#39;headers&#39;,
+ &#39;history&#39;,
+ &#39;is_permanent_redirect&#39;,
+ &#39;is_redirect&#39;,
+ &#39;iter_content&#39;,
+ &#39;iter_lines&#39;,
+ &#39;json&#39;,
+ &#39;links&#39;,
+ &#39;ok&#39;,
+ &#39;raise_for_status&#39;,
+ &#39;raw&#39;,
+ &#39;reason&#39;,
+ &#39;request&#39;,
+ &#39;status_code&#39;,
+ &#39;text&#39;,
+ &#39;url&#39;]
+</code></pre></div>
+
+<p>网页内容是哪个？</p>
+<p>r.text?  r.raw? r.content?</p>
+<p>嗯， 废</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">raw</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&lt;class &#39;bytes&#39;&gt;
+&lt;class &#39;requests.packages.urllib3.response.HTTPResponse&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+</code></pre></div>
+
+<p>所以，我们用 字符串类型的 text</p>
+<div class="highlight"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<h1>信息提取</h1>
+<p>beautifulsoup4 的使用</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 固定格式</span>
+<span class="c1"># 第二个参数是 格式， 因为是 html格式的网页， 所以是 html.parser</span>
+<span class="c1"># 至于为什么不是 html 就行了， 别人开发设计成这样， 就这样</span>
+
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># 这个好像是格式化、美观化输出</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">())</span>
+</code></pre></div>
+
+<h3>查找所有元素</h3>
+<p>先搞清楚， 要找什么元素？</p>
+<p>要么是在原网页上右键查看源代码， 要么是 F12(chrome 和 Firefox)打开控制台，查看。</p>
+<p>如果不懂 HTML， 不认识它的标签， 那我也没招， 这内容太多， 哪顾得过来。</p>
+<p>经浏览， 应该是查找 img标签， class为heroHoverLarge的元素， 小封面太小了， 大点好看点？</p>
+<p>查找所有元素接口是： <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html#find-all">find_all</a></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># find_all 等效 如下形式</span>
+
+<span class="n">hero_list</span> <span class="o">=</span> <span class="n">soup</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="s1">&#39;heroHoverLarge&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">len</span><span class="p">(</span><span class="n">hero_list</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">113</span>
+</code></pre></div>
+
+<h3>提取属性</h3>
+<p>img标签里，把链接记录在 src 里， src是元素的一个属性attribute，不是值value或文本text</p>
+<p>元素的属性attributes是一个 字典dict(键key，值value对), 所以是</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># </span>
+<span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;???&#39;</span>
+<span class="n">img_url</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="err">???</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+<span class="c1"># 英语缩写的习惯，有时候是可以猜出来的~~~</span>
+</code></pre></div>
+
+<p>一个栗子：  src="/images/heroes/earthshaker_hphover.png"</p>
+<p>所以我们需要做两步：</p>
+<ol>
+<li>和域名 dota2_main_page 连起来得到完整URL</li>
+<li>抽取英雄名字， 即 / 和 _hphover 中间部分</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># TODO： </span>
+<span class="c1"># 请用自己喜欢的方式，把名字抽取出来</span>
+<span class="c1"># 字符串相连太简单 就不要求了</span>
+<span class="k">def</span> <span class="nf">deal_src</span><span class="p">(</span><span class="n">src</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">dota2_main_page</span> <span class="o">+</span> <span class="n">src</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">  </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">name</span><span class="p">,</span> <span class="n">url</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">assert</span> <span class="n">deal_src</span><span class="p">(</span><span class="s1">&#39;/images/heroes/brewmaster_hphover.png&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;brewmaster&#39;</span><span class="p">,</span> <span class="s1">&#39;失败&#39;</span>
+<span class="k">assert</span> <span class="n">deal_src</span><span class="p">(</span><span class="s1">&#39;/images/heroes/dragon_knight_hphover.png&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;dragon_knight&#39;</span><span class="p">,</span> <span class="s1">&#39;失败&#39;</span>
+</code></pre></div>
+
+<h2>保存</h2>
+<p>这块倒简单， 继续使用 requests读取图片的url， 然后保存到某个文件夹下的某文件名的文件。</p>
+<p>所以只有点说明， 没有做quiz</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">saveImage</span><span class="p">(</span><span class="n">imgUrl</span><span class="p">,</span> <span class="n">imgName</span> <span class="o">=</span> <span class="s2">&quot;default.jpg&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Description    : 将网页图片保存本地</span>
+<span class="sd">    @param imgUrl  : 待保存图片URL</span>
+<span class="sd">    @param imgName : 待保存图片名称</span>
+<span class="sd">    @return 无</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 这里给 requests.get 添加 流 stream 参数——不加会什么样？</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">imgUrl</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># 这里不能用 text了， 因为图片是二进制 byte了</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span>
+    <span class="n">dstDir</span> <span class="o">=</span> <span class="s1">&#39;heroes&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;保存文件&quot;</span> <span class="o">+</span> <span class="n">imgName</span><span class="p">)</span>
+    <span class="c1"># try except要习惯</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># with是种方案，但本篇不介绍了</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dstDir</span> <span class="o">+</span> <span class="n">imgName</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">jpg</span><span class="p">:</span>
+            <span class="n">jpg</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>     
+            <span class="k">return</span>
+    <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;IO Error</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">jpg</span><span class="o">.</span><span class="n">close</span>
+</code></pre></div>
+
+<h2>遍历全部元素</h2>
+<p>遍历 hero_list 的 所有元素</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">hero_list</span><span class="p">:</span>
+    <span class="n">src</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="err">???</span><span class="p">[</span><span class="s1">&#39;???&#39;</span><span class="p">]</span>
+    <span class="n">name</span><span class="err">，</span> <span class="n">url</span> <span class="o">=</span> <span class="n">deal_src</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">  </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>
+    <span class="n">saveImage</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">+</span><span class="s1">&#39;.jpg&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>earthshaker  http://www.dota2.com.cn/images/heroes/earthshaker_hphover.png
+保存文件earthshaker.jpg
+sven  http://www.dota2.com.cn/images/heroes/sven_hphover.png
+保存文件sven.jpg
+tiny  http://www.dota2.com.cn/images/heroes/tiny_hphover.png
+保存文件tiny.jpg
+kunkka  http://www.dota2.com.cn/images/heroes/kunkka_hphover.png
+保存文件kunkka.jpg
+beastmaster  http://www.dota2.com.cn/images/heroes/beastmaster_hphover.png
+保存文件beastmaster.jpg
+dragon_knight  http://www.dota2.com.cn/images/heroes/dragon_knight_hphover.png
+保存文件dragon_knight.jpg
+rattletrap  http://www.dota2.com.cn/images/heroes/rattletrap_hphover.png
+保存文件rattletrap.jpg
+omniknight  http://www.dota2.com.cn/images/heroes/omniknight_hphover.png
+保存文件omniknight.jpg
+huskar  http://www.dota2.com.cn/images/heroes/huskar_hphover.png
+保存文件huskar.jpg
+alchemist  http://www.dota2.com.cn/images/heroes/alchemist_hphover.png
+保存文件alchemist.jpg
+brewmaster  http://www.dota2.com.cn/images/heroes/brewmaster_hphover.png
+保存文件brewmaster.jpg
+treant  http://www.dota2.com.cn/images/heroes/treant_hphover.png
+保存文件treant.jpg
+wisp  http://www.dota2.com.cn/images/heroes/wisp_hphover.png
+保存文件wisp.jpg
+centaur  http://www.dota2.com.cn/images/heroes/centaur_hphover.png
+保存文件centaur.jpg
+shredder  http://www.dota2.com.cn/images/heroes/shredder_hphover.png
+保存文件shredder.jpg
+bristleback  http://www.dota2.com.cn/images/heroes/bristleback_hphover.png
+保存文件bristleback.jpg
+tusk  http://www.dota2.com.cn/images/heroes/tusk_hphover.png
+保存文件tusk.jpg
+elder_titan  http://www.dota2.com.cn/images/heroes/elder_titan_hphover.png
+保存文件elder_titan.jpg
+legion_commander  http://www.dota2.com.cn/images/heroes/legion_commander_hphover.png
+保存文件legion_commander.jpg
+earth_spirit  http://www.dota2.com.cn/images/heroes/earth_spirit_hphover.png
+保存文件earth_spirit.jpg
+phoenix  http://www.dota2.com.cn/images/heroes/phoenix_hphover.png
+保存文件phoenix.jpg
+antimage  http://www.dota2.com.cn/images/heroes/antimage_hphover.png
+保存文件antimage.jpg
+drow_ranger  http://www.dota2.com.cn/images/heroes/drow_ranger_hphover.png
+保存文件drow_ranger.jpg
+juggernaut  http://www.dota2.com.cn/images/heroes/juggernaut_hphover.png
+保存文件juggernaut.jpg
+mirana  http://www.dota2.com.cn/images/heroes/mirana_hphover.png
+保存文件mirana.jpg
+morphling  http://www.dota2.com.cn/images/heroes/morphling_hphover.png
+保存文件morphling.jpg
+phantom_lancer  http://www.dota2.com.cn/images/heroes/phantom_lancer_hphover.png
+保存文件phantom_lancer.jpg
+vengefulspirit  http://www.dota2.com.cn/images/heroes/vengefulspirit_hphover.png
+保存文件vengefulspirit.jpg
+riki  http://www.dota2.com.cn/images/heroes/riki_hphover.png
+保存文件riki.jpg
+sniper  http://www.dota2.com.cn/images/heroes/sniper_hphover.png
+保存文件sniper.jpg
+templar_assassin  http://www.dota2.com.cn/images/heroes/templar_assassin_hphover.png
+保存文件templar_assassin.jpg
+luna  http://www.dota2.com.cn/images/heroes/luna_hphover.png
+保存文件luna.jpg
+bounty_hunter  http://www.dota2.com.cn/images/heroes/bounty_hunter_hphover.png
+保存文件bounty_hunter.jpg
+ursa  http://www.dota2.com.cn/images/heroes/ursa_hphover.png
+保存文件ursa.jpg
+gyrocopter  http://www.dota2.com.cn/images/heroes/gyrocopter_hphover.png
+保存文件gyrocopter.jpg
+lone_druid  http://www.dota2.com.cn/images/heroes/lone_druid_hphover.png
+保存文件lone_druid.jpg
+naga_siren  http://www.dota2.com.cn/images/heroes/naga_siren_hphover.png
+保存文件naga_siren.jpg
+troll_warlord  http://www.dota2.com.cn/images/heroes/troll_warlord_hphover.png
+保存文件troll_warlord.jpg
+ember_spirit  http://www.dota2.com.cn/images/heroes/ember_spirit_hphover.png
+保存文件ember_spirit.jpg
+monkey_king  http://www.dota2.com.cn/images/heroes/monkey_king_hphover.png
+保存文件monkey_king.jpg
+crystal_maiden  http://www.dota2.com.cn/images/heroes/crystal_maiden_hphover.png
+保存文件crystal_maiden.jpg
+puck  http://www.dota2.com.cn/images/heroes/puck_hphover.png
+保存文件puck.jpg
+storm_spirit  http://www.dota2.com.cn/images/heroes/storm_spirit_hphover.png
+保存文件storm_spirit.jpg
+windrunner  http://www.dota2.com.cn/images/heroes/windrunner_hphover.png
+保存文件windrunner.jpg
+zuus  http://www.dota2.com.cn/images/heroes/zuus_hphover.png
+保存文件zuus.jpg
+lina  http://www.dota2.com.cn/images/heroes/lina_hphover.png
+保存文件lina.jpg
+shadow_shaman  http://www.dota2.com.cn/images/heroes/shadow_shaman_hphover.png
+保存文件shadow_shaman.jpg
+tinker  http://www.dota2.com.cn/images/heroes/tinker_hphover.png
+保存文件tinker.jpg
+furion  http://www.dota2.com.cn/images/heroes/furion_hphover.png
+保存文件furion.jpg
+enchantress  http://www.dota2.com.cn/images/heroes/enchantress_hphover.png
+保存文件enchantress.jpg
+jakiro  http://www.dota2.com.cn/images/heroes/jakiro_hphover.png
+保存文件jakiro.jpg
+chen  http://www.dota2.com.cn/images/heroes/chen_hphover.png
+保存文件chen.jpg
+silencer  http://www.dota2.com.cn/images/heroes/silencer_hphover.png
+保存文件silencer.jpg
+ogre_magi  http://www.dota2.com.cn/images/heroes/ogre_magi_hphover.png
+保存文件ogre_magi.jpg
+rubick  http://www.dota2.com.cn/images/heroes/rubick_hphover.png
+保存文件rubick.jpg
+disruptor  http://www.dota2.com.cn/images/heroes/disruptor_hphover.png
+保存文件disruptor.jpg
+keeper_of_the_light  http://www.dota2.com.cn/images/heroes/keeper_of_the_light_hphover.png
+保存文件keeper_of_the_light.jpg
+skywrath_mage  http://www.dota2.com.cn/images/heroes/skywrath_mage_hphover.png
+保存文件skywrath_mage.jpg
+oracle  http://www.dota2.com.cn/images/heroes/oracle_hphover.png
+保存文件oracle.jpg
+techies  http://www.dota2.com.cn/images/heroes/techies_hphover.png
+保存文件techies.jpg
+axe  http://www.dota2.com.cn/images/heroes/axe_hphover.png
+保存文件axe.jpg
+pudge  http://www.dota2.com.cn/images/heroes/pudge_hphover.png
+保存文件pudge.jpg
+sand_king  http://www.dota2.com.cn/images/heroes/sand_king_hphover.png
+保存文件sand_king.jpg
+slardar  http://www.dota2.com.cn/images/heroes/slardar_hphover.png
+保存文件slardar.jpg
+tidehunter  http://www.dota2.com.cn/images/heroes/tidehunter_hphover.png
+保存文件tidehunter.jpg
+wraith_king  http://www.dota2.com.cn/images/heroes/wraith_king_hphover.png
+保存文件wraith_king.jpg
+life_stealer  http://www.dota2.com.cn/images/heroes/life_stealer_hphover.png
+保存文件life_stealer.jpg
+night_stalker  http://www.dota2.com.cn/images/heroes/night_stalker_hphover.png
+保存文件night_stalker.jpg
+doom_bringer  http://www.dota2.com.cn/images/heroes/doom_bringer_hphover.png
+保存文件doom_bringer.jpg
+spirit_breaker  http://www.dota2.com.cn/images/heroes/spirit_breaker_hphover.png
+保存文件spirit_breaker.jpg
+lycan  http://www.dota2.com.cn/images/heroes/lycan_hphover.png
+保存文件lycan.jpg
+chaos_knight  http://www.dota2.com.cn/images/heroes/chaos_knight_hphover.png
+保存文件chaos_knight.jpg
+undying  http://www.dota2.com.cn/images/heroes/undying_hphover.png
+保存文件undying.jpg
+magnataur  http://www.dota2.com.cn/images/heroes/magnataur_hphover.png
+保存文件magnataur.jpg
+abaddon  http://www.dota2.com.cn/images/heroes/abaddon_hphover.png
+保存文件abaddon.jpg
+abyssal_underlord  http://www.dota2.com.cn/images/heroes/abyssal_underlord_hphover.png
+保存文件abyssal_underlord.jpg
+bloodseeker  http://www.dota2.com.cn/images/heroes/bloodseeker_hphover.png
+保存文件bloodseeker.jpg
+nevermore  http://www.dota2.com.cn/images/heroes/nevermore_hphover.png
+保存文件nevermore.jpg
+razor  http://www.dota2.com.cn/images/heroes/razor_hphover.png
+保存文件razor.jpg
+venomancer  http://www.dota2.com.cn/images/heroes/venomancer_hphover.png
+保存文件venomancer.jpg
+faceless_void  http://www.dota2.com.cn/images/heroes/faceless_void_hphover.png
+保存文件faceless_void.jpg
+phantom_assassin  http://www.dota2.com.cn/images/heroes/phantom_assassin_hphover.png
+保存文件phantom_assassin.jpg
+viper  http://www.dota2.com.cn/images/heroes/viper_hphover.png
+保存文件viper.jpg
+clinkz  http://www.dota2.com.cn/images/heroes/clinkz_hphover.png
+保存文件clinkz.jpg
+broodmother  http://www.dota2.com.cn/images/heroes/broodmother_hphover.png
+保存文件broodmother.jpg
+weaver  http://www.dota2.com.cn/images/heroes/weaver_hphover.png
+保存文件weaver.jpg
+spectre  http://www.dota2.com.cn/images/heroes/spectre_hphover.png
+保存文件spectre.jpg
+meepo  http://www.dota2.com.cn/images/heroes/meepo_hphover.png
+保存文件meepo.jpg
+nyx_assassin  http://www.dota2.com.cn/images/heroes/nyx_assassin_hphover.png
+保存文件nyx_assassin.jpg
+slark  http://www.dota2.com.cn/images/heroes/slark_hphover.png
+保存文件slark.jpg
+medusa  http://www.dota2.com.cn/images/heroes/medusa_hphover.png
+保存文件medusa.jpg
+terrorblade  http://www.dota2.com.cn/images/heroes/terrorblade_hphover.png
+保存文件terrorblade.jpg
+arc_warden  http://www.dota2.com.cn/images/heroes/arc_warden_hphover.png
+保存文件arc_warden.jpg
+bane  http://www.dota2.com.cn/images/heroes/bane_hphover.png
+保存文件bane.jpg
+lich  http://www.dota2.com.cn/images/heroes/lich_hphover.png
+保存文件lich.jpg
+lion  http://www.dota2.com.cn/images/heroes/lion_hphover.png
+保存文件lion.jpg
+witch_doctor  http://www.dota2.com.cn/images/heroes/witch_doctor_hphover.png
+保存文件witch_doctor.jpg
+enigma  http://www.dota2.com.cn/images/heroes/enigma_hphover.png
+保存文件enigma.jpg
+necrolyte  http://www.dota2.com.cn/images/heroes/necrolyte_hphover.png
+保存文件necrolyte.jpg
+warlock  http://www.dota2.com.cn/images/heroes/warlock_hphover.png
+保存文件warlock.jpg
+queenofpain  http://www.dota2.com.cn/images/heroes/queenofpain_hphover.png
+保存文件queenofpain.jpg
+death_prophet  http://www.dota2.com.cn/images/heroes/death_prophet_hphover.png
+保存文件death_prophet.jpg
+pugna  http://www.dota2.com.cn/images/heroes/pugna_hphover.png
+保存文件pugna.jpg
+dazzle  http://www.dota2.com.cn/images/heroes/dazzle_hphover.png
+保存文件dazzle.jpg
+leshrac  http://www.dota2.com.cn/images/heroes/leshrac_hphover.png
+保存文件leshrac.jpg
+dark_seer  http://www.dota2.com.cn/images/heroes/dark_seer_hphover.png
+保存文件dark_seer.jpg
+batrider  http://www.dota2.com.cn/images/heroes/batrider_hphover.png
+保存文件batrider.jpg
+ancient_apparition  http://www.dota2.com.cn/images/heroes/ancient_apparition_hphover.png
+保存文件ancient_apparition.jpg
+invoker  http://www.dota2.com.cn/images/heroes/invoker_hphover.png
+保存文件invoker.jpg
+obsidian_destroyer  http://www.dota2.com.cn/images/heroes/obsidian_destroyer_hphover.png
+保存文件obsidian_destroyer.jpg
+shadow_demon  http://www.dota2.com.cn/images/heroes/shadow_demon_hphover.png
+保存文件shadow_demon.jpg
+visage  http://www.dota2.com.cn/images/heroes/visage_hphover.png
+保存文件visage.jpg
+winter_wyvern  http://www.dota2.com.cn/images/heroes/winter_wyvern_hphover.png
+保存文件winter_wyvern.jpg
+</code></pre></div>
+
+<h1>恭喜</h1>
+<p>完成！</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2017-04-18T21:21:09+08:00">Apr 18, 2017</time>
+
+<h4>Last Updated</h4>
+<time datetime="2017-04-18T21:22:28+08:00">Apr 18, 2017</time>
+
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#shu-ju-wa-jue-ref">数据挖掘</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#kaggle-ref">Kaggle
+                            <span>1</span>
+</a></li>
+                        <li><a href="/tags.html#pa-chong-ref">爬虫
+                            <span>1</span>
+</a></li>
+                        <li><a href="/tags.html#shu-ju-wa-jue-ref">数据挖掘
+                            <span>1</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

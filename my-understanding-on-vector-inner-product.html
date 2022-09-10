@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang sndnyang.github.io" />
+        <meta name="copyright" content="sndnyang sndnyang.github.io" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="线性代数, 线性代数, " />
+
+<meta property="og:title" content="向量内积的个人理解 "/>
+<meta property="og:url" content="/my-understanding-on-vector-inner-product.html" />
+<meta property="og:description" content="线性代数 向量内积的定义式太神奇，需要一点理解" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang sndnyang.github.io" />
+<meta property="og:article:published_time" content="2017-04-17T12:19:53+08:00" />
+<meta property="" content="2017-04-17T12:51:04+08:00" />
+<meta name="twitter:title" content="向量内积的个人理解 ">
+<meta name="twitter:description" content="线性代数 向量内积的定义式太神奇，需要一点理解">
+
+
+        <title>向量内积的个人理解  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/my-understanding-on-vector-inner-product.html">
+                        向量内积的个人理解  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<h1>向量内积</h1>
+<p>我想，多数读者应该非常熟悉向量内积（点积）。 虽然我不记得具体是在什么时候学的内积了， 但我认为， 但凡经过中学数学训练过的人， 解内积这种非常简单的计算那是易如反掌。</p>
+<p>但是，可能是时间太过久远， 也可能是当年不太专注， 也可能是当年老师确实没讲， 我对向量的定义、 性质常有疑惑之处。</p>
+<p>如果读者和我一样， 对向量的来历、 意义、 性质有着同样的困惑， 我希望这篇文章能帮您扫清这些困惑。</p>
+<p>向量内积的结果就是投影,可以理解为A线投影在B线的长度 与B线长度的乘积。 这个意义
+不难理解。</p>
+<p>所以，主要就是尝试以尽量直观的方式来推导（而不是证明）， 理解它为什么这么巧。</p>
+<p>$$
+(\vec a, \vec b)=\sum_{i=1}^n a_ib_i  = |\vec a||\vec b|cos\theta
+$$</p>
+<p>如果您对这个证明过程并不陌生， 那可以直接跳过。</p>
+<p>现在我们正式开始。</p>
+<h1>内积定义</h1>
+<p>不知道内积的来历，没搜到。</p>
+<p>说到内积的定义， 或者让您求两个向量a, b的内积， 您的第一（或唯一）反应是怎么做？(目前不支持在选项里显示公式)</p>
+<p>{%radio|&amp;$||a||<em>||b||</em>cos(\theta)$&amp;$\sum a_ib_i$&amp;不记得了&amp;没听说过向量内积@$\sum a_ib_i$#呃%}</p>
+<h3>聪明的选择！</h3>
+<p>没错， 既然有简单而又正确的方法， 何乐而不为呢？</p>
+<p>设空间内有两个向量 $\vec a = [a_1,a_2,...,a_n]$ 及 $\vec b = [b_1,b_2,...,b_n]$, 则二者的内积(点积)为（应该是大家熟知的定义了）</p>
+<p>$$
+(\vec a, \vec b)=\sum_{i=1}^n a_ib_i
+$$</p>
+<p>强行凑问题， 您猜这个是向量内积的啥定义</p>
+<p>{%radio|&amp;代数定义&amp;几何定义@代数定义#我也只是百度来的%}</p>
+<h3>代数与几何定义</h3>
+<p>$$
+(\vec a, \vec b)=\sum_{i=1}^n a_ib_i
+$$</p>
+<p>这个就是向量内积的代数定义（来自百度百科）。</p>
+<p>我想根本不会有人选择向量取模后再乘余弦值的计算方法， 即向量内积的几何定义：</p>
+<p>$$ \vec a \cdot \vec b = |\vec a||\vec b|cos\theta $$</p>
+<p>您觉得这两个定义等价吗？ 或者说， 两个公式相等不？</p>
+<p>{%radio|&amp;不相等&amp;看不出来&amp;相等@相等#其实是废话%}</p>
+<h3>为什么</h3>
+<p>虽然知道二者相等，但为什么相等呢？ 不好奇吗？ </p>
+<p>您知道或记得如何证明 两个定义的公式相等吗？</p>
+<p>{%radio|&amp;不知道或不记得&amp;知道&amp;记得&amp;太熟悉了@不知道或不记得#知道的就不用指望我了%}</p>
+<h2>证明等价</h2>
+<p>如果您对这个证明过程并不陌生， 那本文就没什么价值了。</p>
+<h3>证前先百度</h3>
+<p>其实在 <a href="http://baike.baidu.com/link?url=S2ZmnqIMCyHmSRAqyyB3h1qXviZMpKHXo1K_agaRuDczTUSEShJQcFc8H0kRy5DvGrLcJDHRh6xt96wDJxIdTa7fVyM6tNn-JB0J6d3d3COks1v3wUuzrv7hIAMacSnJ-RB2fomWZCJHByDjmtHKmeZ-txm8v0L7-dLmMb_pD7Ka8d48MaoCkfLWdwdtWDTy#1_3">百度百科</a> 上也有两个证明</p>
+<p>如果您不打算先行看一下的话， 后面两小段应该跳过。</p>
+<h3>几何定义推导代数定义</h3>
+<p>个人认为，几何定义推导代数定义 这个方法依赖于内积（点乘）的分配律， 不合适， 哪怕“点乘的分配律在空间内可通过几何证明”， 但不够自然。</p>
+<p>而且所谓从“几何定义”， 也完全没看到 cos余弦值， 只看到了坐标， 那应该是从几何属性推导代数定义。</p>
+<p>对本文要证明的 乘余弦 = 坐标积和 没什么帮助, 忽略。</p>
+<h3>代数定义推导几何定义</h3>
+<p>本方法依据余弦定理， 将向量a, b看成是两条边, 之间夹角为 $\theta$， 第三边 设为 c=a-b， 则有</p>
+<p>$$
+|\vec c|^2 = |\vec a|^2 + |\vec b|^2 - 2|\vec a||\vec b|cos\theta
+$$</p>
+<p>$|\vec a||\vec b|cos\theta$整块保留， 其他部分移到等号另一边， 则有:</p>
+<p>$$
+|\vec a||\vec b|cos\theta = \frac{|\vec a|^2 + |\vec b|^2 - |\vec c|^2}{2}
+$$</p>
+<p>最后代入距离公式, 推导过程如下：</p>
+<p>$$
+\begin{aligned}
+|\vec a||\vec b|cos\theta &amp; = \frac{\sum a_i^2 + \sum b_i^2 - \sum (a_i-b_i)^2}{2} \
+展开抵消 &amp; = \sum a_ib_i
+\end{aligned}
+$$</p>
+<p>即可证得。</p>
+<p>这个证明是对的， 可你有没有觉得哪里有问题？</p>
+<p>{%radio|&amp;证明是对的，就没有不对&amp;无所谓&amp;避开余弦&amp;无法反向推导&amp;依赖于余弦定理@依赖于余弦定理#多想想，我的问题和您的疑惑很可能不同%}</p>
+<h2>直面余弦</h2>
+<p>真正的勇士敢于直面惨淡的人生,敢于正视淋漓的鲜血。 -- 鲁迅</p>
+<p>所以， 上面的证明用了现成的余弦定理， 又一次完美地避开了余弦值与向量坐标积之和的关系。</p>
+<p>当然， 这可能在余弦定理的证明时有讲过——然而 没记错的话， 讲余弦定理时是三角形的内容， 没有用到向量形式来着？</p>
+<p>那绕了半天， 夹角的余弦值跟向量内积的关系 还是一个定义或一种巧合喽？</p>
+<p>是否有切实相关的证明方法呢？</p>
+<p>让我们来试试。</p>
+<h1>新的推导</h1>
+<p>还是向量a和b, 为简单，仅考虑二维平面， a和b 的夹角还是 theta。我们直接从目标考虑</p>
+<p>$$
+\sum_{i=1}^n a_ib_i  = |\vec a||\vec b|cos\theta
+$$</p>
+<p>你觉得应该从哪边开始推导？</p>
+<p>{%radio|&amp;从左到右&amp;从右到左&amp;甜的&amp;咸的&amp;辣的@从右到左#我只想到从右到左，您有从左到右的想法，欢迎提出！%}</p>
+<h2>为什么</h2>
+<p>您为什么选择从右到左—— 一个人开发这网站不说， 我还要学新知识， 写这种教程（包括旧知识）， 知识水平也不够， 所以无法提供更高的自由度~~~</p>
+<p>又比如这里我很想用填空题形式， 让您写写您的想法的——为什么从右到左， 如何处理
+。 我觉得都能体现原则、 思路、 直观。 <strong>总结可以得出解题、 证明甚至探索的一般思路。</strong></p>
+<p>{%radio|&amp;右边好变换&amp;右边好构造&amp;右边好计算&amp;右边好简单&amp;右边好顺眼@右边好变换#顺
+眼也不一定错，万一数学直觉厉害呢#构造:构造法很考验直觉和思维锻炼,多数人只会马后炮%}</p>
+<h2>解释</h2>
+<p>首先， 左边太简单了（右边复杂得多）， 最直观的相乘， 然后求和， 想做个变形、 变换都无从下手。 学之前的证明方法， 强行构建一个 $|\vec a|^2 + |\vec b|^2 - |\vec c|^2$ 吗？</p>
+<p>反正我觉得 能构建（构造）出一些常人想不到的东西 就是种很强的能力， 构造出函数、 前提、 条件的都是很厉害的数学家， 比如魏尔斯特拉斯构造出的处处连续处处不可导函数。</p>
+<p>构造（构建）法对直觉和基础要求都高， 教学中不太可取， 逼人去构造是种锻炼方法， 但直接说构造了个啥可利用， 就有点空中楼阁了。</p>
+<p>右边计算也更复杂， 另外， 计算基本上帮不上证明\推导多少忙~~~</p>
+<h2>变谁</h2>
+<p>解释完了， 我们看到目前状态为：</p>
+<p>已知 向量a和b, a和b 的夹角是 theta </p>
+<p>处理对象是$|\vec a||\vec b|cos\theta$ 这么复杂的式子</p>
+<p>肯定是要变形了， 这废话。</p>
+<p>{%radio|但是把谁变掉？&amp;a和b的模&amp;余弦值&amp;角度theta&amp;看提示@角度theta#模:从欧几里得几何开始讨论?#利用更多已知条件，还有啥条件不？%}</p>
+<h2>夹角替换</h2>
+<p>设:在二维平面上， 向量a 与 x轴的角度为 $\alpha$, 向量b 与x轴的角度为 $\beta$ ,
+两个向量间的夹角是 $\theta$ (忽略谁大谁小问题)</p>
+<p>所以将 $\theta = \alpha - \beta $ 代入原式。</p>
+<p>这下就明显了， 余弦、 减法， 就展开：
+$$
+\begin{aligned}
+|\vec a||\vec b|cos\theta &amp; = |\vec a||\vec b|cos(\alpha-\beta) \
+&amp; = |\vec a||\vec b|(cos\alpha cos\beta + sin\alpha sin\beta) \
+&amp; = |\vec a||\vec b|cos\alpha cos\beta +  |\vec a||\vec b|sin\alpha sin\beta
+\end{aligned}
+$$</p>
+<p>有没有看出什么来？ 后面的步骤应该很明显了, 向量乘以它与X轴夹角的余弦值，得向量
+的x轴坐标， 乘以正弦值得y轴坐标， 所以是x坐标相乘 + y坐标相乘。</p>
+<p>关键是总结下， 这里体现了什么。</p>
+<h1>证明方法总结</h1>
+<p>当然， 这个方法里用到了 差角余弦公式 cos(a-b) = cos(a)cos(b) + sin(a)sin(b), 也
+没给出证明\推导过程。</p>
+<p>但我个人认为这里已经明确到了 向量和它自己与坐标轴之间夹角的关系， 而之前的证明则是避开了 角与边、 坐标的统一， 就等于这两块之间少了一重关联、 关系， 缺少了一种统一的、 更高的认识。</p>
+<p>最后总结下， 虽然都根据 几何定义来解释 向量内积的几何意义， 但从这个推导过程中， 我们可以更清楚地看到 投影映射 与 坐标乘积之和 的关系。</p>
+<p>也就是说, 向量内积的常规式就是差角余弦公式的自然结果, 如果要问 差角余弦公式 为
+什么得这个结果， 有什么意义， 这个我也忘了~~~有时间又补一下。</p>
+<h1>恭喜</h1>
+<p>恭喜您看完了我啰嗦的文章， 一家之言， 可能会有很多疏漏与错误。</p>
+<p>风格上， 尽量地文章划分成小段——希望有人喜欢。 能够长篇大论、 写出大部头著作的作者们水平不知道比我高到哪里去了。</p>
+<p>而且这样简单的一个内容， 严格说来， 也算写得蛮长的了。</p>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2017-04-17T12:19:53+08:00">Apr 17, 2017</time>
+
+<h4>Last Updated</h4>
+<time datetime="2017-04-17T12:51:04+08:00">Apr 17, 2017</time>
+
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#xian-xing-dai-shu-ref">线性代数</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#xian-xing-dai-shu-ref">线性代数
+                            <span>2</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

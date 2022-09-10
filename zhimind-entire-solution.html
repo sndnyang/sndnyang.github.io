@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang" />
+        <meta name="copyright" content="sndnyang" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="zhimind, 脑洞, 脑洞, " />
+
+<meta property="og:title" content="zhimind完整方案 "/>
+<meta property="og:url" content="/zhimind-entire-solution.html" />
+<meta property="og:description" content="[TOC] 知维图 知维图 想创造交互式、 启发式教学， 升级一下MOOC。 只是大体方案， 细节和技术缺少数据、实验、条件还没法全部搞定。 源代码链接 新手重新造轮子（看不懂别人的，尴尬），差很多，甚至永远完成不了。 问题和需求 Problems and demands: 易走神：上课容易走神，人多、老师不管或管不过来； 看书（专业、技术书）畏难、敷衍、易走神，没有真正动脑 无反馈：老师讲课容易满堂灌而无效果，不能知道学生的学习效果，无法个性化教育；学生通常也不知道学习效果，会有课本和习题的巨大落差。 方式不好： 简单灌输知识、什么是对的、为什么是对的，但如何找到、想到的探索、创新思维没有融入，不利于培养优秀的思维方式 知识点管理： 看书总看前面部分，不知道知识点的掌握情况、知识点间的关联。 在线教育和线下教育很难结合 …" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang" />
+<meta property="og:article:published_time" content="2017-02-08T22:13:45+08:00" />
+<meta property="" content="2017-02-08T22:13:45+08:00" />
+<meta name="twitter:title" content="zhimind完整方案 ">
+<meta name="twitter:description" content="[TOC] 知维图 知维图 想创造交互式、 启发式教学， 升级一下MOOC。 只是大体方案， 细节和技术缺少数据、实验、条件还没法全部搞定。 源代码链接 新手重新造轮子（看不懂别人的，尴尬），差很多，甚至永远完成不了。 问题和需求 Problems and demands: 易走神：上课容易走神，人多、老师不管或管不过来； 看书（专业、技术书）畏难、敷衍、易走神，没有真正动脑 无反馈：老师讲课容易满堂灌而无效果，不能知道学生的学习效果，无法个性化教育；学生通常也不知道学习效果，会有课本和习题的巨大落差。 方式不好： 简单灌输知识、什么是对的、为什么是对的，但如何找到、想到的探索、创新思维没有融入，不利于培养优秀的思维方式 知识点管理： 看书总看前面部分，不知道知识点的掌握情况、知识点间的关联。 在线教育和线下教育很难结合 …">
+
+
+        <title>zhimind完整方案  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/zhimind-entire-solution.html">
+                        zhimind完整方案  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<h1><a href="zhimind.com">知维图</a></h1>
+<p><a href="zhimind.com">知维图</a> 想创造交互式、 启发式教学， 升级一下MOOC。</p>
+<p>只是大体方案， 细节和技术缺少数据、实验、条件还没法全部搞定。</p>
+<p><a href="https://github.com/sndnyang/zhimind">源代码链接</a>  新手重新造轮子（看不懂别人的，尴尬），差很多，甚至永远完成不了。</p>
+<h2>问题和需求</h2>
+<p>Problems and demands:</p>
+<ol>
+<li>易走神：上课容易走神，人多、老师不管或管不过来； 看书（专业、技术书）畏难、敷衍、易走神，没有真正动脑</li>
+<li>无反馈：老师讲课容易满堂灌而无效果，不能知道学生的学习效果，无法个性化教育；学生通常也不知道学习效果，会有课本和习题的巨大落差。</li>
+<li>方式不好： 简单灌输知识、什么是对的、为什么是对的，但如何找到、想到的探索、创新思维没有融入，不利于培养优秀的思维方式</li>
+<li>知识点管理： 看书总看前面部分，不知道知识点的掌握情况、知识点间的关联。</li>
+<li>在线教育和线下教育很难结合，即使是SPOC，仍然面临前4点。</li>
+</ol>
+<h3>问题说明</h3>
+<p>前提：以上是个人估计多数甚至绝大多数人所遇到的问题， 但只是笔者我一人的体会，完全基于我个人近几年学习一塌糊涂的体验。没看过教育学书，没有教育数据，啥都没有， 不保证想法的正确性。</p>
+<p>如果多数人上课专心、看书认真、一听就懂、一看就会，经典教材简单明了，一点就透的话，那我整个方案没有意义，可以关闭页面了。</p>
+<h2>解决方案思想</h2>
+<ol>
+<li>在线教育（视频和互动教材）中添加更多小问题，形式多样化（选择填空）。作用：  <ul>
+<li>减少走神， 促进边看边思考</li>
+<li>了解学习状态</li>
+<li>对比： Udacity,Codecademy多数问题设计得太复杂，打断学习思路的连贯性。Coursera的问题又少又不太好。有示例 <a href="http://www.zhimind.com/tutorial/a94364d4-4f6f-41bd-8b57-6c749efc46f4?id=f349e9b2-1412-44f4-a18e-618825613bcb&amp;name=1.%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%E6%9C%80%E5%A4%A7%E9%97%B4%E9%9A%94&amp;parent=%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA">svm最大间隔</a></li>
+</ul>
+</li>
+<li>小问题形式多样化（选择填空），加上题量多，可以有后台数据显示学习状态——也可以把数据显示给学生，还能对比、推荐。</li>
+<li>根据小问题、问答式或启发式的思路，重新组织教学内容。以问题引导学生思考、 探索发现， 并能在教学中强调一些思考方法、原则。</li>
+<li>思维导图、目录列出更详细的知识点关系，避免线性知识组织， 同时可以标注知识点学习次数、状态等，可视化效果更好。</li>
+</ol>
+<h3>如果可行，则有好处</h3>
+<ol>
+<li>减少走神现象， 极小段的视频或文字后接一个小问题</li>
+<li>问题的回答可以作为数据反馈， 直观反映了学生学习过程的专注情况及最终的学习效果。</li>
+<li>可以和<strong>线下课堂教育</strong>相结合， 解放老师的授课压力，可以轻松了解学生学习状态，多出一些精力用于指导。 </li>
+<li>以自然语言处理技术作支撑，多使用略主观的填空题，可以通过回答内容，对学生学习、思维方式有更深入的了解，进而更准确的进行个性化教学</li>
+<li>略强制、促进学生思考，真正动脑子。需要技术上避免作弊和乱填</li>
+<li>培养、锻炼学生多种良好的学习习惯， 培养创新、探索思维， 同时应该能提高学习效率</li>
+<li>启发方式或提问方式可以结合到习题中，既能提供必要的提示而不破坏学生的思考，又能了解学生做题式的思维过程，智能指导学生做题（技术上应该非常难）。 花费一定的成本，可以制作足够大的题库，能评估知识掌握情况。</li>
+<li>渐进积累，既包括教学资源、数据的积累</li>
+<li>学生看思维导图、目录学习有目标、 有全局认知，并且方便查缺补漏、复习。</li>
+<li>体系化学习， 像种树长果实一样可以看到学习的结果，有成就感。</li>
+<li>后续扩展，学生对知识心里有底， 有明确的学习路线，从效率上，也许能多发现几个天才。</li>
+<li>后续扩展，公司也可以看到学生学习效果、知识水平</li>
+</ol>
+<p>其中第4点，我认为如果确认没有下面的可行性问题，那么这个在线教育 能较好地和学校教育结合， 对在校学生能加入线下家长、老师的监督作用， 影响、意义大于单纯的在线教育、MOOC。 当然，对于非在校人员仍是在线教育、MOOC。</p>
+<h3>方案中可能的问题</h3>
+<ol>
+<li>没有实验、数据证明这种方法行之有效（我没搜过），尤其是启发式教育的教学效果。哪怕仅针对高中、大学以上逻辑性较强的数、理工科教育，也不知道能否实现启发式教育， 其他学科、更低年龄的应该更难。</li>
+<li>目前的人工智能和自然语言处理技术上，是否支持比较智能化的问答， 进而支持更合适的启发教学。</li>
+<li>似乎很难设计启发式问题，可能只能做到普通问答。 按某模型说的， 专家看问题往往是直觉式的，没有准确的规则，所以无法说清自己的思维方式、思考过程， 如何启发也就没有个明确的标准。</li>
+</ol>
+<h3>理想与现实</h3>
+<p>理想是 有一个科幻小说里完全智能的机器人 循循善诱地启发你去学习、做题，同时还起监督作用。 有任何问题（能用已知知识回答的）他都能启发你去自己发现答案。</p>
+<p>现实中，老师没空（学生多），也不一定了解如何恰当地引导你去发现、探索； 书本、MOOC视频不会回答你任何问题， 网络和论坛能回答问题，但不会启发你； 贫困地区更缺师资。 网络和电脑手机的成本远低于教师人力资源，以后会更低。</p>
+<p>我的方案除了未验证有效性外， 主要就是不够智能。 智能技术发展到理想水平的话，启发式教育自然可行，不需要专门的教育产品。</p>
+<p>另外，读书无用论、屠龙术、就业等社会问题没有纳入考虑。个人也一厢情愿地认为，社会对各科优秀人才都还有很大的需求缺口，只有优秀人才不够多的问题。</p>
+<h3>思想升华</h3>
+<p>也可以认为是又吹一下。</p>
+<p>“以学生为中心”是以学生进行思考为中心， 那个西方什么话说的教育是点燃人脑海中的火焰什么鬼的，所以 有几个层次：</p>
+<ol>
+<li>单纯让学生思考， 其实就是做题， 比如在视频、或电子版书、博客里嵌入几个问题，也不管这问题到底做了啥， 可能把简单的回忆也当思考了， 但10秒前的内容甚至连回忆都算不上吧？</li>
+<li>让学生集中精力地去思考了， 简单说，觉得该让学生思考时，就放个问题，作个预告，让学生想想，接下来的内容学生也就会去思考这些问题，比如是什么、为什么、如何么，学生在接下来的听课中寻找答案，结束时再来重复问题，学生回忆、总结。这个层次也挺不错了，但还不是真正“以学生为中心”，老师觉得学生该思考了。</li>
+<li>理想境界。启发式的教学，指导学生探索式的思考。就是科学家如何做科学研究的，就如何思考。简单来说，从现实中的问题或以前知识的漏洞开始。  </li>
+</ol>
+<p>例子：</p>
+<ol>
+<li>比如我至今没明白的牛顿当初建立的微积分为什么根基不准，就从微积分的不稳根基开始，用思想、方法、规律、模式等来引导学生如何去发现问题、去探索，这整个过程中 都是学生自己从问题找到答案， 教师的提示几乎仅限于试试逆向思维、二分等（我也不知道有哪些，人如何思考本来就只有各种假说）。</li>
+<li>发现、提出问题也是一样的，生活中像成绩不好、上课学习状态不好就是问题，数学物理等抽象问题比如看钟摆就想钟摆是如何摆动的，其实就是十万个为什么，小时候大家都会，长大反而不会了——因为知道太难了:) 。</li>
+<li>至于担心应试教育的做题问题，做题也是思考，应该是都有做题模式，反正就是这种思考训练后，应该更能举一反三。</li>
+</ol>
+<p>当然， 这种模式针对需要思考的领域、学科及知识。 背诵全文一般死背； 艺术表演为什么要这么表演还是需要思考的； 音乐为什么有些悦耳有些难听，音乐系要思考出模式来。 所以这种教学模式的应用其实不局限于理工科， 只是主观与客观的区别。</p>
+<p>我个人认为，  我的方案是能做到第3层理想境界，但估计需要强到接近科幻的人工智能、自然语言处理技术。 第2层都还可以弄成偏客观的，复述，那几个关键词就可以了， 但第3层时 同样的内容 表达出来就天差地别了， 而且万一学生想到新的方法，甚至真的新的问题、理论呢？ 更不用说 程序根据知识库 能自动生成教学内容，进行对话， 这样就不需要人来编写了，但现在技术肯定不行，因为只有人能给人的跳跃思维做出一个还算合理的假设。</p>
+<p>第3层在 1对1家教里应该可以做到， 需要老师自己对知识点掌握到这个程度， 这样启发学生， 就是“以学生为中心”了。</p>
+<h2>技术与形式</h2>
+<p>我个人认为， 应该主要是基于文本而不是视频制作 交互式教程。 虽然嵌入问题的视频也不错，但灵活性、连贯性上没有文本中嵌问题好。</p>
+<p>一个交互式教材 简单示例， 基于markdown格式编写， 和写书比较像， 主要是真正尝试过问题后，才能进行下一段，同时问题不能太复杂，小步思考。</p>
+<p><a href="http://www.zhimind.com/tutorial/a94364d4-4f6f-41bd-8b57-6c749efc46f4?id=f349e9b2-1412-44f4-a18e-618825613bcb&amp;name=1.%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%E6%9C%80%E5%A4%A7%E9%97%B4%E9%9A%94&amp;parent=%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA">svm最大间隔</a></p>
+<h3>对比</h3>
+<p>文本优势：</p>
+<ol>
+<li>容易修改内容， 视频需要重录</li>
+<li>制作上，视频录制确实快一点，但加入大量小巧问题后，会有更灵活的知识点衔接， 视频弄太碎也不方便吧？</li>
+<li>应用到习题上，更不适合视频了，为每个习题录视频不成立</li>
+<li>文本形式更灵活多变， 可以是交互式教材， 可以是聊天机器人， 甚至可以是VR， 视频转VR有意义吗？</li>
+</ol>
+<p>视频更适合用在纯粹讲故事、介绍历史上。</p>
+<h3>完整流程</h3>
+<ol>
+<li>将知识点以知识导图、目录形式组织， 并与教程资源、 测试题集关联。 示例：<a href="http://www.zhimind.com/map/f349e9b2-1412-44f4-a18e-618825613bcb">机器学习导图及目标</a>  <ul>
+<li>有两个思维导图和目录标签页</li>
+<li>点可用涂色等方式来表示学习次数和掌握情况</li>
+<li>若干点上有教程链接（制作问题，需要鼠标悬浮点上）</li>
+</ul>
+</li>
+<li>教程以文本编写（目前采用markdown，希望能找到更好的组织形式），显示效果：  <ul>
+<li>交互式教材 <a href="http://www.zhimind.com/tutorial/a94364d4-4f6f-41bd-8b57-6c749efc46f4?id=f349e9b2-1412-44f4-a18e-618825613bcb&amp;name=1.%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%E6%9C%80%E5%A4%A7%E9%97%B4%E9%9A%94&amp;parent=%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA">svm最大间隔</a></li>
+<li>聊天机器人</li>
+<li>虚拟现实。 需要语音识别和语音生成，还应该有个虚拟人物形象生成，VR就要真正做到交互。在虚拟现实里看视频、看文字这种死的东西有什么意义。</li>
+</ul>
+</li>
+<li>嵌入其他特殊互动（各式各样太多）<ul>
+<li>理化生模拟实验， 在线、虚拟操作</li>
+<li>计算机编程可以参考 tryRegex 或 Runestone Interactive python。 <a href="http://www.zhimind.com/practice/ab3e5150-a91c-4fe4-83c7-4e57fbf5c59c">示例</a></li>
+<li>数学、物理题过程推导（不是简单的填空、选择）</li>
+</ul>
+</li>
+</ol>
+<h3>补充</h3>
+<p>个人觉得， 这个方案除了直接的教育意义外，还能促进以下发展</p>
+<ol>
+<li>教育、心理学  <ul>
+<li>真实的人的思考方式数据，虽然是以文字描述，需要分析，但比问卷调查靠谱</li>
+<li>学习者思维方式分类</li>
+<li>推荐</li>
+</ul>
+</li>
+<li>自然语言处理和知识图谱等聊天机器人技术，总要让学习者觉得越来越智能、像人， 而且也能有数据支撑这个研究进步</li>
+<li>虚拟现实、语音识别、生成。  <ul>
+<li>虚拟现实能有更大的应用空间，不交互的虚拟现实没有意义</li>
+<li>人物形象更真实， 有合适的动作、表情， 而且可以修改不同的形象， 教授或明星，帅哥或美女， 应该不猥琐吧？</li>
+<li>语音识别、生成， 不然对话就没法进行了，虽然肯定用类字幕形式辅助。</li>
+</ul>
+</li>
+</ol>
+<p>真正的智能解题、智能提示 我不知道属于哪块AI技术~~~机器证明？知识图谱？逻辑推理？</p>
+<h1>介绍完毕</h1>
+<p>文笔不行，请见谅。</p>
+<p>以上内容仅是个人想法，没有实验数据作证，如果有读者有想法想讨论一二，或愿意给笔者解释下笔者想法是如何的不切实际，帮我打消这不切实际的想法，非常欢迎，非常感谢，联系方式见博客右部，微博、邮箱都有。</p>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2017-02-08T22:13:45+08:00">Feb 8, 2017</time>
+
+<h4>Last Updated</h4>
+<time datetime="2017-02-08T22:13:45+08:00">Feb 8, 2017</time>
+
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#nao-dong-ref">脑洞</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#nao-dong-ref">脑洞
+                            <span>2</span>
+</a></li>
+                        <li><a href="/tags.html#zhimind-ref">zhimind
+                            <span>6</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

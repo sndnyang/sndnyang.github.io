@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang" />
+        <meta name="copyright" content="sndnyang" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="可视化, 演讲, 开发工具, " />
+
+<meta property="og:title" content="利用hovercraft编写impressjs幻灯片 "/>
+<meta property="og:url" content="/hovercraft-to-impressjs-slides.html" />
+<meta property="og:description" content="[TOC] impress.js介绍 impress.js 是一个Javascript程序包，它的功能是让你制作出令人眩目的内容展示效果，主要里利用了CSS 3D Transforms 里的旋转，扭曲，缩放等特性，所以，只有最新版的Firefox，或谷歌浏览器或苹果浏览器才能看到它产生的效果，好像在还未出世的IE 10 浏览器里也可以用。 官方网站 官方示例 {%radio|是不是很炫酷呢？&amp;是&amp;普通@#普通:您的眼光高！%} 可视化编辑Strut 官方网站 官方示例 可视化在线编辑, 可能用这个就够了， 不用下面的了 hovercraft介绍 Hovercraft! is a tool to make impress.js presentations from reStructuredText. For a quick explanation, see …" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang" />
+<meta property="og:article:published_time" content="2017-04-12T11:07:30+08:00" />
+<meta name="twitter:title" content="利用hovercraft编写impressjs幻灯片 ">
+<meta name="twitter:description" content="[TOC] impress.js介绍 impress.js 是一个Javascript程序包，它的功能是让你制作出令人眩目的内容展示效果，主要里利用了CSS 3D Transforms 里的旋转，扭曲，缩放等特性，所以，只有最新版的Firefox，或谷歌浏览器或苹果浏览器才能看到它产生的效果，好像在还未出世的IE 10 浏览器里也可以用。 官方网站 官方示例 {%radio|是不是很炫酷呢？&amp;是&amp;普通@#普通:您的眼光高！%} 可视化编辑Strut 官方网站 官方示例 可视化在线编辑, 可能用这个就够了， 不用下面的了 hovercraft介绍 Hovercraft! is a tool to make impress.js presentations from reStructuredText. For a quick explanation, see …">
+
+
+        <title>利用hovercraft编写impressjs幻灯片  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/hovercraft-to-impressjs-slides.html">
+                        利用hovercraft编写impressjs幻灯片  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<h1>impress.js介绍</h1>
+<p>impress.js 是一个Javascript程序包，它的功能是让你制作出令人眩目的内容展示效果，主要里利用了CSS 3D Transforms 里的旋转，扭曲，缩放等特性，所以，只有最新版的Firefox，或谷歌浏览器或苹果浏览器才能看到它产生的效果，好像在还未出世的IE 10 浏览器里也可以用。</p>
+<p><a href="https://github.com/impress/impress.js">官方网站</a></p>
+<p><a href="http://impress.github.io/impress.js/#/overview">官方示例</a></p>
+<p>{%radio|是不是很炫酷呢？&amp;是&amp;普通@#普通:您的眼光高！%}</p>
+<h1>可视化编辑Strut</h1>
+<p><a href="https://github.com/tantaman/Strut">官方网站</a></p>
+<p><a href="http://strut.io/editor/">官方示例</a></p>
+<p>可视化在线编辑, 可能用这个就够了， 不用下面的了</p>
+<h1>hovercraft介绍</h1>
+<p>Hovercraft! is a tool to make impress.js presentations from reStructuredText. For a quick explanation, see the <a href="http://regebro.github.com/hovercraft">official demo</a>.</p>
+<p><a href="https://github.com/regebro/hovercraft">官方网站</a></p>
+<p>pip3 install hovercraft</p>
+<p>主要语法请见<a href="https://hovercraft.readthedocs.io/en/latest/presentations.html">官方文档</a></p>
+<h1>制作建议</h1>
+<h2>x,y,z坐标关系</h2>
+<h3>中心</h3>
+<p>没搞错的话， data-x, data-y 指代一张 ppt 的中心点坐标， 不是它的左上角。</p>
+<p>z负值是把镜头拉远、拉大， z正值相反（出屏幕方向）</p>
+<h3>位置</h3>
+<p>data-x data-y 是以页面中心为原点 0,0， </p>
+<p>x为正值， 代表向左侧移动， 负值就是向右侧移动</p>
+<p>y为正值， 代表在下侧（就是屏幕分辨率的方向， 左上角是原点），负值在上方。</p>
+<h3>示例</h3>
+<p><img alt="coordinate" src="http://7xt8es.com1.z0.glb.clouddn.com/blog/impressjs_overview.png"></p>
+<p>可以看到， 官方示例，转入 overview状态后， 两条红线相交处为 0, 0原点， 往右 x 增大， 往下 y 增大</p>
+<h3>建议</h3>
+<p>从全局角度</p>
+<h2>scale关系</h2>
+<p>就是放大倍数， &lt; 1 代表缩小</p>
+<h2>旋转</h2>
+<p>先根据 data-x , y移动后， 以该点为中心进行旋转</p>
+<h2>2D</h2>
+<p>data-rotate = 通过一个数字度数来确定旋转你的幻灯片, 顺时针</p>
+<p>这个简单</p>
+<h2>3D</h2>
+<p>data-rotate-x = 为3D用，这个数字度数是它应该相对x轴旋转多少度。（前倾/后仰）</p>
+<p>data-rotate-y = 为3D用，这个数字度数是它应该相对y轴旋转多少度。 （左摆/右摆）</p>
+<p>data-rotate-z = 为3D用，这个数字度数是它应该相对z轴旋转多少度。</p>
+<p>这个难，需要多尝试、 总结</p>
+<h2>全局总览</h2>
+<p>建议制作全局总览， 方法： 创建一张新的空幻灯片， 设置相应的 data-x\y\scale</p>
+<p>计算其他全部幻灯片的 x, y的中心， 及大小， 进行放大。</p>
+<p>如：</p>
+<div class="highlight"><pre><span></span><code>:data-x: 3000
+:data-y: 1500
+:data-scale: 10
+</code></pre></div>
+
+<h2>建议</h2>
+<p>一张幻灯片的大小 即屏幕分辨率， 所以设计时要注意不要重叠情况</p>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2017-04-12T11:07:30+08:00">Apr 12, 2017</time>
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#kai-fa-gong-ju-ref">开发工具</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#ke-shi-hua-ref">可视化
+                            <span>4</span>
+</a></li>
+                        <li><a href="/tags.html#yan-jiang-ref">演讲
+                            <span>1</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

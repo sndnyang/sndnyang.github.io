@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang" />
+        <meta name="copyright" content="sndnyang" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="论文, 人工智能, 深度学习, 研究, " />
+
+<meta property="og:title" content="alphago-总结 "/>
+<meta property="og:url" content="/alphago-papers.html" />
+<meta property="og:description" content="[TOC] 参考文献 原文:Mastering the Game of Go with Deep Neural Networks and Tree Search alphago-原理 郑宇,张钧波 alphago-分析 田渊栋 开源代码 alphago-code 战绩 对欧洲冠军 Fan Hui formal games were 1 hour main time plus 3 periods of 30 seconds byoyomi informal games were 3 periods of 30 seconds byoyomi 对李世石 …" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang" />
+<meta property="og:article:published_time" content="2016-03-25T00:00:00+08:00" />
+<meta name="twitter:title" content="alphago-总结 ">
+<meta name="twitter:description" content="[TOC] 参考文献 原文:Mastering the Game of Go with Deep Neural Networks and Tree Search alphago-原理 郑宇,张钧波 alphago-分析 田渊栋 开源代码 alphago-code 战绩 对欧洲冠军 Fan Hui formal games were 1 hour main time plus 3 periods of 30 seconds byoyomi informal games were 3 periods of 30 seconds byoyomi 对李世石 …">
+
+
+        <title>alphago-总结  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/alphago-papers.html">
+                        alphago-总结  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<h1>参考文献</h1>
+<ol>
+<li>原文:Mastering the Game of Go with Deep Neural Networks and Tree Search </li>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzIxNjE3MTM5OA==&amp;mid=402241411&amp;idx=1&amp;sn=98557fdc359a17af9ab6b1ed7e09854a&amp;scene=1&amp;srcid=0314rM6ivyxIaEMfKIaW167Z&amp;from=groupmessage&amp;isappinstalled=0#wechat_redirect">alphago-原理</a> 郑宇,张钧波</li>
+<li><a href="http://zhuanlan.zhihu.com/yuandong/20607684">alphago-分析</a> 田渊栋</li>
+<li>开源代码 <a href="https://github.com/Rochester-NRT/AlphaGo">alphago-code</a></li>
+</ol>
+<h1>战绩</h1>
+<h2>对欧洲冠军 Fan Hui</h2>
+<p><img alt="fanhui" src="img/fanhui.png"></p>
+<ol>
+<li>formal games were 1 hour main time plus 3 periods of 30 seconds byoyomi</li>
+<li>informal games were 3 periods of 30 seconds byoyomi</li>
+</ol>
+<hr>
+<h2>对李世石</h2>
+<ol>
+<li>2016.3.9  alpha胜</li>
+<li>2016.3.10  alpha胜</li>
+<li>2016.3.12  alpha胜</li>
+<li>2016.3.13  李世石胜</li>
+<li>2016.3.15  alpha胜</li>
+</ol>
+<hr>
+<h2>期待与柯洁的对战</h2>
+<p>李世石重下战书</p>
+<h1>基本定义</h1>
+<h2>棋盘状态</h2>
+<p><img alt="go-state" src="img/go-state.png"></p>
+<h2>动作 action</h2>
+<p><strong>a</strong>: action 动作</p>
+<p><img alt="go-action" src="img/go-action.png"></p>
+<h2>暴搜不可行！！！</h2>
+<p><img alt="go-brute" src="img/go-brute.png"></p>
+<hr>
+<h3>组合爆炸！！！</h3>
+<ol>
+<li>围棋的可能状态数大约在 250^150 </li>
+<li>国际象棋  35^80</li>
+</ol>
+<h2>策略</h2>
+<ol>
+<li>减少搜索树的深度， 即先行评估位置， 避免深度递归</li>
+<li>减少搜索树的广度， 即减少可能动作分支</li>
+</ol>
+<h1>方法</h1>
+<h2></h2>
+<p><img alt="principle" src="img/principle.jpg"></p>
+<h2>步骤</h2>
+<ol>
+<li>用棋谱数据 训练 监督学习策略(走棋)网络, 同时训练快速走子策略</li>
+<li>对策略网络进行强化学习， 程序自我对弈</li>
+<li>训练一个价值网络， 预测胜率</li>
+<li>用MCTS 结合策略网络和价值网络</li>
+</ol>
+<h2>组成</h2>
+<p>链接：http://zhuanlan.zhihu.com/yuandong/20607684
+来源：知乎</p>
+<ol>
+<li>走棋网络（Policy Network），给定当前局面，预测/采样下一步的走棋。</li>
+<li>快速走子（Fast rollout），目标和1一样，但在适当牺牲走棋质量的条件下，速度要比1快1000倍。 </li>
+<li>估值网络（Value Network），给定当前局面，估计是白胜还是黑胜。</li>
+<li>蒙特卡罗树搜索（Monte Carlo Tree Search，MCTS)，把以上这三个部分连起来，形成一个完整的系统。</li>
+</ol>
+<h1>一. 策略网络学习</h1>
+<h2>监督学习</h2>
+<p>训练集数据： KGS 专业棋手(5-9段)的棋谱， 大概16万局棋， 3千万种棋盘状态</p>
+<p>学习到一个预测模型 g</p>
+<ol>
+<li>状态S</li>
+<li>预测模型 g:S-&gt;p(a|S)</li>
+<li>概率 p(a|S)</li>
+<li>概率最大的动作 a</li>
+</ol>
+<h2>模型学习算法</h2>
+<p>深度学习： Convolutional Neural Network (CNN)， 卷积神经网络</p>
+<ol>
+<li>围棋对局势的评估很难建模， 抽象</li>
+<li>CNN正好擅长抽象</li>
+</ol>
+<p>另用线性模型训练快速策略</p>
+<hr>
+<p><img alt="cnn" src="img/cnn.png"></p>
+<hr>
+<h3>随机梯度下降</h3>
+<p><img alt="go-gd" src="img/go-gd.png"></p>
+<h2>预测</h2>
+<ol>
+<li>输入： 棋盘状态S</li>
+<li>输出： 所有合法动作a 的概率分布</li>
+</ol>
+<h1>二. 策略网络强化</h1>
+<h2>对弈激励</h2>
+<p>当前版本的策略网络 与 随机的一个版本</p>
+<p>胜 z_t = +1, 负= -1, 未结束=0</p>
+<p><img alt="go-rl" src="img/go-rl.png"></p>
+<h2>瓶颈</h2>
+<p>强化学习 存在理论瓶颈， 而且应该是被证明了， 没记。</p>
+<h1>三. 价值网络强化</h1>
+<h2>步骤</h2>
+<p>输入状态S, 经过</p>
+<ol>
+<li>普通策略网络 生成前 U-1步</li>
+<li>随机采样 决定 第U步</li>
+<li>增强策略网络 完成剩下博弈</li>
+</ol>
+<p>胜负作为输出</p>
+<p>得到价值网络， 判断该盘面的输赢概率</p>
+<hr>
+<h3>reduce 搜索空间的方案</h3>
+<ol>
+<li>减少搜索树的深度， 价值网络 value network</li>
+<li>减少搜索树的广度， 策略网络 policy network</li>
+</ol>
+<h1>四. monte-carlo 树搜索</h1>
+<h2>步骤</h2>
+<ol>
+<li>选择， 用策略网络剪枝</li>
+<li>扩展</li>
+<li>评估， 使用价值网络</li>
+<li>回溯</li>
+</ol>
+<h2>树的组成</h2>
+<p>对 每条边(状态s, 动作a)</p>
+<ol>
+<li>动作值 action value Q(s, a)</li>
+<li>访问次数 visit count N(s, a)</li>
+<li>先验概率 prior probability P(s, a), 初始化为 策略网络值 p(a|s)</li>
+</ol>
+<hr>
+<h3>图示：</h3>
+<p><img alt="go-mcts" src="img/go-mcts2.png"></p>
+<hr>
+<h3>描述</h3>
+<ol>
+<li>根据 <img alt="go-action-max" src="img/go-action-max.png">， 找到叶子结点</li>
+<li>用策略网络计算所有可能下一步的概率， 逐个进行3</li>
+<li>用价值网络和快速走子策略评估 <img alt="go-leaf-eval" src="img/go-leaf-eval.png"></li>
+</ol>
+<p><img alt="go-bonus" src="img/go-bonus.png"></p>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2016-03-25T00:00:00+08:00">Mar 25, 2016</time>
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#yan-jiu-ref">研究</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#lun-wen-ref">论文
+                            <span>40</span>
+</a></li>
+                        <li><a href="/tags.html#ren-gong-zhi-neng-ref">人工智能
+                            <span>30</span>
+</a></li>
+                        <li><a href="/tags.html#shen-du-xue-xi-ref">深度学习
+                            <span>11</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

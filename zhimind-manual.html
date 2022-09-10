@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang" />
+        <meta name="copyright" content="sndnyang" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="zhimind, zhimind, " />
+
+<meta property="og:title" content="zhimind使用说明 "/>
+<meta property="og:url" content="/zhimind-manual.html" />
+<meta property="og:description" content="[TOC] 教程和练习使用说明 未注册用户 直接使用， 但不会有记录。 注册用户 需要与思维导图进行关联， 才有进度记录--个人主页没有开发计划， 不知道开发什么，也没时间。 填空（不管带不带公式）题比较难正确，因为基本不是客观题，没有标准答案，但自然语言理解还没学习，没能力开发。 说明 在线可视化编程练习还没有建好框架，所以几乎还不能使用。 重点在于 教程 部分。 新建教程和练习 在个人主页点击 新建教程， 会打开在线编辑， 按markdown格式编辑， 可按 保存， 但暂时未提供临时保存功能，请注意。 在个人主页点击 新建练习， 在线编辑器没有做好，会要求输入 文本文件的链接（暂不支持平台新建，全部从外部读）， 后缀必须是 .mkd 或 .md 或在导图上添加属性时， 属性名填写 练习或教程， 链接输入文本文件的链接， 后缀必须是 .mkd 或 …" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang" />
+<meta property="og:article:published_time" content="2016-04-21T00:00:00+08:00" />
+<meta property="" content="2016-11-14T23:31:32+08:00" />
+<meta name="twitter:title" content="zhimind使用说明 ">
+<meta name="twitter:description" content="[TOC] 教程和练习使用说明 未注册用户 直接使用， 但不会有记录。 注册用户 需要与思维导图进行关联， 才有进度记录--个人主页没有开发计划， 不知道开发什么，也没时间。 填空（不管带不带公式）题比较难正确，因为基本不是客观题，没有标准答案，但自然语言理解还没学习，没能力开发。 说明 在线可视化编程练习还没有建好框架，所以几乎还不能使用。 重点在于 教程 部分。 新建教程和练习 在个人主页点击 新建教程， 会打开在线编辑， 按markdown格式编辑， 可按 保存， 但暂时未提供临时保存功能，请注意。 在个人主页点击 新建练习， 在线编辑器没有做好，会要求输入 文本文件的链接（暂不支持平台新建，全部从外部读）， 后缀必须是 .mkd 或 .md 或在导图上添加属性时， 属性名填写 练习或教程， 链接输入文本文件的链接， 后缀必须是 .mkd 或 …">
+
+
+        <title>zhimind使用说明  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/zhimind-manual.html">
+                        zhimind使用说明  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<h1>教程和练习使用说明</h1>
+<h4>未注册用户</h4>
+<p>直接使用， 但不会有记录。</p>
+<h4>注册用户</h4>
+<p>需要与思维导图进行关联， 才有进度记录--个人主页没有开发计划， 不知道开发什么，也没时间。</p>
+<p>填空（不管带不带公式）题比较难正确，因为基本不是客观题，没有标准答案，但自然语言理解还没学习，没能力开发。</p>
+<h3>说明</h3>
+<p>在线可视化编程练习还没有建好框架，所以几乎还不能使用。 重点在于 教程 部分。</p>
+<h1>新建教程和练习</h1>
+<ol>
+<li>在个人主页点击 新建教程， 会打开在线编辑， 按markdown格式编辑， 可按 保存， 但暂时未提供临时保存功能，请注意。</li>
+<li>在个人主页点击 新建练习， 在线编辑器没有做好，会要求输入 文本文件的链接（暂不支持平台新建，全部从外部读）， 后缀必须是 .mkd 或 .md</li>
+<li>或在导图上添加属性时， 属性名填写 练习或教程， 链接输入文本文件的链接， 后缀必须是 .mkd 或 .md。</li>
+</ol>
+<h1>文件格式</h1>
+<p>主体部分与markdown 一致</p>
+<p>新加题目格式：</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="p">{</span><span class="c">%type</span><span class="w"></span>
+<span class="w">     </span><span class="o">|</span>题目描述<span class="p">(</span>可空<span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="o">&amp;</span><span class="n">a</span><span class="o">&amp;</span><span class="n">b</span><span class="o">&amp;</span><span class="n">c</span><span class="w"> </span>选择题的选项<span class="p">(</span>非<span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="p">@</span><span class="n">a</span><span class="p">@</span><span class="n">b答案</span>，多选题和多个填空的答案用<span class="p">@</span>分开，<span class="w"> </span>单个填空要多个匹配用空格分隔<span class="w"></span>
+<span class="w">     </span>#提示1<span class="w"></span>
+<span class="w">     </span>#提示2<span class="p">]</span><span class="w"></span>
+<span class="w">     </span><span class="c">%}</span><span class="w"></span>
+</code></pre></div>
+
+<p>简单的问题建议写成一行，复杂问题可写成多行，但答案请写成一行，提示可多行，各部分应该不能混杂</p>
+<p>formula 答案前加:冒号， 将使用去空格完全匹配的比较方法， 主要是针对 线性代数等可能不要化简的式子。</p>
+<h2>答案和提示的复杂情况</h2>
+<p>待实现</p>
+<p>示例 <a href="zhimindTutorialDemo.html">zhimind教程示例即在线编辑器</a></p>
+<h2>示例</h2>
+<div class="highlight"><pre><span></span><code><span class="n">单行模式</span><span class="w"></span>
+<span class="err">{</span><span class="o">%</span><span class="n">radio</span><span class="o">|</span><span class="n">请选择</span><span class="o">&amp;</span><span class="n">a</span><span class="o">&amp;</span><span class="n">b</span><span class="o">&amp;</span><span class="n">c</span><span class="o">&amp;</span><span class="n">d</span><span class="nv">@d</span><span class="n">#随便</span><span class="o">%</span><span class="err">}</span><span class="w"> </span><span class="n">单选</span><span class="w"></span>
+<span class="err">{</span><span class="o">%</span><span class="n">checkbox</span><span class="o">|</span><span class="n">请选择</span><span class="o">&amp;</span><span class="n">a</span><span class="o">&amp;</span><span class="n">b</span><span class="o">&amp;</span><span class="n">c</span><span class="o">&amp;</span><span class="n">d</span><span class="nv">@d</span><span class="n">#随便</span><span class="o">%</span><span class="err">}</span><span class="w"> </span><span class="n">多选</span><span class="w"></span>
+<span class="err">{</span><span class="o">%</span><span class="nc">text</span><span class="o">|</span><span class="nl">请填空</span><span class="p">:</span><span class="n">_是有意义的</span><span class="p">,</span><span class="n">_也是有意义的</span><span class="nv">@教育@数学</span><span class="n">#随便写点什么#不想写也可以</span><span class="o">%</span><span class="err">}</span><span class="w">  </span><span class="n">填空</span><span class="w"></span>
+<span class="err">{</span><span class="o">%</span><span class="n">formula</span><span class="o">|</span><span class="nl">请填空</span><span class="p">:</span><span class="n">公式_</span><span class="err">@</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">6</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">4</span><span class="p">)</span><span class="o">+</span><span class="mi">9</span><span class="n">#随便</span><span class="o">%</span><span class="err">}</span><span class="w">  </span><span class="n">公式填空</span><span class="w"></span>
+<span class="err">{</span><span class="o">%</span><span class="n">formula</span><span class="o">|</span><span class="n">_</span><span class="err">@:</span><span class="p">(</span><span class="n">Xw</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">^</span><span class="n">T</span><span class="p">(</span><span class="n">Xw</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="n">#顺序不要反</span><span class="err">，</span><span class="n">不要乘号#数学式子判断比较麻烦</span><span class="err">#</span><span class="p">(</span><span class="n">Xw</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">^</span><span class="n">T</span><span class="p">(</span><span class="n">Xw</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">%</span><span class="err">}</span><span class="w">  </span><span class="n">线性代数等公式填空</span><span class="w"></span>
+
+
+<span class="n">多行模式</span><span class="w"> </span><span class="n">且</span><span class="w"> </span><span class="n">选项或匹配提示</span><span class="w">  </span><span class="n">#提示匹配模式</span><span class="err">:</span><span class="n">提示的内容</span><span class="w">   </span><span class="err">{</span><span class="o">%</span><span class="n">checkbox</span><span class="o">|</span><span class="n">你觉得评估标准应该是什么</span><span class="err">？</span><span class="o">&amp;</span><span class="n">w范数值越小越好</span><span class="o">&amp;</span><span class="n">超平面到所有点的距离之和越大越好</span><span class="o">&amp;</span><span class="n">超平面到最近点的距离越大越好</span><span class="o">&amp;</span><span class="n">w范数越大越好</span><span class="w"></span>
+</code></pre></div>
+
+<p>@超平面到最近点的距离越大越好</p>
+<h1>w范数:10x+8 = 0 是否等价于 5x+4=0?,所有点:考虑极端情况，一条线离两个类的几个点非常近，离其他点非常远，效果并不好</h1>
+<p>%}</p>
+<div class="highlight"><pre><span></span><code><span class="err">多步推导，</span> <span class="n">process类型</span><span class="err">，</span> <span class="err">答案格式：每空</span>  <span class="p">@</span><span class="err">答案</span><span class="p">[</span><span class="o">:</span><span class="err">前提步骤</span><span class="p">][</span><span class="o">:</span><span class="err">公式</span><span class="p">(</span><span class="n">mathjax</span><span class="p">)</span><span class="err">或图片</span><span class="p">]</span>
+<span class="p">{</span><span class="o">%</span><span class="n">process</span>
+<span class="o">|</span><span class="err">下面我们开始</span>
+<span class="p">@</span><span class="n">a</span>
+<span class="p">@</span><span class="nl">b</span><span class="p">:</span><span class="err">`</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="err">`</span>
+<span class="p">@</span><span class="nl">c</span><span class="p">:</span><span class="n">a</span><span class="p">,</span><span class="nl">b</span><span class="p">:</span><span class="n">$w</span><span class="o">^</span><span class="n">Tx</span><span class="o">+</span><span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="n">$</span>
+<span class="p">@</span><span class="nl">d</span><span class="p">:</span><span class="nl">b</span><span class="p">:</span><span class="o">!</span><span class="p">[</span><span class="n">x</span><span class="p">](</span><span class="nl">http</span><span class="p">:</span><span class="c1">//blog.pluskid.org/wp-content/uploads/2010/09/Hyper-Plane.png)</span>
+<span class="p">@</span><span class="nl">e</span><span class="p">:</span><span class="nl">d</span><span class="p">:</span><span class="err">`</span><span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="err">`</span>
+<span class="p">@</span><span class="n">Q</span><span class="p">.</span><span class="n">E</span><span class="p">.</span><span class="n">D</span><span class="p">.</span><span class="o">:</span><span class="n">e</span><span class="p">,</span><span class="n">c</span>
+<span class="cp">#请把w作为系数写在x前面</span>
+<span class="cp">#但维度是否对上，没对上要如何对上？#偏置项都是kx+b哪见过kx-b了#答案w^Tx + b = 0</span>
+<span class="o">%</span><span class="p">}</span>
+
+
+<span class="err">嵌套模式</span> <span class="err">在提示部分递归嵌套问题</span><span class="o">--</span><span class="err">目前只支持</span><span class="n">text</span> <span class="err">和</span> <span class="n">radio</span> <span class="err">嵌套，其他感觉没必要，能显示但判断不了对错。</span>  <span class="p">{</span><span class="o">%</span><span class="n">checkbox</span><span class="o">|</span><span class="err">你觉得评估标准应该是什么？</span><span class="o">&amp;</span><span class="n">w范数值越小越好</span><span class="o">&amp;</span><span class="err">超平面到所有点的距离之和越大越好</span><span class="o">&amp;</span><span class="err">超平面到最近点的距离越大越好</span><span class="o">&amp;</span><span class="n">w范数越大越好</span>
+<span class="p">@</span><span class="err">超平面到最近点的距离越大越好</span>
+<span class="mi">@2</span>
+<span class="cp">#w范数:10x+8 = 0 是否等价于 5x+4=0？</span>
+<span class="cp">#所有点:{%text|考虑极端情况_@这个#:</span>
+<span class="p">{</span><span class="o">%</span><span class="n">radio</span><span class="o">|</span><span class="err">这两个情况哪个好？</span><span class="o">&amp;</span><span class="err">这个</span><span class="o">&amp;</span><span class="err">那个</span>
+<span class="p">@</span><span class="err">那个#这个</span><span class="o">:</span><span class="err">这怎么聊下去呢</span><span class="o">?%</span><span class="p">}</span><span class="o">%</span><span class="p">}</span>
+<span class="o">%</span><span class="p">}</span>
+</code></pre></div>
+
+<h2>其他说明</h2>
+<ol>
+<li>填空和公式题 题干必填 ， 用 下划线<code>_</code> 代表一个空</li>
+<li>填空使用关键字查找方式， 多关键字逻辑关系使用 &amp; 表示且, | 表示或， 支持一层括号，默认 或 优先级高于 且（与顺序无关），所以有时候需要括号调整顺序。 示例：   </li>
+</ol>
+<p>{%text|请填空:_是有意义的,_也是有意义的
+   @教育&amp;科学                       说明：填空内容必须同时包含 教育 科学 字样
+   @数学|物理&amp;化学                  说明：填空内容包含 数学  或  同时包含物理、化学字样
+   @(数学|物理)&amp;化学                说明：填空内容包含 化学  且  有数学或物理 字样
+   #随便写点什么#不想写也可以%} </p>
+<h1>思维导图使用步骤</h1>
+<ol>
+<li>注册登录</li>
+<li>个人主页点创建新思维导图 或 首页直接点新导图</li>
+<li>编辑导图（存在bug， 未解决）    <ol>
+<li>鼠标在点上悬停时， 会显示四个小图标（有bug,可能被另一个tooltip挡住）， 分别为：<ol>
+<li>插入子结点</li>
+<li>删除当前结点</li>
+<li>修改结点名称</li>
+<li>添加新属性（即外链）</li>
+</ol>
+</li>
+<li>快捷键方法。 鼠标选中一点后      <ol>
+<li>快捷键insert插入子结点</li>
+<li>enter 插入同级结点（根结点不能enter）</li>
+<li>delete 删除该结点</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>保存到json文件。 未注册不能保存云上， 仍可以导出 json 格式文件。</li>
+<li>查找他人的导图。 点击导航栏上的 推荐。 在思维导图列表下点击一个打开导图（目前只有几个）， 点击存档可直接保存。可到个人主页查看。</li>
+</ol>
+<h1>感想</h1>
+<p>目标是能智能地批改 数学、 物理等客观题作业， 并智能地给以思路提示。</p>
+<p>但还没有想法。需要自然语言理解。</p>
+<p>选择题简单， 但提示不智能——选择题还算好了。</p>
+<p>填空题难准确。提示也很死。</p>
+<p>公式比较都比较困难， sympy 的 <code>simplify_logic</code> 凑合用， 但只认普通函数， 线性代数或方程, 如 $ w^Tx+b=0 $， 带 = 号， 线性代数转置 ^T 都不对。</p>
+<p>理想境界 就是对多步的计算题 和 证明题进行智能批改、 提示。</p>
+<h1>更新日志</h1>
+<h2>2016-11-14</h2>
+<p>前后台大改造， 多步推导 及 问题嵌套都支持， 界面优化。 准备开始 自然语言部分。</p>
+<p>提示更智能。</p>
+<h2>2016-10-18</h2>
+<p>改造，支持多行模式——但提示部分json格式是否已经可行还不确认。</p>
+<p>决定使用#key:value1-values2#key2:value3-value4的格式，但主要还是看需求。</p>
+<h2>2016-10-5</h2>
+<ol>
+<li>界面小调整， 操作有区别</li>
+<li>公式添加 : 作分类， 有需要还可以在:前加类别</li>
+</ol>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2016-04-21T00:00:00+08:00">Apr 21, 2016</time>
+
+<h4>Last Updated</h4>
+<time datetime="2016-11-14T23:31:32+08:00">Nov 14, 2016</time>
+
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#zhimind-ref">zhimind</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#zhimind-ref">zhimind
+                            <span>6</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

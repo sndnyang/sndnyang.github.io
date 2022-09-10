@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang" />
+        <meta name="copyright" content="sndnyang" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="社区发现, CS, 算法, 数据挖掘, " />
+
+<meta property="og:title" content="社区覆盖问题总结 "/>
+<meta property="og:url" content="/overlap_communities_survey.html" />
+<meta property="og:description" content="[TOC] 算法 1. Clique Percolation 中文名？派系过滤 假设 群落由 完全连通子图的重叠集合组成——a community consists of overlapping sets of fully connected subgraphs 思路 detects communities by searching for adjacent cliques 扩展内容 派系(Cliques)。在一个无向网络图中，“派系”指的是至少包含3个点的最大完备子图。这个概念包含3层含义：①一个派系至少包含三个点。②派系是完备的，根据完备图的定义，派系中任何两点之间都存在直接联系。③派系是“最大”的，即向这个子图中增加任何一点，将改变其“完备”的性质。 n-派系(n-Cliques)。对于一个总图来说，如果其中的一个子图满足如下条件 …" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang" />
+<meta property="og:article:published_time" content="2016-03-04T00:00:00+08:00" />
+<meta name="twitter:title" content="社区覆盖问题总结 ">
+<meta name="twitter:description" content="[TOC] 算法 1. Clique Percolation 中文名？派系过滤 假设 群落由 完全连通子图的重叠集合组成——a community consists of overlapping sets of fully connected subgraphs 思路 detects communities by searching for adjacent cliques 扩展内容 派系(Cliques)。在一个无向网络图中，“派系”指的是至少包含3个点的最大完备子图。这个概念包含3层含义：①一个派系至少包含三个点。②派系是完备的，根据完备图的定义，派系中任何两点之间都存在直接联系。③派系是“最大”的，即向这个子图中增加任何一点，将改变其“完备”的性质。 n-派系(n-Cliques)。对于一个总图来说，如果其中的一个子图满足如下条件 …">
+
+
+        <title>社区覆盖问题总结  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/overlap_communities_survey.html">
+                        社区覆盖问题总结  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<h1>算法</h1>
+<h2>1. Clique Percolation</h2>
+<p>中文名？派系过滤</p>
+<h3>假设</h3>
+<p>群落由 完全连通子图的重叠集合组成——a community consists of overlapping sets of fully connected subgraphs</p>
+<h3>思路</h3>
+<p>detects communities by searching for adjacent cliques</p>
+<h3>扩展内容</h3>
+<ol>
+<li>派系(Cliques)。在一个无向网络图中，“派系”指的是至少包含3个点的最大完备子图。这个概念包含3层含义：①一个派系至少包含三个点。②派系是完备的，根据完备图的定义，派系中任何两点之间都存在直接联系。③派系是“最大”的，即向这个子图中增加任何一点，将改变其“完备”的性质。</li>
+<li>n-派系(n-Cliques)。对于一个总图来说，如果其中的一个子图满足如下条件，就称之为n-派系：在该子图中，任何两点之间在总图中的距离(即捷径的长度)最大不超过n。从形式化角度说，令d(i,j)代表两点和n在总图中的距离，那么一个n-派系的形式化定义就是一个满足如下条件的拥有点集的子图，即：d(i,J)\le n，对于所有的，n_i,n_j\in N,来说，在总图中不存在与子图中的任何点的距离不超过n的点。</li>
+<li>n-宗派(n—Clan)。所谓n-宗派(n—Clan)是指满足以下条件的n-派系，即其中任何两点之间的捷径的距离都不超过n。可见，所有的n-宗派都是n-派系。</li>
+<li>k-丛(k-Plex)。一个k-丛就是满足下列条件的一个凝聚子群，即在这样一个子群中，每个点都至少与除了k个点之外的其他点直接相连。也就是说，当这个凝聚子群的规模为n时，其中每个点至少都与该凝聚子群中n-k个点有直接联系，即每个点的度数都至少为n—k。</li>
+</ol>
+<h3>某个的步骤之一</h3>
+<ol>
+<li>begins by identifying all cliques of size k in a network, a new graph is constructed such that each vertex represents one of these k-cliques</li>
+</ol>
+<h3>结论</h3>
+<p>more like pattern matching rather than finding communities since they aim to find specific, localized structure in a network.</p>
+<h2>2. Line Graph and Link Partitioning</h2>
+<p>中文名？连接划分</p>
+<h3>思路</h3>
+<ol>
+<li>partitioning links</li>
+<li>A node in the original graph is called overlapping if links connected to it are put in more than one cluster.</li>
+</ol>
+<h2>3. Local Expansion and Optimization</h2>
+<p>中文名？局部增广和优化</p>
+<h3>思路</h3>
+<ol>
+<li>based on growing a natural community or a partial community</li>
+<li>rely on a local benefit function that characterizes the quality of a densely connected group of nodes</li>
+</ol>
+<h2>4. Fuzzy Detection</h2>
+<p>中文名？模糊检测</p>
+<h3>思路</h3>
+<p>quantify the strength of association between all pairs of nodes and communities</p>
+<h3>例子</h3>
+<p>Non-negative Matrix Factorization </p>
+<h2>5. Agent-Based and Dynamical Algorithms</h2>
+<p>中文名？基于啥的动态算法</p>
+<h3>思路</h3>
+<p>label propagation algorithm by allowing a node to have multiple labels</p>
+<h2>6. others</h2>
+<p>中文名——无法分类 :)</p>
+<h1>评估方法</h1>
+<h2>1. Normalized Mutual Information</h2>
+<p>中文名？标准互信息</p>
+<h2>2. Omega Index</h2>
+<h1>结论</h1>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2016-03-04T00:00:00+08:00">Mar 4, 2016</time>
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#shu-ju-wa-jue-ref">数据挖掘</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#cs-ref">CS
+                            <span>22</span>
+</a></li>
+                        <li><a href="/tags.html#she-qu-fa-xian-ref">社区发现
+                            <span>11</span>
+</a></li>
+                        <li><a href="/tags.html#suan-fa-ref">算法
+                            <span>6</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

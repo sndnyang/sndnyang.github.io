@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang" />
+        <meta name="copyright" content="sndnyang" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="计算机科学, 算法, 自动机, 计算机科学, " />
+
+<meta property="og:title" content="自动机作业1-正则表达式 "/>
+<meta property="og:url" content="/automata-hw1.html" />
+<meta property="og:description" content="[TOC] 编程容易，笔算不易，且写且珍惜 开篇语 第二周的编程练习非常简单——前两轮开课时不知道是不是会难很多， 总之这次把代码框架都搭好了， 顺利的话， 10分钟就OK了。 不顺利的地方在哪儿——我使用的是python版本， 里面有个小bug，我看不懂输出。 在源文件里找了半天代码结构没明白， 最后打算从main开始吧， 一看， 代码里面是这样写的 def main(filepath): return Start(&#39;testRE.in&#39;) if __name__ == &#39;__main__&#39;: main(sys.argv[1]) 好吧，难怪我的文件名参数没用——剩下的在看懂他输出是什么内容后很快就解决了。 无耻的分界线 你以为我就想说这个？ NO！ 最起码笔算不易还没说呢！！！ 本周第一个视频讲的是正则表达式基础，从定义到正则表达式转换成NFA CUT！！！ 概念没兴趣， RE转NFA 学过的内容，看到那张图就OK了， 主要是确实so easy. CONTINUE！！！ 然后就到DFA转RE了 …" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang" />
+<meta property="og:article:published_time" content="2014-09-08T00:00:00+08:00" />
+<meta name="twitter:title" content="自动机作业1-正则表达式 ">
+<meta name="twitter:description" content="[TOC] 编程容易，笔算不易，且写且珍惜 开篇语 第二周的编程练习非常简单——前两轮开课时不知道是不是会难很多， 总之这次把代码框架都搭好了， 顺利的话， 10分钟就OK了。 不顺利的地方在哪儿——我使用的是python版本， 里面有个小bug，我看不懂输出。 在源文件里找了半天代码结构没明白， 最后打算从main开始吧， 一看， 代码里面是这样写的 def main(filepath): return Start(&#39;testRE.in&#39;) if __name__ == &#39;__main__&#39;: main(sys.argv[1]) 好吧，难怪我的文件名参数没用——剩下的在看懂他输出是什么内容后很快就解决了。 无耻的分界线 你以为我就想说这个？ NO！ 最起码笔算不易还没说呢！！！ 本周第一个视频讲的是正则表达式基础，从定义到正则表达式转换成NFA CUT！！！ 概念没兴趣， RE转NFA 学过的内容，看到那张图就OK了， 主要是确实so easy. CONTINUE！！！ 然后就到DFA转RE了 …">
+
+
+        <title>自动机作业1-正则表达式  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/automata-hw1.html">
+                        自动机作业1-正则表达式  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<p><strong>编程容易，笔算不易，且写且珍惜</strong></p>
+<h1>开篇语</h1>
+<p>第二周的编程练习非常简单——前两轮开课时不知道是不是会难很多， 总之这次把代码框架都搭好了， 顺利的话， 10分钟就OK了。</p>
+<p>不顺利的地方在哪儿——我使用的是python版本， 里面有个小bug，我看不懂输出。 在源文件里找了半天代码结构没明白， 最后打算从main开始吧， 一看， 代码里面是这样写的</p>
+<div class="highlight"><pre><span></span><code><span class="nv">def</span> <span class="nv">main</span><span class="ss">(</span><span class="nv">filepath</span><span class="ss">)</span>:
+     <span class="k">return</span> <span class="nv">Start</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">testRE.in</span><span class="s1">&#39;</span><span class="ss">)</span>
+<span class="k">if</span> <span class="nv">__name__</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="s">__main__</span><span class="s1">&#39;</span>:
+     <span class="nv">main</span><span class="ss">(</span><span class="nv">sys</span>.<span class="nv">argv</span>[<span class="mi">1</span>]<span class="ss">)</span>
+</code></pre></div>
+
+<p>好吧，难怪我的文件名参数没用——剩下的在看懂他输出是什么内容后很快就解决了。</p>
+<h1>无耻的分界线</h1>
+<p>你以为我就想说这个？ NO！ 最起码笔算不易还没说呢！！！</p>
+<p>本周第一个视频讲的是正则表达式基础，从定义到正则表达式转换成NFA</p>
+<p>CUT！！！</p>
+<p>概念没兴趣， RE转NFA 学过的内容，看到那张图就OK了， 主要是确实so easy.</p>
+<p>CONTINUE！！！</p>
+<p>然后就到DFA转RE了， 说实话吧， 过程不是很复杂，对于我这种人来说，就一个公式（虽然后面不停地修正自己对过程理解上的缺陷）， 套公式，谁不会呢？！</p>
+<h1>转折</h1>
+<p>我还真不会了， 小测第一题就是DFA转RE, 4个状态之间的转换，</p>
+<p>套用公式简单</p>
+<p>$$ R^k_{ij} =R^{k-1}{ij} + R^{k-1}(R^{k-1}{kk})* R^{k-1} $$</p>
+<p>问题有几个： 1. 状态的序号， 给状态按什么顺序分配序号最好呢，在这里可能没影响，不过我换了好几次。 2. 手算真是很绕， 整个下午，多半时间都花在推导上了，连午觉都想想后起来先推导了几次，实在绕晕了才午休。</p>
+<p>在纸上推导被绕的过程中， 顺手写代码，模拟一下这个公式， 就是个递归的公式，用nnn 的数组来记录状态嘛。</p>
+<p>初始版的数组下标就不对，不经过额外状态的路径（直接连结或无连结）被我忽略了， 另外也没有组织好正则表达式的表达形式，括号没用好。 输出的结果自然是无效的。</p>
+<p>最后第二周的第一个小测是我经过7次连蒙带猜后，总算拿到5分。 第一题纸算太难，第二题花费很长时间来理解题意，后3题时不时拖后腿，几次前两题答对（后几次已经不是猜了），后三题不小心出错。</p>
+<h1>万万没想到（其实不至于）</h1>
+<p>到晚上， 做其他事耐心缺失之下， 又打开了代码， 决定调整好数组下标， 再组织好括号的输出。很快修改完毕， 随意运行之后，输出结果居然就这么达到预期 因 honor code， 只摘取与题目要求无关的输出部分</p>
+<div class="highlight"><pre><span></span><code><span class="n">k</span> <span class="n">i</span> <span class="n">j</span> <span class="n">regular</span> <span class="n">expression</span>
+<span class="mh">4</span> <span class="mh">1</span> <span class="mh">1</span> <span class="mh">1</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mh">1</span><span class="o">+</span><span class="mh">00</span><span class="p">)</span>
+<span class="mh">4</span> <span class="mh">1</span> <span class="mh">2</span> <span class="mh">1</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="mh">01</span>
+<span class="mh">4</span> <span class="mh">1</span> <span class="mh">3</span> <span class="mh">1</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="mh">0</span>
+<span class="mh">4</span> <span class="mh">1</span> <span class="mh">4</span> <span class="mh">1</span><span class="o">+</span><span class="mh">1</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span>
+<span class="mh">4</span> <span class="mh">2</span> <span class="mh">1</span> <span class="mh">0</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mh">1</span><span class="o">+</span><span class="mh">00</span><span class="p">)</span>
+<span class="mh">4</span> <span class="mh">2</span> <span class="mh">2</span> <span class="mh">0</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="mh">01</span>
+<span class="mh">4</span> <span class="mh">2</span> <span class="mh">3</span> <span class="mh">0</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="mh">0</span>
+<span class="mh">4</span> <span class="mh">2</span> <span class="mh">4</span> <span class="mh">0</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span>
+<span class="mh">4</span> <span class="mh">3</span> <span class="mh">1</span> <span class="mh">0</span><span class="o">+</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">)(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mh">1</span><span class="o">+</span><span class="mh">00</span><span class="p">)</span>
+<span class="mh">4</span> <span class="mh">3</span> <span class="mh">2</span> <span class="mh">1</span><span class="o">+</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">)(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="mh">01</span>
+<span class="mh">4</span> <span class="mh">3</span> <span class="mh">3</span> <span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">)(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="mh">0</span>
+</code></pre></div>
+
+<p>虽然没有经过完全化简——也不确认全部正确，但形式上是没问题了。 测验第一题对应的结果也是正确的。</p>
+<p>根据输出的结果， 回顾题目， 我去， 选项怎么这么明显啊， 我之前的推导都在为了什么？</p>
+<h1>结论</h1>
+<p>个人经验， 手工推导DFA到RE 非常容易错乱，而老师题目中的几个选项稍认真分析下，可以直接判断正误， 我之前是有多不认真呢。</p>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2014-09-08T00:00:00+08:00">Sep 8, 2014</time>
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#ji-suan-ji-ke-xue-ref">计算机科学</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#ji-suan-ji-ke-xue-ref">计算机科学
+                            <span>1</span>
+</a></li>
+                        <li><a href="/tags.html#suan-fa-ref">算法
+                            <span>6</span>
+</a></li>
+                        <li><a href="/tags.html#zi-dong-ji-ref">自动机
+                            <span>1</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

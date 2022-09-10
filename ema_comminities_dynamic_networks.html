@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang" />
+        <meta name="copyright" content="sndnyang" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="论文, 多目标进化算法, 社区发现, CS, 数据挖掘, " />
+
+<meta property="og:title" content="进化多目标方法在动态网络聚落检测中的应用-总结 "/>
+<meta property="og:url" content="/ema_comminities_dynamic_networks.html" />
+<meta property="og:description" content="[TOC] 摘要： 目标： 最大化当前数据的聚类准确性 最小化阶段过渡时的聚类漂移 clustering drift 新概念： temporal smoothness 短时平滑性 snapshot quality , temporal quality 快照质量和短时质量 优点： provides a solution representing the best trade-off between the accuracy of the clustering obtained, and the deviation from one time step to the successive. 为聚类的准确性及阶段过渡时的变动提出了一个最优折衷的方案 ** 问题是这几个东西都不是这篇文章提的概念， 只是函数可能有变化 导言 进化聚类方法(evolutionary clustering) 利用 temporal …" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang" />
+<meta property="og:article:published_time" content="2016-03-08T00:00:00+08:00" />
+<meta name="twitter:title" content="进化多目标方法在动态网络聚落检测中的应用-总结 ">
+<meta name="twitter:description" content="[TOC] 摘要： 目标： 最大化当前数据的聚类准确性 最小化阶段过渡时的聚类漂移 clustering drift 新概念： temporal smoothness 短时平滑性 snapshot quality , temporal quality 快照质量和短时质量 优点： provides a solution representing the best trade-off between the accuracy of the clustering obtained, and the deviation from one time step to the successive. 为聚类的准确性及阶段过渡时的变动提出了一个最优折衷的方案 ** 问题是这几个东西都不是这篇文章提的概念， 只是函数可能有变化 导言 进化聚类方法(evolutionary clustering) 利用 temporal …">
+
+
+        <title>进化多目标方法在动态网络聚落检测中的应用-总结  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/ema_comminities_dynamic_networks.html">
+                        进化多目标方法在动态网络聚落检测中的应用-总结  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<h1>摘要：</h1>
+<h2>目标：</h2>
+<ol>
+<li>最大化当前数据的聚类准确性</li>
+<li>最小化阶段过渡时的聚类漂移 clustering drift</li>
+</ol>
+<h2>新概念：</h2>
+<ol>
+<li>temporal smoothness 短时平滑性</li>
+<li>snapshot quality , temporal quality 快照质量和短时质量</li>
+</ol>
+<h2>优点：</h2>
+<p>provides a solution representing the best trade-off between the accuracy of the clustering obtained, and the deviation from one time step to the successive.
+为聚类的准确性及阶段过渡时的变动提出了一个最优折衷的方案</p>
+<p>** 问题是这几个东西都不是这篇文章提的概念， 只是函数可能有变化 </p>
+<h1>导言</h1>
+<p>进化聚类方法(evolutionary clustering) 利用 temporal smoothness 框架。</p>
+<p>核心假设： abrupt changes of clustering in a short time period are not desirable  （译： 短时间内聚类突变是不值得要的？不合适的？）</p>
+<p>it smooths each community over time</p>
+<h2>平滑性的实现</h2>
+<p>折衷：</p>
+<ol>
+<li>snapshot quality: 在当前阶段所拥有数据下， 聚类要尽可能精确。</li>
+<li>temporal cost: 每个聚类在阶段过渡时， 不能发生剧烈变化。</li>
+</ol>
+<h2>本文方法</h2>
+<p>名字： DYNMOGA (DYNamic MultiObjective Genetic Algorithms)</p>
+<h3>目标</h3>
+<ol>
+<li>最大化 snapshot quality, 表明当前聚类效果（准确性）， 为此调整了 modularity 的概念</li>
+<li>最小化 temporal cost， 表明两阶段间聚类差别， 为此去计算 归一化互信息(normalized mutual information)</li>
+</ol>
+<h2>优势</h2>
+<ol>
+<li>利用这两个方法的优势</li>
+<li>选择性搜索解空间， 不需要提前知道 聚类个数。</li>
+</ol>
+<h2>本文主要贡献</h2>
+<ol>
+<li>将动态网络中群落结构的检测问题 建模成 多目标优化问题--以前肯定有人弄过了，也算贡献？</li>
+<li>本方法可以考虑成 通用框架，应用于进化聚类。 仅仅需要修改目标函数，测试不同的质量函数--别人的算法也可以，这篇就是利用别人的框架。</li>
+<li>本方法不需要参数， 不需要为快照和短时成本设置权重， 也不用设定聚类个数--不知道他人工作情况。</li>
+</ol>
+<h1>相关工作</h1>
+<h2>主要工作</h2>
+<h3>Evolutionary Clustering by Chakrabarti et al. in [13]</h3>
+<ol>
+<li>认为changes of connections in short time periods could be caused by noise.</li>
+<li>提出了 temporal smoothness 和 snapshot cost  temporal cost</li>
+</ol>
+<p>问题是： not allow that the number of communities varies over time</p>
+<h3>FacetNet  by Lin et al[5]</h3>
+<h3>particle-and-density based clustering method  by Kim and Han [3]</h3>
+<h3>这些方法的主要问题</h3>
+<ol>
+<li>聚类个数 不知道。</li>
+<li>相对于要选择 参数 alpha 去应用于 temporal smoothness。</li>
+</ol>
+<h1>DYNMOGA算法</h1>
+<p>DYNMOGA has been adapted with a customized
+population type that suitably represents a partitioning of
+a network and endowed with two complementary objectives</p>
+<p>他们使用了 matlab 实现的 NSGA-II 算法框架, DYNMOGA支持 定制的、可表示网络分割情况的群体类型, 并具有两种互补的目标（然而并没有说是哪两种）。</p>
+<h2>目标函数</h2>
+<h3>定义</h3>
+<p>$$$</p>
+<p>CR^t = { C^t_1, ... C^t_k } 是图在 t 阶段的聚类结果</p>
+<p>一个聚类中有 n_S 个结点 m_S 条边。</p>
+<p>m_S(u) = {v | v \in C_t } 是结点u 在聚类C^t 的邻点个数 
+c_S = { (u, v) | u \in C^t, v \notin C^t} 是聚类C^t边界的边数。
+l_S 是 只连接 模块 C^t_S 内部结点 的边总数。
+d_S 是 C^t_S 中点的度数之和</p>
+<p>$$$</p>
+<h3>多种分值定义</h3>
+<p>Q: the first term of each summand is
+the fraction of edges inside a community, while the second
+one is the expected value of the fraction of edges that would
+be in the network if edges fall at random without regard
+to the community structure. Values approaching 1 indicate
+strong community structure</p>
+<ol>
+<li>modularity 颗粒度 ：<br>
+$$ Q = \sum^k_{s=1}[\frac{l_s}{m} - (\frac{d_s}{2m})^2] $$</li>
+<li>conductance 导率, the fraction of edges pointing outside the clustering：<br>
+$$ CO = \sum^k_{S=1}\frac{c_S}{2m_S+c_S} $$</li>
+<li>Normalized Cut 归一化分割 the fraction of total edge connections to all the nodes in the graph: <br>
+$$ NC = \sum^k_{S=1}\frac{c_S}{2m_S+c_S} + \frac{c_S}{2(m-m_S)+c_S} $$</li>
+<li>Community Score 群落分值, measure the fraction of internal edges of each cluster per nodes：<br>
+$$ CS = \sum^k_{s=1}(\sum_{u \in C^t}(\frac{m_S(v)}{n_S})^2) * \frac{2m_S}{n_S} $$</li>
+</ol>
+<h3>基因表达</h3>
+<p>locus-based adjacency representation  [34]</p>
+<ol>
+<li>每个个体包含 n 个基因， n 指代 结点的个数</li>
+<li>每个基因 取值范围 1-n， 即第i个基因与第j个基因之间有连接，该划分到同一群落</li>
+</ol>
+<p>** 注： 这种表达肯定不能用于 群落重叠问题——然而 现实是， 主流用法 就是这样，大同小异</p>
+<p>好处： 由个体组成部分的个数，在解码步骤中自动得到</p>
+<h4>decoding step 解码</h4>
+<p>使用并查集</p>
+<ol>
+<li>建立并查集 makeset</li>
+<li>对每条边去查找, findset</li>
+<li>查到后的进行合并</li>
+</ol>
+<h3>初始化</h3>
+<p>一个有若干个体的群体， 对每个点i, 在邻接点中随机选择一个作为值， 表示 存在边 (i,j)</p>
+<h3>uniform crossover 均匀交叉</h3>
+<p>给定两个父辈个体， 创建一个随机二元mask, 进行选择， 当 mask 为0时， 取第一个父辈个体的基因（值）， 为1时， 取第二个父辈个体。 如此组成子代的基因</p>
+<h3>突变</h3>
+<p>与初始化类似， 对结点i 随机变更值成其他邻点。</p>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2016-03-08T00:00:00+08:00">Mar 8, 2016</time>
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#shu-ju-wa-jue-ref">数据挖掘</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#cs-ref">CS
+                            <span>22</span>
+</a></li>
+                        <li><a href="/tags.html#duo-mu-biao-jin-hua-suan-fa-ref">多目标进化算法
+                            <span>3</span>
+</a></li>
+                        <li><a href="/tags.html#lun-wen-ref">论文
+                            <span>40</span>
+</a></li>
+                        <li><a href="/tags.html#she-qu-fa-xian-ref">社区发现
+                            <span>11</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

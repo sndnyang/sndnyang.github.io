@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang sndnyang.github.io" />
+        <meta name="copyright" content="sndnyang sndnyang.github.io" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="论文, 计算机视觉, 人工智能, 计算机视觉, " />
+
+<meta property="og:title" content="无监督视觉表示学习 "/>
+<meta property="og:url" content="/unsupervised-learning-of-visual-representations.html" />
+<meta property="og:description" content="" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang sndnyang.github.io" />
+<meta property="og:article:published_time" content="2017-05-16T09:48:09+08:00" />
+<meta property="" content="2017-05-16T12:46:38+08:00" />
+<meta name="twitter:title" content="无监督视觉表示学习 ">
+<meta name="twitter:description" content="">
+
+
+        <title>无监督视觉表示学习  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/unsupervised-learning-of-visual-representations.html">
+                        无监督视觉表示学习  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<h1>摘要</h1>
+<p>论文<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+<p>关键点： 视觉追踪能提供超视觉信息 visual tracking provides the supervision</p>
+<p>视觉追踪中的两帧在深度特征空间中，应该有着相似的视觉表示(visual representation)，因为它们很可能对应同一物体或物体部分</p>
+<p>two patches connected by a track should have
+similar visual representation in deep feature space since
+they probably belong to the same object or object part</p>
+<p>所以，本文的初始目标是从视觉追踪的视频流中抽取两帧，计算相似度， 又为了对比效果（过拟合？），需要不相似的另一帧，组成 孪生(Siamese)三元组的数据，加上一个有序损失函数，用以训练CNN模型</p>
+<p>design a Siamese-triplet network with a ranking loss function
+to train this CNN representation</p>
+<h1>导论</h1>
+<p>propose to exploit visual tracking for learning CNNs in an unsupervised manner</p>
+<p>two patches connected by a track should have similar visual representation in deep feature space since they probably belong to the same object</p>
+<p>和摘要重复了~~~</p>
+<h1>overview</h1>
+<p>使用 AlexNet架构 follow the AlexNet architecture to design our base
+network.</p>
+<p>从对物体或物体部分追踪的视频实例中选取开头、结尾两帧 first and last tracked frames correspond to the same instance of the moving object or object part</p>
+<p>所以在特征空间里，这两帧（数据点）的视觉表示 应该是相近的 any visual representation that we learn should keep these two data points close in the feature space</p>
+<p>仅仅如此并不充分， 容易过拟合， 比如所有点都映射到一个点上就一了百了了 just using this constraint is not sufficient: all points can be mapped to a single point in feature space</p>
+<p>overfit</p>
+<p>One way is to increase the
+number of training triplets</p>
+<p>analogous to hard-negative mining, we select the
+third patch from multiple patches that violates the constraint</p>
+<h1>视频帧挖掘</h1>
+<ol>
+<li>obtain SURF<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> interest points and use Improved Dense
+Trajectories (IDT)<sup id="fnref:50"><a class="footnote-ref" href="#fn:50">6</a></sup> to obtain motion of each SURF
+point. </li>
+<li>classify these points as moving if the flow
+magnitude is more than 0.5 pixels</li>
+<li>reject frames
+    (a) very few (&lt; 25%) SURF interest points are classified
+as moving because it might be just noise
+    (b) majority of
+SURF interest points (&gt; 75%) are classified as moving asit corresponds to moving camera</li>
+<li>find the
+best bounding box such that it contains most of the moving
+SURF points. The size of the bounding box is set as h × w,
+and we perform sliding window with it in the frame</li>
+</ol>
+<p>Tracking:</p>
+<p>Given the initial bounding box, we perform
+tracking using the KCF tracker<sup id="fnref:19"><a class="footnote-ref" href="#fn:19">4</a></sup>. After tracking along 30
+frames in the video, we obtain the second patch. This patch
+acts as the similar patch to the query patch in the triplet.
+Note that the KCF tracker does not use any supervised information
+except for the initial bounding box</p>
+<h1>视频学习</h1>
+<h2>Siamese Triplet Network</h2>
+<p>AlexNet architecture<sup id="fnref:24"><a class="footnote-ref" href="#fn:24">5</a></sup></p>
+<p>stack two fully connected layers on the pool5
+outputs, whose neuron numbers are 4096 and 1024 respectively.
+Thus the final output of each single network is 1024
+dimensional feature space f(·).</p>
+<h2>ranking loss function</h2>
+<p>to learn an image similarity model in the form
+of CNN</p>
+<p>define the distance of two image patches X1, X2
+based on the cosine distance in the feature space as</p>
+<p>$D(X_1,X_2) = 1 - \frac{f(X_1) * f(X_2)}{||f(X_1)||||f(X_2)||}$</p>
+<p>$X_i$ $X_i^{+}$ $X_i^{-}$</p>
+<p>the loss
+of our ranking model is defined by hinge loss as</p>
+<p>$$L(i, +, -) = max{0, D(i,+)-D(i,-) + M}$$</p>
+<p>Me M represents the gap parameters between two distances.
+We set M = 0.5 in the experiment. Then our objective
+function for training can be represented as</p>
+<p>$$\min_{W} \frac{\lambda}{2} ||W||<em i="1">2^2 + \sum</em>^Nmax{0,D(i,+) - D(i,-)+M}$$</p>
+<p>W is the parameter weights of the network, i.e., parameters
+for function f(·). N is the number of the triplets of
+samples. $\lambda$ is a constant representing weight decay, which
+is set to $\lambda$λ = 0.0005</p>
+<h2>Hard Negative Mining for Triplet Sampling</h2>
+<h3>random selection</h3>
+<p>randomly sample K negative matches in the
+same batch,  e have K sets of triplet of samples</p>
+<h3>Hard Negative Mining</h3>
+<h2>Adapting for Supervised Tasks</h2>
+<p>apply our model
+to two different tasks including object detection and surface
+normal estimation</p>
+<h3></h3>
+<p>directly applying our
+ranking model as a pre-trained network for the target task</p>
+<p>very similar to the approach applied in RCNN<sup id="fnref:14"><a class="footnote-ref" href="#fn:14">3</a></sup></p>
+<p>we use an iterative finetuning
+scheme. Given the initial unsupervised network, we
+first fine-tune using the PASCAL VOC data. Given the new
+fine-tuned network, we use this network to re-adapt to ranking
+triplet task. Here we again transfer convolutional parameters
+for re-adapting. Finally, this re-adapted network is
+fine-tuned on the VOC data yielding a better trained model.
+We show in the experiment that this circular approach gives
+improvement in performance. We also notice that after two
+iterations of this approach the network converges</p>
+<h2>Model Ensemble</h2>
+<h2>实现细节</h2>
+<h1>实验</h1>
+<p>目前还看不懂实验部分</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Unsupervised Learning of Visual Representations using Videos, Xiaolong Wang, Abhinav Gupta&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>H. Bay, T. Tuytelaars, and L. V. Gool. Surf: Speeded up robust features. In ECCV, 2006
+features&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>R. Girshick, J. Donahue, T. Darrell, and J. Malik. Rich feature hierarchies for accurate object detection and semantic segmentation. In CVPR&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:19">
+<p>J. F. Henriques, R. Caseiro, P. Martins, and J. Batista. High-speed tracking with kernelized correlation filters. TPAMI, 2015&#160;<a class="footnote-backref" href="#fnref:19" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:24">
+<p>A. Krizhevsky, I. Sutskever, and G. E. Hinton. Imagenet classification with deep convolutional neural networks. In NIPS, 2012&#160;<a class="footnote-backref" href="#fnref:24" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:50">
+<p>H. Wang and C. Schmid. Action recognition with improved trajectories.
+In ICCV, 2013&#160;<a class="footnote-backref" href="#fnref:50" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2017-05-16T09:48:09+08:00">May 16, 2017</time>
+
+<h4>Last Updated</h4>
+<time datetime="2017-05-16T12:46:38+08:00">May 16, 2017</time>
+
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#ji-suan-ji-shi-jue-ref">计算机视觉</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#ji-suan-ji-shi-jue-ref">计算机视觉
+                            <span>5</span>
+</a></li>
+                        <li><a href="/tags.html#lun-wen-ref">论文
+                            <span>40</span>
+</a></li>
+                        <li><a href="/tags.html#ren-gong-zhi-neng-ref">人工智能
+                            <span>30</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)https://markdown-it.github.io/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>zhimind教程在线编辑器</title>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="//cdn.bootcss.com/es5-shim/4.5.9/es5-shim.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/lodash.js/4.16.4/lodash.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/github-markdown-css/2.4.1/github-markdown.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/markdown-it/6.0.0/markdown-it.min.js"></script>
+    <script type="text/javascript" src="/static/js/markdown-it-mathjax.js"> </script>
+    <script type="text/javascript" src="/static/js/markdown-it-emoji.js"> </script>
+
+    <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+    <script src="//cdn.bootcss.com/twemoji/2.2.1/twemoji.min.js"></script>
+    <link rel="stylesheet" href="/static/css/markdownDemo.css?v=3">
+    <link rel="stylesheet" href="/static/css/tutorial.css">
+    <script src="/static/js/index.js"></script>
+    <script src="/static/js/tutorial.js"></script>
+    <script src="/static/js/editor.js"></script>
+    <script src="/static/js/markdownDemo.js"></script>
+
+    <script type="text/javascript">
+        window.onbeforeunload = function() {
+            return "确定离开页面吗？"; 
+        }
+    </script>
+  </head>
+  <body class="opt_linkify opt_typographer opt__highlight result-as-html">
+    <div class="container">
+      <h1>
+        zhimind教程编写
+         <small>在线编辑器</small>
+         <small><a href="/">返回主页</a></small>
+      </h1>
+      <div class="form-inline demo-options">
+        <div class="checkbox not-strict">
+          <label title="" class="_tip" data-original-title="enable html tags in source text">
+            <input id="html" type="checkbox"> html
+          </label>
+        </div>
+        <div class="checkbox not-strict">
+          <label title="" class="_tip" data-original-title="produce xtml output (add / to single tags (&lt;br /&gt; instead of &lt;br&gt;)">
+            <input id="xhtmlOut" type="checkbox"> xhtmlOut
+          </label>
+        </div>
+        <div class="checkbox not-strict">
+          <label title="" class="_tip" data-original-title="newlines in paragraphs are rendered as &lt;br&gt;">
+            <input id="breaks" type="checkbox"> breaks
+          </label>
+        </div>
+        <div class="checkbox not-strict">
+          <label title="" class="_tip" data-original-title="autoconvert link-like texts to links">
+            <input id="linkify" type="checkbox"> linkify
+          </label>
+        </div>
+        <div class="checkbox not-strict">
+          <label title="" class="_tip" data-original-title="do typographyc replacements, (c) -&gt; © and so on">
+            <input id="typographer" type="checkbox"> typographer
+          </label>
+        </div>
+        <div class="checkbox not-strict">
+          <label title="" class="_tip" data-original-title="enable output highlight for fenced blocks">
+            <input id="_highlight" type="checkbox"> highlight
+          </label>
+        </div>
+        <div class="form-group not-strict">
+          <input id="langPrefix" type="input" placeholder="language prefix" title="" class="form-control _tip" data-original-title="css class language prefix for fenced code blocks">
+        </div>
+        <div class="checkbox">
+          <label title="" class="_tip" data-original-title="force strict CommonMark mode - output will be equal to reference parser">
+            <input id="_strict" type="checkbox"> CommonMark strict
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="container full-height">
+      <div class="row full-height">
+        <div class="col-xs-6 full-height">
+          <div class="demo-control"><a href="https://markdown-it.github.io/#" class="source-clear">clear</a></div>
+          <textarea class="source full-height">
+# 免责说明
+
+本文参考以下文献：
+
+1. pluskid支持向量机系列博文，特别是图片引用 [pluskid-svm](http://blog.pluskid.org/?page_id=683)
+2. Andrew Ng在斯坦福的cs229讲义， [cs229](http://cs229.stanford.edu/materials.html)
+
+在下文笔较烂，贻笑大方。基于markdown格式纯文本编写，改动成本低，所以欢迎提出意见及建议、问题， 谢谢。
+
+## 导读
+
+支持向量机support vector machine(SVM)有着很长很长的故事， 然而我并不熟悉~~~略过
+
+默认读者已经了解机器学习领域里的分类 和 回归 的概念， 若不懂， 请参考 [敬请期待(没有写)]() 和 [请看下回(没有写)]()
+
+先下结论， SVM是效果最好、 现成可用的分类算法之一， 虽然也有被用来做回归的。
+
+所以， 让我们从二元线性分类这个问题开始， 慢慢引出SVM。
+
+{%formula
+|这个超平面的方程(f(x)=0)表示为_
+@
+#请把w作为系数写在x前面
+#但维度是否对上，没对上要如何对上？#偏置项都是kx+b哪见过kx-b了#答案w^Tx + b = 0
+%}
+
+
+## 分类器
+
+假设读者已了解 分类问题，下面直接给出一般的数学符号定义。
+
+### 分类问题定义
+
+符号定义：
+
+数据集 $X = [x_1,...,x_m], 其中 x_i$是一个n维列向量。(n行m列有点别扭对我来说有点别扭，更习惯$X是 m \times n$维矩阵。)
+
+对应类别 $y$, 用 1，-1 或 0，1 代表不同的分类。
+
+分类问题就是要在 n维的数据空间中找出一个超平面, 希望通过这个超平面可以把各类数据分隔开来， 设函数 $f(x)$, 该超平面方程为 f(x) = 0, 那么定义：
+
+1. 超平面上的点都有 f(x) = 0
+2. 对 f(x) < 0的点， 就令 y = -1
+3. 对 f(x) > 0的点， 就令 y = 1
+
+用于提神的第一个问题, 我现在在介绍什么分类问题？
+
+{%checkbox|&多元&二元&svm&贝叶斯&逻辑&一次&二次@二元@一次#前面才写的~~~#线性又叫什么#从哪里引出svm?%}
+
+### 线性分类器
+
+我们先从简单的线性分类器开始。 先来个前提， 假设数据确实线性可分。
+
+假设该超平面的权重系数为 n维列向量 w， bias偏置项为 b， x为$n\times m$维矩阵。
+
+用于醒脑的第二个问题，矩阵相乘不要乘号，维度要对上
+
+{%formula|这个超平面的方程(f(x)=0)表示为_@:w^Tx+b=0#请把w作为系数写在x前面#但维度是否对上，没对上要如何对上？#偏置项都是kx+b哪见过kx-b了#答案w^Tx + b = 0%}
+
+## 分类结果-超平面
+
+所以超平面方程可表示为： $w^Tx + b = 0， 即 f(x) = w^Tx + b$
+
+我们知道， 超平面在二维空间中的例子就是一条直线[超平面(没写的都勿点)]() 如图所示(直接从pluskid博客上引用过来，盗图)：
+
+![pluskid-hyperplane](http://blog.pluskid.org/wp-content/uploads/2010/09/Hyper-Plane.png)
+
+{%text|下一步你觉得应该考虑什么，请自由发挥。_@#%}
+
+### 无数个超平面
+
+以上图为例， 我们知道，除了已有的这条直线， 还有无数条直线， 都可以把红蓝点正确地分成两块。
+
+比如， 用逻辑回归， 不同的初始值就可能得到不同的直线。
+
+既然有无数种可能， 那我们应该如何选择？我承认问题和选项有点别扭，很明显的答案，但仍然有它的内在逻辑，为什么这个时候要这么选，真不是每次都这么选。
+
+{%radio|&随机选一条&多条取平均&放弃&找出最好的一个@找出最好的一个#感觉有点别扭的问题~~~#答案是找最好的%}
+
+### 评估方法
+
+既然有无数种可能， 那么只要条件允许（时间、 金钱等）， 我们就要精益求精， 做到最好！ 完美！
+
+言归正传， 哪个超平面是最好的呢？ 那就是个新的问题——怎么评估， 评估标准是什么。
+
+你觉得评估标准应该是什么？
+
+{%checkbox|&w范数值最小&超平面到所有点的距离之和取最大&超平面到最近点的距离取最大&w范数最大@超平面到最近点的距离取最大#虽然是多选题，svm只有一个选项(我的理解)%}
+
+## 评估超平面-距离
+
+范数没用， w和b 乘上个常数， 范数就变了， 但超平面不变， 不进行数学推导了。
+
+所有点距离之和 与 最近点距离 有点像， 但求所有点的距离 计算量可能确实大了点， 或者 数学推导出来效果不好，还有其他直观理由。
+
+所以 只要找出 到相应最近点距离最大的超平面就好。（或许以后有人能找出其他方法~~~）
+
+到相应最近点距离其实就是缓冲地带，缓冲地带最大比 最近点距离最大要少绕口一点。
+
+### 定义
+
+那我们说距离或者缓冲地带、间隔最大， 这里距离是指什么？
+
+{%radio|&f(x)的绝对值&点到超平面的垂线距离&不知道&编不出来选项了@点到超平面的垂线距离#超平面到相应最近点距离，第一反应不可能是其他吧%}
+
+### 几何距离
+
+所以， 点到超平面的垂线距离 定义为 几何距离。
+
+关于 $f(x) = w^Tx+b=0$的超平面P 和 点z 的几何距离的计算或者说通用式， 建议不熟悉、 没印象的读者动手推导一下。
+
+推导过程。 见[后续也许会补充(没写的都勿点)]()
+
+先上结论： 点到超平面的几何距离(可能有误， 所以说要动手推导一下)
+
+$$ 
+\gamma = \frac{w^Tx+b}{\|w\|}=\frac{f(x)}{\|w\|}
+$$
+
+因为有多种写法， 李航的《统计学习方法》和Andrew Ng的机器学习讲义是用w*x+b, 用了$||w||$ 没有考虑b，有些人的符号使用的是 $\theta^T X$, 反正b又会给w添加一个分量， $||w||$对b的影响还是线性的，这时强调一下我后面有时候会纠结于b到底会不会被影响。
+
+{%text|继续?还是发现问题?_@#%}
+
+### 有问题？
+
+本式有个问题， 不能做为距离使用， 请指出
+
+{%radio|&||w||未定义&||w||是范数，范数有很多种&结果可能为负&跟类别y无关&太简单&推导太复杂&不知道@结果可能为负#距离一定是什么样的？%}
+
+### 标准定义
+
+上式存在负值的可能， 距离是不可能用负值的， 所以再取个绝对值， 等效于乘以 y（这步再引导我就要疯了）, 因为 f(x)小于0时, y = -1。
+
+改写式子， 仍使用 gamma 记号（很快符号就要混乱了）
+
+$$
+几何距离: \gamma = |\gamma| = y\gamma = y*\frac{w^Tx+b}{\|w\|}=\frac{y*f(x)}{\|w\|}
+$$
+
+所以， 单点到超平面距离知道怎么求了， 下一步呢？
+
+{%radio|&随机找一点的几何距离&求全部点的距离之和&找最远点&找最近点&求平均值&求平均值后找最接近平均值的一个点@找最近点#还记得如何评估超平面吗？%}
+
+## 几何间隔
+
+已知某个点到超平面的几何距离（几何间隔）
+
+$$ \gamma = y*\frac{w^Tx+b}{\|w\|}=\frac{y*f(x)}{\|w\|} $$
+
+我们知道， 要找的是超平面的最近点， 这个如何描写成数学表达式， 应该有头绪吧？
+
+{%radio|&有，会做&完全不理解&程序找最小会，数学抽象是什么鬼@完全不理解#这个智能有限，大家去动动脑最重要，结果不要勉强了%}
+
+### 定义
+
+最近点到其超平面的几何距离， 就是所有点到该超平面的几何距离的最小值， 定义为该平面的几何间隔geometrical margin （我个人对这个概念理解 可能有问题， 先凑合看吧）
+
+所以有 几何间隔:
+
+$$
+\tilde{\gamma} = \min_{i=1,...,m} \gamma^{(i)}
+$$
+
+### 函数间隔
+
+一般的教程 会同时介绍个 函数间隔  functional margin。 但咱们秉承从直观分析开始， 需要时再合理推导的精神， 先不讨论这个玩意(貌似后面就没讨论过， 真可以不要）， 虽然二者等价， 但我们现在只要一个就够，我实在找不到任何理由来引入它来搞乱我的符号。
+
+直接上定义（单点 函数距离 求最小为间隔， 公式里写的是函数距离， 再写求最小表达式，要累死我）
+
+$$\hat{\gamma}=y(w^Tx+b)=yf(x) = \tilde{\gamma} ||w||$$
+
+已知几何间隔最小化，
+
+$$
+\tilde{\gamma} = \min_{i=1,...,m} \gamma^{(i)}
+$$
+
+{%radio|那下一步呢?&不知道&梯度下降法&求最大化&蒙特卡罗模拟&酱油@求最大化#还记得要做什么吗？%}
+
+## 最大间隔
+
+还记得我们要做什么吧？ 找出到相应最近点距离最大的超平面， 也就是几何间隔最大的 超平面。重复的简单抽象问题不再提。  
+
+如下：
+
+$$
+\begin{align}
+&\max_{w,b} \tilde{\gamma} \\
+& 
+\begin{array}
+&s.t.
+&\frac{y^{(i)}(w^Tx^{(i)} + b)}{||w||} ≥ \tilde{\gamma},  &i=1,\ldots,m\\
+\end{array}
+\end{align}
+$$
+
+即：
+
+$$
+\begin{align}
+&\max_{w,b} \min_{i=1,...,m}  \frac{y^{(i)}(w^Tx^{(i)}+b)}{\|w\|} 
+\end{align}
+$$
+
+为美观着想，求最近点，即求最小的min符号及i标号。
+
+$$
+\begin{align}
+&\max_{w,b} \frac{y(w^Tx+b)}{\|w\|} \\
+& 
+\begin{array}
+&s.t.
+&y^{(i)}(w^Tx^{(i)} + b) ≥ \tilde{\gamma}||w||,  &i=1,\ldots,m\\
+\end{array}
+\end{align}
+$$
+
+**作者注：** 从这个式子开始， 约束条件我有点晕了，不是一个教程看完的，好几个混着，可能写错， 来修订时彻底晕了。
+
+### 一帆风顺的旅途到此结束
+
+到上面的式子（没有编号，我的锅）， 应该是已经得到一个待优化的问题。
+
+那我们还能再进一步优化吗？我们要真正地去发现、 分析、 探索。做科研就是这样， 但因为没有具体的方向， 我们就要有一些指导性的原则， 遇到 什么问题， 大概用什么样的思路地尝试。
+
+技术问题， 没有标准答案， 有心的读者请在草稿纸上写写你的想法，你要来优化，会怎么做？哪个地方可以简化。写思路。
+
+流程还是要走的，随便填，以后会记录你的想法，现在没做到。
+
+{%text|你的想法是？_@#%}
+
+## 优化
+
+所以， 就来看这个式子
+
+$$ \max_{w,b} \frac{y(w^Tx+b)}{\|w\|}=\frac{\hat{\gamma}}{||w||} $$
+
+首先， $w 和 ||w||$ 和 $b$ 是未知待求的， 应该没法下手。
+
+那上面的这个 $\hat{\gamma}$ 是不是能做点文章呢? 
+
+y 就是给它取正，取正 = 取绝对值， 平方也能取正， 好， 小本子上记下， 来个求平方？ 明显更复杂了。
+
+还有呢？ $w^Tx+b$ 是个线性关系， 对吧？
+
+所以， 它有什么性质， 而且还是个跟除法有关的性质呢？前面好像有提到。我选项描述可能有点问题。
+
+{%radio|&不知道&编不出来&乘常数不变性&最简最低次性&可线性组合@乘常数不变性#前面提过范数#答案比较明显，选项太难编了%}
+
+### 乘常数不变
+
+那小本本上的求平方就被我们扔脑后了， 求平方还会搞得更复杂。
+
+$$
+\begin{align}
+&\max_{w,b} \frac{y(w^Tx+b)}{\|w\|} \\
+& 
+\begin{array}
+&s.t.
+&y^{(i)}(w^Tx^{(i)} + b) ≥ \tilde{\gamma}||w||,  &i=1,\ldots,m\\
+\end{array}
+\end{align}
+$$
+
+将$\hat{\gamma}=y(w^Tx+b) 的 w和b$乘上个常数时，有什么好处呢？
+
+对目标函数的优化怎么样？ 肯定没影响。为什么？
+
+{%checkbox|&最近点还是最近点&几何间隔不变&函数间隔不变&超平面不变&编不出来了@最近点还是最近点@几何间隔不变@超平面不变#我快编不下去了%}
+
+### 还有呢？
+
+不等式约束怎么样？ 也是不影响，为什么？和上面绝对不是一样的。
+
+{%checkbox|&最近点还是最近点&几何间隔不变&函数间隔不变&超平面不变&编不出来了@几何间隔不变#约束条件跟最近点、超平面无关#函数间隔本来就会变%}
+
+### 结论
+
+所以我们就知道， w和b乘常数：
+
+1. 对目标函数的优化没影响， 这个比较直观， 因为方程变化后， 最近点还是最近点， 几何间隔（最近点到超平面的几何距离 ）$\tilde{\gamma}$不变。
+2. 不等式约束不变化， 没影响。 几何间隔$\tilde{\gamma}$不变， 左式变化的比例， 会等比地影响到右边式子的$||w||$。
+
+### 师出有名
+
+那我们就开始搞坏事了~~~
+
+$$
+\begin{align}
+&\max_{w,b} \frac{y(w^Tx+b)}{\|w\|}\frac{\hat{\gamma}}{||w||} \\
+& 
+\begin{array}
+&s.t.
+&y^{(i)}(w^Tx^{(i)} + b) ≥ \tilde{\gamma}||w||,  &i=1,\ldots,m\\
+\end{array}
+\end{align}
+$$
+
+就要去给它变一下。 怎么变？
+
+{%radio|&令函数间隔（分子）等于0&令函数间隔等于1&除以函数间隔&除以||w||@除以函数间隔#效果相同，但是原因更重要（仅仅个人观点），但我的观点貌似也不对%}
+
+#### 别人的解释
+
+好吧， 我还是无法严密地说清楚这一变化的原因。是最优化课程有会推导，还是纯粹我自己没理解？
+
+李航的《统计学习方法》就一句话，说 $\hat{\gamma}$的取值不影响最优化问题的解
+
+pluskid 写的是
+
+    固定变量， 固定的方式有两种：
+
+    1. 固定 $\|w\|$ 
+    2. 固定 $\hat{\gamma}$ ，
+
+    出于方便推导和优化的目的，选择第二种
+
+Ng的描述为：
+
+Recall our earlier discussion that we can add an arbitrary scaling constraint on w and b without changing anything. This is the key idea we’ll use now. 
+
+We will introduce the scaling constraint that the functional margin of w, b with respect to the training set must be 1:
+$$\hat{\gamma} = 1.$$
+
+Since multiplying w and b by some constant results in the functional margin being multiplied by that same constant, this is indeed a scaling constraint, and can be satisfied by rescaling w, b. Plugging this into our problem above, and noting that maximizing
+$$\hat{\gamma}/||w|| = 1/||w||$$
+
+### 继续
+总之， 令 $\hat{\gamma}=1$
+
+则我们的目标函数化为： 
+$$ 
+\begin{align} 
+&\max_{w,b} \frac{1}{\|w\|} \\
+& 
+\begin{array}
+&
+s.t., y_i(w^Tx_i+b)\geq 1, i=1,\ldots,m\\ \end{array}
+\end{align}
+$$ 
+
+通过求解这个问题，我们就可以找到一个 margin 最大的 classifier ，如下图所示，中间的红色线条是 Optimal Hyper Plane ，另外两条线到红线的距离都是等于 $\tilde{\gamma}$ 的：
+
+![optimal-hplane](http://blog.pluskid.org/wp-content/uploads/2010/09/Optimal-Hyper-Plane.png)
+
+### 倒数变形
+
+到上一步时， 我们得到了一个优化问题， 优化一个 `1/||w||`, 一个倒数， 不好。
+
+根据最优化理论——我也不懂， 但很明显的， 显然易得： $\max \frac{1}{||w||}$等价于$\min ||w||$
+
+{%radio|有什么问题吗?&没问题&不成立&不能求导&不知道&值不连续@不能求导#最优化问题都少不了用偏导来梯度下降%}
+
+### 等效变形
+
+对，一次的怎么求导？优化不求导，应该搞不了，那就改成平方，还是显然，对求最优化问题没影响， 另外为了求导结果漂亮一点， 再加上一个常系数， 最终结果如下：
+
+$$ 
+\begin{align} 
+&\min_{w,b} \frac{1}{2}\|w\|^2 \\
+& 
+\begin{array}
+&
+s.t., y_i(w^Tx_i+b)\geq 1, i=1,\ldots,m\\ \end{array}
+\end{align}
+$$ 
+
+最终我们得到了一个凸优化问题，或者更具体地说，它是一个二次优化问题——目标函数是二次的，约束条件是线性的。这个问题可以用任何现成的 QP (Quadratic Programming) 的优化包进行求解——具体求解不是机器学习课程的教学内容。
+
+{%radio|所以，学完了吗？&结束，撒花&想太多&不知道@想太多#这篇是要结束了，但svm没有，还有复习呢%}
+
+## 总结 
+
+回忆一下， 我们整个过程做了哪些事。
+
+1. 从二元线性分类开始， 我们明确目标是求超平面， 分类器都是这么干的。
+2. 超平面有很多个， 我们就要有对超平面的评估标准。
+3. 评估标准就要计算距离， 我们就用上了几何距离。
+4. 有了几何距离， 我们就有最近点的几何距离， 就是几何间隔。
+5. 知道了几何间隔， 我们就要求出最大的几何间隔 及 对应的超平面， 绕了一圈， 又绕回到第1条。
+6. 优化公式里的 $\hat{\gamma}=y(w^Tx+b)$ 有着特殊的性质， 取值对最优化问题的解不影响。 所以我们把它设为1了。
+7. 最后再把倒数形式的$\max \frac{1}{||w||}$ 转成 $\min \frac{1}{2}\|w\|^2$
+
+完结撒花！
+
+# 恭喜！！！
+
+一路艰辛， SVM 这才完成了最简单的部分， 后面理论 的推导更加复杂， 做好心理准备吧！
+
+下一节[支持向量 并没有写出来]()
+
+如果您觉得这种学习方式有帮助的话， 呃， 那就好~~~
+
+
+          </textarea>
+          </div>
+          <section class="col-xs-6 full-height">
+          <div class="demo-control"><a href="https://markdown-it.github.io/#" data-result-as="html">html</a><a href="https://markdown-it.github.io/#" data-result-as="src">source</a><a href="https://markdown-it.github.io/#" data-result-as="debug">debug</a></div>
+          <div id="result-html" class="result-html full-height">
+          </div>
+          <pre class="hljs result-src full-height"><code class="result-src-content full-height"></code></pre>
+          <pre class="hljs result-debug full-height"><code class="result-debug-content full-height"></code></pre>
+        </section>
+      </div>
+    </div>
+    <div class="gh-ribbon"><a href="https://github.com/markdown-it/markdown-it" target="_blank">Fork me on GitHub</a></div>
+  
+</body></html>

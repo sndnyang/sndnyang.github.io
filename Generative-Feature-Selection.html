@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang" />
+        <meta name="copyright" content="sndnyang" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="论文, CS, 社区发现, CS, " />
+
+<meta property="og:title" content="Unsupervised Feature Selection on Networks: A Generative View "/>
+<meta property="og:url" content="/Generative-Feature-Selection.html" />
+<meta property="og:description" content="[TOC] 摘要 现在的网络数据（社交网络或信息网络），不仅有链接信息， 还会有一些或噪声或重要的高维内容，比如点的属性。 也就是说，不单纯是个图数据，每个点还有若干个特性、属性。 那些对网络数据进行机器学习的任务，比如社区发现和链接预测，如果能够利用上这些附加的、额外的信息，想必会有一定的效果。 但这些点的属性或特征往往是高维度数据，对效率上影响比较大。 所以， 本文的目标就两个zhi： 降维 就是对点的特征进行选取 (feature selection) 再根据前人工作中的两个问题， 选取特征时没考虑数据的网络、图特性（存在边、连接）。 网络数据没有标准的标签（label)，一般不适合监督学习的方法。但却用聚类等方法强行给标签，强行使用监督学习，准确性很差。 所以本文提出的特征选取方法： 非监督的 用生成模型（generative model)来整合连接和内容信息（即边和属性） 导论 和摘要差不多， 重复不提。 主要思想： 从点的所有特征中，选取重要的、关键的特征 …" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang" />
+<meta property="og:article:published_time" content="2016-07-04T15:47:19+08:00" />
+<meta name="twitter:title" content="Unsupervised Feature Selection on Networks: A Generative View ">
+<meta name="twitter:description" content="[TOC] 摘要 现在的网络数据（社交网络或信息网络），不仅有链接信息， 还会有一些或噪声或重要的高维内容，比如点的属性。 也就是说，不单纯是个图数据，每个点还有若干个特性、属性。 那些对网络数据进行机器学习的任务，比如社区发现和链接预测，如果能够利用上这些附加的、额外的信息，想必会有一定的效果。 但这些点的属性或特征往往是高维度数据，对效率上影响比较大。 所以， 本文的目标就两个zhi： 降维 就是对点的特征进行选取 (feature selection) 再根据前人工作中的两个问题， 选取特征时没考虑数据的网络、图特性（存在边、连接）。 网络数据没有标准的标签（label)，一般不适合监督学习的方法。但却用聚类等方法强行给标签，强行使用监督学习，准确性很差。 所以本文提出的特征选取方法： 非监督的 用生成模型（generative model)来整合连接和内容信息（即边和属性） 导论 和摘要差不多， 重复不提。 主要思想： 从点的所有特征中，选取重要的、关键的特征 …">
+
+
+        <title>Unsupervised Feature Selection on Networks: A Generative View  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/Generative-Feature-Selection.html">
+                        Unsupervised Feature Selection on Networks: A Generative View  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<h1>摘要</h1>
+<p>现在的网络数据（社交网络或信息网络），不仅有链接信息， 还会有一些或噪声或重要的高维内容，比如点的属性。</p>
+<p>也就是说，不单纯是个图数据，每个点还有若干个特性、属性。</p>
+<p>那些对网络数据进行机器学习的任务，比如社区发现和链接预测，如果能够利用上这些附加的、额外的信息，想必会有一定的效果。</p>
+<p>但这些点的属性或特征往往是高维度数据，对效率上影响比较大。</p>
+<p>所以， 本文的目标就两个zhi：</p>
+<p><strong>降维</strong></p>
+<p>就是对点的特征进行选取 (feature selection)</p>
+<p>再根据前人工作中的两个问题，</p>
+<ol>
+<li>选取特征时没考虑数据的网络、图特性（存在边、连接）。</li>
+<li>网络数据没有标准的标签（label)，一般不适合监督学习的方法。但却用聚类等方法强行给标签，强行使用监督学习，准确性很差。</li>
+</ol>
+<p>所以本文提出的<em>特征选取方法</em>：</p>
+<ol>
+<li>非监督的</li>
+<li>用生成模型（generative model)来整合连接和内容信息（即边和属性）</li>
+</ol>
+<h1>导论</h1>
+<p>和摘要差不多， 重复不提。</p>
+<p>主要思想：</p>
+<p>从点的所有特征中，选取重要的、关键的特征，记为 <em>预特征</em>（oracle features，叫圣特征、神谕特征都不好吧）</p>
+<h2>对于边来说</h2>
+<p>边不是边~~~而是两个点在预特征上的亲密度（就相似度）来决定两个点是不是该相连。</p>
+<p>首先，非预特征对边没有影响。就像自然语言处理里肯定要把停用词过滤掉， 这种数据没有作用。</p>
+<p>其次， 想说什么来着？忘了</p>
+<h2>对于点的属性特征来说</h2>
+<p>首先， 很多属性也是没用、没影响的，只占空间不干活。</p>
+<p>其次， 还有很多的属性或特征 本质上是重复的。就像线性方程组消元，发现一些方程可能是另外方程的线性组合。</p>
+<p>所以，原本比较大的点属性集合就可以用比较小的 预特征 集合来代替（还可以存在映射关系）</p>
+<h2>结论</h2>
+<p>就可以用点的预特征集合 来同时表示连接和内容信息。</p>
+<p>这样，就得到了一个模型， 类似于线性回归的那个线性方程的模型， 后面会写模型具体的形式</p>
+<p>然后，再去定义这个模型对应的：</p>
+<ol>
+<li>策略。 即损失函数，要优化的目标。</li>
+<li>算法。 如何进行优化。</li>
+</ol>
+<p>*模型、策略、算法，机器学习三要素，《统计学习方法》的描述方法</p>
+<h2>题外话</h2>
+<p>生成图模型，generative graph model， 比如AGM 都是先定义模型、模型表达式，再定义策略、损失函数，最后才用算法来求出模型解空间里 最优的每个参数</p>
+<h1>正文</h1>
+<h2>定义</h2>
+<p>Attributed Network 属性网络：</p>
+<p>G = (V; E; X)， X是n个点的D维属性、特征向量</p>
+<p>s 是D维01向量， 1代表该位置是预特征， 0则否</p>
+<p>diag(s) 则是把s 拉成对角矩阵， 后面计算用得到--光点积不够用</p>
+<p>目标是求出 预特征 集合</p>
+<h2>对连接信息建模</h2>
+<p>如之前所说：</p>
+<p>probability of a link is determined by the oracle affinity between two nodes </p>
+<p>所以要定义 Oracle Affinity</p>
+<h3>Oracle Affinity</h3>
+<p>dot product of oracle features of two nodes</p>
+<p>$$
+a_{ij}=x^T_i diag(s) x_j
+$$</p>
+<h3>边生成概率定义</h3>
+<p>用某个转换函数（比如sigmoid）将上面的 $a_ij$转成个概率值</p>
+<p>概率值再用伯努利分布来决定边是生成还是不生成， 如下：</p>
+<p>$$
+p_{ij}=F_g(a_{ij}) \
+E_{ij} \sim Bernoulli(p_{ij})
+$$</p>
+<h3>整个图的概率</h3>
+<p>从定义上， 在给定 预特征 oracle features时， 整个网络的概率为：</p>
+<p>$$
+P(G|s) = \prod_{(i,j)\in E}p_{ij}\cdot \prod_{(i,j)\notin E}(1-p_{ij})
+$$</p>
+<h3>最终式</h3>
+<p>把$a_{ij},F_g$代入上式， 求个-log, 化简得：</p>
+<p>$\cal{L_G}=xxxx$</p>
+<p>省略~~~</p>
+<h2>对内容建模</h2>
+<p>关键就是得到一个 预特征向量 和 原特征向量的映射关系。</p>
+<p>所以可以是：（也可以使用和边相似的建模）</p>
+<p>$$
+\mu_i = F_c(diag(s)x_i) \
+x_i \sim \cal{N}(\mu_i, \sigma^2\bf{I}_D)
+$$</p>
+<p>为简便， Fc就等于左乘个 D行D列的投影矩阵 $\bf{W}$</p>
+<p>使用以上模型的话， 那对内容的最大似然值优化 其实也就等效于 最小化误差平方和， 再加个控制项得：</p>
+<p>$$
+\cal{L}_C=||X^Tdiag(s)W - X^T||^2_F + \beta||W||^2_F
+$$</p>
+<h2>二者结合</h2>
+<p>就是</p>
+<p>$$
+\min \limits_{s,b,W} \cal{L}_G + \cal{L}_C
+$$</p>
+<p>限制条件有， s向量里取值0或1，长度D，向量和=d</p>
+<p>对齐还没掌握~~~</p>
+<h1>优化</h1>
+<p>出于优化难度，改写优化式：</p>
+<p>$$
+\begin{eqnarray}
+&amp; \min \limits_{s,b,W} &amp; \cal{L}_G + \cal{L}_C + \lambda||s||_1 \
+&amp; s.t. &amp; 0 \leq s_p \leq 1, \forall p=1,...,D
+\end{eqnarray}
+$$</p>
+<p>优化过程并不特殊， 貌似和SVM的优化过程SMO是一样的。</p>
+<p>先固定W， 优化方程的s和b</p>
+<p>再固定s和b， 优化方程的W</p>
+<p>偏导方程就不写了。</p>
+<h1>总结</h1>
+<ol>
+<li>本文定义、 概念描述准确，逻辑清晰，没有太复杂的东西。</li>
+</ol>
+<p>总结不太会写， 还不敢评价论文质量。</p>
+<p>不过本文的实验部分写得比较简略~~~别的很多论文都3、5页的。本文将将一页出头。</p>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2016-07-04T15:47:19+08:00">Jul 4, 2016</time>
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#cs-ref">CS</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#cs-ref">CS
+                            <span>22</span>
+</a></li>
+                        <li><a href="/tags.html#lun-wen-ref">论文
+                            <span>40</span>
+</a></li>
+                        <li><a href="/tags.html#she-qu-fa-xian-ref">社区发现
+                            <span>11</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

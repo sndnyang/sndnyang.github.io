@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang (sndnyangd@gmail.com)" />
+        <meta name="copyright" content="sndnyang (sndnyangd@gmail.com)" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="Linux, Redis, web, 数据库, " />
+
+<meta property="og:title" content="CentOS配置-Redis安装 "/>
+<meta property="og:url" content="/config-centOS-install-Redis安装.html" />
+<meta property="og:description" content="CentOS Redis 安装 配置 和 运行" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang (sndnyangd@gmail.com)" />
+<meta property="og:article:published_time" content="2017-08-28T10:41:29+08:00" />
+<meta name="twitter:title" content="CentOS配置-Redis安装 ">
+<meta name="twitter:description" content="CentOS Redis 安装 配置 和 运行">
+
+
+        <title>CentOS配置-Redis安装  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/config-centOS-install-Redis安装.html">
+                        CentOS配置-Redis安装  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<h1>来源</h1>
+<p>实践内容主要来自 <a href="https://linux.cn/article-6719-1.html">如何在 CentOS 7 上安装 Redis 服务器</a></p>
+<h1>下载</h1>
+<div class="highlight"><pre><span></span><code><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.0.1&quot;</span>
+<span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">redis</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">redis</span><span class="o">-$</span><span class="n">version</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="n">zxvf</span> <span class="n">redis</span><span class="o">-$</span><span class="n">version</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">cd</span> <span class="n">redis</span><span class="o">-$</span><span class="n">version</span>
+</code></pre></div>
+
+<h1>安装</h1>
+<div class="highlight"><pre><span></span><code>yum -y install gcc g++ make         // -y不要提示是否安装
+make MALLOC=libc                    // MALLOC 很重要
+make install                        // 似乎可要可不要
+cd src/                             // 可执行文件在 src/ 下
+cp redis-server redis-cli /usr/bin
+cp redis-sentinel redis-benchmark redis-check-aof redis-check-dump /usr/bin 2/dev/null                      // 以防某个文件redis-check-dump 不存在
+</code></pre></div>
+
+<h1>配置</h1>
+<div class="highlight"><pre><span></span><code><span class="n">port</span><span class="o">=</span><span class="mi">6379</span>                           <span class="o">//</span> <span class="n">redis默认端口</span>
+<span class="n">mkdir</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">redis</span>                    <span class="o">//</span> <span class="n">redis</span> <span class="err">配置文件夹</span>
+<span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">redis</span><span class="o">/$</span><span class="n">port</span>       <span class="o">//</span> <span class="err">创建有效的保存数据的目录</span>
+
+<span class="n">sysctl</span> <span class="o">-</span><span class="n">w</span> <span class="n">vm</span><span class="o">.</span><span class="n">overcommit_memory</span><span class="o">=</span><span class="mi">1</span>    <span class="o">//</span> <span class="err">避免数据被截断</span>
+<span class="n">sysctl</span> <span class="o">-</span><span class="n">w</span> <span class="n">net</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">somaxconn</span><span class="o">=</span><span class="mi">512</span>    <span class="o">//</span> <span class="err">不知道什么用</span>
+<span class="n">echo</span> <span class="n">never</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">mm</span><span class="o">/</span><span class="n">transparent_hugepage</span><span class="o">/</span><span class="n">enabled</span>    <span class="o">//</span> <span class="err">取消透明巨页内存（</span><span class="n">transparent</span> <span class="n">huge</span> <span class="n">pages</span><span class="err">），因为这会造成</span> <span class="n">redis</span> <span class="err">产生延时和内存访问问题</span>
+
+<span class="n">cd</span> <span class="o">../</span>              <span class="o">//</span> <span class="err">配置文件在原地</span>
+<span class="n">cp</span> <span class="n">redis</span><span class="o">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">redis</span><span class="o">/</span><span class="mf">6379.</span><span class="n">conf</span>
+<span class="n">cp</span> <span class="n">utils</span><span class="o">/</span><span class="n">redis_init_script</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">redis_</span><span class="o">$</span><span class="n">port</span>
+</code></pre></div>
+
+<h2>配置文件redis.conf</h2>
+<div class="highlight"><pre><span></span><code><span class="n">vi</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">redis</span><span class="o">/</span><span class="mf">6379.</span><span class="n">conf</span>
+<span class="n">daemonize</span> <span class="n">no</span>                    <span class="o">//</span><span class="err">设置</span> <span class="n">daemonize</span> <span class="err">为</span> <span class="n">no</span><span class="err">，</span><span class="n">systemd</span> <span class="err">需要它运行在前台，否则</span> <span class="n">redis</span> <span class="err">会突然挂掉</span>
+<span class="n">pidfile</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">redis_6379</span><span class="o">.</span><span class="n">pid</span>
+<span class="n">port</span> <span class="mi">6379</span>                       <span class="o">//</span> <span class="err">默认不用改</span>
+<span class="n">loglevel</span> <span class="n">notice</span>
+<span class="n">logfile</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">redis_6379</span><span class="o">.</span><span class="n">log</span>
+<span class="n">dir</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">redis</span><span class="o">/</span><span class="mi">6379</span>
+<span class="n">requirepass</span> <span class="s2">&quot;bTFBx1NYYWRMTUEyNHhsCg&quot;</span>  <span class="o">//</span> <span class="err">密码</span>
+</code></pre></div>
+
+<h3>Unix sockets</h3>
+<p>客户端程序和服务器端程序运行在同一个机器上，所以不需要监听网络上的 socket, 使用 unix socket 替代网络 socket</p>
+<div class="highlight"><pre><span></span><code>port = 0
+unixsocket /tmp/redis.sock
+unixsocketperm 700
+</code></pre></div>
+
+<h2>开机启动服务</h2>
+<div class="highlight"><pre><span></span><code>vi /etc/systemd/system/redis_$port.service     // 使用 systemd，所以在 /etc/systems/system 下创建一个单位文件, 不要 _$port 也挺好，免得搞错，但如果要多个的话， 可能还是用来区分的好
+</code></pre></div>
+
+<h2>内容</h2>
+<div class="highlight"><pre><span></span><code><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Redis on port $port</span>
+<span class="k">[Service]</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">forking</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/etc/init.d/redis_$port start</span>
+<span class="na">ExecStop</span><span class="o">=</span><span class="s">/etc/init.d/redis_$port stop</span>
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+
+<span class="na">vm.overcommit_memory</span> <span class="o">=</span> <span class="s">1        // 这两句不知道是不是能直接添加</span>
+<span class="na">net.core.somaxconn</span><span class="o">=</span><span class="s">512</span>
+
+<span class="na">echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled  放到 /etc/rc.local 的结尾</span>
+</code></pre></div>
+
+<h1>启动运行</h1>
+<div class="highlight"><pre><span></span><code>service redis_$port start
+service redis_$port restart
+service redis_$port stop
+</code></pre></div>
+
+<h1>配置文件</h1>
+<div class="highlight"><pre><span></span><code>/etc/redis/6379.conf                        // 常规配置
+/etc/systemd/system/redis_$port.service     // 启动配置
+</code></pre></div>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2017-08-28T10:41:29+08:00">Aug 28, 2017</time>
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#shu-ju-ku-ref">数据库</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#linux-ref">Linux
+                            <span>8</span>
+</a></li>
+                        <li><a href="/tags.html#redis-ref">Redis
+                            <span>2</span>
+</a></li>
+                        <li><a href="/tags.html#web-ref">web
+                            <span>11</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

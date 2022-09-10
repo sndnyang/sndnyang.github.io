@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang" />
+        <meta name="copyright" content="sndnyang" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="可视化, d3.js, 开发工具, " />
+
+<meta property="og:title" content="D3.js 学习心得一 "/>
+<meta property="og:url" content="/d3js_learn_1.html" />
+<meta property="og:description" content="[TOC] 流程 一、添加 svg 画布， 得到一个 选择器selection var svg = d3.select(&#34;body&#34;) //选择文档中的某一元素，根据CSS规范，如 &#34;body&#34; .append(&#34;svg&#34;) //添加一个svg元素, 符合html操作 .attr(&#34;width&#34;, width) //设定宽度 .attr(&#34;height&#34;, height); //设定高度 二、布局（转换数据） 2.1 种类 布局种类 2.2 定义布局 var mylayout = d3.layout.tree() // 例： Tree布局 2 …" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang" />
+<meta property="og:article:published_time" content="2016-03-01T00:00:00+08:00" />
+<meta name="twitter:title" content="D3.js 学习心得一 ">
+<meta name="twitter:description" content="[TOC] 流程 一、添加 svg 画布， 得到一个 选择器selection var svg = d3.select(&#34;body&#34;) //选择文档中的某一元素，根据CSS规范，如 &#34;body&#34; .append(&#34;svg&#34;) //添加一个svg元素, 符合html操作 .attr(&#34;width&#34;, width) //设定宽度 .attr(&#34;height&#34;, height); //设定高度 二、布局（转换数据） 2.1 种类 布局种类 2.2 定义布局 var mylayout = d3.layout.tree() // 例： Tree布局 2 …">
+
+
+        <title>D3.js 学习心得一  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/d3js_learn_1.html">
+                        D3.js 学习心得一  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<h1>流程</h1>
+<h2>一、添加 svg 画布， 得到一个 选择器selection</h2>
+<div class="highlight"><pre><span></span><code><span class="k">var</span> <span class="n">svg</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">)</span> <span class="o">//</span><span class="err">选择文档中的某一元素，根据</span><span class="n">CSS规范</span><span class="err">，如</span> <span class="s2">&quot;body&quot;</span>
+<span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;svg&quot;</span><span class="p">)</span>              <span class="o">//</span><span class="err">添加一个</span><span class="n">svg元素</span><span class="p">,</span> <span class="err">符合</span><span class="n">html操作</span>
+<span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>       <span class="o">//</span><span class="err">设定宽度</span>
+<span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>    <span class="o">//</span><span class="err">设定高度</span>
+</code></pre></div>
+
+<h2>二、布局（转换数据）</h2>
+<h3>2.1 种类</h3>
+<p><a href="https://github.com/mbostock/d3/wiki/API--%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C#d3layout-%E5%B8%83%E5%B1%80">布局种类</a></p>
+<h3>2.2 定义布局</h3>
+<div class="highlight"><pre><span></span><code><span class="k">var</span> <span class="n">mylayout</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">tree</span><span class="p">()</span>  <span class="o">//</span> <span class="err">例：</span> <span class="n">Tree布局</span>
+</code></pre></div>
+
+<h3>2.3 设置布局的基本属性（接上一项）</h3>
+<div class="highlight"><pre><span></span><code><span class="na">.size</span><span class="p">([</span><span class="no">width</span><span class="p">,</span> <span class="no">height</span><span class="p">])</span>       <span class="c1">// tree 只想到这个属性</span>
+</code></pre></div>
+
+<h3>2.4 用布局转换数据</h3>
+<div class="highlight"><pre><span></span><code><span class="k">var</span> <span class="n">nodes</span> <span class="o">=</span> <span class="n">mylayout</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="o">.</span><span class="n">reverse</span><span class="p">()]</span>  <span class="o">//</span> <span class="n">reverse</span> <span class="err">逆序，</span> <span class="n">data格式有讲究</span><span class="err">，</span> <span class="n">json且属性名字限定</span>
+<span class="k">var</span> <span class="n">links</span> <span class="o">=</span> <span class="n">mylayout</span><span class="o">.</span><span class="n">links</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>  <span class="o">//</span> <span class="err">树图要生成点和边</span>
+<span class="err">或者</span>
+<span class="k">var</span> <span class="n">piedata</span> <span class="o">=</span> <span class="n">pie</span><span class="p">(</span><span class="n">dataset</span><span class="p">);</span>         <span class="o">//</span> <span class="err">饼状图就不需要边了</span>
+</code></pre></div>
+
+<h2>三、数据绑定到元素（默认新建元素）</h2>
+<h3>3.1 从画布选择器中，再选择后代元素</h3>
+<div class="highlight"><pre><span></span><code>svg.select(name)            // 选择第一个匹配的元素
+或者
+svg.selectAll(name)         // 选择全部匹配的元素
+</code></pre></div>
+
+<h3>3.2 加载数据（接上一项）</h3>
+<div class="highlight"><pre><span></span><code><span class="na">.data</span><span class="p">(</span><span class="no">dataset</span><span class="p">)</span>          <span class="c1">// 元素和数据集一对一加载, 此时得到的叫 update部分</span>
+<span class="err">或者</span>
+<span class="na">.datum</span><span class="p">(</span><span class="no">oneData</span><span class="p">)</span>         <span class="c1">// 一个数据绑定给全部元素</span>
+</code></pre></div>
+
+<h3>3.3 对应数据来创建元素（接上一项），如果元素是现成的不需要建</h3>
+<div class="highlight"><pre><span></span><code><span class="na">.enter</span><span class="p">()</span>            <span class="c1">// 只能接上一项 数据加载, 此时得到的叫 enter部分</span>
+<span class="na">.append</span><span class="p">(</span><span class="no">type</span><span class="p">)</span>       <span class="c1">// 创建需要类型的元素</span>
+</code></pre></div>
+
+<h3>3.4 数据属性设置（例）</h3>
+<p>根据上一项的 type 和 数据， 设置需要的属性</p>
+<div class="highlight"><pre><span></span><code><span class="na">.attr</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>                   <span class="c1">//屏幕上的起始横坐标</span>
+<span class="na">.attr</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span><span class="no">function</span><span class="p">(</span><span class="no">d</span><span class="p">,</span><span class="no">i</span><span class="p">)</span><span class="err">{</span>        <span class="c1">//屏幕上的起始纵坐标</span>
+     <span class="nf">return</span> <span class="no">i</span> <span class="p">*</span> <span class="no">rectHeight</span><span class="c1">;</span>
+<span class="err">})</span>
+<span class="na">.attr</span><span class="p">(</span><span class="s">&quot;width&quot;</span><span class="p">,</span><span class="no">function</span><span class="p">(</span><span class="no">d</span><span class="p">)</span><span class="err">{</span>      <span class="c1">// 元素宽度（有这个属性的话）</span>
+     <span class="nf">return</span> <span class="no">d</span><span class="c1">;</span>
+<span class="err">})</span>
+<span class="na">.attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span><span class="no">rectHeight-2</span><span class="p">)</span>    <span class="c1">// 元素高度（有这个属性的话）</span>
+<span class="na">.attr</span><span class="p">(</span><span class="s">&quot;fill&quot;</span><span class="p">,</span><span class="s">&quot;steelblue&quot;</span><span class="p">)</span><span class="c1">;      // 颜色填充</span>
+</code></pre></div>
+
+<h3>3.5 事件设置（也是属性）</h3>
+<div class="highlight"><pre><span></span><code><span class="na">.on</span><span class="p">(</span><span class="s">&quot;mouseover&quot;</span><span class="p">,</span><span class="no">function</span><span class="p">(</span><span class="no">d</span><span class="p">,</span><span class="no">i</span><span class="p">)</span><span class="err">{}</span><span class="p">)</span>
+<span class="na">.on</span><span class="p">(</span><span class="s">&quot;mouseout&quot;</span><span class="p">,</span><span class="no">function</span><span class="p">(</span><span class="no">d</span><span class="p">,</span><span class="no">i</span><span class="p">)</span><span class="err">{}</span><span class="p">)</span>
+<span class="na">.on</span><span class="p">(</span><span class="s">&quot;click&quot;</span><span class="p">,</span><span class="no">function</span><span class="p">(</span><span class="no">d</span><span class="p">,</span><span class="no">i</span><span class="p">)</span><span class="err">{}</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>在该元素下继续添加其他子元素</h3>
+<p>前面3.1-3.5步骤结果保存在某变量中， 即可使用该变量继续append,设置属性和事件</p>
+<h2>四、动画效果</h2>
+<h3>4.1 方法</h3>
+<ul>
+<li>transition()  // 启动过渡效果, 其前后是图形变化前后的状态（形状、位置、颜色等等）</li>
+<li>duration()    // 指定过渡的持续时间，单位为毫秒</li>
+<li>ease() 指定过渡的方式，常用的有：<br>
+    linear：普通的线性变化
+    circle：慢慢地到达变换的最终状态
+    elastic：带有弹跳的到达最终状态
+    bounce：在最终状态处弹跳几次</li>
+<li>delay() 指定延迟的时间，可用匿名函数function(d,i) 指定各个的延迟</li>
+</ul>
+<h3>4.2 创建动态效果</h3>
+<div class="highlight"><pre><span></span><code><span class="k">var</span> <span class="n">transition</span> <span class="o">=</span> <span class="n">selection</span><span class="o">.</span><span class="n">transition</span><span class="p">()</span>
+                <span class="o">.</span><span class="n">duration</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">()</span><span class="o">...</span>         <span class="o">//</span> <span class="err">定义变量是可能用于</span><span class="mf">4.3</span>
+</code></pre></div>
+
+<h3>4.3 对子元素进行处理</h3>
+<p>如果元素中有子元素，需要一并处理。</p>
+<div class="highlight"><pre><span></span><code>transition.select(name).attr()
+</code></pre></div>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2016-03-01T00:00:00+08:00">Mar 1, 2016</time>
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#kai-fa-gong-ju-ref">开发工具</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#d3js-ref">d3.js
+                            <span>1</span>
+</a></li>
+                        <li><a href="/tags.html#ke-shi-hua-ref">可视化
+                            <span>4</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

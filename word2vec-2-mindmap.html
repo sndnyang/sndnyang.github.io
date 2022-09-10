@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang" />
+        <meta name="copyright" content="sndnyang" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="CS, 自然语言处理, 人工智能, 自然语言处理, " />
+
+<meta property="og:title" content="基于Word2Vec生成基本的思维导图 "/>
+<meta property="og:url" content="/word2vec-2-mindmap.html" />
+<meta property="og:description" content="[TOC] 译自： 原文链接(没有找过作者， 随手就翻译了) 思维导图这一工具因其长于组织大量任务、材料信息，在头脑风暴、 计划和问题解决等领域得到广泛使用、一致好评。 对思路的可视整理有助于整个思考的过程， 并且模拟了我们人类思考时获取脑中知识的方式。 现今有很多工具可以帮助我们画出思维导图， 但还没有一个能自行生成的， “生成”是指从文本（语音）内容中提成。 为了做到这一点， 我花了最长的时间（至今快8个月了）， 研究如何结合文本挖掘和图论做成一个框架来生成思维导图（给定一段文本）。 当然， 第一个问题就是， 任意一段文字都不会只有那么一种可行的思维导图。 只是， 如果你要构建自己的思维导图， 有这么一个自动工具， 可能会给你更多的思路和洞见， 特别是头脑风暴时， 或帮你查缺补漏。 那我们先来看看一个思维导图的样式—— 两个关键点： 思维导图并不简单地是一棵树， 不只是递归地将主题划分成子主题。 它本质上更像图， 连接项在语义上是相关的。 正如‘夜晚’可能会让你想到‘白天’， 思维导图中， 意义相反的两个概念之间也很可能存在连接。 还有诸如使用图片强化概念等其他点。但这些并不是本文的主旨（我的设计师风格创造力糟透了）。 有备无患 ， Heres 这篇文章能帮助你熟悉构建和使用思维导图的过程 …" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang" />
+<meta property="og:article:published_time" content="2016-04-28T00:00:00+08:00" />
+<meta name="twitter:title" content="基于Word2Vec生成基本的思维导图 ">
+<meta name="twitter:description" content="[TOC] 译自： 原文链接(没有找过作者， 随手就翻译了) 思维导图这一工具因其长于组织大量任务、材料信息，在头脑风暴、 计划和问题解决等领域得到广泛使用、一致好评。 对思路的可视整理有助于整个思考的过程， 并且模拟了我们人类思考时获取脑中知识的方式。 现今有很多工具可以帮助我们画出思维导图， 但还没有一个能自行生成的， “生成”是指从文本（语音）内容中提成。 为了做到这一点， 我花了最长的时间（至今快8个月了）， 研究如何结合文本挖掘和图论做成一个框架来生成思维导图（给定一段文本）。 当然， 第一个问题就是， 任意一段文字都不会只有那么一种可行的思维导图。 只是， 如果你要构建自己的思维导图， 有这么一个自动工具， 可能会给你更多的思路和洞见， 特别是头脑风暴时， 或帮你查缺补漏。 那我们先来看看一个思维导图的样式—— 两个关键点： 思维导图并不简单地是一棵树， 不只是递归地将主题划分成子主题。 它本质上更像图， 连接项在语义上是相关的。 正如‘夜晚’可能会让你想到‘白天’， 思维导图中， 意义相反的两个概念之间也很可能存在连接。 还有诸如使用图片强化概念等其他点。但这些并不是本文的主旨（我的设计师风格创造力糟透了）。 有备无患 ， Heres 这篇文章能帮助你熟悉构建和使用思维导图的过程 …">
+
+
+        <title>基于Word2Vec生成基本的思维导图  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/word2vec-2-mindmap.html">
+                        基于Word2Vec生成基本的思维导图  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<p>译自：</p>
+<p><a href="https://codesachin.wordpress.com/2015/10/15/generating-rudimentary-mind-maps-from-word2vec-models/">原文链接</a>(没有找过作者， 随手就翻译了)</p>
+<p>思维导图这一工具因其长于组织大量任务、材料信息，在头脑风暴、 计划和问题解决等领域得到广泛使用、一致好评。</p>
+<p>对思路的可视整理有助于整个思考的过程， 并且模拟了我们人类思考时获取脑中知识的方式。</p>
+<p>现今有很多工具可以帮助我们画出思维导图， 但还没有一个能自行生成的， “生成”是指从文本（语音）内容中提成。</p>
+<p>为了做到这一点， 我花了最长的时间（至今快8个月了）， 研究如何结合文本挖掘和图论做成一个框架来生成思维导图（给定一段文本）。</p>
+<p>当然， 第一个问题就是， 任意一段文字都不会只有那么一种可行的思维导图。</p>
+<p>只是， 如果你要构建自己的思维导图， 有这么一个自动工具， 可能会给你更多的思路和洞见， 特别是头脑风暴时， 或帮你查缺补漏。</p>
+<p>那我们先来看看一个思维导图的样式——</p>
+<p><img alt="mindmap" src="https://codesachin.wordpress.com/2015/10/15/generating-rudimentary-mind-maps-from-word2vec-models/"></p>
+<p>两个关键点：</p>
+<ul>
+<li>思维导图并不简单地是一棵树， 不只是递归地将主题划分成子主题。 它本质上更像图， 连接项在语义上是相关的。</li>
+<li>正如‘夜晚’可能会让你想到‘白天’， 思维导图中， 意义相反的两个概念之间也很可能存在连接。</li>
+</ul>
+<p>还有诸如使用图片强化概念等其他点。但这些并不是本文的主旨（我的设计师风格创造力糟透了）。</p>
+<p>有备无患 ， <a href="http://lifehacker.com/how-to-use-mind-maps-to-unleash-your-brains-creativity-1348869811">Heres</a> 这篇文章能帮助你熟悉构建和使用思维导图的过程。</p>
+<p>在我上一篇博文 <a href="https://codesachin.wordpress.com/2015/10/09/generating-a-word2vec-model-from-a-block-of-text-using-gensim-python/">链接</a> 中， 我描述了一种从文本生成Word2Vec模型的方法（使用维基的文章作为示例）。</p>
+<p>在这里， 我将描述我使用的从 Word2Vec模型生成基本思维导图的方法。</p>
+<h1>第一步： 从文章中找出前n项</h1>
+<p>（就像我上一篇博文所说， 我只使用stemmed unigrams（一个词干的n-gram), 你可以自行采用更高阶的ngrams, 想来会更棘手（准确来说， 是当你生成n-gram的算法有效时）</p>
+<p>这里的 n 是指思维导图中的节点数， 在我多次尝试之后， 50是个比较好的数字， 太小则信息少， 太大则噪音多。 欢迎尝试其他数字。</p>
+<p>我使用了本文 链接 中写的 co-occurrence 方法， 列出文本的前 n 项词。 代码如下：</p>
+<div class="highlight"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">_get_param_matrices</span><span class="p">(</span><span class="n">vocabulary</span><span class="p">,</span><span class="w"> </span><span class="n">sentence_terms</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;&quot;&quot;</span>
+<span class="ss">    Returns</span>
+<span class="ss">    =======</span>
+<span class="ss">    1. Top 300(or lesser, if vocab is short) most frequent terms(list)</span>
+<span class="ss">    2. co-occurence matrix wrt the most frequent terms(dict)</span>
+<span class="ss">    3. Dict containing Pg of most-frequent terms(dict)</span>
+<span class="ss">    4. nw(no of terms affected) of each term(dict)</span>
+<span class="ss">    &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">#Figure</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="k">top</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">terms</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">respect</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">mere</span><span class="w"> </span><span class="n">occurences</span><span class="w"></span>
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="n">vocabulary</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="n">topterms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="n">vocabulary</span><span class="p">.</span><span class="n">keys</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="n">topterms</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="k">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">vocabulary</span><span class="o">[</span><span class="n">x</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="nf">reverse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">topterms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topterms</span><span class="o">[</span><span class="n">:n</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">#nw</span><span class="w"> </span><span class="n">maps</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">terms</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="s1">&#39;affects&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="err">#</span><span class="p">(</span><span class="nf">sum</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">terms</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="ow">all</span><span class="w"> </span><span class="n">sentences</span><span class="w"> </span><span class="n">it</span><span class="w"></span>
+<span class="w">    </span><span class="n">#appears</span><span class="w"> </span><span class="ow">in</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">nw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span><span class="w"></span>
+<span class="w">    </span><span class="n">#Co</span><span class="o">-</span><span class="n">occurence</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="k">are</span><span class="w"> </span><span class="n">wrt</span><span class="w"> </span><span class="k">top</span><span class="w"> </span><span class="n">terms</span><span class="w"> </span><span class="k">only</span><span class="w"></span>
+<span class="w">    </span><span class="n">co_occur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span><span class="w"></span>
+<span class="w">    </span><span class="n">#Initially</span><span class="p">,</span><span class="w"> </span><span class="n">co</span><span class="o">-</span><span class="n">occurence</span><span class="w"> </span><span class="n">matrix</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">empty</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">vocabulary</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">co_occur</span><span class="o">[</span><span class="n">x</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">0 for i in range(len(topterms))</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">#Iterate</span><span class="w"> </span><span class="k">over</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ow">all</span><span class="w"> </span><span class="n">sentences</span><span class="s1">&#39; vocabulary dictionaries</span>
+<span class="s1">    #Build the co-occurence matrix</span>
+<span class="s1">    for sentence in sentence_terms:</span>
+<span class="s1">        total_terms = sum(list(sentence.values()))</span>
+<span class="s1">        #This list contains the indices of all terms from topterms,</span>
+<span class="s1">        #that are present in this sentence</span>
+<span class="s1">        top_indices = []</span>
+<span class="s1">        #Populate top_indices</span>
+<span class="s1">        top_indices = [topterms.index(x) for x in sentence</span>
+<span class="s1">                       if x in topterms]</span>
+<span class="s1">        #Update nw dict, and co-occurence matrix</span>
+<span class="s1">        for term in sentence:</span>
+<span class="s1">            nw[term] = nw.get(term, 0) + total_terms</span>
+<span class="s1">            for index in top_indices:</span>
+<span class="s1">                co_occur[term][index] += (sentence[term] *</span>
+<span class="s1">                                          sentence[topterms[index]])</span>
+
+<span class="s1">    #Pg is just nw[term]/total vocabulary of text</span>
+<span class="s1">    Pg = {}</span>
+<span class="s1">    N = sum(list(vocabulary.values()))</span>
+<span class="s1">    for x in topterms:</span>
+<span class="s1">        Pg[x] = float(nw[x])/N</span>
+
+<span class="s1">    return topterms, co_occur, Pg, nw</span>
+
+
+<span class="s1">def get_top_n_terms(vocabulary, sentence_terms, n=50):</span>
+<span class="s1">    &quot;&quot;&quot;</span>
+<span class="s1">    Returns the top &#39;</span><span class="n">n</span><span class="s1">&#39; terms from a block of text, in the form of a list,</span>
+<span class="s1">    from most important to least.</span>
+
+<span class="s1">    &#39;</span><span class="n">vocabulary</span><span class="s1">&#39; should be a dict mapping each term to the number</span>
+<span class="s1">    of its occurences in the entire text.</span>
+<span class="s1">    &#39;</span><span class="n">sentence_terms</span><span class="err">&#39;</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">iterable</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">dicts</span><span class="p">,</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="n">denoting</span><span class="w"> </span><span class="n">the</span><span class="w"></span>
+<span class="w">    </span><span class="n">vocabulary</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">corresponding</span><span class="w"> </span><span class="n">sentence</span><span class="p">.</span><span class="w"></span>
+<span class="w">    </span><span class="ss">&quot;&quot;</span><span class="err">&quot;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">#First</span><span class="w"> </span><span class="k">compute</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">matrices</span><span class="w"></span>
+<span class="w">    </span><span class="n">topterms</span><span class="p">,</span><span class="w"> </span><span class="n">co_occur</span><span class="p">,</span><span class="w"> </span><span class="n">Pg</span><span class="p">,</span><span class="w"> </span><span class="n">nw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_get_param_matrices</span><span class="p">(</span><span class="n">vocabulary</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                                     </span><span class="n">sentence_terms</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">#This</span><span class="w"> </span><span class="n">dict</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">its</span><span class="w"> </span><span class="n">weightage</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">respect</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"></span>
+<span class="w">    </span><span class="n">#document</span><span class="w"></span>
+<span class="w">    </span><span class="k">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">list</span><span class="p">(</span><span class="n">vocabulary</span><span class="p">.</span><span class="k">values</span><span class="p">()))</span><span class="w"></span>
+<span class="w">    </span><span class="n">#Iterates</span><span class="w"> </span><span class="k">over</span><span class="w"> </span><span class="ow">all</span><span class="w"> </span><span class="n">terms</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">vocabulary</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">co_occur</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">str</span><span class="p">(</span><span class="n">term</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">org_term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">str</span><span class="p">(</span><span class="n">term</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">Pg</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">#expected_cooccur</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">expected</span><span class="w"> </span><span class="n">cooccurence</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">this</span><span class="w"></span>
+<span class="w">            </span><span class="n">#term</span><span class="p">,</span><span class="w"> </span><span class="n">based</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">nw</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Pg</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">other</span><span class="w"></span>
+<span class="w">            </span><span class="n">expected_cooccur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nw</span><span class="o">[</span><span class="n">term</span><span class="o">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Pg</span><span class="o">[</span><span class="n">x</span><span class="o">]</span><span class="w"></span>
+<span class="w">            </span><span class="n">#Result</span><span class="w"> </span><span class="n">measures</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nf">difference</span><span class="p">(</span><span class="ow">in</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">terms</span><span class="p">)</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">expected</span><span class="w"></span>
+<span class="w">            </span><span class="n">#cooccurence</span><span class="w"> </span><span class="ow">and</span><span class="w">  </span><span class="n">actual</span><span class="w"> </span><span class="n">cooccurence</span><span class="w"></span>
+<span class="w">            </span><span class="k">result</span><span class="o">[</span><span class="n">org_term</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">co_occur</span><span class="o">[</span><span class="n">term</span><span class="o">][</span><span class="n">topterms.index(x)</span><span class="o">]</span><span class="w"> </span><span class="o">-</span><span class="w"></span>
+<span class="w">                                 </span><span class="n">expected_cooccur</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="w"> </span><span class="nc">float</span><span class="p">(</span><span class="n">expected_cooccur</span><span class="p">))</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">terms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="k">result</span><span class="p">.</span><span class="n">keys</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="n">terms</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="k">key</span><span class="o">=</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="k">result</span><span class="o">[</span><span class="n">x</span><span class="o">]</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="nf">reverse</span><span class="o">=</span><span class="k">True</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">terms</span><span class="o">[</span><span class="n">:n</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
+
+<p>get_top_n_terms 函数实现了这个功能， 我希望我写的 docstring 和 注释很好地解释了整个过程（结合起那篇论文）。</p>
+<p>如果你有时间， 足够耐心， 你可以看到你Word2Vec模型里的整个词库（entire vocabulary）， 并找到你想加入到你的思维导图里的那些项。 这样做大概能得到最好的结果（就是太辛苦）。</p>
+<p>第二步： 选定根节点 根结点是最能表达思维导图中心思想的。 相比起整个词库entire vocabulary， 选中的结点个数小上许多， 所以， 也许最好就是 手工选定根结点的项。</p>
+<p>或者， 使用出现频率最高的（has the highest occurrence）。这一步也需要很多尝试（但数学科学能起什么作用吗）</p>
+<p>第三步： 生成导图 这是至关重要的一步， 也是我花了最多时间的。</p>
+<p>首先， 我需要定义一个项（term）的 情境向量（contextual vector）</p>
+<p>假设， 本导图的根是‘电脑’， 连到另一个项‘硬件’， ‘硬件’再连‘键盘’， 那么， ‘键盘’的Word2Vec向量以 model[keyboard]的方式在Python/Gensim中获得。 定义这个向量为 $ v_{keyboard} $</p>
+<p>现在考虑构建过程。</p>
+<p>因为你目前已经有了一些东西， 你再想到'键盘' 时， 其实已经处于'电脑'和 '硬件' 的情境（上下文）中。</p>
+<p>所以你很难把 ’键盘‘ 跟 ’音乐‘ 联系起来（最起码不直接相关）。</p>
+<p>可见， '键盘' 的contextual vector情境向量（定义为 $ v^{'}_{keyboard} $ ) 一定会将方向偏向到</p>
+<p>$ v 和 v_{hardware} $ (be biased in its direction towards). ---- 我们要计算 Word2Vec 模型的 cosine 相似度， 当然只跟方向有关。</p>
+<p>从直觉上说， $ v_{hardware} 和 v^{'}_{keyboard} $ 的影响应该大于的影响应该大于 v ， 也就是距离越远， 父节点的影响会越小。</p>
+<p>为了考虑这个因素， 我再加入了一个 参数 情境递减因子 αα 。 数学表达如下：</p>
+<p>$$
+v^{'}<em keyboard>{computer} = v 
+$$
+$$
+v^{'}{hardware} = (1-\alpha)v + \alpha v^{'} 
+$$
+$$
+v^{'} = (1-\alpha)v</em> + \alpha v^{'}_{hardware}
+$$</p>
+<p>最后， 可以生成实际的导图了， 以下是我使用的算法（我希望行内注释能帮你理解我的工作）</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">cosine</span>
+<span class="kn">from</span> <span class="nn">networkx</span> <span class="kn">import</span> <span class="n">Graph</span>
+
+<span class="k">def</span> <span class="nf">build_mind_map</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">stemmer</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the Mind-Map in the form of a NetworkX Graph instance.</span>
+
+<span class="sd">    &#39;model&#39; should be an instance of gensim.models.Word2Vec</span>
+<span class="sd">    &#39;nodes&#39; should be a list of terms, included in the vocabulary of</span>
+<span class="sd">    &#39;model&#39;.</span>
+<span class="sd">    &#39;root&#39; should be the node that is to be used as the root of the Mind</span>
+<span class="sd">    Map graph.</span>
+<span class="sd">    &#39;stemmer&#39; should be an instance of StemmingHelper.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#This will be the Mind-Map</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
+
+    <span class="c1">#Ensure that the every node is in the vocabulary of the Word2Vec</span>
+    <span class="c1">#model, and that the root itself is included in the given nodes</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">vocab</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">node</span> <span class="o">+</span> <span class="s2">&quot; not in model&#39;s vocabulary&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">root</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;root not in nodes&quot;</span><span class="p">)</span>
+
+    <span class="c1">##Containers for algorithm run</span>
+    <span class="c1">#Initially, all nodes are unvisited</span>
+    <span class="n">unvisited_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="c1">#Initially, no nodes are visited</span>
+    <span class="n">visited_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([])</span>
+    <span class="c1">#The following will map visited node to its contextual vector</span>
+    <span class="n">visited_node_vectors</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1">#Thw following will map unvisited nodes to (closest_distance, parent)</span>
+    <span class="c1">#parent will obviously be a visited node</span>
+    <span class="n">node_distances</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1">#Initialization with respect to root</span>
+    <span class="n">current_node</span> <span class="o">=</span> <span class="n">root</span>
+    <span class="n">visited_node_vectors</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="n">root</span><span class="p">]</span>
+    <span class="n">unvisited_nodes</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+    <span class="n">visited_nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+
+    <span class="c1">#Build the Mind-Map in n-1 iterations</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)):</span>
+        <span class="c1">#For every unvisited node &#39;x&#39;</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">unvisited_nodes</span><span class="p">:</span>
+            <span class="c1">#Compute contextual distance between current node and x</span>
+            <span class="n">dist_from_current</span> <span class="o">=</span> <span class="n">cosine</span><span class="p">(</span><span class="n">visited_node_vectors</span><span class="p">[</span><span class="n">current_node</span><span class="p">],</span>
+                                       <span class="n">model</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+            <span class="c1">#Get the least contextual distance to x found until now</span>
+            <span class="n">distance</span> <span class="o">=</span> <span class="n">node_distances</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+            <span class="c1">#If current node provides a shorter path to x, update x&#39;s</span>
+            <span class="c1">#distance and parent information</span>
+            <span class="k">if</span> <span class="n">distance</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">dist_from_current</span><span class="p">:</span>
+                <span class="n">node_distances</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dist_from_current</span><span class="p">,</span> <span class="n">current_node</span><span class="p">)</span>
+
+        <span class="c1">#Choose next &#39;current&#39; as that unvisited node, which has the</span>
+        <span class="c1">#lowest contextual distance from any of the visited nodes</span>
+        <span class="n">next_node</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">unvisited_nodes</span><span class="p">,</span>
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">node_distances</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1">##Update all containers</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="n">node_distances</span><span class="p">[</span><span class="n">next_node</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">node_distances</span><span class="p">[</span><span class="n">next_node</span><span class="p">]</span>
+        <span class="n">next_node_vect</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">model</span><span class="p">[</span><span class="n">next_node</span><span class="p">]</span> <span class="o">+</span>
+                          <span class="n">alpha</span><span class="o">*</span><span class="n">visited_node_vectors</span><span class="p">[</span><span class="n">parent</span><span class="p">])</span>
+        <span class="n">visited_node_vectors</span><span class="p">[</span><span class="n">next_node</span><span class="p">]</span> <span class="o">=</span> <span class="n">next_node_vect</span>
+        <span class="n">unvisited_nodes</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">next_node</span><span class="p">)</span>
+        <span class="n">visited_nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">next_node</span><span class="p">)</span>
+
+        <span class="c1">#Add the link between newly selected node and its parent(from the</span>
+        <span class="c1">#visited nodes) to the NetworkX Graph instance</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">stemmer</span><span class="o">.</span><span class="n">original_form</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
+                   <span class="n">stemmer</span><span class="o">.</span><span class="n">original_form</span><span class="p">(</span><span class="n">next_node</span><span class="p">)</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+        <span class="c1">#The new node becomes the current node for the next iteration</span>
+        <span class="n">current_node</span> <span class="o">=</span> <span class="n">next_node</span>
+
+    <span class="k">return</span> <span class="n">g</span>
+</code></pre></div>
+
+<p>备注： 我使用了 NetworkX 的简易图构建架构来完成了思维导图生成的核心任务（使之更易用于可视化）。</p>
+<p>要计算 余弦距离， 我使用了 SciPy.</p>
+<p>另外注意74和75行， 我使用了上篇博文所写的 StemmingHelper 类， 所以在思维导图中显示的是词干原始形式， 而不是词干。可以将StemmingHelper类直接当做参数 stemmer 传入。 所以， 如果你不需要词干处理， 那就把第4,74,75三行的代码干掉吧。</p>
+<p>如果你仔细看过代码， 你会发现， 这看着很像 迪杰斯特拉的单点最短路径， 只是情境不同。</p>
+<h1>示例输出</h1>
+<p><a href="https://codesachin.wordpress.com/2015/10/15/generating-rudimentary-mind-maps-from-word2vec-models/">原文链接</a></p>
+<p>看着不错， 和我人工画的也挺像的。</p>
+<h1>其他</h1>
+<p>还有一些可尝试的东西。</p>
+<ul>
+<li>比如加入 bi-grams 和 trigrams。 我相信能让 Word2Vec 模型更强大， 能对文本做出更好的释义。</li>
+<li>导图中仍存在多余项， 但它给出了文本的（最？）短长度（相对其他文本挖掘任务来说）， 这种关键词提取算法（我在上文提到过的论文）似乎相当不错。 这段翻译有点不确认（There are some unnecessary terms in the Mind Maps, but given the short length of the texts (compared to most text mining tasks), the Keyword extraction algorithm in the paper I mentioned before, seems really good.）</li>
+<li>此方法可用于头脑风暴， 从你选择的一点出发， 这代码框架会给出建议的可连项， 你再做出选择， 然后又可以得到新的推荐——就有点像思维导图助手。</li>
+</ul>
+<p>无论怎样， 这都是篇长博文了， 谢谢你坚持着读完全文！（翻译也一样感谢您的阅读）。</p>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2016-04-28T00:00:00+08:00">Apr 28, 2016</time>
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#zi-ran-yu-yan-chu-li-ref">自然语言处理</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#cs-ref">CS
+                            <span>22</span>
+</a></li>
+                        <li><a href="/tags.html#ren-gong-zhi-neng-ref">人工智能
+                            <span>30</span>
+</a></li>
+                        <li><a href="/tags.html#zi-ran-yu-yan-chu-li-ref">自然语言处理
+                            <span>4</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>

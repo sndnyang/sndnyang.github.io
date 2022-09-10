@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang sndnyang.github.io" />
+        <meta name="copyright" content="sndnyang sndnyang.github.io" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="Python, 代码阅读, Python, " />
+
+<meta property="og:title" content="用开源项目Pelican学Python "/>
+<meta property="og:url" content="/learn-python-by-opensource-project-pelican.html" />
+<meta property="og:description" content="学习Pelican的源代码，掌握一些Python的开发技巧" />
+<meta property="og:site_name" content="无题" />
+<meta property="og:article:author" content="sndnyang sndnyang.github.io" />
+<meta property="og:article:published_time" content="2017-04-14T11:32:30+08:00" />
+<meta property="" content="2017-04-18T13:30:13+08:00" />
+<meta name="twitter:title" content="用开源项目Pelican学Python ">
+<meta name="twitter:description" content="学习Pelican的源代码，掌握一些Python的开发技巧">
+
+
+        <title>用开源项目Pelican学Python  · 无题
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.1/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+        <!-- <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+        <link href="/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!-- <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/theme/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" /> -->
+
+        <!-- <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="/theme/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+        <!-- <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.11.1/jquery.min.js" type="application/javascript"></script> -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>无题</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/learn-python-by-opensource-project-pelican.html">
+                        用开源项目Pelican学Python  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                    <div class="span8 offset2 article-content">
+
+                        
+                        <p>[TOC]</p>
+<h1>介绍</h1>
+<p>通过阅读Pelican的源码， 掌握一些Python开发实践方法， 这些方法可能也能用在其他
+语言的开发上。</p>
+<p>要求读者掌握基本Python语法——严格来说，Python语法很简单，只要看懂一种编程语言
+都可以了。</p>
+<p><a href="http://getpelican.com/">Pelican官网</a>， Pelican是Python语言编写的静态网站生成器
+，主要可以把Markdown，RestructuredText格式的文件转成HTML。</p>
+<p>其他部分不作介绍， 安装 pip install pelican，然后就开始吧。</p>
+<p>此外， 主要介绍Python里调用逻辑及已经有的好用的、但不知道时会重复创造的轮子(标准
+库)，而像 os，sys，random，math等不会重写的模块将跳过。</p>
+<p>第三方开发的 模块 暂不在介绍范围，除非特别有用</p>
+<h1>pelican的运行</h1>
+<p>pelican 创建项目这一块先不讨论， 直接从运行开始， 过一遍执行过程、调用过程</p>
+<p>MakeFile里的 make html 对应 </p>
+<div class="highlight"><pre><span></span><code><span class="err">pelican</span> <span class="k">$(</span><span class="nv">INPUTDIR</span><span class="k">)</span> <span class="err">-o</span> <span class="k">$(</span><span class="nv">OUTPUTDIR</span><span class="k">)</span> <span class="err">-s</span> <span class="k">$(</span><span class="nv">BASEDIR</span><span class="k">)</span><span class="err">/pelicanconf.py</span> <span class="k">$(</span><span class="nv">PELICANOPTS</span><span class="k">)</span>
+</code></pre></div>
+
+<p>shell\makefile部分略。</p>
+<h2>命令行参数</h2>
+<p>我们首先看到了 <em>命令行参数</em>， 有像 inputdir 这种， 也有像 -o outputdir 这种带前
+置选项参数的。</p>
+<p>读者也许知道 linux程序很多是命令行的， 所以经常有这种参数的设置、解析需求， 所
+以我们得到的第一个要学习的内容就是 命令行参数设置、解析的最佳实践</p>
+<p>有现成的轮子可以使用， Python内置argparse模块就是最佳实践， <a href="python-argparse.html" title="命令行参数解析">argparse使用</a></p>
+<p>在 pelican模块__init__.py里main函数的第一行 parse_arguments函数。</p>
+<h2>日志记录</h2>
+<p>其次，我们需要一个日志记录工具， 不能单靠print打天下， 于是使用内置logging模块
+， <a href="Python-logging.html" title="日志记录">logging日志记录</a></p>
+<p>第二行init函数，初始化日志记录器</p>
+<h2>额外模块导入</h2>
+<p>Python用到了很多的模块，内置的、第三方的，但仍然难免有一些作为参数、配置文件的
+模块需要导入， <a href="Python-module-import.html" title="模块导入">模块导入</a></p>
+<div class="highlight"><pre><span></span><code>get_instance &gt; read_settings &gt; get_settings_from_file
+</code></pre></div>
+
+<p>Pelican 的配置文件 pelicanconf.py 是一堆的键key, 值value ，所以我们需要最终得到
+一个字典dict，而不是一个模块module，所以我们需要下一步，从模块中读取出一个字典</p>
+<h2>自省反射</h2>
+<blockquote>
+<p><a href="introspection-reflection.html">什么是自省反射</a></p>
+</blockquote>
+<p>Python中的自省反射使用 <a href="Python-inspect.html" title="自省反射">inspect</a></p>
+<p>接下来，这个配置项 要和默认、命令行配置项进行合并，但我们希望这两个配置项的变量
+仍保持独立， 用另一个变量记录合并后的值。</p>
+<h2>复制</h2>
+<p>手写的话，可能是初始化一个新字典，然后分别遍历两个字典写入新字典里。</p>
+<p>我们希望能直接复制一个新字典，然后更新， 但我们知道 Python赋值是增加一个引用，
+即浅复制， 我们需要深复制， 所以使用 copy.deepcopy, <a href="Python-copy.html" title="复制">copy复制模块</a></p>
+<p>之后用另一项值进行更新update，是字典dict的方法， <a href="Python-dict.html">字典dict</a></p>
+<p>再完成一大堆配置后（没有值得一提的点），程序开始正式运行、解析</p>
+<h2>主程序调用</h2>
+<ol>
+<li>调用内容生成器，生成 <a href="pelican-generator.html" title="Pelican生成器">pelican内容生成器</a>
+    p = get_generator_classes()
+    p.generate_context()</li>
+<li>调用输出模块 <a href="pelican-writer.html" title="Pelican输出模块">pelican-writer</a>
+    writer = self.get_writer()
+    p.generate_output(writer)</li>
+</ol>
+<p>signal 信号部分没看明白</p>
+<h1>按代码顺序分析</h1>
+<p>在pelican模块的__init__.py文件开始， 第一步main函数</p>
+<ol>
+<li>parse_arguments函数:
+    命令行参数处理模块 argparser</li>
+<li>init函数:
+    日志记录模块 logging</li>
+<li>get_instance &gt; read_settings &gt; get_settings_from_file:  <ol>
+<li>额外模块导入的模块:
+    imp.load_source</li>
+<li>get_settings_from_module:   <ol>
+<li>深度复制（？） copy.deepcopy，copy模块</li>
+<li>自省、反射机制 inspect.getmembers, inspect</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>写不下去了~~~</li>
+</ol>
+<h1>总结</h1>
+<p>编程只要个结果不难，但要正确、稳定、高效就难了，但幸运的是，我们能清楚地判断它
+是否正确、稳定、高效，相对英语口语和写作就比较难自评了。</p>
+<p>所以多阅读优秀程序的源码， 总结一些架构的思想、 程序实现方式，既以帮助编程，也
+能帮助调试。</p>
+<h1>Pelican系列链接</h1>
+<ul>
+<li><a href="learn-python-by-opensource-project-pelican.html">导论</a></li>
+<li><a href="pelican-generator.html">生成模块</a></li>
+<li><a href="pelican-writer.html">输出模块</a></li>
+</ul>
+<h1>链接</h1>
+<ul>
+<li>&lt;<a href="python-argparse.html">命令行参数解析</a></li>
+<li>&lt;<a href="Python-logging.html">日志记录</a></li>
+<li>&lt;<a href="Python-module-import.html">模块导入</a></li>
+<li>&lt;<a href="python-copy.html">深度复制</a></li>
+<li>&lt;<a href="python-inspect.html">反射自省机制</a></li>
+<li>
+<blockquote>
+<p><a href="Python-dict.html">字典dict</a> </p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p><a href="introspection-reflection.html">什么是自省反射</a></p>
+</blockquote>
+</li>
+</ul>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2017-04-14T11:32:30+08:00">Apr 14, 2017</time>
+
+<h4>Last Updated</h4>
+<time datetime="2017-04-18T13:30:13+08:00">Apr 18, 2017</time>
+
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#python-ref">Python</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#dai-ma-yue-du-ref">代码阅读
+                            <span>3</span>
+</a></li>
+                        <li><a href="/tags.html#python-ref">Python
+                            <span>15</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <!-- <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML" type="application/javascript"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <!-- <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script src="/theme/bootstrap/js/bootstrap.min.js"></script>
+        <!-- <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.min.js" type="application/javascript"></script> -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>
