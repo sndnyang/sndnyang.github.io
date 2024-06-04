@@ -13,14 +13,14 @@
 <meta name="keywords" content="深度学习 机器学习, 人工智能, 深度学习, " />
 
 <meta property="og:title" content="TensorFlow技巧 "/>
-<meta property="og:url" content="http://sndnyang.github.io/TensorFlow-tricks.html" />
-<meta property="og:description" content="python2 3 兼容 The error information: TypeError: Can not convert a dict_values into a Tensor or Operation. TypeError: Can not convert a dict_values into a Tensor or Operation. File &#34;/home/xyang2/project/research/miscella/vat_tf/train_semisup.py&#34;, line 211, in main act_values = sess.run(values) It&#39;s caused by the ..." />
+<meta property="og:url" content="/TensorFlow-tricks.html" />
+<meta property="og:description" content="python2 3 兼容¶ The error information: TypeError: Can not convert a dict_values into a Tensor or Operation. TypeError: Can not convert a dict_values into a Tensor or Operation. File &#34;/home/xyang2/project/research/miscella/vat_tf/train_semisup.py&#34;, line 211, in main act_values = sess.run(values) It&#39;s caused by the …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2018-04-25T22:18:30+08:00" />
 <meta property="" content="2018-04-25T22:18:30+08:00" />
 <meta name="twitter:title" content="TensorFlow技巧 ">
-<meta name="twitter:description" content="python2 3 兼容 The error information: TypeError: Can not convert a dict_values into a Tensor or Operation. TypeError: Can not convert a dict_values into a Tensor or Operation. File &#34;/home/xyang2/project/research/miscella/vat_tf/train_semisup.py&#34;, line 211, in main act_values = sess.run(values) It&#39;s caused by the ...">
+<meta name="twitter:description" content="python2 3 兼容¶ The error information: TypeError: Can not convert a dict_values into a Tensor or Operation. TypeError: Can not convert a dict_values into a Tensor or Operation. File &#34;/home/xyang2/project/research/miscella/vat_tf/train_semisup.py&#34;, line 211, in main act_values = sess.run(values) It&#39;s caused by the …">
 
 
         <title>TensorFlow技巧  · 科探空谷
@@ -142,44 +142,44 @@
 
                         
                         
-<h1 id="python2-3">python2 3 兼容</h1>
+<h1 id="python2-3">python2 3 兼容<a class="headerlink" href="#python2-3" title="Permanent link">¶</a></h1>
 <p>The error information:</p>
 <p><code>TypeError: Can not convert a dict_values into a Tensor or Operation.</code></p>
 <p><code>TypeError: Can not convert a dict_values into a Tensor or Operation.</code></p>
-<div class="highlight"><pre><span></span>File "/home/xyang2/project/research/miscella/vat_tf/train_semisup.py", line 211, in main
+<div class="codehilite"><pre><span></span><code>File "/home/xyang2/project/research/miscella/vat_tf/train_semisup.py", line 211, in main
     act_values = sess.run(values)
-</pre></div>
+</code></pre></div>
 <p>It's caused by the compatibility of python2 and python3. <a href="https://github.com/balancap/SSD-Tensorflow/issues/154">solution</a></p>
 <p>Simpler solution for this code:</p>
 <p><code>values = list(losses_eval_train.values())</code></p>
-<h1 id="_1">显卡使用问题</h1>
+<h1 id="_1">显卡使用问题<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>python设置系统变量的方法</p>
-<div class="highlight"><pre><span></span>os.environ["CUDA_VISIBLE_DEVICES"] = "8,9,10,11,12,13,14,15"
-</pre></div>
+<div class="codehilite"><pre><span></span><code>os.environ["CUDA_VISIBLE_DEVICES"] = "8,9,10,11,12,13,14,15"
+</code></pre></div>
 <p>注意，在代码中指定设备时，重新从0开始计，而不是从8开始。</p>
-<h1 id="_2">显存使用问题</h1>
+<h1 id="_2">显存使用问题<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>显卡内存默认占用几乎全部, 可以通过重设backend的GPU占用情况来进行调节</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
-<span class="n">config</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">ConfigProto</span><span class="p">()</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf</span><span class="o">.</span><span class="n">ConfigProto</span><span class="p">()</span>
 
-<span class="n">config</span><span class="o">.</span><span class="n">gpu_options</span><span class="o">.</span><span class="n">allow_growth</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">config</span><span class="o">.</span><span class="n">gpu_options</span><span class="o">.</span><span class="n">allow_growth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">True</span>
 
-<span class="n">config</span><span class="o">.</span><span class="n">gpu_options</span><span class="o">.</span><span class="n">per_process_gpu_memory_fraction</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">config</span><span class="o">.</span><span class="n">gpu_options</span><span class="o">.</span><span class="n">per_process_gpu_memory_fraction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3</span>
 <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 <p><a href="https://blog.csdn.net/sinat_26917383/article/details/75633754">引用CSDN</a></p>
-<h1 id="tensorflow-cudnn">tensorflow cudnn 版本问题</h1>
+<h1 id="tensorflow-cudnn">tensorflow cudnn 版本问题<a class="headerlink" href="#tensorflow-cudnn" title="Permanent link">¶</a></h1>
 <p>Loaded runtime CuDNN library: 7.0.5 but source was compiled with: 7.2.1</p>
 <p>cudnn 7.0.4 对应 tensorflow-gpu==1.10.1 , 1.11, 1.12 默认的 cudnn 版本更新。。。</p>
 <p><a href="https://blog.csdn.net/jy1023408440/article/details/82887479">cudnn报错解决</a></p>
 <p>使用 conda 安装</p>
-<h1 id="tensorflow-cpu">解决Tensorflow 使用时cpu编译不支持警告</h1>
+<h1 id="tensorflow-cpu">解决Tensorflow 使用时cpu编译不支持警告<a class="headerlink" href="#tensorflow-cpu" title="Permanent link">¶</a></h1>
 <p>tensorflow 大量信息</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="err">  </span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"TF_CPP_MIN_LOG_LEVEL"</span><span class="p">]</span><span class="o">=</span><span class="s1">'1'</span> <span class="c1"># 这是默认的显示等级，显示所有信息  </span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"TF_CPP_MIN_LOG_LEVEL"</span><span class="p">]</span><span class="o">=</span><span class="s1">'2'</span> <span class="c1"># 只显示 warning 和 Error   </span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"TF_CPP_MIN_LOG_LEVEL"</span><span class="p">]</span><span class="o">=</span><span class="s1">'3'</span> <span class="c1"># 只显示 Error</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="w">  </span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"TF_CPP_MIN_LOG_LEVEL"</span><span class="p">]</span><span class="o">=</span><span class="s1">'1'</span><span class="w"> </span><span class="c1"># 这是默认的显示等级，显示所有信息  </span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"TF_CPP_MIN_LOG_LEVEL"</span><span class="p">]</span><span class="o">=</span><span class="s1">'2'</span><span class="w"> </span><span class="c1"># 只显示 warning 和 Error   </span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"TF_CPP_MIN_LOG_LEVEL"</span><span class="p">]</span><span class="o">=</span><span class="s1">'3'</span><span class="w"> </span><span class="c1"># 只显示 Error</span>
+</code></pre></div>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
                     <a href="#" class="bds_more" data-cmd="more"></a>
@@ -190,45 +190,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/TensorFlow-tricks.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'TensorFlow-tricks.html';
-    var disqus_url = 'http://sndnyang.github.io/TensorFlow-tricks.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -299,45 +261,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

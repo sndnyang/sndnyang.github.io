@@ -13,7 +13,7 @@
 <meta name="keywords" content="论文, 自然语言处理, 自然语言处理, " />
 
 <meta property="og:title" content="Text Classification Using Label Names Only A Language Model Self-Training Approach "/>
-<meta property="og:url" content="http://sndnyang.github.io/Text_Classification_Using_Label_Names_Only.html" />
+<meta property="og:url" content="/Text_Classification_Using_Label_Names_Only.html" />
 <meta property="og:description" content="" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="蜻蜓点论文" />
@@ -146,7 +146,7 @@
                         
 <p><img alt="image-20201019195239055" src="./images/image-20201019195239055.png"/></p>
 <p>发表于 EMNLP2020 ，<a href="https://arxiv.org/abs/2010.07245v1">Arxiv</a> <a href="https://github.com/yumeng5/LOTClass">github</a> </p>
-<h1 id="motivation">问题 Motivation</h1>
+<h1 id="motivation">问题 Motivation<a class="headerlink" href="#motivation" title="Permanent link">¶</a></h1>
 <p>给数据加标签，成本很高。</p>
 <p>Assigning labels to data can be costly and difficult to obtain those labels in real applications.</p>
 <p>人只需要基本的类别的描述、形容，即可进行分类，不需要标签</p>
@@ -162,10 +162,10 @@
 <li>用自训练self-training(伪标签 pseudo label)对模型进行泛化</li>
 </ol>
 <p>LOTClass： Label-Name-Only Text Classification</p>
-<h1 id="_1">方法</h1>
+<h1 id="_1">方法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p><strong>想：</strong>  我记得这篇论文 The Natural Language Decathlon: Multitask Learning as Question Answering <a href="https://decanlp.com/">decaNLP</a> 把所有NLP处理问题都视作QA</p>
 <p><strong>想：</strong> 还有另一篇 0-标签识别  <a href="https://arxiv.org/abs/1803.08035">Zero-shot Recognition via Semantic Embeddings and Knowledge Graphs</a></p>
-<h2 id="_2">怎么找单词</h2>
+<h2 id="_2">怎么找单词<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>考虑BERT的掩码</p>
 <p>用BERT的MLM(masked language model掩码语言模型)，预测哪些单词在大多数语境下能替换 <em>标签名 label name</em></p>
 <p><img alt="find_word" src="./images/find_word.png"/></p>
@@ -176,7 +176,7 @@ $$</p>
 <p><img alt="the bert" src="./images/image-20201019190115596.png"/></p>
 <p><img alt="words" src="./images/sim_words.png" style="zoom:50%;"/></p>
 <p>这篇论文里， 每句里选前50， 最终 能替换标签名那个词 最多的 前100个单词， 作为类别相关的词汇表。</p>
-<h2 id="_3">给句子做无标签的类别预测</h2>
+<h2 id="_3">给句子做无标签的类别预测<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>就看句子里是否有以上的类别指示词（category-indicative words)， 很简单， 但很容易错 error-prone</p>
 <p><img alt="two_meanings" src="./images/image-20201019185114434.png"/></p>
 <p>需要掩码训练， 在单词被掩掉的情况下， 预测这个单词对应的类别。 这是有语境的，词一级的，有类别这个监督信息的训练。</p>
@@ -187,12 +187,12 @@ L_{MCP} = - \sum_{w,c_w \in S_{ind}} \log P(c_w | \bold{h}_w) \
 p(c|\bold{h}) = Softmax(W_c \bold{h} + \bold{b}_c)
 $$</p>
 <p>mask out the category-indicative word for category prediction 类别对应词必须掩掉，避免模型就是简单记住。</p>
-<h2 id="self-training">自训练 self-training</h2>
+<h2 id="self-training">自训练 self-training<a class="headerlink" href="#self-training" title="Permanent link">¶</a></h2>
 <p>当前预测分布 $P$ 和 一个伪标签分布 $Q$ 求 KL 散度</p>
 <p>$Q$ 可以用 Hard labeling， soft labeling。</p>
 <p>Hard labeling: 高于某阀值的那个类别（one-hot） $q_{ij} = \mathbf{1}(p_{ij} &gt; \tau)$</p>
 <p>Soft labeling: 不说了~~~$q_{ij} =\frac{p^2_{ij} / f_j}{\sum_{j'} (p^2_{ij'} / f_{j'})}, f_j=\sum_i p_{ij}$</p>
-<h1 id="_4">总结</h1>
+<h1 id="_4">总结<a class="headerlink" href="#_4" title="Permanent link">¶</a></h1>
 <p>这篇论文干了什么事？</p>
 <ol>
 <li>标签名 -&gt;在bert里 -&gt; 50个相近词 -&gt; 每个类别的100词的词汇表</li>
@@ -210,45 +210,7 @@ $$</p>
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/Text_Classification_Using_Label_Names_Only.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'Text_Classification_Using_Label_Names_Only.html';
-    var disqus_url = 'http://sndnyang.github.io/Text_Classification_Using_Label_Names_Only.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -259,7 +221,7 @@ $$</p>
                     <h4>Tags</h4>
                     <ul class="list-of-tags tags-in-article">
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#zi-ran-yu-yan-chu-li-ref">自然语言处理
                             <span>4</span>
@@ -315,45 +277,7 @@ $$</p>
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

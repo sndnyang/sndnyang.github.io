@@ -13,14 +13,14 @@
 <meta name="keywords" content="深度学习, 机器学习, 人工智能, 深度学习, " />
 
 <meta property="og:title" content="深度学习集成方法Ensemble汇总 "/>
-<meta property="og:url" content="http://sndnyang.github.io/Deep-learning-ensemble-methods.html" />
-<meta property="og:description" content="概述 介绍 同种模型， 各自初始化 交叉验证得到的不同模型 一个模型，不同检查点checkpoints 训练过程的权重平均 1. 同种模型，各自初始化 Deep Ensemble 论文 2. 一个模型， 不同检查点 Snapshot Ensemble 论文 DEE Diversity Encouraging Ensemble 论文 FGE Fast Geometric Ensembles 论文 4. 训练过程的权重平均 Temporal Ensemble 论文 原论文用于半监督学习， 但思想仍是把训练过程得到的W 权重求平均，或者叫 momenteum?" />
+<meta property="og:url" content="/Deep-learning-ensemble-methods.html" />
+<meta property="og:description" content="概述¶ 介绍 同种模型， 各自初始化 交叉验证得到的不同模型 一个模型，不同检查点checkpoints 训练过程的权重平均 1. 同种模型，各自 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2018-11-15T22:18:30+08:00" />
 <meta property="" content="2018-11-25T22:18:30+08:00" />
 <meta name="twitter:title" content="深度学习集成方法Ensemble汇总 ">
-<meta name="twitter:description" content="概述 介绍 同种模型， 各自初始化 交叉验证得到的不同模型 一个模型，不同检查点checkpoints 训练过程的权重平均 1. 同种模型，各自初始化 Deep Ensemble 论文 2. 一个模型， 不同检查点 Snapshot Ensemble 论文 DEE Diversity Encouraging Ensemble 论文 FGE Fast Geometric Ensembles 论文 4. 训练过程的权重平均 Temporal Ensemble 论文 原论文用于半监督学习， 但思想仍是把训练过程得到的W 权重求平均，或者叫 momenteum?">
+<meta name="twitter:description" content="概述¶ 介绍 同种模型， 各自初始化 交叉验证得到的不同模型 一个模型，不同检查点checkpoints 训练过程的权重平均 1. 同种模型，各自 …">
 
 
         <title>深度学习集成方法Ensemble汇总  · 科探空谷
@@ -152,7 +152,7 @@
 
                         
                         
-<h1 id="_1">概述</h1>
+<h1 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p><a href="http://cs231n.github.io/neural-networks-3/#ensemble">介绍</a></p>
 <ol>
 <li>同种模型， 各自初始化</li>
@@ -160,23 +160,23 @@
 <li>一个模型，不同检查点checkpoints</li>
 <li>训练过程的权重平均</li>
 </ol>
-<h1 id="1">1. 同种模型，各自初始化</h1>
-<h2 id="deep-ensemble">Deep Ensemble</h2>
+<h1 id="1">1. 同种模型，各自初始化<a class="headerlink" href="#1" title="Permanent link">¶</a></h1>
+<h2 id="deep-ensemble">Deep Ensemble<a class="headerlink" href="#deep-ensemble" title="Permanent link">¶</a></h2>
 <p><a href="http://arxiv.org/abs/1612.01474" title="Lakshminarayanan, Balaji, Alexander Pritzel, and Charles Blundell. 2016. “Simple and Scalable Predictive Uncertainty Estimation Using Deep Ensembles.” (Nips).">论文</a></p>
-<h1 id="2">2. 一个模型， 不同检查点</h1>
-<h2 id="snapshot-ensemble">Snapshot Ensemble</h2>
+<h1 id="2">2. 一个模型， 不同检查点<a class="headerlink" href="#2" title="Permanent link">¶</a></h1>
+<h2 id="snapshot-ensemble">Snapshot Ensemble<a class="headerlink" href="#snapshot-ensemble" title="Permanent link">¶</a></h2>
 <p><a href="http://arxiv.org/abs/1704.00109" title="Huang, Gao et al. 2017. “Snapshot Ensembles: Train 1, Get M for Free.” : 1–14. ">论文</a></p>
-<h2 id="dee">DEE</h2>
+<h2 id="dee">DEE<a class="headerlink" href="#dee" title="Permanent link">¶</a></h2>
 <p>Diversity Encouraging Ensemble</p>
 <p><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8296802" title="Hao, Yang, Yuan Chunfeng, Xing Junliang, and Hu Weiming. 2017. “DIVERSITY ENCOURAGING ENSEMBLE OF CONVOLUTIONAL NETWORKS FOR HIGH PERFORMANCE ACTION RECOGNITION.” : 2846–50.">论文</a></p>
 <p><img alt="Figure.Snapshot and DEE" src="SnapAndDEE.png"/></p>
 <p><img alt="Snapshot And DEE Scheduler" src="snapAndDEE_scheduler.png"/></p>
-<h2 id="fge">FGE</h2>
+<h2 id="fge">FGE<a class="headerlink" href="#fge" title="Permanent link">¶</a></h2>
 <p>Fast Geometric Ensembles</p>
 <p><a href="https://arxiv.org/pdf/1802.10026.pdf" title="Garipov, Timur, Pavel Izmailov, Dmitrii Podoprikhin, and M L Oct. 2018. “Loss Surfaces , Mode Connectivity , and Fast Ensembling of DNNs.” (Nips): 1–17.">论文</a></p>
 <p><img alt="Figure.FGE" src="FGE.png"/></p>
-<h1 id="4">4. 训练过程的权重平均</h1>
-<h2 id="temporal-ensemble">Temporal Ensemble</h2>
+<h1 id="4">4. 训练过程的权重平均<a class="headerlink" href="#4" title="Permanent link">¶</a></h1>
+<h2 id="temporal-ensemble">Temporal Ensemble<a class="headerlink" href="#temporal-ensemble" title="Permanent link">¶</a></h2>
 <p><a href="http://arxiv.org/abs/1610.02242" title="Laine, Samuli, and Timo Aila. 2016. “Temporal Ensembling for Semi-Supervised Learning.” (2015): 1–13.">论文</a></p>
 <p>原论文用于半监督学习， 但思想仍是把训练过程得到的W 权重求平均，或者叫 momenteum?</p>
                         
@@ -189,45 +189,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/Deep-learning-ensemble-methods.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'Deep-learning-ensemble-methods.html';
-    var disqus_url = 'http://sndnyang.github.io/Deep-learning-ensemble-methods.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -301,45 +263,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

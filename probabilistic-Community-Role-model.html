@@ -13,13 +13,13 @@
 <meta name="keywords" content="CS, 论文, 社区发现, 研究, " />
 
 <meta property="og:title" content="社交网络的概率社区角色模型 "/>
-<meta property="og:url" content="http://sndnyang.github.io/probabilistic-Community-Role-model.html" />
-<meta property="og:description" content="摘要 submit 再来一遍， 不权威定义：社区发现大概就是发现高密度的点群， 群内互连较多；连到群外的较少 submit 之前社区发现和role detection（作用检测）两个领域各玩各的， 本篇论文就是把这两个结合起来， 以一种统一的模型结合，来同时处理这两个任务， 并且要做到更好的效果。 基本观点 节点可能属于多个社区，一个点有没有边连到另一个点要视它所属的社区而定。each node has a distribution over the communities. 节点的属性可以把节点分成多类，可视为节点所承担的角色。each node has a distribution over roles。 每个点会有一些动作， 跟所属社区和角色有关。 所以我们必须考虑the distributions that the node has over both communities and roles. 主要贡献 ..." />
+<meta property="og:url" content="/probabilistic-Community-Role-model.html" />
+<meta property="og:description" content="摘要¶ submit 再来一遍， 不权威定义：社区发现大概就是发现高密度的点群， 群内互连较多；连到群外的较少 submit 之前社区发现和role …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2016-07-21T15:51:58+08:00" />
 <meta name="twitter:title" content="社交网络的概率社区角色模型 ">
-<meta name="twitter:description" content="摘要 submit 再来一遍， 不权威定义：社区发现大概就是发现高密度的点群， 群内互连较多；连到群外的较少 submit 之前社区发现和role detection（作用检测）两个领域各玩各的， 本篇论文就是把这两个结合起来， 以一种统一的模型结合，来同时处理这两个任务， 并且要做到更好的效果。 基本观点 节点可能属于多个社区，一个点有没有边连到另一个点要视它所属的社区而定。each node has a distribution over the communities. 节点的属性可以把节点分成多类，可视为节点所承担的角色。each node has a distribution over roles。 每个点会有一些动作， 跟所属社区和角色有关。 所以我们必须考虑the distributions that the node has over both communities and roles. 主要贡献 ...">
+<meta name="twitter:description" content="摘要¶ submit 再来一遍， 不权威定义：社区发现大概就是发现高密度的点群， 群内互连较多；连到群外的较少 submit 之前社区发现和role …">
 
 
         <title>社交网络的概率社区角色模型  · 科探空谷
@@ -158,45 +158,45 @@
 
                         
                         
-<h1 id="_1">摘要</h1>
+<h1 id="_1">摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <div class="process"><input class="answers" type="hidden" value="知道"/><input class="comments" type="hidden" value="不知道就尴尬了"/><button onclick="checkQuiz(this, 0)">submit</button><br/></div>
 <p>再来一遍， 不权威定义：社区发现大概就是发现高密度的点群， 群内互连较多；连到群外的较少</p>
 <div class="process"><input class="answers" type="hidden" value="知道"/><input class="comments" type="hidden" value="呃"/><button onclick="checkQuiz(this, 1)">submit</button><br/></div>
 <p>之前社区发现和role detection（作用检测）两个领域各玩各的， 本篇论文就是把这两个结合起来， 以一种统一的模型结合，来同时处理这两个任务， 并且要做到更好的效果。</p>
-<h2 id="_2">基本观点</h2>
+<h2 id="_2">基本观点<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <ol>
 <li>节点可能属于多个社区，一个点有没有边连到另一个点要视它所属的社区而定。each node has a distribution over the communities.</li>
 <li>节点的属性可以把节点分成多类，可视为节点所承担的角色。each node has a distribution over roles。</li>
 <li>每个点会有一些动作， 跟所属社区和角色有关。</li>
 </ol>
 <p>所以我们必须考虑the distributions that the node has over both communities and roles.</p>
-<h3 id="_3">主要贡献</h3>
+<h3 id="_3">主要贡献<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <p>写了三个</p>
 <ol>
 <li>incorporate various elements of a social network into a unified probabilistic generative framework. then design a method to estimate the parameters of the model.</li>
 <li>use our model to generate a synthetic network with the learned parameters, and verify the superiority of our model, 这也能算？做实验不算创新就算贡献了？</li>
 <li>apply the model to two problems|behavior prediction and community detection|verifying its versatility and effectiveness 这条和第二条不都是做实验吗？</li>
 </ol>
-<h1 id="_4">正文</h1>
-<h2 id="_5">定义</h2>
-<h3 id="community">社区community：</h3>
+<h1 id="_4">正文<a class="headerlink" href="#_4" title="Permanent link">¶</a></h1>
+<h2 id="_5">定义<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
+<h3 id="community">社区community：<a class="headerlink" href="#community" title="Permanent link">¶</a></h3>
 <p>Each community has a multinomial distribution over all pairs (v, u), denoted as $\zeta$</p>
-<h3 id="node-distribution-over-communities">社区上的点分布node distribution over communities？:</h3>
+<h3 id="node-distribution-over-communities">社区上的点分布node distribution over communities？:<a class="headerlink" href="#node-distribution-over-communities" title="Permanent link">¶</a></h3>
 <p>Each node has a multinomial distribution over communities, which is denoted as $\phi$</p>
-<h3 id="role">角色role:</h3>
+<h3 id="role">角色role:<a class="headerlink" href="#role" title="Permanent link">¶</a></h3>
 <ol>
 <li>每个点可能有多个角色设定。</li>
 <li>每个角色都有一组分布的参数。</li>
 <li>我们这里用 高斯分布。</li>
 </ol>
-<h3 id="nodes-distribution-over-roles">角色上的点分布 nodes distribution over Roles:</h3>
+<h3 id="nodes-distribution-over-roles">角色上的点分布 nodes distribution over Roles:<a class="headerlink" href="#nodes-distribution-over-roles" title="Permanent link">¶</a></h3>
 <p>Each node has a multinomial distribution over roles, which is denoted as $\theta$</p>
-<h3 id="action">动作action</h3>
+<h3 id="action">动作action<a class="headerlink" href="#action" title="Permanent link">¶</a></h3>
 <p>动作多种，比如转发和关注。 y 表示 action</p>
-<h3 id="community-role-pair">社区角色对 community-role pair</h3>
+<h3 id="community-role-pair">社区角色对 community-role pair<a class="headerlink" href="#community-role-pair" title="Permanent link">¶</a></h3>
 <p>the distribution of community-role pairs over actions, denoted as $\rho$</p>
 <p>因为actioin y只有两种结果，所以，使用伯努利分布。</p>
-<h2 id="_6">模型描述</h2>
+<h2 id="_6">模型描述<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p>regard a node as a random mixture over communities</p>
 <p>网络中边的生成过程描述 如下：</p>
 <p><img alt="生成过程" src="http://7xt8es.com1.z0.glb.clouddn.com/paper/communityRole/%E7%94%9F%E6%88%90%E8%BF%87%E7%A8%8B%E6%8F%8F%E8%BF%B0.png"/></p>
@@ -206,11 +206,11 @@
 <p>The generative process of the actions:</p>
 <p><img alt="action生成过程" src="http://7xt8es.com1.z0.glb.clouddn.com/paper/communityRole/action%E7%94%9F%E6%88%90%E8%BF%87%E7%A8%8B%E6%8F%8F%E8%BF%B0.png"/></p>
 <p>时间复杂度略</p>
-<h2 id="_7">推断及参数估计</h2>
+<h2 id="_7">推断及参数估计<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
 <p>看不懂。 使用 Gibbs 采样和 EM 算法，两个都不认识。</p>
 <p>一大堆公式也不知道是什么意思。</p>
 <p>得去补补课再回来补完报告了。</p>
-<h1 id="_8">总结</h1>
+<h1 id="_8">总结<a class="headerlink" href="#_8" title="Permanent link">¶</a></h1>
 <p>这篇A和之后的一篇B挺像的（B引用了A），B的作者里有没有A 呢？</p>
 <p>总结不出来什么内容。</p>
 <p>这里一个分布， 那里一个分布， 我就没思考为什么用这个、那个分布。推断部分的两个算法都不认识。</p>
@@ -225,45 +225,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/probabilistic-Community-Role-model.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'probabilistic-Community-Role-model.html';
-    var disqus_url = 'http://sndnyang.github.io/probabilistic-Community-Role-model.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -277,7 +239,7 @@
                             <span>22</span>
 </a></li>
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#she-qu-fa-xian-ref">社区发现
                             <span>11</span>
@@ -333,45 +295,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

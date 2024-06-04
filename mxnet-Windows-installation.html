@@ -13,13 +13,13 @@
 <meta name="keywords" content="CS, 机器学习, 深度学习, 软件安装, 机器学习, " />
 
 <meta property="og:title" content="mxnet-Windows安装 "/>
-<meta property="og:url" content="http://sndnyang.github.io/mxnet-Windows-installation.html" />
-<meta property="og:description" content="Mxnet安装流程 mxnet官方安装说明 先装 cuda , 我装了 8.0，但注意它里面自带驱动程序， 可能会造成 mxnet 找不到显卡， 或者叫显卡不支持 CUDA， 下载GPU-Z可查，如果已经支持，不要安装自带的驱动程序。 我是碰到安装驱动后，刚开始能用， 重启后失败，反复重装驱动，黑屏了重启，结果文件坏了，只能重装系统。 现在版本 GeForce 940M 378.92版驱动。 安装 Cuda toolkit , 我装的 5.3 https://github.com/dmlc/mxnet/releases, mxnet windows下载地址 按照说明， 初次使用，先下载 base package 即基本包， 我下载的是 vc12 ..." />
+<meta property="og:url" content="/mxnet-Windows-installation.html" />
+<meta property="og:description" content="Mxnet安装流程¶ mxnet官方安装说明 先装 cuda , 我装了 8.0，但注意它里面自带驱动程序， 可能会造成 mxnet 找不到显卡， 或者叫显卡不支持 CUDA， 下载GPU-Z可查，如果已经支 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2017-04-11T10:15:00+08:00" />
 <meta name="twitter:title" content="mxnet-Windows安装 ">
-<meta name="twitter:description" content="Mxnet安装流程 mxnet官方安装说明 先装 cuda , 我装了 8.0，但注意它里面自带驱动程序， 可能会造成 mxnet 找不到显卡， 或者叫显卡不支持 CUDA， 下载GPU-Z可查，如果已经支持，不要安装自带的驱动程序。 我是碰到安装驱动后，刚开始能用， 重启后失败，反复重装驱动，黑屏了重启，结果文件坏了，只能重装系统。 现在版本 GeForce 940M 378.92版驱动。 安装 Cuda toolkit , 我装的 5.3 https://github.com/dmlc/mxnet/releases, mxnet windows下载地址 按照说明， 初次使用，先下载 base package 即基本包， 我下载的是 vc12 ...">
+<meta name="twitter:description" content="Mxnet安装流程¶ mxnet官方安装说明 先装 cuda , 我装了 8.0，但注意它里面自带驱动程序， 可能会造成 mxnet 找不到显卡， 或者叫显卡不支持 CUDA， 下载GPU-Z可查，如果已经支 …">
 
 
         <title>mxnet-Windows安装  · 科探空谷
@@ -138,7 +138,7 @@
 
                         
                         
-<h1 id="mxnet">Mxnet安装流程</h1>
+<h1 id="mxnet">Mxnet安装流程<a class="headerlink" href="#mxnet" title="Permanent link">¶</a></h1>
 <p><a href="http://mxnet.io/get_started/windows_setup.html">mxnet官方安装说明</a></p>
 <ol>
 <li>先装 cuda , 我装了 8.0，但注意它里面自带驱动程序， 可能会造成  mxnet 找不到显卡， 或者叫显卡不支持 CUDA， 下载GPU-Z可查，如果已经支持，不要安装自带的驱动程序。 我是碰到安装驱动后，刚开始能用， 重启后失败，反复重装驱动，黑屏了重启，结果文件坏了，只能重装系统。 现在版本 GeForce 940M  378.92版驱动。</li>
@@ -151,7 +151,7 @@
 <li>检查 dll依赖关系， 使用 Dependency Walker 打开 build目录下的 libmxnet.dll， 除了一个 ie 开头的不用管，其他要搜一下，比如是 cudnnv 还是 vc没装好</li>
 <li>Python版，安装， 照包里的 README.txt 运行、测试即可</li>
 </ol>
-<h1 id="_1">主要的坑</h1>
+<h1 id="_1">主要的坑<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <ol>
 <li>WindowsError: [Error 126]， 上面第8步，检查 dll依赖关系</li>
 <li>no cuda-capable device，软件GPU-Z可查， 显卡是否支持 CUDA (最下一行的 CUDA前选项框有选中表示支持)， 需要装别的版本驱动程序</li>
@@ -169,45 +169,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/mxnet-Windows-installation.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'mxnet-Windows-installation.html';
-    var disqus_url = 'http://sndnyang.github.io/mxnet-Windows-installation.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -280,45 +242,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

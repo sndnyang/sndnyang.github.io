@@ -13,13 +13,13 @@
 <meta name="keywords" content="数学, 线性代数, 线性代数, " />
 
 <meta property="og:title" content="图解数学学习之矩阵 "/>
-<meta property="og:url" content="http://sndnyang.github.io/tu-jie-shu-xue-xue-xi-zhi-ju-zhen.html" />
-<meta property="og:description" content="matrix 矩阵的英文叫 Matrix， 原意是&#34;母体， 基质&#34;， 作者认为西方原意是指为了形成一个整体而填充进去的填充物。 所以 $$ \begin{pmatrix} 1&amp;2 \ 3&amp;4 \end{pmatrix} $$ 在西方人的眼中很可能是数字填充在了括号的空间里。 用黑客帝国来理解呢？ 其实它的英文名是 matrix, 直译应该是母体的意思， 矩阵是个母体， 里面的数字就是啥？ 其实矩阵的译名应该不错， 矩形不一定对， 但目前只见过矩形的。 阵也是个整体， 个体站在需要的位置上。 原文这段主要在吐槽 日文里的行列译法， 而且应该是跟 他们的队列、 排队 相重了。 还有当年日本文字是竖写的， 行、列的意思与现在相反。 矩阵的出现 矩阵公认是根据方程组发明的。 比如一个方程组 $$ \begin{equation} \left{ \begin{aligned} x+5y+2z=9 \ 4x ..." />
+<meta property="og:url" content="/tu-jie-shu-xue-xue-xi-zhi-ju-zhen.html" />
+<meta property="og:description" content="matrix¶ 矩阵的英文叫 Matrix， 原意是&#34;母体， 基质&#34;， 作者认为西方原意是指为了形成一个整体而填充进去的填充物。 所以 $$ \begin{pmatrix} 1&amp;2 \ 3&amp;4 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2016-04-10T00:00:00+08:00" />
 <meta name="twitter:title" content="图解数学学习之矩阵 ">
-<meta name="twitter:description" content="matrix 矩阵的英文叫 Matrix， 原意是&#34;母体， 基质&#34;， 作者认为西方原意是指为了形成一个整体而填充进去的填充物。 所以 $$ \begin{pmatrix} 1&amp;2 \ 3&amp;4 \end{pmatrix} $$ 在西方人的眼中很可能是数字填充在了括号的空间里。 用黑客帝国来理解呢？ 其实它的英文名是 matrix, 直译应该是母体的意思， 矩阵是个母体， 里面的数字就是啥？ 其实矩阵的译名应该不错， 矩形不一定对， 但目前只见过矩形的。 阵也是个整体， 个体站在需要的位置上。 原文这段主要在吐槽 日文里的行列译法， 而且应该是跟 他们的队列、 排队 相重了。 还有当年日本文字是竖写的， 行、列的意思与现在相反。 矩阵的出现 矩阵公认是根据方程组发明的。 比如一个方程组 $$ \begin{equation} \left{ \begin{aligned} x+5y+2z=9 \ 4x ...">
+<meta name="twitter:description" content="matrix¶ 矩阵的英文叫 Matrix， 原意是&#34;母体， 基质&#34;， 作者认为西方原意是指为了形成一个整体而填充进去的填充物。 所以 $$ \begin{pmatrix} 1&amp;2 \ 3&amp;4 …">
 
 
         <title>图解数学学习之矩阵  · 科探空谷
@@ -143,15 +143,15 @@
 
                         
                         
-<h2 id="matrix">matrix</h2>
+<h2 id="matrix">matrix<a class="headerlink" href="#matrix" title="Permanent link">¶</a></h2>
 <p>矩阵的英文叫 Matrix， 原意是"母体， 基质"， 作者认为西方原意是指为了形成一个整体而填充进去的填充物。</p>
 <p>所以 </p>
 <p>$$ \begin{pmatrix} 1&amp;2 \ 3&amp;4 \end{pmatrix} $$</p>
 <p>在西方人的眼中很可能是数字填充在了括号的空间里。</p>
-<p><strong> 用黑客帝国来理解呢？ 其实它的英文名是 matrix, 直译应该是母体的意思， 矩阵是个母体， 里面的数字就是啥？ </strong></p>
+<p>** 用黑客帝国来理解呢？ 其实它的英文名是 matrix, 直译应该是母体的意思， 矩阵是个母体， 里面的数字就是啥？ **</p>
 <p>其实矩阵的译名应该不错， 矩形不一定对， 但目前只见过矩形的。 阵也是个整体， 个体站在需要的位置上。</p>
 <p>原文这段主要在吐槽 日文里的行列译法， 而且应该是跟 他们的队列、 排队 相重了。 还有当年日本文字是竖写的， 行、列的意思与现在相反。</p>
-<h2 id="_1">矩阵的出现</h2>
+<h2 id="_1">矩阵的出现<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>矩阵公认是根据方程组发明的。 比如一个方程组
 $$ 
 \begin{equation}
@@ -165,8 +165,8 @@ x+5y+2z=9 \
 \end{equation} 
 $$</p>
 <p>如果方程式再增多， 写起来就非常烦琐了。 于是数学家经过抽象（也就是偷懒）， 发明了 Matrix 概念。 </p>
-<div class="process"><span><p>怎么抽象？</p><input class="quiz" name="quiz" type="checkbox" value="提取系数">提取系数</input><br/><input class="quiz" name="quiz" type="checkbox" value="提取未知变量">提取未知变量</input><br/></span><br/><input class="answers" type="hidden" value="提取系数@提取未知变量"/><input class="comments" type="hidden" value="要记得抽象#数学家和程序员都要会偷懒#提示好像没什么用了"/><button onclick="checkQuiz(this, 0)">submit</button><br/></div>
-<h2 id="_2">抽象</h2>
+<div class="process"><span><p>怎么抽象？</p><input class="quiz" name="quiz" type="checkbox" value="提取系数"/>提取系数<br/><input class="quiz" name="quiz" type="checkbox" value="提取未知变量"/>提取未知变量<br/></span><br/><input class="answers" type="hidden" value="提取系数@提取未知变量"/><input class="comments" type="hidden" value="要记得抽象#数学家和程序员都要会偷懒#提示好像没什么用了"/><button onclick="checkQuiz(this, 0)">submit</button><br/></div>
+<h2 id="_2">抽象<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>没错， 系数和变量分开装， 先是变成了这样(latex公式不太会写)：</p>
 <p>$$ 
 \begin{equation}
@@ -186,7 +186,7 @@ $$</p>
 <p>你可能会想:"A的这些数字之间没联系， 怎么看成整体？"</p>
 <p>所以这就是抽象的威力了， 数学家不只是偷懒， 他们还给矩阵定义了很多严密的规则（运算规则）， 使得大家都认可了这些规则。</p>
 <p><strong>所以， 学数学的过程 其实也包括锻炼抽象思维能力， 甚至于具体知识用不上，就只剩下抽象、 逻辑等思维能力了， 不然可以说高等数学真的完全没用。</strong></p>
-<h2 id="_3">矩阵的现实意义</h2>
+<h2 id="_3">矩阵的现实意义<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>之前提到matrix 的原意， 但数学上matrix 矩阵 到底算个什么东西呢？</p>
 <p>教科书上喜欢的定义是： </p>
 <p>$$ 由 m \times n 个数组成的 m 行 n列的数表 ， 称为一个 m行n列的矩阵，或 m \times n 矩阵 $$</p>
@@ -195,7 +195,7 @@ $$</p>
 <p>原文从销售例子介绍了一堆， 但我觉得 他说的“看到矩阵， 在脑中就应该浮现出原来的数据表” 不太现实。</p>
 <p>矩阵和数据表 中间还有个方程组这一步， 甚至高观点里矩阵相乘是什么线性变换， 跟现实的市场数据就套不上了。</p>
 <p>所以决定直接跳到乘法运算分析这部分(最后面加减也无视了)。</p>
-<h2 id="_4">乘法运算为什么是行乘列？</h2>
+<h2 id="_4">乘法运算为什么是行乘列？<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>我们已经得到了一个这样的式子</p>
 <p>$$ 
 \begin{equation}
@@ -212,15 +212,15 @@ $$</p>
 \begin{pmatrix}  x \ y  \ z \end{pmatrix}
 \end{equation}
 $$</p>
-<div class="process"><span><p>为什么要竖着排？</p><input class="quiz" name="quiz" type="radio" value="就是这样定义的">就是这样定义的</input><br/><input class="quiz" name="quiz" type="radio" value="节约空间">节约空间</input><br/><input class="quiz" name="quiz" type="radio" value="好玩">好玩</input><br/><input class="quiz" name="quiz" type="radio" value="不走异常路">不走异常路</input><br/><input class="quiz" name="quiz" type="radio" value="不知道">不知道</input><br/></span><br/><input class="answers" type="hidden" value="不知道"/><input class="comments" type="hidden" value="不好意思，我也不知道"/><button onclick="checkQuiz(this, 1)">submit</button><br/></div>
-<h2 id="_5">解释</h2>
+<div class="process"><span><p>为什么要竖着排？</p><input class="quiz" name="quiz" type="radio" value="就是这样定义的"/>就是这样定义的<br/><input class="quiz" name="quiz" type="radio" value="节约空间"/>节约空间<br/><input class="quiz" name="quiz" type="radio" value="好玩"/>好玩<br/><input class="quiz" name="quiz" type="radio" value="不走异常路"/>不走异常路<br/><input class="quiz" name="quiz" type="radio" value="不知道"/>不知道<br/></span><br/><input class="answers" type="hidden" value="不知道"/><input class="comments" type="hidden" value="不好意思，我也不知道"/><button onclick="checkQuiz(this, 1)">submit</button><br/></div>
+<h2 id="_5">解释<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>现在解释这个 可能没什么意义， 纯粹科普。</p>
 <p>但不好意思的是， 原文里 这段的例子不好打~~~放弃了。</p>
 <p>大概意思就是， 如果矩阵乘法使用行乘行的话（不考虑列乘行这种更违背习惯的）， 假设左矩阵（被乘数矩阵？）固定了 </p>
 <p>那右矩阵再扩展的话， 得纵向延伸也就是继续加新的行， 但计算的结果（矩阵）却是横向延伸，加新的列。 延伸方向不一样。</p>
 <p>乘数矩阵添加了第i行， 计算结果矩阵却添加了第i列。</p>
 <p>所以改成行乘列的话， 乘数和计算结果矩阵延伸方向就一致， 第j列对应第j列。 符合从左向右看算式的习惯。</p>
-<h2 id="_6">不好意思， 内容就这么多~~~</h2>
+<h2 id="_6">不好意思， 内容就这么多~~~<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p>作者其实在讨论最基本的东西， 可以说 -- <strong>这本书的内容不看也没问题</strong></p>
 <p>他重点不是把各种高深的理论解释一遍， 让你全部弄懂。 </p>
 <p>作者希望的是“把日常生活和抽象世界（数学）紧紧联系起来， 就能理解数学”。所以应该是通过他写的这几个例子， 有这方面的意识， 懂得怎么去联系。</p>
@@ -237,45 +237,7 @@ $$</p>
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/tu-jie-shu-xue-xue-xi-zhi-ju-zhen.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'tu-jie-shu-xue-xue-xi-zhi-ju-zhen.html';
-    var disqus_url = 'http://sndnyang.github.io/tu-jie-shu-xue-xue-xi-zhi-ju-zhen.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -342,45 +304,7 @@ $$</p>
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

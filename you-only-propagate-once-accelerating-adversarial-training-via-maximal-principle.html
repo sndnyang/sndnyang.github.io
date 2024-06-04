@@ -13,7 +13,7 @@
 <meta name="keywords" content="论文, 论文, " />
 
 <meta property="og:title" content="You Only Propagate Once: Accelerating Adversarial Training via Maximal Principle "/>
-<meta property="og:url" content="http://sndnyang.github.io/you-only-propagate-once-accelerating-adversarial-training-via-maximal-principle.html" />
+<meta property="og:url" content="/you-only-propagate-once-accelerating-adversarial-training-via-maximal-principle.html" />
 <meta property="og:description" content="天天论文， 搞个频道" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
@@ -151,14 +151,14 @@
 <p><img alt="image-20201023192829765" src="images/image-20201023192829765.png"/></p>
 <p>发表于 NIPS 2019, <a href="https://arxiv.org/abs/1905.00877">Arxiv</a>,<a href="https://github.com/a1600012888/YOPO-You-Only-Propagate-Once">Github</a></p>
 <div style="page-break-after: always;"></div>
-<h1 id="_1">问题</h1>
+<h1 id="_1">问题<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <ol>
 <li>神经网络易受攻击， 对抗样本Adversarial Examples、对抗扰动Adversarial Perturbations，非常微小的、人类无法感知的变化，就能骗过神经网络、深度学习</li>
 <li>对抗训练Adversarial Training（AT），稳健优化方法，能有效提高网络的稳健程度。</li>
 <li>但AT非常费时， FGSM花费时间 是常规训练的两倍， 迭代式的AT方法比如PGD，则是几十倍的时间开销。</li>
 </ol>
 <p>所以， 怎么节省AT的训练时间，并且保证不降低稳健性， 就是很值得研究的课题。</p>
-<h2 id="_2">示意图</h2>
+<h2 id="_2">示意图<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>假设已知 FGSM(<a href="http://arxiv.org/abs/1412.6572">Arxiv</a>, <a href="https://www.bilibili.com/video/BV12a4y1J74U">我的视频</a>) : 
 $$
 x + \epsilon sign(\nabla_x L(\theta, x, y))
@@ -170,7 +170,7 @@ $$</p>
 <p>毫无疑问， 计算量成倍增加。<a href="https://mpeker.com/index.php/2019/11/02/visualize-features-of-a-convolutional-neural-network-for-resnet-architecture/">图片出处</a></p>
 <p><img alt="image-20201023194716990" src="images/image-20201023194716990.png"/></p>
 <p>怎么优化？节省时间？ 从算法角度，不考虑硬件、技巧， 我们也能猜到这篇论文大概是做什么</p>
-<h1 id="_3">算法角度思考</h1>
+<h1 id="_3">算法角度思考<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
 <p><img alt="image-20201023194716990" src="images/image-20201023194716990.png"/></p>
 <p>贪心， 局部优化， 或者从管理学来说</p>
 <p>根据链式法则
@@ -181,21 +181,21 @@ $$
 \end{align}
 $$</p>
 <p>第二行的两项相乘，就是神经网络显然可以固定住第一项，</p>
-<h1 id="_4">方法</h1>
+<h1 id="_4">方法<a class="headerlink" href="#_4" title="Permanent link">¶</a></h1>
 <p>本文是用最优控制optimal control里的最大原则(maximal principle)</p>
 <p><img alt="image-20201023204408112" src="images/image-20201023204408112.png" style="zoom:67%;"/></p>
 <p>对抗训练是个最小最大目标问题 min-max
 $$
-\min_{\theta} \mathbb{E}<em _124_eta_124_="|\eta|" _epsilon="\epsilon" _le="\le">{(x, y)\sim D} \max</em> \mathcal{L(\theta; x+\eta, y)}  \tag{1}
+\min_{\theta} \mathbb{E}<em _124_eta_124_="|\eta|" _epsilon="\epsilon" _le="\le">{(x, y)\sim D} \max</em>
 $$
-本文作者将之转为可导博弈问题 differential game. 接着就可以推导出它的Pontryagin’s Max- imum Principle (PMP) （庞特里亚金最大化原理，变分法中欧拉-拉格朗日方程的特例）</p>
+本文作者将之转为可导博弈问题 differential game. 接着就可以推导出它的Pontryagin’s Max- imum Principle (PMP) （庞特里亚金最大化原理，变分法中欧拉-拉格朗日方程的特例）} \mathcal{L(\theta; x+\eta, y)}  \tag{1</p>
 <p>YOPO (You Only Propagate Once)</p>
-<h2 id="yopo">基于梯度的YOPO</h2>
+<h2 id="yopo">基于梯度的YOPO<a class="headerlink" href="#yopo" title="Permanent link">¶</a></h2>
 <p>重写(1)式， 强调第一层：
 $$
-\min <em _left_124_eta__i="\left|\eta_{i">{\theta} \max </em>\right| \leq \epsilon} \mathcal{L}(\theta; x+\eta, y) =  \sum_{i=1}^{B} \ell (g_{\tilde{\theta}}\left(f_{0}\left(x_{i}+\eta_{i}, \theta_{0}\right)\right), y_{i})  \tag{2}
+\min <em _left_124_eta__i="\left|\eta_{i">{\theta} \max </em>
 $$
-$f_0$ 代表网络的第一层单元， $g_{\tilde{\theta}} = f_{T-1} \circ \cdots f_1$ 代表了其他层， $B$是批次大小， $\tilde{\theta}$ 就是各层权重 ${\theta_1,\cdots, \theta_{T-1}}$</p>
+$f_0$ 代表网络的第一层单元， $g_{\tilde{\theta}} = f_{T-1} \circ \cdots f_1$ 代表了其他层， $B$是批次大小， $\tilde{\theta}$ 就是各层权重 ${\theta_1,\cdots, \theta_{T-1}}$}\right| \leq \epsilon} \mathcal{L}(\theta; x+\eta, y) =  \sum_{i=1}^{B} \ell (g_{\tilde{\theta}}\left(f_{0}\left(x_{i}+\eta_{i}, \theta_{0}\right)\right), y_{i})  \tag{2</p>
 <p><img alt="image-20201023221019338" src="images/image-20201023221019338.png" style="zoom: 50%;"/></p>
 <p>对(2)求导
 $$
@@ -221,17 +221,17 @@ $$</p>
 </table>
 <p>用代码解释下 怎么实现 $\eta^{s+1} = \eta^{s} + \alpha p \cdot \nabla_\eta f_0(x + \eta^s, \theta)$</p>
 <p><img alt="image-20201023224206231" src="images/image-20201023224206231.png"/></p>
-<h1 id="_5">实验结果</h1>
+<h1 id="_5">实验结果<a class="headerlink" href="#_5" title="Permanent link">¶</a></h1>
 <p>我还是不爱讲实验结果</p>
 <p><img alt="image-20201023202723648" src="images/image-20201023202723648.png"/></p>
 <p><img alt="image-20201023203029768" src="images/image-20201023203029768.png"/></p>
 <p><img alt="image-20201023203116703" src="images/image-20201023203116703.png"/></p>
 <p><img alt="image-20201023203216773" src="images/image-20201023203216773.png" style="zoom:67%;"/></p>
-<h1 id="_6">源码解释（下次一定）</h1>
+<h1 id="_6">源码解释（下次一定）<a class="headerlink" href="#_6" title="Permanent link">¶</a></h1>
 <p>https://github.com/a1600012888/YOPO-You-Only-Propagate-Once/blob/master/lib/base_model/wide_resnet.py</p>
 <p>https://github.com/a1600012888/YOPO-You-Only-Propagate-Once/blob/master/experiments/CIFAR10/wide34.yopo-5-3/training_function.py</p>
 <p><img alt="image-20201023220906426" src="images/image-20201023220906426.png"/></p>
-<h1 id="_7">数学原理（估计下次下篇论文？）</h1>
+<h1 id="_7">数学原理（估计下次下篇论文？）<a class="headerlink" href="#_7" title="Permanent link">¶</a></h1>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
                     <a href="#" class="bds_more" data-cmd="more"></a>
@@ -242,45 +242,7 @@ $$</p>
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/you-only-propagate-once-accelerating-adversarial-training-via-maximal-principle.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'you-only-propagate-once-accelerating-adversarial-training-via-maximal-principle.html';
-    var disqus_url = 'http://sndnyang.github.io/you-only-propagate-once-accelerating-adversarial-training-via-maximal-principle.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -291,7 +253,7 @@ $$</p>
                     <h4>Tags</h4>
                     <ul class="list-of-tags tags-in-article">
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                     </ul>
                     <h4>Stay in Touch</h4>
@@ -344,45 +306,7 @@ $$</p>
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

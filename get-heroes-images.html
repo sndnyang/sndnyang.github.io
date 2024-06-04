@@ -13,14 +13,14 @@
 <meta name="keywords" content="数据挖掘, 爬虫, Kaggle, 数据挖掘, " />
 
 <meta property="og:title" content="爬取Dota2英雄图片 "/>
-<meta property="og:url" content="http://sndnyang.github.io/get-heroes-images.html" />
-<meta property="og:description" content="Dota2数据集 为了与数据集相对应， 做出比较好看的效果， 到 Dota2的网站上爬取所有英雄的头像——也许在可视化里就能好看点 注 如果想重复利用，当做练习、练手加强熟练度的话， 请点 File - Make a copy， 每次在副本里回答 如果已经足够熟悉，觉得本篇内容太过简单， 就不需要了 前期准备 要从网络上爬取图片， 从程序来说，有几步？ ，自然需要打开页面进行下载， from quiz import * your_answer = 步数 steps = [&#39;&#39;, &#39;&#39; ... ] print(check_steps(your_answer, steps)) Python标准库里使用哪个模块可以打开网页？ 应该使用哪个模块查找链接？ 保存就不用说了。 module_openpages = &#39;&#39; module_findlinks = &#39;&#39; assert check_openpages(module_openpages), &#39;看来，标准库不够熟悉啊&#39; print(check_findlinks(module_findlinks)) 但我们不用标准库里的， 因为有更好的第三方库， 分别是 ..." />
+<meta property="og:url" content="/get-heroes-images.html" />
+<meta property="og:description" content="Dota2数据集¶ 为了与数据集相对应， 做出比较好看的效果， 到 Dota2的网站上爬取所有英雄的头像——也许在可视化里就能好看点 注 如果想重复利用，当做练习、练手加强熟 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang sndnyang.github.io" />
 <meta property="og:article:published_time" content="2017-04-18T21:21:09+08:00" />
 <meta property="" content="2017-04-18T21:22:28+08:00" />
 <meta name="twitter:title" content="爬取Dota2英雄图片 ">
-<meta name="twitter:description" content="Dota2数据集 为了与数据集相对应， 做出比较好看的效果， 到 Dota2的网站上爬取所有英雄的头像——也许在可视化里就能好看点 注 如果想重复利用，当做练习、练手加强熟练度的话， 请点 File - Make a copy， 每次在副本里回答 如果已经足够熟悉，觉得本篇内容太过简单， 就不需要了 前期准备 要从网络上爬取图片， 从程序来说，有几步？ ，自然需要打开页面进行下载， from quiz import * your_answer = 步数 steps = [&#39;&#39;, &#39;&#39; ... ] print(check_steps(your_answer, steps)) Python标准库里使用哪个模块可以打开网页？ 应该使用哪个模块查找链接？ 保存就不用说了。 module_openpages = &#39;&#39; module_findlinks = &#39;&#39; assert check_openpages(module_openpages), &#39;看来，标准库不够熟悉啊&#39; print(check_findlinks(module_findlinks)) 但我们不用标准库里的， 因为有更好的第三方库， 分别是 ...">
+<meta name="twitter:description" content="Dota2数据集¶ 为了与数据集相对应， 做出比较好看的效果， 到 Dota2的网站上爬取所有英雄的头像——也许在可视化里就能好看点 注 如果想重复利用，当做练习、练手加强熟 …">
 
 
         <title>爬取Dota2英雄图片  · 科探空谷
@@ -154,48 +154,48 @@
 
                         
                         
-<h1 id="dota2">Dota2数据集</h1>
+<h1 id="dota2">Dota2数据集<a class="headerlink" href="#dota2" title="Permanent link">¶</a></h1>
 <p>为了与数据集相对应， 做出比较好看的效果， 到 Dota2的网站上爬取所有英雄的头像——也许在可视化里就能好看点</p>
 <p><strong>注</strong></p>
 <p>如果想重复利用，当做练习、练手加强熟练度的话， 请点 File - Make a copy， 每次在副本里回答</p>
 <p>如果已经足够熟悉，觉得本篇内容太过简单， 就不需要了</p>
-<h2 id="_1">前期准备</h2>
+<h2 id="_1">前期准备<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>要从网络上爬取图片， 从程序来说，有几步？</p>
 <p>，自然需要打开页面进行下载，</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">quiz</span> <span class="kn">import</span> <span class="o">*</span>
-</pre></div>
-<div class="highlight"><pre><span></span><span class="n">your_answer</span> <span class="o">=</span> <span class="err">步数</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">quiz</span> <span class="kn">import</span> <span class="o">*</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">your_answer</span> <span class="o">=</span> <span class="n">步数</span>
 <span class="n">steps</span> <span class="o">=</span> <span class="p">[</span><span class="s1">''</span><span class="p">,</span> <span class="s1">''</span> <span class="o">...</span> <span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">check_steps</span><span class="p">(</span><span class="n">your_answer</span><span class="p">,</span> <span class="n">steps</span><span class="p">))</span>
-</pre></div>
+<span class="nb">print</span><span class="p">(</span><span class="n">check_steps</span><span class="p">(</span><span class="n">your_answer</span><span class="p">,</span> <span class="n">steps</span><span class="p">))</span>
+</code></pre></div>
 <p>Python标准库里使用哪个模块可以打开网页？ 应该使用哪个模块查找链接？ 保存就不用说了。</p>
-<div class="highlight"><pre><span></span><span class="n">module_openpages</span> <span class="o">=</span> <span class="s1">''</span>
+<div class="codehilite"><pre><span></span><code><span class="n">module_openpages</span> <span class="o">=</span> <span class="s1">''</span>
 
 <span class="n">module_findlinks</span> <span class="o">=</span> <span class="s1">''</span>
 
 <span class="k">assert</span> <span class="n">check_openpages</span><span class="p">(</span><span class="n">module_openpages</span><span class="p">),</span> <span class="s1">'看来，标准库不够熟悉啊'</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">check_findlinks</span><span class="p">(</span><span class="n">module_findlinks</span><span class="p">))</span>
-</pre></div>
+<span class="nb">print</span><span class="p">(</span><span class="n">check_findlinks</span><span class="p">(</span><span class="n">module_findlinks</span><span class="p">))</span>
+</code></pre></div>
 <p>但我们不用标准库里的， 因为有更好的第三方库， 分别是</p>
 <ol>
 <li>requests</li>
 <li>beautifulsoup4</li>
 </ol>
 <p>安装：</p>
-<div class="highlight"><pre><span></span>pip(2 or 3) install requests, bs4
-</pre></div>
+<div class="codehilite"><pre><span></span><code>pip(2 or 3) install requests, bs4
+</code></pre></div>
 <p>然后导入</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
-</pre></div>
-<h2 id="_2">下载网页内容</h2>
+</code></pre></div>
+<h2 id="_2">下载网页内容<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>开始介绍使用 requests 读取网页内容</p>
 <p><a href="http://www.dota2.com.cn/heroes/index.htm">Dota2英雄列表网址</a></p>
 <p>MOOC资源： <a href="http://www.icourse163.org/course/BIT-1001870001">Python网络爬虫与信息提取</a></p>
-<div class="highlight"><pre><span></span><span class="n">dota2_main_page</span> <span class="o">=</span> <span class="s1">'http://www.dota2.com.cn'</span>
+<div class="codehilite"><pre><span></span><code><span class="n">dota2_main_page</span> <span class="o">=</span> <span class="s1">'http://www.dota2.com.cn'</span>
 <span class="n">dota2_heroes_index</span> <span class="o">=</span> <span class="n">dota2_main_page</span> <span class="o">+</span> <span class="s1">'/heroes/index.htm'</span>
-</pre></div>
+</code></pre></div>
 <p>Requests 是一个非常优雅的 HTTP 库， HTTP是什么? &gt;<a href="http://baike.baidu.com/link?url=01N5pk_h_vChNIkEpbMuXuFrAc1tr6Vnb0xeGJUMoXV4aOXMMAbaEKqxuVsycT1h9zbVZY0h6s_hpdegz24JDa">HTTP百度百科</a></p>
 <p>我们不管这个，只管HTTP是如何向网站发送请求，并拿到网页数据的。 协议规定了 &gt;<a href="http://www.runoob.com/http/http-methods.html">HTTP请求方法</a></p>
 <p>requests的方法和HTTP协议一致， 也有这么几种（或少一种？没注意），但最常用的是</p>
@@ -204,37 +204,37 @@
 <li>post()</li>
 </ol>
 <p>本篇只是爬取内容， 所以， 用哪个方法呢？ 函数、方法的参数是什么呢？ 没有额外参数</p>
-<div class="highlight"><pre><span></span><span class="c1"># 懒得验证了，毕竟太明显</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 懒得验证了，毕竟太明显</span>
 <span class="n">parameter</span> <span class="o">=</span> <span class="err">???</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="err">???</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
-</pre></div>
-<h3 id="_3">培养好习惯， 建立代码规范</h3>
+</code></pre></div>
+<h3 id="_3">培养好习惯， 建立代码规范<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <p>打开网页后， 最好检查下是否成功， 不成功则按现在的开发来说， 应该抛个异常， 所以我们需要：</p>
 <ol>
 <li>判断网页打开状态,  r.raise_for_status()</li>
 <li><a href="http://www.cnblogs.com/fnng/p/3518202.html">Python异常处理</a> 或 个人博客版本 <a href="http://blog.zhimind.com/python-exception.html">Python异常处理#TODO</a></li>
 </ol>
 <p><a href="http://blog.zhimind.com/debug-assert-meaning.html#_2">Python异常处理的意义</a></p>
-<div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="err">???</span><span class="p">(</span><span class="err">???</span><span class="p">)</span>
     <span class="n">r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
     <span class="c1"># MOOC里有介绍的编码部分略过，因为没遇到</span>
 <span class="k">except</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"OH MY GOD!"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"OH MY GOD!"</span><span class="p">)</span>
 
 <span class="c1"># 从 Python 变量的作用域来说，这段当然有问题， 只是给个示例， 借此由头复习 Python异常处理机制</span>
 <span class="c1"># 可以直接跳过</span>
-</pre></div>
-<h3 id="_4">网页内容</h3>
+</code></pre></div>
+<h3 id="_4">网页内容<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>此时打开的网页已经保存在 变量 r 中， 来看看 r 是个什么东西</p>
-<div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-</pre></div>
-<div class="highlight"><pre><span></span>requests.models.Response
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>requests.models.Response
+</code></pre></div>
 <p>看看 这个东西 有什么属性</p>
-<div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-</pre></div>
-<div class="highlight"><pre><span></span>['__attrs__',
+<div class="codehilite"><pre><span></span><code><span class="nb">dir</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>['__attrs__',
  '__bool__',
  '__class__',
  '__delattr__',
@@ -291,92 +291,92 @@
  'status_code',
  'text',
  'url']
-</pre></div>
+</code></pre></div>
 <p>网页内容是哪个？</p>
 <p>r.text?  r.raw? r.content?</p>
 <p>嗯， 废</p>
-<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">raw</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
-</pre></div>
-<div class="highlight"><pre><span></span>&lt;class 'bytes'&gt;
-&lt;class 'requests.packages.urllib3.response.HTTPResponse'&gt;
-&lt;class 'str'&gt;
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">raw</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="kd">class</span><span class="w"> </span><span class="err">'</span><span class="nx">bytes</span><span class="err">'</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="kd">class</span><span class="w"> </span><span class="err">'</span><span class="nx">requests</span><span class="p">.</span><span class="nx">packages</span><span class="p">.</span><span class="nx">urllib3</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">HTTPResponse</span><span class="err">'</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="kd">class</span><span class="w"> </span><span class="err">'</span><span class="nx">str</span><span class="err">'</span><span class="p">&gt;</span>
+</code></pre></div>
 <p>所以，我们用 字符串类型的 text</p>
-<div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
-</pre></div>
-<div class="highlight"><pre><span></span>
-</pre></div>
-<h1 id="_5">信息提取</h1>
+<div class="codehilite"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>
+</code></pre></div>
+<h1 id="_5">信息提取<a class="headerlink" href="#_5" title="Permanent link">¶</a></h1>
 <p>beautifulsoup4 的使用</p>
-<div class="highlight"><pre><span></span><span class="c1"># 固定格式</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 固定格式</span>
 <span class="c1"># 第二个参数是 格式， 因为是 html格式的网页， 所以是 html.parser</span>
 <span class="c1"># 至于为什么不是 html 就行了， 别人开发设计成这样， 就这样</span>
 
 <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
-</pre></div>
-<div class="highlight"><pre><span></span><span class="c1"># 这个好像是格式化、美观化输出</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 这个好像是格式化、美观化输出</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">())</span>
-</pre></div>
-<h3 id="_6">查找所有元素</h3>
+<span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">())</span>
+</code></pre></div>
+<h3 id="_6">查找所有元素<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
 <p>先搞清楚， 要找什么元素？</p>
 <p>要么是在原网页上右键查看源代码， 要么是 F12(chrome 和 Firefox)打开控制台，查看。</p>
 <p>如果不懂 HTML， 不认识它的标签， 那我也没招， 这内容太多， 哪顾得过来。</p>
 <p>经浏览， 应该是查找 img标签， class为heroHoverLarge的元素， 小封面太小了， 大点好看点？</p>
 <p>查找所有元素接口是： <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html#find-all">find_all</a></p>
-<div class="highlight"><pre><span></span><span class="c1"># find_all 等效 如下形式</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># find_all 等效 如下形式</span>
 
 <span class="n">hero_list</span> <span class="o">=</span> <span class="n">soup</span><span class="p">(</span><span class="s1">'img'</span><span class="p">,</span> <span class="s1">'heroHoverLarge'</span><span class="p">)</span>
-</pre></div>
-<div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">hero_list</span><span class="p">)</span>
-</pre></div>
-<div class="highlight"><pre><span></span>113
-</pre></div>
-<h3 id="_7">提取属性</h3>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="nb">len</span><span class="p">(</span><span class="n">hero_list</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="mf">113</span>
+</code></pre></div>
+<h3 id="_7">提取属性<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
 <p>img标签里，把链接记录在 src 里， src是元素的一个属性attribute，不是值value或文本text</p>
 <p>元素的属性attributes是一个 字典dict(键key，值value对), 所以是</p>
-<div class="highlight"><pre><span></span><span class="c1"># </span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># </span>
 <span class="n">key</span> <span class="o">=</span> <span class="s1">'???'</span>
 <span class="n">img_url</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="err">???</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 
 <span class="c1"># 英语缩写的习惯，有时候是可以猜出来的~~~</span>
-</pre></div>
+</code></pre></div>
 <p>一个栗子：  src="/images/heroes/earthshaker_hphover.png"</p>
 <p>所以我们需要做两步：</p>
 <ol>
 <li>和域名 dota2_main_page 连起来得到完整URL</li>
 <li>抽取英雄名字， 即 / 和 _hphover 中间部分</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="c1"># TODO： </span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># TODO： </span>
 <span class="c1"># 请用自己喜欢的方式，把名字抽取出来</span>
 <span class="c1"># 字符串相连太简单 就不要求了</span>
 <span class="k">def</span> <span class="nf">deal_src</span><span class="p">(</span><span class="n">src</span><span class="p">):</span>
     <span class="n">url</span> <span class="o">=</span> <span class="n">dota2_main_page</span> <span class="o">+</span> <span class="n">src</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="bp">None</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">'</span><span class="si">%s</span><span class="s1">  </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="si">%s</span><span class="s1">  </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">name</span><span class="p">,</span> <span class="n">url</span>
-</pre></div>
-<div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">deal_src</span><span class="p">(</span><span class="s1">'/images/heroes/brewmaster_hphover.png'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'brewmaster'</span><span class="p">,</span> <span class="s1">'失败'</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="k">assert</span> <span class="n">deal_src</span><span class="p">(</span><span class="s1">'/images/heroes/brewmaster_hphover.png'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'brewmaster'</span><span class="p">,</span> <span class="s1">'失败'</span>
 <span class="k">assert</span> <span class="n">deal_src</span><span class="p">(</span><span class="s1">'/images/heroes/dragon_knight_hphover.png'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'dragon_knight'</span><span class="p">,</span> <span class="s1">'失败'</span>
-</pre></div>
-<h2 id="_8">保存</h2>
+</code></pre></div>
+<h2 id="_8">保存<a class="headerlink" href="#_8" title="Permanent link">¶</a></h2>
 <p>这块倒简单， 继续使用 requests读取图片的url， 然后保存到某个文件夹下的某文件名的文件。</p>
 <p>所以只有点说明， 没有做quiz</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">saveImage</span><span class="p">(</span><span class="n">imgUrl</span><span class="p">,</span> <span class="n">imgName</span> <span class="o">=</span> <span class="s2">"default.jpg"</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">saveImage</span><span class="p">(</span><span class="n">imgUrl</span><span class="p">,</span> <span class="n">imgName</span> <span class="o">=</span> <span class="s2">"default.jpg"</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Description    : 将网页图片保存本地</span>
 <span class="sd">    @param imgUrl  : 待保存图片URL</span>
 <span class="sd">    @param imgName : 待保存图片名称</span>
 <span class="sd">    @return 无</span>
 <span class="sd">    """</span>
     <span class="c1"># 这里给 requests.get 添加 流 stream 参数——不加会什么样？</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">imgUrl</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">imgUrl</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="c1"># 这里不能用 text了， 因为图片是二进制 byte了</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span>
     <span class="n">dstDir</span> <span class="o">=</span> <span class="s1">'heroes'</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"保存文件"</span> <span class="o">+</span> <span class="n">imgName</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"保存文件"</span> <span class="o">+</span> <span class="n">imgName</span><span class="p">)</span>
     <span class="c1"># try except要习惯</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># with是种方案，但本篇不介绍了</span>
@@ -384,20 +384,20 @@
             <span class="n">jpg</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>     
             <span class="k">return</span>
     <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">"IO Error</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"IO Error</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="n">jpg</span><span class="o">.</span><span class="n">close</span>
-</pre></div>
-<h2 id="_9">遍历全部元素</h2>
+</code></pre></div>
+<h2 id="_9">遍历全部元素<a class="headerlink" href="#_9" title="Permanent link">¶</a></h2>
 <p>遍历 hero_list 的 所有元素</p>
-<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">hero_list</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">hero_list</span><span class="p">:</span>
     <span class="n">src</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="err">???</span><span class="p">[</span><span class="s1">'???'</span><span class="p">]</span>
     <span class="n">name</span><span class="err">，</span> <span class="n">url</span> <span class="o">=</span> <span class="n">deal_src</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">'</span><span class="si">%s</span><span class="s1">  </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="si">%s</span><span class="s1">  </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>
     <span class="n">saveImage</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">+</span><span class="s1">'.jpg'</span><span class="p">)</span>
-</pre></div>
-<div class="highlight"><pre><span></span>earthshaker  http://www.dota2.com.cn/images/heroes/earthshaker_hphover.png
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>earthshaker  http://www.dota2.com.cn/images/heroes/earthshaker_hphover.png
 保存文件earthshaker.jpg
 sven  http://www.dota2.com.cn/images/heroes/sven_hphover.png
 保存文件sven.jpg
@@ -623,11 +623,11 @@ visage  http://www.dota2.com.cn/images/heroes/visage_hphover.png
 保存文件visage.jpg
 winter_wyvern  http://www.dota2.com.cn/images/heroes/winter_wyvern_hphover.png
 保存文件winter_wyvern.jpg
-</pre></div>
-<h1 id="_10">恭喜</h1>
+</code></pre></div>
+<h1 id="_10">恭喜<a class="headerlink" href="#_10" title="Permanent link">¶</a></h1>
 <p>完成！</p>
-<div class="highlight"><pre><span></span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code>
+</code></pre></div>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
                     <a href="#" class="bds_more" data-cmd="more"></a>
@@ -638,45 +638,7 @@ winter_wyvern  http://www.dota2.com.cn/images/heroes/winter_wyvern_hphover.png
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/get-heroes-images.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'get-heroes-images.html';
-    var disqus_url = 'http://sndnyang.github.io/get-heroes-images.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -750,45 +712,7 @@ winter_wyvern  http://www.dota2.com.cn/images/heroes/winter_wyvern_hphover.png
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

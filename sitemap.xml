@@ -4,1162 +4,1176 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://sndnyang.github.io/</loc>
-<lastmod>2020-10-24T22:49:24-00:00</lastmod>
+<loc>/</loc>
+<lastmod>2024-06-04T21:57:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/archives.html</loc>
-<lastmod>2020-10-24T22:49:24-00:00</lastmod>
+<loc>/archives.html</loc>
+<lastmod>2024-06-04T21:57:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/tags.html</loc>
-<lastmod>2020-10-24T22:49:24-00:00</lastmod>
+<loc>/tags.html</loc>
+<lastmod>2024-06-04T21:57:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/categories.html</loc>
-<lastmod>2020-10-24T22:49:24-00:00</lastmod>
+<loc>/categories.html</loc>
+<lastmod>2024-06-04T21:57:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/read_papers_domain_list.html</loc>
+<loc>/read_papers_domain_list.html</loc>
 <lastmod>2099-05-20T13:14:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/read_papers_list.html</loc>
+<loc>/read_papers_list.html</loc>
 <lastmod>2099-05-20T13:14:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/softwares-applications.html</loc>
+<loc>/softwares-applications.html</loc>
 <lastmod>2099-04-02T09:05:05+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/chaoxing-mooc-content.html</loc>
+<loc>/chaoxing-mooc-content.html</loc>
 <lastmod>2099-01-01T17:13:52+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/No_MCMC_for_me_for_EBM.html</loc>
+<loc>/GPU-platform-usage-tutor.html</loc>
+<lastmod>2024-06-02T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/a-causal-view-on-robustness-of-neural-networks.html</loc>
+<lastmod>2021-04-03T13:14:20+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/No_MCMC_for_me_for_EBM.html</loc>
 <lastmod>2020-10-22T13:14:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/improved-contrastive-divergence-training-of-energy-based-models.html</loc>
+<loc>/improved-contrastive-divergence-training-of-energy-based-models.html</loc>
 <lastmod>2020-10-22T13:14:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/variants_of_softmax_CE.html</loc>
+<loc>/variants_of_softmax_CE.html</loc>
 <lastmod>2020-10-22T13:14:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/NVAE.html</loc>
+<loc>/NVAE.html</loc>
 <lastmod>2020-10-21T23:48:09+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Text_Classification_Using_Label_Names_Only.html</loc>
+<loc>/Text_Classification_Using_Label_Names_Only.html</loc>
 <lastmod>2020-10-19T19:48:09+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/tools_for_anything.html</loc>
+<loc>/tools_for_anything.html</loc>
 <lastmod>2020-09-07T21:23:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/mixup-method.html</loc>
+<loc>/mixup-method.html</loc>
 <lastmod>2020-05-04T12:46:38+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/adversarial-features-not-bugs.html</loc>
+<loc>/adversarial-features-not-bugs.html</loc>
 <lastmod>2020-04-06T16:20:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/adversarial-defense-k-winner-take-all.html</loc>
+<loc>/adversarial-defense-k-winner-take-all.html</loc>
 <lastmod>2020-03-13T15:29:53+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/python-development-tools.html</loc>
+<loc>/python-development-tools.html</loc>
 <lastmod>2019-12-10T22:26:28+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/conda-config-environment-variable.html</loc>
+<loc>/conda-config-environment-variable.html</loc>
 <lastmod>2019-10-10T09:05:05+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/consistency-regularization.html</loc>
+<loc>/consistency-regularization.html</loc>
 <lastmod>2019-08-29T22:06:23+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/instruction-aaai.html</loc>
+<loc>/instruction-aaai.html</loc>
 <lastmod>2019-07-29T09:05:05+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/TensorBoard-tricks.html</loc>
+<loc>/TensorBoard-tricks.html</loc>
 <lastmod>2019-07-25T22:18:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/notes-on-jupyter-notebook.html</loc>
+<loc>/notes-on-jupyter-notebook.html</loc>
 <lastmod>2019-05-08T18:10:01+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Stiffness-generalization-neural-networks.html</loc>
+<loc>/Stiffness-generalization-neural-networks.html</loc>
 <lastmod>2019-05-03T23:20:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/margin-of-neural-networks.html</loc>
+<loc>/margin-of-neural-networks.html</loc>
 <lastmod>2019-05-02T16:20:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/one-pixel-attack-fooling-neural-networks.html</loc>
+<loc>/one-pixel-attack-fooling-neural-networks.html</loc>
 <lastmod>2019-05-02T16:20:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Few-Image-Unsupervised-Feature-Learning.html</loc>
+<loc>/Few-Image-Unsupervised-Feature-Learning.html</loc>
 <lastmod>2019-05-02T15:20:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/TensorFlow-PyTorch-get-same-outputs.html</loc>
+<loc>/TensorFlow-PyTorch-get-same-outputs.html</loc>
 <lastmod>2019-03-18T22:18:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Theano-Chainer-issues.html</loc>
+<loc>/Theano-Chainer-issues.html</loc>
 <lastmod>2019-12-19T22:18:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/TensorBoardX-issues.html</loc>
+<loc>/TensorBoardX-issues.html</loc>
 <lastmod>2019-02-03T22:18:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/issues-of-pycharm.html</loc>
+<loc>/issues-of-pycharm.html</loc>
 <lastmod>2019-02-02T09:05:05+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/PyTorch-issues.html</loc>
+<loc>/PyTorch-issues.html</loc>
 <lastmod>2018-12-19T22:18:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/loss-function-distance-ditribution.html</loc>
+<loc>/loss-function-distance-ditribution.html</loc>
 <lastmod>2018-11-16T22:18:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Deep-learning-ensemble-methods.html</loc>
+<loc>/Deep-learning-ensemble-methods.html</loc>
 <lastmod>2018-11-25T22:18:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/kernel-function.html</loc>
+<loc>/kernel-function.html</loc>
 <lastmod>2018-11-25T22:18:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/semi-supervised-learning-methods.html</loc>
+<loc>/semi-supervised-learning-methods.html</loc>
 <lastmod>2018-11-25T22:18:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/machine-learning-my-faults.html</loc>
+<loc>/machine-learning-my-faults.html</loc>
 <lastmod>2018-08-30T17:53:50+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Active Learning with Sampling by Uncertainty and Density for WSD and Text Classification.html</loc>
+<loc>/Active Learning with Sampling by Uncertainty and Density for WSD and Text Classification.html</loc>
 <lastmod>2018-05-18T19:48:09+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Deep Bayesian Active Learning with Image Data.html</loc>
+<loc>/Deep Bayesian Active Learning with Image Data.html</loc>
 <lastmod>2018-05-18T19:48:09+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/TensorFlow-tricks.html</loc>
+<loc>/TensorFlow-tricks.html</loc>
 <lastmod>2018-04-25T22:18:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/keras-tricks.html</loc>
+<loc>/keras-tricks.html</loc>
 <lastmod>2018-04-25T22:18:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/bash-emacs-model.html</loc>
+<loc>/bash-emacs-model.html</loc>
 <lastmod>2018-04-06T09:18:56+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/issues-of-git.html</loc>
+<loc>/issues-of-git.html</loc>
 <lastmod>2018-04-02T09:05:05+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/latex-tips.html</loc>
+<loc>/latex-tips.html</loc>
 <lastmod>2018-04-02T09:05:05+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/tools-for-research.html</loc>
+<loc>/tools-for-research.html</loc>
 <lastmod>2018-04-02T09:05:05+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/some-issues-on-Centos.html</loc>
+<loc>/some-issues-on-Centos.html</loc>
 <lastmod>2018-04-01T10:42:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/chaoxing-mooc-content-art.html</loc>
+<loc>/chaoxing-mooc-content-art.html</loc>
 <lastmod>2017-12-12T17:13:52+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/chaoxing-mooc-content-cs.html</loc>
+<loc>/chaoxing-mooc-content-cs.html</loc>
 <lastmod>2017-12-12T17:13:52+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/chaoxing-mooc-content-economy.html</loc>
+<loc>/chaoxing-mooc-content-economy.html</loc>
 <lastmod>2017-12-12T17:13:52+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/chaoxing-mooc-content-history.html</loc>
+<loc>/chaoxing-mooc-content-history.html</loc>
 <lastmod>2017-12-12T17:13:52+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/chaoxing-mooc-content-literature.html</loc>
+<loc>/chaoxing-mooc-content-literature.html</loc>
 <lastmod>2017-12-12T17:13:52+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/chaoxing-mooc-content-math.html</loc>
+<loc>/chaoxing-mooc-content-math.html</loc>
 <lastmod>2017-12-12T17:13:52+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/chaoxing-mooc-content-philosophy.html</loc>
+<loc>/chaoxing-mooc-content-philosophy.html</loc>
 <lastmod>2017-12-12T17:13:52+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/chaoxing-mooc-content-physics.html</loc>
+<loc>/chaoxing-mooc-content-physics.html</loc>
 <lastmod>2017-12-12T17:13:52+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/lifetime-aware-regression-model-for-video-popularity.html</loc>
+<loc>/lifetime-aware-regression-model-for-video-popularity.html</loc>
 <lastmod>2017-10-16T20:35:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/BLACKOUT-SPEEDING-UP-RECURRENT-NEURAL-NETWORK-LANGUAGE-MODELS-WITH-LARGE-VOCABULARIES.html</loc>
+<loc>/BLACKOUT-SPEEDING-UP-RECURRENT-NEURAL-NETWORK-LANGUAGE-MODELS-WITH-LARGE-VOCABULARIES.html</loc>
 <lastmod>2017-09-28T12:46:38+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Semantics-Based_Obfuscation-Resilient_Binary_Code_Similarity_Comparison.html</loc>
+<loc>/Semantics-Based_Obfuscation-Resilient_Binary_Code_Similarity_Comparison.html</loc>
 <lastmod>2017-09-28T12:46:38+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/python-validate-code-generatation.html</loc>
+<loc>/python-validate-code-generatation.html</loc>
 <lastmod>2017-09-09T18:00:55+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/python-flask-logging-logger.html</loc>
+<loc>/python-flask-logging-logger.html</loc>
 <lastmod>2017-09-09T15:32:25+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/ajax-template.html</loc>
+<loc>/ajax-template.html</loc>
 <lastmod>2017-09-06T17:38:32+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/SQLAlchemy-IntegrityError-duplicate.html</loc>
+<loc>/SQLAlchemy-IntegrityError-duplicate.html</loc>
 <lastmod>2017-09-06T14:28:45+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Vultr-config-flask-production-environment.html</loc>
+<loc>/Vultr-config-flask-production-environment.html</loc>
 <lastmod>2017-08-28T15:31:35+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/config-centOS-install-Nginx.html</loc>
+<loc>/config-centOS-install-Nginx.html</loc>
 <lastmod>2017-08-28T10:41:29+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/config-centOS-install-Redis安装.html</loc>
+<loc>/config-centOS-install-Redis安装.html</loc>
 <lastmod>2017-08-28T10:41:29+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/config-centOS-install-postgresql.html</loc>
+<loc>/config-centOS-install-postgresql.html</loc>
 <lastmod>2017-08-28T10:41:29+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/gunicorn-supervisor-deploy.html</loc>
+<loc>/gunicorn-supervisor-deploy.html</loc>
 <lastmod>2017-08-28T10:41:29+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/git-use-proxy.html</loc>
+<loc>/git-use-proxy.html</loc>
 <lastmod>2017-08-28T09:05:05+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/use-git-upload-deploy-project.html</loc>
+<loc>/use-git-upload-deploy-project.html</loc>
 <lastmod>2017-08-28T09:05:05+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/config-centOS-install-git.html</loc>
+<loc>/config-centOS-install-git.html</loc>
 <lastmod>2017-08-27T20:44:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/config-centOS-install-git-nginx-server.html</loc>
+<loc>/config-centOS-install-git-nginx-server.html</loc>
 <lastmod>2017-08-27T20:44:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/a-simple-web-loader.html</loc>
+<loc>/a-simple-web-loader.html</loc>
 <lastmod>2017-05-30T13:27:22+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/lua-issues.html</loc>
+<loc>/lua-issues.html</loc>
 <lastmod>2017-05-22T09:01:38+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Real-Time-Recurrent-Regression-Networks-for-Object-Tracking--.html</loc>
+<loc>/Real-Time-Recurrent-Regression-Networks-for-Object-Tracking--.html</loc>
 <lastmod>2017-05-20T10:50:51+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/some-issues-on-ubuntu.html</loc>
+<loc>/some-issues-on-ubuntu.html</loc>
 <lastmod>2017-05-20T10:42:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/some-issues-on-windows.html</loc>
+<loc>/some-issues-on-windows.html</loc>
 <lastmod>2017-05-20T10:42:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/unsupervised-learning-of-visual-representations.html</loc>
+<loc>/unsupervised-learning-of-visual-representations.html</loc>
 <lastmod>2017-05-16T12:46:38+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/learning-features-by-watch-objects-move.html</loc>
+<loc>/learning-features-by-watch-objects-move.html</loc>
 <lastmod>2017-05-15T15:29:53+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/semi-supervised-chinese.html</loc>
+<loc>/semi-supervised-chinese.html</loc>
 <lastmod>2017-05-15T15:29:53+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/web-backend-function.html</loc>
+<loc>/web-backend-function.html</loc>
 <lastmod>2017-05-14T16:55:19+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/notes-on-using-docker.html</loc>
+<loc>/notes-on-using-docker.html</loc>
 <lastmod>2017-05-18T18:10:01+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/python-function-implement.html</loc>
+<loc>/python-function-implement.html</loc>
 <lastmod>2017-04-24T22:26:28+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/something-strange-on-python.html</loc>
+<loc>/something-strange-on-python.html</loc>
 <lastmod>2017-04-24T22:26:28+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/the-feeling-out-of-control.html</loc>
+<loc>/the-feeling-out-of-control.html</loc>
 <lastmod>2017-04-22T14:54:06+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/get-heroes-images.html</loc>
+<loc>/get-heroes-images.html</loc>
 <lastmod>2017-04-18T21:22:28+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/pelican-ArticlesGenerator.html</loc>
+<loc>/pelican-ArticlesGenerator.html</loc>
 <lastmod>2017-04-18T14:09:50+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/shell-array.html</loc>
+<loc>/shell-array.html</loc>
 <lastmod>2017-04-17T19:09:40+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/shell-bash-tricks.html</loc>
+<loc>/shell-bash-tricks.html</loc>
 <lastmod>2017-04-24T09:18:56+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/my-understanding-on-vector-inner-product.html</loc>
+<loc>/my-understanding-on-vector-inner-product.html</loc>
 <lastmod>2017-04-17T12:51:04+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/ideas-on-writing-and-speaking.html</loc>
+<loc>/ideas-on-writing-and-speaking.html</loc>
 <lastmod>2017-04-16T21:12:17+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/pelican-generator.html</loc>
+<loc>/pelican-generator.html</loc>
 <lastmod>2017-04-15T14:26:08+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/python-interactive-debugger-part1.html</loc>
+<loc>/python-interactive-debugger-part1.html</loc>
 <lastmod>2017-04-18T19:29:01+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Python-module-import.html</loc>
+<loc>/Python-module-import.html</loc>
 <lastmod>2017-04-14T14:31:17+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/learn-python-by-opensource-project-pelican.html</loc>
+<loc>/learn-python-by-opensource-project-pelican.html</loc>
 <lastmod>2017-04-18T13:30:13+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/hovercraft-to-impressjs-slides.html</loc>
+<loc>/hovercraft-to-impressjs-slides.html</loc>
 <lastmod>2017-04-12T11:07:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/100-numpy-excercises.html</loc>
+<loc>/100-numpy-excercises.html</loc>
 <lastmod>2017-04-11T21:15:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/mxnet-Windows-installation.html</loc>
+<loc>/mxnet-Windows-installation.html</loc>
 <lastmod>2017-04-11T10:15:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/ielts-speaking-content.html</loc>
+<loc>/ielts-speaking-content.html</loc>
 <lastmod>2017-03-26T23:12:21+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/GRE-Arguemnt-Routine.html</loc>
+<loc>/GRE-Arguemnt-Routine.html</loc>
 <lastmod>2017-03-06T22:13:45+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/zhimind-entire-solution.html</loc>
+<loc>/zhimind-entire-solution.html</loc>
 <lastmod>2017-02-08T22:13:45+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/zhimind-entire-solution-english.html</loc>
+<loc>/zhimind-entire-solution-english.html</loc>
 <lastmod>2017-02-07T22:13:45+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/several-resources-for-ielts.html</loc>
+<loc>/several-resources-for-ielts.html</loc>
 <lastmod>2017-04-16T21:12:19+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/tools_for_foreign_language_learning.html</loc>
+<loc>/tools_for_foreign_language_learning.html</loc>
 <lastmod>2017-01-10T21:23:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/database-table-of-content.html</loc>
+<loc>/database-table-of-content.html</loc>
 <lastmod>2016-12-29T11:19:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/teach_knowledge_or_teach_wisdom_and_methods.html</loc>
+<loc>/teach_knowledge_or_teach_wisdom_and_methods.html</loc>
 <lastmod>2016-12-10T21:23:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/gewu-learning-methods-template.html</loc>
+<loc>/gewu-learning-methods-template.html</loc>
 <lastmod>2016-11-27T12:23:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/thoughts-on-creative-thinking.html</loc>
+<loc>/thoughts-on-creative-thinking.html</loc>
 <lastmod>2016-11-26T20:28:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/udacity-debug-basic-concepts.html</loc>
+<loc>/udacity-debug-basic-concepts.html</loc>
 <lastmod>2017-04-18T19:29:32+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Explicit-Debugging.html</loc>
+<loc>/Explicit-Debugging.html</loc>
 <lastmod>2017-04-18T19:29:10+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/scientific-methods.html</loc>
+<loc>/scientific-methods.html</loc>
 <lastmod>2017-04-18T19:29:46+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/thoughts-on-education-hobby-career.html</loc>
+<loc>/thoughts-on-education-hobby-career.html</loc>
 <lastmod>2016-11-20T16:45:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/flask-problem-summary.html</loc>
+<loc>/flask-problem-summary.html</loc>
 <lastmod>2016-11-07T10:34:35+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/deep-learning-catalog.html</loc>
+<loc>/deep-learning-catalog.html</loc>
 <lastmod>2016-10-22T20:18:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/notes-on-design-sprint.html</loc>
+<loc>/notes-on-design-sprint.html</loc>
 <lastmod>2016-10-27T11:35:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/udacity-deep-learning-notes.html</loc>
+<loc>/udacity-deep-learning-notes.html</loc>
 <lastmod>2016-10-25T23:15:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/thoughts-on-learning-science-engineering.html</loc>
+<loc>/thoughts-on-learning-science-engineering.html</loc>
 <lastmod>2016-10-20T20:28:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Todo-in-Article-List.html</loc>
+<loc>/Todo-in-Article-List.html</loc>
 <lastmod>2016-10-20T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/machine-learning-env-config.html</loc>
+<loc>/machine-learning-env-config.html</loc>
 <lastmod>2016-10-20T17:53:50+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/thoughts-on-education-gamify.html</loc>
+<loc>/thoughts-on-education-gamify.html</loc>
 <lastmod>2016-10-13T10:47:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/on-english-speak.html</loc>
+<loc>/on-english-speak.html</loc>
 <lastmod>2016-10-11T10:47:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/NaoDong-list.html</loc>
+<loc>/NaoDong-list.html</loc>
 <lastmod>2017-04-16T23:29:02+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/machine-learning-catalog.html</loc>
+<loc>/machine-learning-catalog.html</loc>
 <lastmod>2016-10-28T20:18:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/frontEndFunctionImplement.html</loc>
+<loc>/frontEndFunctionImplement.html</loc>
 <lastmod>2016-10-05T18:44:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/zhimind-bmc.html</loc>
+<loc>/zhimind-bmc.html</loc>
 <lastmod>2017-02-11T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/zhimind-bmc-20161005.html</loc>
+<loc>/zhimind-bmc-20161005.html</loc>
 <lastmod>2016-10-05T13:01:01+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/bu-neng-qiu-quan-ze-bei-dui-jiao-yu-de-yi-ge-kan-fa.html</loc>
+<loc>/bu-neng-qiu-quan-ze-bei-dui-jiao-yu-de-yi-ge-kan-fa.html</loc>
 <lastmod>2016-10-04T10:47:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/comment-on-pedagogy.html</loc>
+<loc>/comment-on-pedagogy.html</loc>
 <lastmod>2016-10-04T10:32:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/data-preprocessing-in-dm-xuetangx.html</loc>
+<loc>/data-preprocessing-in-dm-xuetangx.html</loc>
 <lastmod>2017-04-17T19:23:30+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/ying-yu-ci-gen-yu-dan-ci-du-shu-bi-ji.html</loc>
+<loc>/ying-yu-ci-gen-yu-dan-ci-du-shu-bi-ji.html</loc>
 <lastmod>2016-09-13T20:15:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/probabilistic-Community-Role-model.html</loc>
+<loc>/probabilistic-Community-Role-model.html</loc>
 <lastmod>2016-07-21T15:51:58+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/multilayer-edge-mixture-model.html</loc>
+<loc>/multilayer-edge-mixture-model.html</loc>
 <lastmod>2016-07-05T16:52:13+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Generative-Feature-Selection.html</loc>
+<loc>/Generative-Feature-Selection.html</loc>
 <lastmod>2016-07-04T15:47:19+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Community-Role-Detection.html</loc>
+<loc>/Community-Role-Detection.html</loc>
 <lastmod>2016-06-21T15:51:58+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/Communities-Ground-Truth.html</loc>
+<loc>/Communities-Ground-Truth.html</loc>
 <lastmod>2016-06-09T10:23:17+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/slides_set.html</loc>
+<loc>/slides_set.html</loc>
 <lastmod>2016-04-28T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/sml-linear-regression.html</loc>
+<loc>/sml-linear-regression.html</loc>
 <lastmod>2016-04-28T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/some-lost-markdown.html</loc>
+<loc>/some-lost-markdown.html</loc>
 <lastmod>2016-04-28T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/union-find-optimize.html</loc>
+<loc>/union-find-optimize.html</loc>
 <lastmod>2016-04-28T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/word2vec-2-mindmap.html</loc>
+<loc>/word2vec-2-mindmap.html</loc>
 <lastmod>2016-04-28T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/zhimind-datastruct.html</loc>
+<loc>/zhimind-datastruct.html</loc>
 <lastmod>2016-04-28T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/zhimind-practice-manual.html</loc>
+<loc>/zhimind-practice-manual.html</loc>
 <lastmod>2016-04-28T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/zhimind-manual.html</loc>
+<loc>/zhimind-manual.html</loc>
 <lastmod>2016-11-14T23:31:32+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/total-probability.html</loc>
+<loc>/total-probability.html</loc>
 <lastmod>2016-04-20T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/debug-assert-meaning.html</loc>
+<loc>/debug-assert-meaning.html</loc>
 <lastmod>2017-04-18T19:29:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/conditional-probability.html</loc>
+<loc>/conditional-probability.html</loc>
 <lastmod>2016-04-17T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/prob-measure.html</loc>
+<loc>/prob-measure.html</loc>
 <lastmod>2016-04-17T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/prob-stat-intro.html</loc>
+<loc>/prob-stat-intro.html</loc>
 <lastmod>2016-04-17T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/random-event.html</loc>
+<loc>/random-event.html</loc>
 <lastmod>2016-04-17T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/tu-jie-shu-xue-xue-xi-zhi-ju-zhen.html</loc>
+<loc>/tu-jie-shu-xue-xue-xi-zhi-ju-zhen.html</loc>
 <lastmod>2016-04-10T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/alphago-papers.html</loc>
+<loc>/alphago-papers.html</loc>
 <lastmod>2016-03-25T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/classical-music-week1.html</loc>
+<loc>/classical-music-week1.html</loc>
 <lastmod>2016-03-14T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/multi_layer_cd_suver.html</loc>
+<loc>/multi_layer_cd_suver.html</loc>
 <lastmod>2016-03-14T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/GaoCD.html</loc>
+<loc>/GaoCD.html</loc>
 <lastmod>2016-03-10T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/ema_comminities_dynamic_networks.html</loc>
+<loc>/ema_comminities_dynamic_networks.html</loc>
 <lastmod>2016-03-08T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/ea_based_communities_survey.html</loc>
+<loc>/ea_based_communities_survey.html</loc>
 <lastmod>2016-03-07T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/overlap_communities_survey.html</loc>
+<loc>/overlap_communities_survey.html</loc>
 <lastmod>2016-03-04T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/findbugs_summary.html</loc>
+<loc>/findbugs_summary.html</loc>
 <lastmod>2016-03-03T21:20:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/human_kernel_summary.html</loc>
+<loc>/human_kernel_summary.html</loc>
 <lastmod>2016-03-03T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/FOCS_summary.html</loc>
+<loc>/FOCS_summary.html</loc>
 <lastmod>2016-03-01T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/d3js_learn_1.html</loc>
+<loc>/d3js_learn_1.html</loc>
 <lastmod>2016-03-01T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/automata-hw1.html</loc>
+<loc>/automata-hw1.html</loc>
 <lastmod>2014-09-08T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/algo_connectivity.html</loc>
+<loc>/algo_connectivity.html</loc>
 <lastmod>2014-08-16T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/vi-vim-tips.html</loc>
+<loc>/vi-vim-tips.html</loc>
 <lastmod>2014-05-06T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/adversarial-examples-are-not-bugs-they-are-features.html</loc>
+<loc>/adversarial-examples-are-not-bugs-they-are-features.html</loc>
 <lastmod>2000-10-24T13:14:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/you-only-propagate-once-accelerating-adversarial-training-via-maximal-principle.html</loc>
+<loc>/you-only-propagate-once-accelerating-adversarial-training-via-maximal-principle.html</loc>
 <lastmod>2000-10-23T13:14:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/template_only.html</loc>
+<loc>/template_only.html</loc>
 <lastmod>2000-10-22T13:14:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sndnyang.github.io/read_abs_introduction_papers_list.html</loc>
+<loc>/read_abs_introduction_papers_list.html</loc>
 <lastmod>2000-05-20T13:14:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>

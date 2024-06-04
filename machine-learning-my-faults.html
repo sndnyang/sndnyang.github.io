@@ -13,14 +13,14 @@
 <meta name="keywords" content="CS, 机器学习, 人工智能, 机器学习, " />
 
 <meta property="og:title" content="机器学习开发教训 "/>
-<meta property="og:url" content="http://sndnyang.github.io/machine-learning-my-faults.html" />
-<meta property="og:description" content="一些教训 version control 版本控制 特别是需要将版本与实验结果关联起来， 并分离参数， 意思是，不要通过修改文件来修改实验参数 这样，能把实验结果与对应的代码版本关联起来， 并进行追踪 参数控制 用 argparse 这种， 把实验参数从代码中分离 训练集要打乱顺序 如 Pytorch dataloader 里的 shuffle=True 特别是在均匀分布时， 如果不随机打乱， 每个批次都极度不平衡 另外， 不同 loader 如果是随机顺序， 会影响全局的 seed 比如， test_loader 有没有拿来求每一个 epoch或批次的损失函数、 准确度， 会改变 seed， 造成训练结果变化 控制随机种子 set_frame_work(seed) 方便复现 一定要单步调试过一遍 特别是分支循环条件语句， 一定要确定符合预期 教训 self.no_stein ..." />
+<meta property="og:url" content="/machine-learning-my-faults.html" />
+<meta property="og:description" content="一些教训¶ version control 版本控制¶ 特别是需要将版本与实验结果关联起来， 并分离参数， 意思是，不要通过修改文件来修改实验参数 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2018-08-30T12:53:50+08:00" />
 <meta property="" content="2018-08-30T17:53:50+08:00" />
 <meta name="twitter:title" content="机器学习开发教训 ">
-<meta name="twitter:description" content="一些教训 version control 版本控制 特别是需要将版本与实验结果关联起来， 并分离参数， 意思是，不要通过修改文件来修改实验参数 这样，能把实验结果与对应的代码版本关联起来， 并进行追踪 参数控制 用 argparse 这种， 把实验参数从代码中分离 训练集要打乱顺序 如 Pytorch dataloader 里的 shuffle=True 特别是在均匀分布时， 如果不随机打乱， 每个批次都极度不平衡 另外， 不同 loader 如果是随机顺序， 会影响全局的 seed 比如， test_loader 有没有拿来求每一个 epoch或批次的损失函数、 准确度， 会改变 seed， 造成训练结果变化 控制随机种子 set_frame_work(seed) 方便复现 一定要单步调试过一遍 特别是分支循环条件语句， 一定要确定符合预期 教训 self.no_stein ...">
+<meta name="twitter:description" content="一些教训¶ version control 版本控制¶ 特别是需要将版本与实验结果关联起来， 并分离参数， 意思是，不要通过修改文件来修改实验参数 …">
 
 
         <title>机器学习开发教训  · 科探空谷
@@ -146,24 +146,24 @@
 
                         
                         
-<h1 id="_1">一些教训</h1>
-<h2 id="version-control">version control 版本控制</h2>
+<h1 id="_1">一些教训<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<h2 id="version-control">version control 版本控制<a class="headerlink" href="#version-control" title="Permanent link">¶</a></h2>
 <p>特别是需要将版本与实验结果关联起来， 并分离参数， 意思是，不要通过修改文件来修改实验参数</p>
 <p>这样，能把实验结果与对应的代码版本关联起来， 并进行追踪</p>
-<h2 id="_2">参数控制</h2>
+<h2 id="_2">参数控制<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>用 argparse 这种， 把实验参数从代码中分离</p>
-<h2 id="_3">训练集要打乱顺序</h2>
+<h2 id="_3">训练集要打乱顺序<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>如 Pytorch dataloader 里的 shuffle=True</p>
 <p>特别是在均匀分布时， 如果不随机打乱， 每个批次都极度不平衡</p>
 <p>另外， 不同 loader 如果是随机顺序， 会影响全局的 seed</p>
 <p>比如， test_loader 有没有拿来求每一个 epoch或批次的损失函数、 准确度， 会改变 seed， 造成训练结果变化</p>
-<h2 id="_4">控制随机种子</h2>
+<h2 id="_4">控制随机种子<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>set_frame_work(seed)</p>
 <p>方便复现</p>
-<h2 id="_5">一定要单步调试过一遍</h2>
+<h2 id="_5">一定要单步调试过一遍<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>特别是分支循环条件语句， 一定要确定符合预期</p>
 <p>教训 self.no_stein 默认设置为 None， 结果 if self.no_stein is False 就错过了</p>
-<h2 id="1s">未完待续 +1s</h2>
+<h2 id="1s">未完待续 +1s<a class="headerlink" href="#1s" title="Permanent link">¶</a></h2>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
                     <a href="#" class="bds_more" data-cmd="more"></a>
@@ -174,45 +174,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/machine-learning-my-faults.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'machine-learning-my-faults.html';
-    var disqus_url = 'http://sndnyang.github.io/machine-learning-my-faults.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -286,45 +248,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -13,7 +13,7 @@
 <meta name="keywords" content="论文, 论文, " />
 
 <meta property="og:title" content="softmax和cross-entropy变种 "/>
-<meta property="og:url" content="http://sndnyang.github.io/variants_of_softmax_CE.html" />
+<meta property="og:url" content="/variants_of_softmax_CE.html" />
 <meta property="og:description" content="天天论文， 搞个频道" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
@@ -153,12 +153,12 @@
                         
                         
 <p><img alt="Cover" src="./images/image-20201022175151873.png"/></p>
-<h1 id="softmaxcrossentropy">原始的softmax和交叉熵CrossEntropy</h1>
+<h1 id="softmaxcrossentropy">原始的softmax和交叉熵CrossEntropy<a class="headerlink" href="#softmaxcrossentropy" title="Permanent link">¶</a></h1>
 <p>Softmax使用Boltzmann分布（又名吉布斯分布）</p>
 <p><img alt="image-20201022180822463" src="images/image-20201022180822463.png" style="zoom:50%;"/></p>
 <p>二维时特征分布示意图：</p>
 <p><img alt="image-20201022180647104" src="./images/image-20201022180647104.png" style="zoom:75%;"/></p>
-<h2 id="_1">怎么改</h2>
+<h2 id="_1">怎么改<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
@@ -173,7 +173,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_2">这么改</h2>
+<h2 id="_2">这么改<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
@@ -188,15 +188,15 @@
 </tr>
 </tbody>
 </table>
-<h1 id="_3">从内积角度</h1>
-<h2 id="_4">给角度加间隔</h2>
+<h1 id="_3">从内积角度<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
+<h2 id="_4">给角度加间隔<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>论文：Large-Margin Softmax Loss for Convolutional Neural Networks， ICML2016 https://arxiv.org/abs/1612.02295</p>
-<h1 id="_5">从距离</h1>
-<h2 id="center-loss">到各个类的中心距离 Center Loss</h2>
+<h1 id="_5">从距离<a class="headerlink" href="#_5" title="Permanent link">¶</a></h1>
+<h2 id="center-loss">到各个类的中心距离 Center Loss<a class="headerlink" href="#center-loss" title="Permanent link">¶</a></h2>
 <p>即L2距离
 $$
-\mathcal{L}<em i="1">C = \frac{1}{2} \sum</em>^N | \bold{x}<em z_i="z_i">{i}-\bold{\mu}</em>|_{2}^{2}
-$$</p>
+\mathcal{L}<em i="1">C = \frac{1}{2} \sum</em>}^N | \bold{x<em z_i="z_i">{i}-\bold{\mu}</em>
+$$}|_{2}^{2</p>
 <p>主要问题是</p>
 <ol>
 <li>$\mu$ 很容易聚到一起， 所以一般是联合softmax一起使用</li>
@@ -204,24 +204,24 @@ $$</p>
 </ol>
 <p><img alt="image-20201022183339720" src="images/center_loss_2d.png"/></p>
 <p>论文：A Discriminative Feature Learning Approach for Deep Face Recognition, ECCV 2016 https://link.springer.com/chapter/10.1007/978-3-319-46478-7_31 </p>
-<h2 id="_6">径向基核距离</h2>
+<h2 id="_6">径向基核距离<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p><a href="https://en.wikipedia.org/wiki/Radial_basis_function">Radial Basis Function</a> 
 $$
 \psi(X) = \psi(|X - C|)
 $$
 本论文里使用的是高斯：
 $$
-K_{i, j}=K_{\mathrm{RBF}}\left(\boldsymbol{x}<em j="j">{i}, \boldsymbol{W}</em>\right)=e^{-\frac{d_{i, j}}{\gamma}}=e^{-\frac{\left|\boldsymbol{x}<em j="j">{i}-\boldsymbol{W}</em>\right|_{2}^{2}}{\gamma}}
-$$</p>
+K_{i, j}=K_{\mathrm{RBF}}\left(\boldsymbol{x}<em j="j">{i}, \boldsymbol{W}</em>}\right)=e^{-\frac{d_{i, j}}{\gamma}}=e^{-\frac{\left|\boldsymbol{x<em j="j">{i}-\boldsymbol{W}</em>
+$$}\right|_{2}^{2}}{\gamma}</p>
 <p>Radial Basis Function Softmax loss:</p>
 <p><img alt="image-20201022183826995" src="images/rbf_softmax.png" style="zoom:70%;"/></p>
 <p>这篇论文里，有对softmax不足的分析， <a href="https://arxiv.org/abs/1905.10626">Rethinking Softmax Cross-Entropy Loss for Adversarial Robustness</a>  也有分析 softmax,  cross-entropy 的不好</p>
 <p>论文：RBF-Softmax: Learning Deep Representative Prototypes with Radial Basis Function Softmax, ECCV 2020 https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123710290.pdf</p>
-<h1 id="_7">从分布</h1>
+<h1 id="_7">从分布<a class="headerlink" href="#_7" title="Permanent link">¶</a></h1>
 <p><img alt="image-20201022214430409" src="images/image-20201022214430409.png"/></p>
 <p><img alt="image-20201022214547184" src="images/image-20201022214547184.png" style="zoom:50%;"/></p>
 <p><img alt="image-20201022214623420" src="images/image-20201022214623420.png" style="zoom:50%;"/></p>
-<h1 id="_8">总结</h1>
+<h1 id="_8">总结<a class="headerlink" href="#_8" title="Permanent link">¶</a></h1>
 <p>Github上 PyTorch 实现</p>
 <p>https://github.com/YirongMao/softmax_variants</p>
                         
@@ -234,45 +234,7 @@ $$</p>
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/variants_of_softmax_CE.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'variants_of_softmax_CE.html';
-    var disqus_url = 'http://sndnyang.github.io/variants_of_softmax_CE.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -283,7 +245,7 @@ $$</p>
                     <h4>Tags</h4>
                     <ul class="list-of-tags tags-in-article">
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                     </ul>
                     <h4>Stay in Touch</h4>
@@ -336,45 +298,7 @@ $$</p>
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

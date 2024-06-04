@@ -13,13 +13,13 @@
 <meta name="keywords" content="论文, CS, 社区发现, 算法, 数据挖掘, " />
 
 <meta property="og:title" content="FOCS总结 "/>
-<meta property="og:url" content="http://sndnyang.github.io/FOCS_summary.html" />
-<meta property="og:description" content="基本定义 图： G(V, E) 目标—— 找到一簇子图(全部并正确)， 每个子图都是一个团（community) 即 $ S = {S_i | S_i \subset V } $ 团（community)： 子图中任意点在该子图中的连通性 高于 非团的子图 定义 包含点 $ v_j $ 的团的集合为： $$ S(v_j) = {S_i | v_j \in S_i \land S_i \in S } $$ disjoint cluster: $$ |S(v_j)| \le 1 $$ overlapped cluster: &gt; 1 定义 $ N(v_j) $ 为 $v_j$ 的邻接点 ..." />
+<meta property="og:url" content="/FOCS_summary.html" />
+<meta property="og:description" content="基本定义¶ 图： G(V, E) 目标—— 找到一簇子图(全部并正确)， 每个子图都是一个团（community) 即 $ S = {S_i | S_i \subset V } $ 团（community)： 子图中任意点在该子图中 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2016-03-01T00:00:00+08:00" />
 <meta name="twitter:title" content="FOCS总结 ">
-<meta name="twitter:description" content="基本定义 图： G(V, E) 目标—— 找到一簇子图(全部并正确)， 每个子图都是一个团（community) 即 $ S = {S_i | S_i \subset V } $ 团（community)： 子图中任意点在该子图中的连通性 高于 非团的子图 定义 包含点 $ v_j $ 的团的集合为： $$ S(v_j) = {S_i | v_j \in S_i \land S_i \in S } $$ disjoint cluster: $$ |S(v_j)| \le 1 $$ overlapped cluster: &gt; 1 定义 $ N(v_j) $ 为 $v_j$ 的邻接点 ...">
+<meta name="twitter:description" content="基本定义¶ 图： G(V, E) 目标—— 找到一簇子图(全部并正确)， 每个子图都是一个团（community) 即 $ S = {S_i | S_i \subset V } $ 团（community)： 子图中任意点在该子图中 …">
 
 
         <title>FOCS总结  · 科探空谷
@@ -149,7 +149,7 @@
 
                         
                         
-<h1 id="_1">基本定义</h1>
+<h1 id="_1">基本定义<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>图： G(V, E)</p>
 <p>目标—— 找到一簇子图(全部并正确)， 每个子图都是一个团（community)
 即 $ S = {S_i | S_i \subset V } $</p>
@@ -162,18 +162,18 @@
 <p>定义 $ N(v_j) $ 为 $v_j$ 的邻接点</p>
 <p>定义 $ N_i(v_j) $ 为 $v_j$ 在团 $S_i$ 的邻接点， 即 
 $$ N_i(v_j) ={v_k | (v_j, v_k) \in E \land v_k \in S_i } $$</p>
-<h1 id="_2">新概念定义</h1>
+<h1 id="_2">新概念定义<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>团连通性 community connectedness, 即点 $v_j$在团$S_i$邻点超阈值个数 除以 该团点数, 代表 点对应团的归属性。</p>
 <p>$$ \zeta^i_j = \frac{|N_i(v_j)|-K+1}{|S_i| - K} if |N_i(v_j)| &gt; K, else, 0 $$</p>
 <p>邻接连通性 neighborhood connectedness， 即 点 $v_j$在团$S_i$邻点数 除以 $v_j$的总邻点数， 代表 点加入新团的可能性</p>
 <p>$$ \xi^i_j = \frac{|N_i(v_j)|}{|N(v_j)|}  $$ </p>
 <p>外围结点 peripheral node: $v_i$的团邻接点</p>
 <p>$$ Added_i = {v_k|v_k \in N(v_i) \land v_k \in S_i }, \forall S_i \in S^l $$</p>
-<h1 id="_3">步骤</h1>
-<h2 id="_4">初始化</h2>
+<h1 id="_3">步骤<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
+<h2 id="_4">初始化<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>初始化全部有K个以上邻接点的点， 由它及其邻接点组成团 $S_i$</p>
 <p>定义该阶段的外围结点</p>
-<h2 id="_5">脱离阶段</h2>
+<h2 id="_5">脱离阶段<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <ol>
 <li>
 <p>对前面所有团里的点 $ V_j$, 计算相应的</p>
@@ -196,14 +196,14 @@ $$ N_i(v_j) ={v_k | (v_j, v_k) \in E \land v_k \in S_i } $$</p>
 peripheral nodes ensures that nodes that form the core of a
 community are never eliminated</li>
 </ol>
-<h2 id="_6">扩充阶段</h2>
+<h2 id="_6">扩充阶段<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p>对上一阶段处理后的团中所有点$v_j$， 当以下条件满足：
 1. 该点未入 $ S_i$团
 2. 该点选入 $S_i$团的可能性高（即 邻接连通性 $\xi^i_j$ 高于选中阈值 join cut-off ）</p>
 <p>join cut-off 选中阈值的计算方式与 stay 相同</p>
-<h2 id="_7">去重阶段</h2>
-<h1 id="_8">代码描述</h1>
-<h2 id="_9">参考链接</h2>
+<h2 id="_7">去重阶段<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
+<h1 id="_8">代码描述<a class="headerlink" href="#_8" title="Permanent link">¶</a></h1>
+<h2 id="_9">参考链接<a class="headerlink" href="#_9" title="Permanent link">¶</a></h2>
 <p><a href="/focs-notebook.html">focs-code</a></p>
 <div class="process"><input class="answers" type="hidden" value="{%notebookcs/论文/FOCS.ipynb%"/><input class="comments" type="hidden" value="{%notebookcs/论文/FOCS.ipynb"/><button onclick="checkQuiz(this, 0)">submit</button><br/></div>
                         
@@ -216,45 +216,7 @@ community are never eliminated</li>
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/FOCS_summary.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'FOCS_summary.html';
-    var disqus_url = 'http://sndnyang.github.io/FOCS_summary.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -268,7 +230,7 @@ community are never eliminated</li>
                             <span>22</span>
 </a></li>
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#she-qu-fa-xian-ref">社区发现
                             <span>11</span>
@@ -327,45 +289,7 @@ community are never eliminated</li>
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

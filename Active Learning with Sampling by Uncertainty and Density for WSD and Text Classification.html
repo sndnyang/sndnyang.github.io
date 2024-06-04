@@ -13,7 +13,7 @@
 <meta name="keywords" content="论文, 自然语言处理, 深度学习, 主动学习, 人工智能, 论文, " />
 
 <meta property="og:title" content="Active Learning with Sampling by Uncertainty and Density for WSD and Text Classification "/>
-<meta property="og:url" content="http://sndnyang.github.io/Active Learning with Sampling by Uncertainty and Density for WSD and Text Classification.html" />
+<meta property="og:url" content="/Active Learning with Sampling by Uncertainty and Density for WSD and Text Classification.html" />
 <meta property="og:description" content="" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang sndnyang.github.io" />
@@ -144,7 +144,7 @@
 
                         
                         
-<h1 id="_1">摘要</h1>
+<h1 id="_1">摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>两个问题</p>
 <ol>
 <li>不确定性采样时， 容易选择离群点</li>
@@ -155,11 +155,11 @@
 <li>SUD: Sampling by Uncertainty and Density</li>
 <li>SBC: Sampling By Clustering</li>
 </ol>
-<h1 id="active-learning">主动学习 Active Learning</h1>
+<h1 id="active-learning">主动学习 Active Learning<a class="headerlink" href="#active-learning" title="Permanent link">¶</a></h1>
 <p>从少量数据中学习， 不仅能做预测（分类、回归）， 同时能预测自己预测的结果的准确性（不确定性）， 不确定性高的数据则需要专家来进行标注——不确定性高的数据标注后，又有一批数据的预测结果更可信了， 所以能提高数据有效性， 减少人工标注的工作量。 这就是 active learning 的目标、定义。</p>
 <p>代码实现中， 从少量训练数据开始，没问题， 比如 MNIST 取20、100、 1000个作为初始数据， 专家标注过程则需要用训练数据的另一部分来代替， 因为不可能在实验中真的弹窗出来请人标注。</p>
 <p>代码框架：</p>
-<div class="highlight"><pre><span></span>主动学习框架过程
+<div class="codehilite"><pre><span></span><code>主动学习框架过程
 输入： 初始选定的小训练数据集T， 和 未标注数据集P（pool data set） —— 即，将原始训练集划分成小训练数据集、 未标注集， 有需要的话， 还可以有验证集 validation data set）
 
 使用 T 训练初始模型C（分类或回归都行）
@@ -168,13 +168,13 @@ repeat:
     2. 计算未标注数据集 U 中数据标注结果的不确定性，不确定性高，比如可以用 熵 Entropy 表现， 选择若干 最大熵的数据， 要求人工标注
     3. 把这些数据移到训练集L中， 即用原始训练集里已有的标注 label, 代表 专家人工标注的过程
     4. 使用 L 训练模型C ， 好像一般是训练一个新的， 但也不一定需要重新 训练初始模型C（分类或回归都行）
-</pre></div>
-<h1 id="uncertainty-measures">不确定性评估Uncertainty Measures</h1>
+</code></pre></div>
+<h1 id="uncertainty-measures">不确定性评估Uncertainty Measures<a class="headerlink" href="#uncertainty-measures" title="Permanent link">¶</a></h1>
 <p>又名获取函数 Acquisition Function</p>
-<h2 id="1">1. 最大熵</h2>
+<h2 id="1">1. 最大熵<a class="headerlink" href="#1" title="Permanent link">¶</a></h2>
 <p>Max Entropy:  </p>
 <p>$$H[y|x, D_{train}] = - \sum_c p(y=c|x, D_{train}) log(y=c|x,D_{train})$$</p>
-<h2 id="2">2. 密熵</h2>
+<h2 id="2">2. 密熵<a class="headerlink" href="#2" title="Permanent link">¶</a></h2>
 <p>即密度加熵， 作者使用 二者相乘而不是 $ \lambda * DS(x) + (1-\lambda)*Entropy(x)$</p>
 <p>KNN-density K-Nearest-Neighbor-Based density</p>
                         
@@ -187,45 +187,7 @@ repeat:
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/Active Learning with Sampling by Uncertainty and Density for WSD and Text Classification.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'Active Learning with Sampling by Uncertainty and Density for WSD and Text Classification.html';
-    var disqus_url = 'http://sndnyang.github.io/Active Learning with Sampling by Uncertainty and Density for WSD and Text Classification.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -240,7 +202,7 @@ repeat:
                     <h4>Tags</h4>
                     <ul class="list-of-tags tags-in-article">
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#ren-gong-zhi-neng-ref">人工智能
                             <span>30</span>
@@ -305,45 +267,7 @@ repeat:
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

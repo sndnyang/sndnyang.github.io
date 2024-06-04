@@ -13,7 +13,7 @@
 <meta name="keywords" content="论文, 多目标进化算法, 社区发现, 研究, " />
 
 <meta property="og:title" content="多层网络社区发现综述 "/>
-<meta property="og:url" content="http://sndnyang.github.io/multi_layer_cd_suver.html" />
+<meta property="og:url" content="/multi_layer_cd_suver.html" />
 <meta property="og:description" content="多层社区发现, 聚落检测综述" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
@@ -290,12 +290,12 @@
 
                         
                         
-<h2 id="_1">摘要</h2>
+<h2 id="_1">摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>Community Detection in Multi-Layer Graphs: A Survey</p>
 <p>本文介绍多层网络下聚落检测问题， 并对相应算法做综述</p>
-<h2 id="-">导论 - 过</h2>
-<h1 id="_2">背景知识</h1>
-<h2 id="community">群落/社区 community</h2>
+<h2 id="-">导论 - 过<a class="headerlink" href="#-" title="Permanent link">¶</a></h2>
+<h1 id="_2">背景知识<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
+<h2 id="community">群落/社区 community<a class="headerlink" href="#community" title="Permanent link">¶</a></h2>
 <ol>
 <li>densely-connected components/subgraph</li>
 <li>relative/similar</li>
@@ -306,7 +306,7 @@
 <li>同一个社团、 公司</li>
 <li>同一领域的研究</li>
 </ol>
-<h2 id="_3">多层网络模型</h2>
+<h2 id="_3">多层网络模型<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>关系的不同方面就可以表达成多个独立图组成的多层图， 里面的每个、每层图就代表了一个方面</p>
 <p>比如：</p>
 <ol>
@@ -314,13 +314,13 @@
 <li>微信好友</li>
 <li>微博好友</li>
 </ol>
-<h2 id="_4">单层图定义</h2>
+<h2 id="_4">单层图定义<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <ol>
 <li>a weighted graph (V,w) </li>
 <li>V is a set of vertices</li>
 <li>w is a set of edge weights: (V × V ) → [0,1].</li>
 </ol>
-<h2 id="_5">点映射(图层之间)</h2>
+<h2 id="_5">点映射(图层之间)<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <ol>
 <li>node mapping is a function</li>
 <li>from a graph layer L1 = (V1 ,w1 ) to another graph layer L2 = (V2 ,w2 ) </li>
@@ -333,7 +333,7 @@
 <li>twitter 上只有一个号--pillar(柱型) multi-layer graph</li>
 <li>twitter 上多个号</li>
 </ol>
-<h2 id="_6">多层图定义</h2>
+<h2 id="_6">多层图定义<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <ol>
 <li>a tuple MLN = (L1 ,...,Ll ,IM) </li>
 <li>where Li = (Vi ,wi ),i ∈ 1,...,l are graph layers </li>
@@ -345,21 +345,21 @@
 <li>疾病名</li>
 <li>细菌、病毒或基因</li>
 </ol>
-<h2 id="_7">信息网络定义：</h2>
+<h2 id="_7">信息网络定义：<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
 <ol>
 <li>是个有向图， </li>
 <li>存在“点”到“点类别” 的函数映射 </li>
 <li>及 “边”到“关系(边)类别”的函数映射</li>
 </ol>
-<h2 id="_8">异构信息网络</h2>
+<h2 id="_8">异构信息网络<a class="headerlink" href="#_8" title="Permanent link">¶</a></h2>
 <p>Heterogeneous Information Networks </p>
 <p>点的类别 或 关系的类别个数大于1的信息网络。</p>
 <hr/>
 <p><strong>异构信息网络与多层网络模型 等价</strong></p>
 <p>但强调不太相同</p>
 <p>heterogeneous information networks emphasize heterogeneous types of entities connected by different relationships</p>
-<h1 id="_9">主要方法</h1>
-<h2 id="_10">分类</h2>
+<h1 id="_9">主要方法<a class="headerlink" href="#_9" title="Permanent link">¶</a></h1>
+<h2 id="_10">分类<a class="headerlink" href="#_10" title="Permanent link">¶</a></h2>
 <ol>
 <li>聚类扩展 cluster expansion</li>
 <li>矩阵分解 matrix factorization</li>
@@ -368,24 +368,24 @@
 <li>模式挖掘 pattern mining</li>
 <li>图合并 graph merging</li>
 </ol>
-<h2 id="_11">特点</h2>
+<h2 id="_11">特点<a class="headerlink" href="#_11" title="Permanent link">¶</a></h2>
 <ol>
 <li>多数只支持两层图</li>
 <li>一层是图的原始拓扑结构信息</li>
 <li>其他层一般是利用点的属性信息来计算相似度</li>
 </ol>
-<h1 id="_12">聚类扩展</h1>
-<h2 id="cluster-expansion">Cluster Expansion</h2>
+<h1 id="_12">聚类扩展<a class="headerlink" href="#_12" title="Permanent link">¶</a></h1>
+<h2 id="cluster-expansion">Cluster Expansion<a class="headerlink" href="#cluster-expansion" title="Permanent link">¶</a></h2>
 <p>论文： Scalable community discovery on textual data with relations</p>
 <p>基于关系（文章引用）与文本属性</p>
-<h2 id="_13">针对的问题</h2>
+<h2 id="_13">针对的问题<a class="headerlink" href="#_13" title="Permanent link">¶</a></h2>
 <p>大型文档语料 -- large cocument corpus</p>
 <ol>
 <li>没有同时考虑 textual attribute 和 relations(文献里的引用？)</li>
 <li>大数据集的可扩展性scalability</li>
 <li>多数算法基于一堆要（人工）设定的参数</li>
 </ol>
-<h2 id="_14">思路</h2>
+<h2 id="_14">思路<a class="headerlink" href="#_14" title="Permanent link">¶</a></h2>
 <p>非监督方法</p>
 <ol>
 <li>快速地找到初始的核， 作为群落的种子</li>
@@ -393,7 +393,7 @@
 </ol>
 <p>cores dictate the formation and topics of communities</p>
 <p>核 用来表示 社区的构造和主题</p>
-<h2 id="_15">步骤</h2>
+<h2 id="_15">步骤<a class="headerlink" href="#_15" title="Permanent link">¶</a></h2>
 <p>4 steps:</p>
 <ol>
 <li>core probing </li>
@@ -401,27 +401,27 @@
 <li>affiliation,  利用关系信息，将core扩展成初始社区</li>
 <li>classification， 主题不相关的成员从社区中移除</li>
 </ol>
-<h2 id="core-probing">第一步 Core Probing</h2>
-<h3 id="_16">基本思想</h3>
+<h2 id="core-probing">第一步 Core Probing<a class="headerlink" href="#core-probing" title="Permanent link">¶</a></h2>
+<h3 id="_16">基本思想<a class="headerlink" href="#_16" title="Permanent link">¶</a></h3>
 <p>co-occurrence analysis: multiple objects are linked simultaneously by others, they are more likely to be able to define a coherent topic scope</p>
 <hr/>
-<h3 id="prob">prob 步骤</h3>
+<h3 id="prob">prob 步骤<a class="headerlink" href="#prob" title="Permanent link">¶</a></h3>
 <ol>
 <li>生成每个点的outgoing relations</li>
 <li>用关联规则来计算频繁项集(Apriori)</li>
 </ol>
 <p><img alt="original" src="img/cikm2008_original.png"/></p>
 <hr/>
-<h3 id="apriori">与 Apriori 的不同点</h3>
+<h3 id="apriori">与 Apriori 的不同点<a class="headerlink" href="#apriori" title="Permanent link">¶</a></h3>
 <ol>
 <li>不使用固定的过滤阈值， 根据项集的长度决定阈值</li>
 <li>项集存在包含关系，如果项集 S1 和 S2存在 $ S1 \in S2 $, 不保留S1</li>
 </ol>
-<h2 id="core-merging">core merging</h2>
+<h2 id="core-merging">core merging<a class="headerlink" href="#core-merging" title="Permanent link">¶</a></h2>
 <p>保证了合并后核的高度一致性， 不受过滤阈值的影响</p>
 <p>证明过程略</p>
 <hr/>
-<h3 id="_17">步骤</h3>
+<h3 id="_17">步骤<a class="headerlink" href="#_17" title="Permanent link">¶</a></h3>
 <p>输入参数: core probing 返回的核</p>
 <p>迭代：</p>
 <ol>
@@ -432,16 +432,16 @@
 <li>如果遍历完， S 没有变化， 则退出</li>
 </ol>
 <hr/>
-<h3 id="p-min-p-max-p-">计算 p-min, p-max, p-</h3>
+<h3 id="p-min-p-max-p-">计算 p-min, p-max, p-<a class="headerlink" href="#p-min-p-max-p-" title="Permanent link">¶</a></h3>
 <p><img alt="pvalue" src="img/cikm2008_pvalue.png"/></p>
 <ol>
 <li>p-min, pmax: 在特征空间内， 为 core生成了边界框</li>
 <li>p- : 中心</li>
 </ol>
 <hr/>
-<h3 id="_18">图示：</h3>
+<h3 id="_18">图示：<a class="headerlink" href="#_18" title="Permanent link">¶</a></h3>
 <p><img alt="merge-view" src="img/cikm2008_merge_view.png"/></p>
-<h2 id="affiliation-propagation">Affiliation Propagation</h2>
+<h2 id="affiliation-propagation">Affiliation Propagation<a class="headerlink" href="#affiliation-propagation" title="Permanent link">¶</a></h2>
 <p>完成cores probe后，剩余的点作为 affiliated members</p>
 <p>初始化社区C = 找到的核K ， 迭代处理：</p>
 <ol>
@@ -450,17 +450,17 @@
 <li>或迭代中 没有新的点加入</li>
 </ol>
 <hr/>
-<h3 id="_19">相关概念</h3>
+<h3 id="_19">相关概念<a class="headerlink" href="#_19" title="Permanent link">¶</a></h3>
 <p>好像没什么用</p>
 <ol>
 <li>两个社区的公共成员则为 interdisciplinary member</li>
 <li>点和社区间的相近度(closeness)用迭代时的次数代表</li>
 </ol>
-<h2 id="intra-community-classification">Intra-Community Classification</h2>
+<h2 id="intra-community-classification">Intra-Community Classification<a class="headerlink" href="#intra-community-classification" title="Permanent link">¶</a></h2>
 <p>只根据relation找到的社区 很可能误判(false hits)</p>
 <p>要根据属性分析， 将当前的C 划分成两个集合， C' 和 C-</p>
 <hr/>
-<h3 id="_20">步骤</h3>
+<h3 id="_20">步骤<a class="headerlink" href="#_20" title="Permanent link">¶</a></h3>
 <ol>
 <li>核K 视作是 positive example正例， 即肯定属于这个社区</li>
 <li>选择社区C的核K（正例） 和 其他社区的核（negative example)</li>
@@ -468,106 +468,106 @@
 <li>使用 LDA（Latent Dirichlet Allocation）来降维</li>
 <li>使用某种分类器（SVM），将负标签的点都移除</li>
 </ol>
-<h2 id="_21">图示</h2>
+<h2 id="_21">图示<a class="headerlink" href="#_21" title="Permanent link">¶</a></h2>
 <p><img alt="original" src="img/cikm2008_original.png"/>
 <img alt="prob" src="img/cikm2008_probing.png"/></p>
 <hr/>
 <p><img alt="merge" src="img/cikm2008_merge.png"/>
 <img alt="affiliation" src="img/cikm2008_affiliation.png"/>
 <img alt="classification" src="img/cikm2008_classification.png"/></p>
-<h2 id="_22">主要贡献</h2>
+<h2 id="_22">主要贡献<a class="headerlink" href="#_22" title="Permanent link">¶</a></h2>
 <ol>
 <li>用关联规则、频繁项集来初始化</li>
 </ol>
-<h1 id="_23">统一距离</h1>
-<h2 id="unified-distance">Unified Distance</h2>
+<h1 id="_23">统一距离<a class="headerlink" href="#_23" title="Permanent link">¶</a></h1>
+<h2 id="unified-distance">Unified Distance<a class="headerlink" href="#unified-distance" title="Permanent link">¶</a></h2>
 <p>structural and attribute similarities using a unified distance measure</p>
 <p>SA-Cluster</p>
-<h2 id="_24">步骤</h2>
+<h2 id="_24">步骤<a class="headerlink" href="#_24" title="Permanent link">¶</a></h2>
 <ol>
 <li>建立统一距离度量， 新的图</li>
 <li>用新的图 进行聚类， 类k-means</li>
 </ol>
 <hr/>
-<h3 id="unified-distance-measure">unified distance measure</h3>
+<h3 id="unified-distance-measure">unified distance measure<a class="headerlink" href="#unified-distance-measure" title="Permanent link">¶</a></h3>
 <p>基于属性增广图(attribute-argmented graph), 使用Random Walk with Restart (RWR)</p>
 <hr/>
-<h4 id="neighborhood-random-walk-distance">邻点随机游走距离 Neighborhood Random Walk Distance</h4>
+<h4 id="neighborhood-random-walk-distance">邻点随机游走距离 Neighborhood Random Walk Distance<a class="headerlink" href="#neighborhood-random-walk-distance" title="Permanent link">¶</a></h4>
 <p><img alt="rwd" src="img/28-rwd.png"/></p>
 <ol>
 <li>l as the length that a random walk can go</li>
 <li>c ∈ (0, 1) as the restart probability</li>
 </ol>
 <hr/>
-<h4 id="attribute-argmented-graph">attribute-argmented graph</h4>
+<h4 id="attribute-argmented-graph">attribute-argmented graph<a class="headerlink" href="#attribute-argmented-graph" title="Permanent link">¶</a></h4>
 <ol>
 <li>添加属性点（attribute vertices），代表属性的值。</li>
 <li>原始的点连接到对应的属性点上</li>
 <li>两点上共同的属性点越多， 两点相似度直觉上就越高。</li>
 </ol>
 <p><img alt="augment graph" src="img/28-augmented-graph.png"/></p>
-<h2 id="_25">聚类算法</h2>
+<h2 id="_25">聚类算法<a class="headerlink" href="#_25" title="Permanent link">¶</a></h2>
 <p>利用unified distance measure， 进行 k-medoids clustering（类似 k-means）</p>
 <ol>
 <li>选择每个聚簇(cluster)最中心的点</li>
 <li>其余点分配给最近的中心点。</li>
 <li>迭代， 调整边的权重</li>
 </ol>
-<h2 id="_26">聚类中心初始化</h2>
+<h2 id="_26">聚类中心初始化<a class="headerlink" href="#_26" title="Permanent link">¶</a></h2>
 <p>思想： 从vi走 l 步能到的点越多， vi越可能是中心</p>
 <ol>
 <li>计算点的密度函数： <img alt="density" src="img/28-density-function.png"/></li>
 <li>降序排列， 选择前k点作为聚类中心</li>
 </ol>
-<h2 id="_27">聚类过程</h2>
+<h2 id="_27">聚类过程<a class="headerlink" href="#_27" title="Permanent link">¶</a></h2>
 <ol>
 <li>分配点到最近的中心，即有最大random walk distance的中心点</li>
 <li>对每个cluster ,用随机游走距离 计算“平均点”</li>
 <li>寻找新的中心点，距“平均点”最近</li>
 <li>不停迭代， 直到 聚类目标函数 收敛</li>
 </ol>
-<h2 id="_28">聚类目标函数</h2>
+<h2 id="_28">聚类目标函数<a class="headerlink" href="#_28" title="Permanent link">¶</a></h2>
 <p>目标是最大化</p>
 <p><img alt="obj function" src="img/28-objective-function.png"/></p>
 <p><img alt="set distance" src="img/28-set-distance.png"/></p>
 <hr/>
-<h3 id="_29">问题转化</h3>
+<h3 id="_29">问题转化<a class="headerlink" href="#_29" title="Permanent link">¶</a></h3>
 <p>有以上的目标函数后， 可转化成三个子问题</p>
 <ol>
 <li>聚类分配</li>
 <li>中心更新</li>
 <li>权重调整</li>
 </ol>
-<h2 id="_30">权重自我调整</h2>
+<h2 id="_30">权重自我调整<a class="headerlink" href="#_30" title="Permanent link">¶</a></h2>
 <p>在每次迭代时， 进行权重调整</p>
 <p>属性 ai 权重在第t+1次迭代的计算公式为：</p>
 <p><img alt="weight-adjust" src="img/28-weight-adjust.png"/></p>
 <p><img alt="delta-weight" src="img/28-delta-weight.png"/></p>
 <hr/>
-<h3 id="majority-voting-mechanism">投票机制 majority voting mechanism</h3>
+<h3 id="majority-voting-mechanism">投票机制 majority voting mechanism<a class="headerlink" href="#majority-voting-mechanism" title="Permanent link">¶</a></h3>
 <p>counts the number of vertices within clusters that share the same attribute values with the centroids on ai</p>
 <p><img alt="voting" src="img/28-voting.png"/></p>
-<h2 id="_31">主要贡献</h2>
+<h2 id="_31">主要贡献<a class="headerlink" href="#_31" title="Permanent link">¶</a></h2>
 <ol>
 <li>一个统一的距离评估方式， 将结构和属性相似度结合</li>
 <li>带权重的自调整方法， 调节结构属性相似度的重要度</li>
 </ol>
-<h1 id="_32">基于模型方法</h1>
-<h2 id="model-based-method">Model-Based Method</h2>
+<h1 id="_32">基于模型方法<a class="headerlink" href="#_32" title="Permanent link">¶</a></h1>
+<h2 id="model-based-method">Model-Based Method<a class="headerlink" href="#model-based-method" title="Permanent link">¶</a></h2>
 <p>model-based community detection approach based on both structural and attribute aspects of a graph</p>
-<h2 id="_33">步骤关键点</h2>
+<h2 id="_33">步骤关键点<a class="headerlink" href="#_33" title="Permanent link">¶</a></h2>
 <ol>
 <li>概率模型的构建， 结合结构和属性信息， 不使用人工定义的距离</li>
 <li>变分法(variational approach)解决模型</li>
 </ol>
-<h2 id="_34">构建概率模型</h2>
+<h2 id="_34">构建概率模型<a class="headerlink" href="#_34" title="Permanent link">¶</a></h2>
 <p>聚类属性图定义：</p>
 <ol>
 <li>X: n x n 的邻接矩阵</li>
 <li>Y: n x t 的属性矩阵</li>
 <li>Z: n x 1 的聚类向量， 即每个点所属的聚类</li>
 </ol>
-<h2 id="_35">目标：</h2>
+<h2 id="_35">目标：<a class="headerlink" href="#_35" title="Permanent link">¶</a></h2>
 <p>求最优化：<img alt="map" src="img/26-map.png"/></p>
 <p>其中</p>
 <p><img alt="posterior" src="img/26-posterior.png"/></p>
@@ -579,28 +579,28 @@
 <li>theta - 属性分布(attribute distribution)</li>
 <li>phi - 类间 边出现概率(edge occurrence prob)</li>
 </ol>
-<h2 id="_36">两大问题</h2>
+<h2 id="_36">两大问题<a class="headerlink" href="#_36" title="Permanent link">¶</a></h2>
 <ol>
 <li>Z 的N个变量最大化 计算量过大， 全局最优基本不可能</li>
 <li>计算Z的后验概率分布时， 不存在 p(Z|X,Y)的closed-form expression</li>
 </ol>
-<h2 id="variational-algorithm">变分法 variational algorithm</h2>
+<h2 id="variational-algorithm">变分法 variational algorithm<a class="headerlink" href="#variational-algorithm" title="Permanent link">¶</a></h2>
 <p>使用variational distribution q(α, θ, φ, Z) 来逼近原分布</p>
 <p>并且对 variational distribution 作限制</p>
 <p><img alt="var-distri" src="img/26-var-distri.png"/></p>
 <hr/>
 <p>全局最优就转成求局部最优</p>
 <p><img alt="local-max" src="img/26-local-maximum.png"/></p>
-<h2 id="_37">两个新问题</h2>
+<h2 id="_37">两个新问题<a class="headerlink" href="#_37" title="Permanent link">¶</a></h2>
 <ol>
 <li>如何定义the family of variational distributions</li>
 <li>如何从中找出最优分布， 最接近p(α, θ, φ, Z|X, Y)</li>
 </ol>
 <hr/>
-<h3 id="parametric-family">Parametric Family</h3>
+<h3 id="parametric-family">Parametric Family<a class="headerlink" href="#parametric-family" title="Permanent link">¶</a></h3>
 <p><img alt="map-simple" src="img/26-map-simple.png"/></p>
 <hr/>
-<h3 id="optimizing-variational-parameters">Optimizing Variational Parameters</h3>
+<h3 id="optimizing-variational-parameters">Optimizing Variational Parameters<a class="headerlink" href="#optimizing-variational-parameters" title="Permanent link">¶</a></h3>
 <p>measure the distance between a variational distribution q(α, θ, φ, Z) and the true posterior p(α, θ, φ, Z|X, Y)</p>
 <p><img alt="kl-divergence" src="img/26-kl-divergence.png"/></p>
 <hr/>
@@ -608,11 +608,11 @@
 <p><img alt="kl-maxim" src="img/26-kl-maxim.png"/></p>
 <p>关系式：</p>
 <p><img alt="kl-relate" src="img/26-kl-relate.png"/></p>
-<h1 id="_38">图合并</h1>
-<h2 id="graph-merging">Graph Merging</h2>
+<h1 id="_38">图合并<a class="headerlink" href="#_38" title="Permanent link">¶</a></h1>
+<h2 id="graph-merging">Graph Merging<a class="headerlink" href="#graph-merging" title="Permanent link">¶</a></h2>
 <p>combine structural and attribute information using the graph merging process</p>
 <p>CODICIL</p>
-<h2 id="_39">步骤</h2>
+<h2 id="_39">步骤<a class="headerlink" href="#_39" title="Permanent link">¶</a></h2>
 <ol>
 <li>创建内容边 create content edges</li>
 <li>边组合 combining edges</li>
@@ -620,44 +620,44 @@
 <li>聚类 clustering</li>
 </ol>
 <hr/>
-<h3 id="creating-content-edges">creating content edges</h3>
+<h3 id="creating-content-edges">creating content edges<a class="headerlink" href="#creating-content-edges" title="Permanent link">¶</a></h3>
 <ol>
 <li>对每个点vi, 用cosine相似度， 计算k 内容最近邻</li>
 <li>在vi 和 k近邻间 建立content edges</li>
 </ol>
 <hr/>
-<h3 id="combining-edges">combining edges</h3>
+<h3 id="combining-edges">combining edges<a class="headerlink" href="#combining-edges" title="Permanent link">¶</a></h3>
 <p>将新创建的content edges 和 初始的拓扑边集进行简单的联合(unified)</p>
 <hr/>
-<h3 id="sampling-edges-with-bias">sampling edges with bias</h3>
+<h3 id="sampling-edges-with-bias">sampling edges with bias<a class="headerlink" href="#sampling-edges-with-bias" title="Permanent link">¶</a></h3>
 <p>对每个点 vi， 从邻点选择要保留的边， 通过 cosine 相似度或Jaccard 相似度</p>
 <hr/>
-<h4 id="clustering">clustering</h4>
+<h4 id="clustering">clustering<a class="headerlink" href="#clustering" title="Permanent link">¶</a></h4>
 <p>因为图合并部分独立于community detection， 所以任意 community detection 都可以，</p>
 <p>这块不是本文的重点</p>
-<h2 id="_40">主要贡献</h2>
+<h2 id="_40">主要贡献<a class="headerlink" href="#_40" title="Permanent link">¶</a></h2>
 <p>通过 用内容信息消除连接结构里的噪音， 来强化社区信号</p>
-<h1 id="_41">矩阵分解</h1>
-<h2 id="matrix-factorization">Matrix Factorization</h2>
+<h1 id="_41">矩阵分解<a class="headerlink" href="#_41" title="Permanent link">¶</a></h1>
+<h2 id="matrix-factorization">Matrix Factorization<a class="headerlink" href="#matrix-factorization" title="Permanent link">¶</a></h2>
 <p>论文： Community Detection with Edge Content in Social Media Networks</p>
 <p>Edge-Induced Matrix Factorization </p>
-<h2 id="idea">主要idea</h2>
+<h2 id="idea">主要idea<a class="headerlink" href="#idea" title="Permanent link">¶</a></h2>
 <ol>
 <li>通过从多层图中抽取相同因子(common factors)</li>
 <li>把不同信息进行结合</li>
 <li>使用通用的聚类方法处理</li>
 </ol>
-<h2 id="_42">方法</h2>
+<h2 id="_42">方法<a class="headerlink" href="#_42" title="Permanent link">¶</a></h2>
 <ol>
 <li>使用 低秩矩阵因子分解(low-rank matrix factorization) 来逼近目标矩阵O， <img alt="o=PAP'" src="img/25-matrix-factors.png"/></li>
 <li>P: n x n 的特征矩阵</li>
 <li>lambda(大写的？): n x n 特征值矩阵</li>
 </ol>
-<h2 id="_43">目标</h2>
+<h2 id="_43">目标<a class="headerlink" href="#_43" title="Permanent link">¶</a></h2>
 <p>对于多个目标矩阵O^i, i = 1,-,l</p>
 <p>要算出一个common factor matrix</p>
 <hr/>
-<h3 id="_44">求最小化：</h3>
+<h3 id="_44">求最小化：<a class="headerlink" href="#_44" title="Permanent link">¶</a></h3>
 <p><img alt="obj-mini" src="img/25-obj-minimize.png"/></p>
 <ol>
 <li>P: n x n的所有层 公因子矩阵</li>
@@ -665,26 +665,26 @@
 <li>|| ·|| is the Frobenius norm</li>
 <li>α: regularization 参数</li>
 </ol>
-<h2 id="_45">全局转局部最优</h2>
+<h2 id="_45">全局转局部最优<a class="headerlink" href="#_45" title="Permanent link">¶</a></h2>
 <p>迭代处理：</p>
 <ol>
 <li>固定P , 优化 Λ^i</li>
 <li>固定Λ^i , 优化 P</li>
 <li>直到 收敛</li>
 </ol>
-<h1 id="_46">模式挖掘</h1>
-<h2 id="pattern-mining">Pattern Mining</h2>
+<h1 id="_46">模式挖掘<a class="headerlink" href="#_46" title="Permanent link">¶</a></h1>
+<h2 id="pattern-mining">Pattern Mining<a class="headerlink" href="#pattern-mining" title="Permanent link">¶</a></h2>
 <p>Coherent Closed Quasi-Clique Discovery from Large Dense Graph Databases</p>
 <p>Cocain</p>
-<h2 id="_47">方法</h2>
+<h2 id="_47">方法<a class="headerlink" href="#_47" title="Permanent link">¶</a></h2>
 <p>子图挖掘算法， 搜索多层图中频率高于某给定阈值的 quasi-cliques</p>
-<h2 id="_48">基础定义</h2>
+<h2 id="_48">基础定义<a class="headerlink" href="#_48" title="Permanent link">¶</a></h2>
 <p><img alt="formation" src="img/27-pattern-mining-notation.png"/></p>
 <hr/>
-<h4 id="gamma-quasi-clique">gamma(γ)-Quasi-clique</h4>
+<h4 id="gamma-quasi-clique">gamma(γ)-Quasi-clique<a class="headerlink" href="#gamma-quasi-clique" title="Permanent link">¶</a></h4>
 <p><img alt="Quasi-clique" src="img/quasi-clique.png"/></p>
 <hr/>
-<h4 id="cross-graph-quasi-clique">cross-graph quasi-clique:</h4>
+<h4 id="cross-graph-quasi-clique">cross-graph quasi-clique:<a class="headerlink" href="#cross-graph-quasi-clique" title="Permanent link">¶</a></h4>
 <p>a set of vertices</p>
 <ol>
 <li>belonging to a quasi-clique </li>
@@ -692,7 +692,7 @@
 <li>must be the maximal set</li>
 </ol>
 <hr/>
-<h4 id="edge-cut-edge-connectivity">Edge Cut, Edge Connectivity</h4>
+<h4 id="edge-cut-edge-connectivity">Edge Cut, Edge Connectivity<a class="headerlink" href="#edge-cut-edge-connectivity" title="Permanent link">¶</a></h4>
 <ol>
 <li>edge cut is a set of edges Ec such that G'=(V ,E-Ec) is disconnected</li>
 <li>A minimum cut is the smallest set among all edge cuts. </li>
@@ -700,7 +700,7 @@
 </ol>
 <p>coherent subgraph: a subgraph that satisfies a minimum cut bound</p>
 <hr/>
-<h4 id="gamma-isomorphism">gamma(γ)-Isomorphism 同构</h4>
+<h4 id="gamma-isomorphism">gamma(γ)-Isomorphism 同构<a class="headerlink" href="#gamma-isomorphism" title="Permanent link">¶</a></h4>
 <p>若两个图G1, G2是 gamma同构， 当且仅当：</p>
 <ol>
 <li>都是 γgamma-quasi-cliques</li>
@@ -708,7 +708,7 @@
 <li>存在 biject f:V1-&gt;V2, 对V1中的每个点v, 满足F1(v) = F2(f(v))</li>
 </ol>
 <hr/>
-<h4 id="multiset">multiset</h4>
+<h4 id="multiset">multiset<a class="headerlink" href="#multiset" title="Permanent link">¶</a></h4>
 <ol>
 <li>点的标签的集合(a bag of vertex labels)</li>
 <li>忽略顺序</li>
@@ -716,61 +716,61 @@
 <li>定义为 M(G)， G的multiset</li>
 </ol>
 <hr/>
-<h4 id="string-of-a-graph">string of a graph</h4>
+<h4 id="string-of-a-graph">string of a graph<a class="headerlink" href="#string-of-a-graph" title="Permanent link">¶</a></h4>
 <p>Given a k-graph g, any sequence of all elements in M(g)</p>
 <p>给定 k-graph g, M(g)的任意一种序列</p>
 <hr/>
-<h4 id="canonical-form-of-a-graph">canonical form of a graph</h4>
+<h4 id="canonical-form-of-a-graph">canonical form of a graph<a class="headerlink" href="#canonical-form-of-a-graph" title="Permanent link">¶</a></h4>
 <p>the minimum string among all its strings and denoted by CF(G)</p>
 <p>图的最小 string, 记作 CF(G)</p>
 <p>有引理：</p>
 <p>两个γ-quasi-cliques Q1 Q2 是γ同构， 当且仅当 CF(Q1) = CF(Q2)</p>
-<h2 id="_49">步骤</h2>
+<h2 id="_49">步骤<a class="headerlink" href="#_49" title="Permanent link">¶</a></h2>
 <ol>
 <li>将子图转成 canonical forms</li>
 <li>枚举γ-quasi-cliques可行解(feasible candidate for γ-quasi-cliques), 用DFS策略进行剪枝</li>
 <li>基于 闭包检查规划(closure-checking scheme)， 选择出闭包的 γ-quasi-cliques</li>
 </ol>
 <hr/>
-<h3 id="_50">枚举策略</h3>
+<h3 id="_50">枚举策略<a class="headerlink" href="#_50" title="Permanent link">¶</a></h3>
 <ol>
 <li>枚举树</li>
 <li>满足： 子代必须能归入祖先</li>
 </ol>
 <p>关键：</p>
 <p>对每个 quasi-clique Q, 处理完它的子代后， 进行闭包检查</p>
-<h2 id="_51">主要贡献</h2>
+<h2 id="_51">主要贡献<a class="headerlink" href="#_51" title="Permanent link">¶</a></h2>
 <p>find cross-graph quasi-cliques in a multi-layer graph that are frequent, coherent, and closed</p>
-<h1 id="_52">另一篇模式挖掘</h1>
-<h2 id="_53">论文</h2>
+<h1 id="_52">另一篇模式挖掘<a class="headerlink" href="#_52" title="Permanent link">¶</a></h1>
+<h2 id="_53">论文<a class="headerlink" href="#_53" title="Permanent link">¶</a></h2>
 <p>论文： Mining Coherent Subgraphs in Multi-Layer Graphs with Edge Labels</p>
-<h2 id="_54">本文贡献</h2>
+<h2 id="_54">本文贡献<a class="headerlink" href="#_54" title="Permanent link">¶</a></h2>
 <ol>
 <li>提出了带边标签的多层图聚类的新范式</li>
 <li>提出了MLCS, 避免了结果集的冗余</li>
 <li>提出了最好优先搜索算法MiMAG 来求MLCS聚类的近似解</li>
 </ol>
 <hr/>
-<h3 id="multi-layer-coherent-subgraph-mlcs-model">multi-layer coherent subgraph (MLCS) model</h3>
+<h3 id="multi-layer-coherent-subgraph-mlcs-model">multi-layer coherent subgraph (MLCS) model<a class="headerlink" href="#multi-layer-coherent-subgraph-mlcs-model" title="Permanent link">¶</a></h3>
 <p>clusters of vertices that are densely connected by edges with similar labels in a subset of the graph layers</p>
 <p>找聚类， 满足条件：在某层的图中，不仅边的密度高，且具有相似的标签。</p>
 <p>the edge labels represent characteristics of the relations</p>
-<h2 id="quasi-clique">quasi-clique</h2>
+<h2 id="quasi-clique">quasi-clique<a class="headerlink" href="#quasi-clique" title="Permanent link">¶</a></h2>
 <p>One-dimensional MLCS cluster</p>
-<h2 id="one-dimensional-mlcs-cluster">One-dimensional MLCS cluster</h2>
+<h2 id="one-dimensional-mlcs-cluster">One-dimensional MLCS cluster<a class="headerlink" href="#one-dimensional-mlcs-cluster" title="Permanent link">¶</a></h2>
 <p>某一图（层）的点集满足以下条件：</p>
 <ol>
 <li>形成一个 0.5-quasi-clique</li>
 <li>点集的每条边的两个顶点： dist(l_i(x), l_i(y)) &lt;= w, edge label 为连续值时需要w, 不然置为0.</li>
 </ol>
-<h2 id="mlcs-cluster">多层 MLCS cluster</h2>
-<h2 id="redundancey-relation">冗余关系 redundancey relation</h2>
-<h2 id="mimag">MiMAG 算法</h2>
+<h2 id="mlcs-cluster">多层 MLCS cluster<a class="headerlink" href="#mlcs-cluster" title="Permanent link">¶</a></h2>
+<h2 id="redundancey-relation">冗余关系 redundancey relation<a class="headerlink" href="#redundancey-relation" title="Permanent link">¶</a></h2>
+<h2 id="mimag">MiMAG 算法<a class="headerlink" href="#mimag" title="Permanent link">¶</a></h2>
 <p>Mining Multi-layered, Attributed Graphs</p>
 <p>计算出最大化、 无冗余、 高质量（不是最优质量）的聚类</p>
 <p>基于寻找quasi-cliques的快速算法。</p>
-<h1 id="_55">总结</h1>
-<h2 id="_56"></h2>
+<h1 id="_55">总结<a class="headerlink" href="#_55" title="Permanent link">¶</a></h1>
+<h2 id="_56"><a class="headerlink" href="#_56" title="Permanent link">¶</a></h2>
 <ol>
 <li>Apriori 频繁项集的， 特例或通用</li>
 <li>随机游走</li>
@@ -779,23 +779,23 @@
 <li>clique</li>
 </ol>
 <p>community 没有严格定义</p>
-<h1 id="_57">未来研究方向</h1>
-<h2 id="_58">通用多层图的适应性</h2>
+<h1 id="_57">未来研究方向<a class="headerlink" href="#_57" title="Permanent link">¶</a></h1>
+<h2 id="_58">通用多层图的适应性<a class="headerlink" href="#_58" title="Permanent link">¶</a></h2>
 <p>General multi-layer graph applicability</p>
 <p>当前算法一般仅研究了 pillar(柱形)多层图</p>
 <p>现实世界不保证不同层之间正好一一对应</p>
 <p>所以现有算法的泛化， 对通用多层图的适应性非常有意义</p>
-<h2 id="_59">多层图的不确定性</h2>
+<h2 id="_59">多层图的不确定性<a class="headerlink" href="#_59" title="Permanent link">¶</a></h2>
 <p>Uncertainty in multi-layer graphs</p>
 <p>现有的研究都假定 图数据已经清理完毕， 缺少噪音、歧义的研究</p>
 <p>constructing multi-layer graphs with entity resolution and/or trustworthy analysis certainly enhances the quality of the community detection process</p>
-<h2 id="_60">可扩展性问题</h2>
+<h2 id="_60">可扩展性问题<a class="headerlink" href="#_60" title="Permanent link">¶</a></h2>
 <p>所以可能要考虑并行及分布式之类的方法</p>
 <p>或是对多层图的特征向量矩阵（feature-vector matrices）进行采样</p>
-<h2 id="temporal-analysis">Temporal analysis</h2>
+<h2 id="temporal-analysis">Temporal analysis<a class="headerlink" href="#temporal-analysis" title="Permanent link">¶</a></h2>
 <p>图是随时间变化的。</p>
 <p>目前存在一些对单层图的时间变化的研究， 但基本不可用于多层图</p>
-<h1 id="_61">谢谢！</h1>
+<h1 id="_61">谢谢！<a class="headerlink" href="#_61" title="Permanent link">¶</a></h1>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
                     <a href="#" class="bds_more" data-cmd="more"></a>
@@ -806,45 +806,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/multi_layer_cd_suver.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'multi_layer_cd_suver.html';
-    var disqus_url = 'http://sndnyang.github.io/multi_layer_cd_suver.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -858,7 +820,7 @@
                             <span>3</span>
 </a></li>
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#she-qu-fa-xian-ref">社区发现
                             <span>11</span>
@@ -914,45 +876,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

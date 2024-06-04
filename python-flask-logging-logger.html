@@ -13,7 +13,7 @@
 <meta name="keywords" content="python, flask, python, " />
 
 <meta property="og:title" content="python-logging模块配置多个logger "/>
-<meta property="og:url" content="http://sndnyang.github.io/python-flask-logging-logger.html" />
+<meta property="og:url" content="/python-flask-logging-logger.html" />
 <meta property="og:description" content="python logging 和 flask 如何弄多个 logger 写不同日志文件" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang (sndnyangd@gmail.com)" />
@@ -138,23 +138,23 @@
 
                         
                         
-<h1 id="flask-applogger">flask app.logger</h1>
-<div class="highlight"><pre><span></span>log_file_name = os.path.join(
+<h1 id="flask-applogger">flask app.logger<a class="headerlink" href="#flask-applogger" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code>log_file_name = os.path.join(
     os.environ.get('OPENSHIFT_PYTHON_LOG_DIR', '.'),
     'app.log')
 
 handler = logging.FileHandler(log_file_name, mode='a')
 handler.setLevel(logging.INFO)
 fmt = "%(asctime)s\t%(message)s"
-# 实例化formatter
+<span class="gh">#</span> 实例化formatter
 formatter = logging.Formatter(fmt)
-# 为handler添加formatter
+<span class="gh">#</span> 为handler添加formatter
 handler.setFormatter(formatter)
 app.logger.addHandler(handler)
 app.logger.setLevel(logging.INFO)
-</pre></div>
-<h1 id="logger">其他logger</h1>
-<div class="highlight"><pre><span></span>logger = logging.getLogger('selfname')
+</code></pre></div>
+<h1 id="logger">其他logger<a class="headerlink" href="#logger" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code>logger = logging.getLogger('selfname')
 fmter = logging.Formatter('%(asctime)s %(levelname)s %(message)s', datefmt='%a, %d %b %Y %H:%M:%S')
 log_file_name = os.path.join(os.environ.get('OPENSHIFT_PYTHON_LOG_DIR', '.'),
                              'filename.log')
@@ -163,7 +163,7 @@ hdlr.setLevel(logging.INFO)
 hdlr.setFormatter(fmter)
 logger.addHandler(hdlr)
 logger.setLevel(logging.INFO)
-</pre></div>
+</code></pre></div>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
                     <a href="#" class="bds_more" data-cmd="more"></a>
@@ -174,45 +174,7 @@ logger.setLevel(logging.INFO)
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/python-flask-logging-logger.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'python-flask-logging-logger.html';
-    var disqus_url = 'http://sndnyang.github.io/python-flask-logging-logger.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -279,45 +241,7 @@ logger.setLevel(logging.INFO)
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

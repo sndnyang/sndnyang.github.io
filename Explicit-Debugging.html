@@ -13,7 +13,7 @@
 <meta name="keywords" content="软件开发, 调试, 软件开发, " />
 
 <meta property="og:title" content="Udacity调试课笔记之显式调试 "/>
-<meta property="og:url" content="http://sndnyang.github.io/Explicit-Debugging.html" />
+<meta property="og:url" content="/Explicit-Debugging.html" />
 <meta property="og:description" content="udacity的调试课程笔记，显式调试" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
@@ -141,20 +141,20 @@
 
                         
                         
-<h1 id="_1">显式调试</h1>
+<h1 id="_1">显式调试<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>显式调试(Explicit Debugging，自译不标准)的内容主要有两点：</p>
 <ol>
 <li>记录</li>
 <li>描述</li>
 </ol>
-<h1 id="_2">记录</h1>
+<h1 id="_2">记录<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>所谓记录，即及时记录重要调试信息。如程序输入，预期结果，实际结果, 尤其在使用科学方法提出的假说、 假想的解决方案。</p>
 <p>也许读者习惯了记在脑中，可工作中干扰过多，记忆的时长也有限，一旦遗忘，大侠又要重新来过了，简直痛彻心扉。</p>
 <p>只要下班之前，将信息记录在案，第二天上班时，就可以以清醒的大脑再战江湖，何乐而不为？</p>
-<h1 id="_3">描述</h1>
+<h1 id="_3">描述<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
 <p>描述、阐述是指向某人（甚至某只泰迪熊. 玩具鸭）描述自己遇到的问题。</p>
 <p>我们知道，其实大脑同时在整理思路、理清脉络，使之更加结构化，于是可能说着说着，自己突然霍然开朗，手舞足蹈地离开，留下满头雾水的同伴， 所以才要换作一只泰迪熊. 玩具鸭 :)</p>
-<h1 id="_4">恭喜</h1>
+<h1 id="_4">恭喜<a class="headerlink" href="#_4" title="Permanent link">¶</a></h1>
 <p>恭喜您看完全篇。 本来打算写 知维教程的， 但感觉编不出问题， 因为几个步骤都是语言描述的， 很难引导、判断回答。</p>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
@@ -166,45 +166,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/Explicit-Debugging.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'Explicit-Debugging.html';
-    var disqus_url = 'http://sndnyang.github.io/Explicit-Debugging.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -275,45 +237,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

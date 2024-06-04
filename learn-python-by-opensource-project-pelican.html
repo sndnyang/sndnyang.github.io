@@ -13,7 +13,7 @@
 <meta name="keywords" content="Python, 代码阅读, Python, " />
 
 <meta property="og:title" content="用开源项目Pelican学Python "/>
-<meta property="og:url" content="http://sndnyang.github.io/learn-python-by-opensource-project-pelican.html" />
+<meta property="og:url" content="/learn-python-by-opensource-project-pelican.html" />
 <meta property="og:description" content="学习Pelican的源代码，掌握一些Python的开发技巧" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang sndnyang.github.io" />
@@ -151,7 +151,7 @@
 
                         
                         
-<h1 id="_1">介绍</h1>
+<h1 id="_1">介绍<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>通过阅读Pelican的源码， 掌握一些Python开发实践方法， 这些方法可能也能用在其他
 语言的开发上。</p>
 <p>要求读者掌握基本Python语法——严格来说，Python语法很简单，只要看懂一种编程语言
@@ -162,44 +162,44 @@
 <p>此外， 主要介绍Python里调用逻辑及已经有的好用的、但不知道时会重复创造的轮子(标准
 库)，而像 os，sys，random，math等不会重写的模块将跳过。</p>
 <p>第三方开发的 模块 暂不在介绍范围，除非特别有用</p>
-<h1 id="pelican">pelican的运行</h1>
+<h1 id="pelican">pelican的运行<a class="headerlink" href="#pelican" title="Permanent link">¶</a></h1>
 <p>pelican 创建项目这一块先不讨论， 直接从运行开始， 过一遍执行过程、调用过程</p>
 <p>MakeFile里的 make html 对应 </p>
-<div class="highlight"><pre><span></span><span class="err">pelican</span> <span class="k">$(</span><span class="nv">INPUTDIR</span><span class="k">)</span> <span class="err">-o</span> <span class="k">$(</span><span class="nv">OUTPUTDIR</span><span class="k">)</span> <span class="err">-s</span> <span class="k">$(</span><span class="nv">BASEDIR</span><span class="k">)</span><span class="err">/pelicanconf.py</span> <span class="k">$(</span><span class="nv">PELICANOPTS</span><span class="k">)</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">pelican</span><span class="w"> </span><span class="k">$(</span><span class="nv">INPUTDIR</span><span class="k">)</span><span class="w"> </span><span class="err">-o</span><span class="w"> </span><span class="k">$(</span><span class="nv">OUTPUTDIR</span><span class="k">)</span><span class="w"> </span><span class="err">-s</span><span class="w"> </span><span class="k">$(</span><span class="nv">BASEDIR</span><span class="k">)</span><span class="err">/pelicanconf.py</span><span class="w"> </span><span class="k">$(</span><span class="nv">PELICANOPTS</span><span class="k">)</span>
+</code></pre></div>
 <p>shell\makefile部分略。</p>
-<h2 id="_2">命令行参数</h2>
+<h2 id="_2">命令行参数<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>我们首先看到了 <em>命令行参数</em>， 有像 inputdir 这种， 也有像 -o outputdir 这种带前
 置选项参数的。</p>
 <p>读者也许知道 linux程序很多是命令行的， 所以经常有这种参数的设置、解析需求， 所
 以我们得到的第一个要学习的内容就是 命令行参数设置、解析的最佳实践</p>
 <p>有现成的轮子可以使用， Python内置argparse模块就是最佳实践， <a href="python-argparse.html" title="命令行参数解析">argparse使用</a></p>
 <p>在 pelican模块__init__.py里main函数的第一行 parse_arguments函数。</p>
-<h2 id="_3">日志记录</h2>
+<h2 id="_3">日志记录<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>其次，我们需要一个日志记录工具， 不能单靠print打天下， 于是使用内置logging模块
 ， <a href="Python-logging.html" title="日志记录">logging日志记录</a></p>
 <p>第二行init函数，初始化日志记录器</p>
-<h2 id="_4">额外模块导入</h2>
+<h2 id="_4">额外模块导入<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>Python用到了很多的模块，内置的、第三方的，但仍然难免有一些作为参数、配置文件的
 模块需要导入， <a href="Python-module-import.html" title="模块导入">模块导入</a></p>
-<div class="highlight"><pre><span></span>get_instance &gt; read_settings &gt; get_settings_from_file
-</pre></div>
+<div class="codehilite"><pre><span></span><code>get_instance &gt; read_settings &gt; get_settings_from_file
+</code></pre></div>
 <p>Pelican 的配置文件 pelicanconf.py 是一堆的键key, 值value ，所以我们需要最终得到
 一个字典dict，而不是一个模块module，所以我们需要下一步，从模块中读取出一个字典</p>
-<h2 id="_5">自省反射</h2>
+<h2 id="_5">自省反射<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <blockquote>
 <p><a href="introspection-reflection.html">什么是自省反射</a></p>
 </blockquote>
 <p>Python中的自省反射使用 <a href="Python-inspect.html" title="自省反射">inspect</a></p>
 <p>接下来，这个配置项 要和默认、命令行配置项进行合并，但我们希望这两个配置项的变量
 仍保持独立， 用另一个变量记录合并后的值。</p>
-<h2 id="_6">复制</h2>
+<h2 id="_6">复制<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p>手写的话，可能是初始化一个新字典，然后分别遍历两个字典写入新字典里。</p>
 <p>我们希望能直接复制一个新字典，然后更新， 但我们知道 Python赋值是增加一个引用，
 即浅复制， 我们需要深复制， 所以使用 copy.deepcopy, <a href="Python-copy.html" title="复制">copy复制模块</a></p>
 <p>之后用另一项值进行更新update，是字典dict的方法， <a href="Python-dict.html">字典dict</a></p>
 <p>再完成一大堆配置后（没有值得一提的点），程序开始正式运行、解析</p>
-<h2 id="_7">主程序调用</h2>
+<h2 id="_7">主程序调用<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
 <ol>
 <li>调用内容生成器，生成 <a href="pelican-generator.html" title="Pelican生成器">pelican内容生成器</a>
     p = get_generator_classes()
@@ -209,7 +209,7 @@
     p.generate_output(writer)</li>
 </ol>
 <p>signal 信号部分没看明白</p>
-<h1 id="_8">按代码顺序分析</h1>
+<h1 id="_8">按代码顺序分析<a class="headerlink" href="#_8" title="Permanent link">¶</a></h1>
 <p>在pelican模块的__init__.py文件开始， 第一步main函数</p>
 <ol>
 <li>parse_arguments函数:
@@ -228,18 +228,18 @@
 </li>
 <li>写不下去了~~~</li>
 </ol>
-<h1 id="_9">总结</h1>
+<h1 id="_9">总结<a class="headerlink" href="#_9" title="Permanent link">¶</a></h1>
 <p>编程只要个结果不难，但要正确、稳定、高效就难了，但幸运的是，我们能清楚地判断它
 是否正确、稳定、高效，相对英语口语和写作就比较难自评了。</p>
 <p>所以多阅读优秀程序的源码， 总结一些架构的思想、 程序实现方式，既以帮助编程，也
 能帮助调试。</p>
-<h1 id="pelican_1">Pelican系列链接</h1>
+<h1 id="pelican_1">Pelican系列链接<a class="headerlink" href="#pelican_1" title="Permanent link">¶</a></h1>
 <ul>
 <li><a href="learn-python-by-opensource-project-pelican.html">导论</a></li>
 <li><a href="pelican-generator.html">生成模块</a></li>
 <li><a href="pelican-writer.html">输出模块</a></li>
 </ul>
-<h1 id="_10">链接</h1>
+<h1 id="_10">链接<a class="headerlink" href="#_10" title="Permanent link">¶</a></h1>
 <ul>
 <li>&lt;<a href="python-argparse.html">命令行参数解析</a></li>
 <li>&lt;<a href="Python-logging.html">日志记录</a></li>
@@ -267,45 +267,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/learn-python-by-opensource-project-pelican.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'learn-python-by-opensource-project-pelican.html';
-    var disqus_url = 'http://sndnyang.github.io/learn-python-by-opensource-project-pelican.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -376,45 +338,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

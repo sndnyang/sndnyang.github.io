@@ -13,7 +13,7 @@
 <meta name="keywords" content="论文, 自然语言处理, RNN, 人工智能, 自然语言处理, " />
 
 <meta property="og:title" content="BLACKOUT-大词汇量RNN模型加速 "/>
-<meta property="og:url" content="http://sndnyang.github.io/BLACKOUT-SPEEDING-UP-RECURRENT-NEURAL-NETWORK-LANGUAGE-MODELS-WITH-LARGE-VOCABULARIES.html" />
+<meta property="og:url" content="/BLACKOUT-SPEEDING-UP-RECURRENT-NEURAL-NETWORK-LANGUAGE-MODELS-WITH-LARGE-VOCABULARIES.html" />
 <meta property="og:description" content="" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang sndnyang.github.io" />
@@ -150,34 +150,34 @@
 
                         
                         
-<h1 id="_1">摘要</h1>
-<p>论文<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></p>
+<h1 id="_1">摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<p>论文<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
 <p>方法特点： 近似算法，通过 discriminative loss（是什么得看后面介绍） 和 weighted sampling strategy（具体得看后面）来训练RNN语言模式</p>
 <p>像 DropOut(深度学习里的那个)的外层扩展， 因为都是采样吧~~~</p>
-<h1 id="_2">导论</h1>
-<h2 id="_3">历史介绍</h2>
-<h3 id="bengio">Bengio的神经网络语言模型</h3>
+<h1 id="_2">导论<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
+<h2 id="_3">历史介绍<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<h3 id="bengio">Bengio的神经网络语言模型<a class="headerlink" href="#bengio" title="Permanent link">¶</a></h3>
 <p>处理n元模型里的数据稀疏问题。</p>
 <p>方案：用连续（非离散）向量空间来表达历史上下文。 连续值非离散值， 就能计算错误率。 </p>
 <p>初学者还没看过这篇</p>
-<h3 id="_4">递归神经网络</h3>
+<h3 id="_4">递归神经网络<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>处理固定词数问题， 用递归隐藏层可以表示任意长度的上下文（句子）。</p>
 <p>很经典——初学者没看过具体内容（那个隐藏层里的函数用什么没看过）， 更没实现过， 接下来看看。</p>
 <p>没学过也不能装学过~~~</p>
 <p>主要问题是， 矩阵运算遇到超大词汇向量怎么办。</p>
 <p>所以要想办法降维、 近似， 降低计算量。</p>
-<h2 id="_5"></h2>
-<h2 id="_6">实现细节</h2>
-<h1 id="_7">实验</h1>
+<h2 id="_5"><a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
+<h2 id="_6">实现细节<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
+<h1 id="_7">实验<a class="headerlink" href="#_7" title="Permanent link">¶</a></h1>
 <p>目前还看不懂实验部分</p>
-<h1 id="_8">啰嗦点其他的</h1>
+<h1 id="_8">啰嗦点其他的<a class="headerlink" href="#_8" title="Permanent link">¶</a></h1>
 <p>很久没看了（本来看得就少）， 申请不顺利（说不挑，我对排名是不挑，但别的方面上总之自作孽了）， 难过。</p>
 <div class="footnote">
 <hr/>
 <ol>
 <li id="fn:1">
 <p>BLACKOUT: SPEEDING UP RECURRENT NEURAL NETWORK
-LANGUAGE MODELS WITH VERY LARGE VOCABULARIES, Shihao Ji, S. V. N. Vishwanathan, Nadathur Satish, Michael J. Anderson, Pradeep Dubey <a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">↩</a></p>
+LANGUAGE MODELS WITH VERY LARGE VOCABULARIES, Shihao Ji, S. V. N. Vishwanathan, Nadathur Satish, Michael J. Anderson, Pradeep Dubey <a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
 </li>
 </ol>
 </div>
@@ -191,45 +191,7 @@ LANGUAGE MODELS WITH VERY LARGE VOCABULARIES, Shihao Ji, S. V. N. Vishwanathan, 
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/BLACKOUT-SPEEDING-UP-RECURRENT-NEURAL-NETWORK-LANGUAGE-MODELS-WITH-LARGE-VOCABULARIES.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'BLACKOUT-SPEEDING-UP-RECURRENT-NEURAL-NETWORK-LANGUAGE-MODELS-WITH-LARGE-VOCABULARIES.html';
-    var disqus_url = 'http://sndnyang.github.io/BLACKOUT-SPEEDING-UP-RECURRENT-NEURAL-NETWORK-LANGUAGE-MODELS-WITH-LARGE-VOCABULARIES.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -244,7 +206,7 @@ LANGUAGE MODELS WITH VERY LARGE VOCABULARIES, Shihao Ji, S. V. N. Vishwanathan, 
                     <h4>Tags</h4>
                     <ul class="list-of-tags tags-in-article">
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#ren-gong-zhi-neng-ref">人工智能
                             <span>30</span>
@@ -306,45 +268,7 @@ LANGUAGE MODELS WITH VERY LARGE VOCABULARIES, Shihao Ji, S. V. N. Vishwanathan, 
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -13,13 +13,13 @@
 <meta name="keywords" content="CS, 算法, 数据结构, 算法, " />
 
 <meta property="og:title" content="并查集优化 "/>
-<meta property="og:url" content="http://sndnyang.github.io/union-find-optimize.html" />
-<meta property="og:description" content="方法 1 带权重快速合并 好处: 优化 快速合并 ，避免树的层次过多 随时记录每棵树（子树）的大小 通过将较小子树的根挂在较大树的根下，来获得平衡 数据结构 比快速合并算法，增加一个大小为N的整型数组sz。 sz[i]代表以i为根的对象个数。 查找 与快速合并相同， return root(p) == root(q) 合并 将较小子树的根结点连接到较大子树的根结点 更新sz数组 public void union(int p, int q) { int i = root(p); int j = root(q); if (sz[i] &lt; sz[j]) { id[i ..." />
+<meta property="og:url" content="/union-find-optimize.html" />
+<meta property="og:description" content="方法 1 带权重快速合并¶ 好处: 优化 快速合并 ，避免树的层次过多 随时记录每棵树（子树）的大小 通过将较小子树的根挂在较 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2016-04-28T00:00:00+08:00" />
 <meta name="twitter:title" content="并查集优化 ">
-<meta name="twitter:description" content="方法 1 带权重快速合并 好处: 优化 快速合并 ，避免树的层次过多 随时记录每棵树（子树）的大小 通过将较小子树的根挂在较大树的根下，来获得平衡 数据结构 比快速合并算法，增加一个大小为N的整型数组sz。 sz[i]代表以i为根的对象个数。 查找 与快速合并相同， return root(p) == root(q) 合并 将较小子树的根结点连接到较大子树的根结点 更新sz数组 public void union(int p, int q) { int i = root(p); int j = root(q); if (sz[i] &lt; sz[j]) { id[i ...">
+<meta name="twitter:description" content="方法 1 带权重快速合并¶ 好处: 优化 快速合并 ，避免树的层次过多 随时记录每棵树（子树）的大小 通过将较小子树的根挂在较 …">
 
 
         <title>并查集优化  · 科探空谷
@@ -148,18 +148,18 @@
 
                         
                         
-<h1 id="1">方法 1 带权重快速合并</h1>
+<h1 id="1">方法 1 带权重快速合并<a class="headerlink" href="#1" title="Permanent link">¶</a></h1>
 <p>好处:</p>
 <ol>
 <li>优化 快速合并 ，避免树的层次过多</li>
 <li>随时记录每棵树（子树）的大小</li>
 <li>通过将较小子树的根挂在较大树的根下，来获得平衡</li>
 </ol>
-<h2 id="_1">数据结构</h2>
+<h2 id="_1">数据结构<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>比快速合并算法，增加一个大小为N的整型数组sz。 sz[i]代表以i为根的对象个数。</p>
-<h2 id="_2">查找</h2>
+<h2 id="_2">查找<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>与快速合并相同， return root(p) == root(q)</p>
-<h2 id="_3">合并</h2>
+<h2 id="_3">合并<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <ol>
 <li>将较小子树的根结点连接到较大子树的根结点</li>
 <li>
@@ -170,23 +170,23 @@ else                { id[j] = i; sz[i] += sz[i]; }
 }</p>
 </li>
 </ol>
-<h2 id="_4">算法分析</h2>
+<h2 id="_4">算法分析<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>运行时间:</p>
 <ol>
 <li>查找: 与p和q的深度成正比 即 lg N</li>
 <li>合并: 对给定的根，只花费常数时间 lg N</li>
 <li>结点x的尝试最多为 lg N.</li>
 </ol>
-<h1 id="_5">路径压缩</h1>
+<h1 id="_5">路径压缩<a class="headerlink" href="#_5" title="Permanent link">¶</a></h1>
 <p>方法: 计算出p的根结点后， 将每个被检测到的结点都指向这个根结点</p>
-<h2 id="_6">实现:</h2>
+<h2 id="_6">实现:<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p>两次遍历: 循环中再增加一次处理， 将每个被检测到的结点的id指向上一层的根结点。</p>
-<div class="highlight"><pre><span></span>private int root(int i) { while (i != id[i]) { id[i] = id[id[i]]; i = id[i]; } return i; }
-</pre></div>
-<h2 id="_7">命题:</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">private</span><span class="w"> </span><span class="nc">int</span><span class="w"> </span><span class="n">root</span><span class="p">(</span><span class="nc">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">id</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="n">id</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="o">[</span><span class="n">id[i</span><span class="o">]</span><span class="err">]</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="err">}</span>
+</code></pre></div>
+<h2 id="_7">命题:<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
 <p>从空集开始，N个对象的任意M次操作，对数组的访问次数萍踪:</p>
-<div class="highlight"><pre><span></span>&lt;= c (N + M  lg* N)
-</pre></div>
+<div class="codehilite"><pre><span></span><code>&lt;= c (N + M  lg* N)
+</code></pre></div>
 <p>lg<em> N 其实就是 lg N 的再次求对数的样子。
 In computer science, the iterated logarithm of n, written log</em> n (usually read "log star"), is the number of times the logarithm function must be iteratively applied before the result is less than or equal to 1.</p>
 <p>本算法理论上非线性复杂度， 实际上可以看作线性。</p>
@@ -200,45 +200,7 @@ In computer science, the iterated logarithm of n, written log</em> n (usually re
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/union-find-optimize.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'union-find-optimize.html';
-    var disqus_url = 'http://sndnyang.github.io/union-find-optimize.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -308,45 +270,7 @@ In computer science, the iterated logarithm of n, written log</em> n (usually re
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

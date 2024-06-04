@@ -13,7 +13,7 @@
 <meta name="keywords" content="科研, 工具, 科研, " />
 
 <meta property="og:title" content="latex "/>
-<meta property="og:url" content="http://sndnyang.github.io/latex-tips.html" />
+<meta property="og:url" content="/latex-tips.html" />
 <meta property="og:description" content="latex 坑" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang (sndnyangd@gmail.com)" />
@@ -147,10 +147,10 @@
 
                         
                         
-<h1 id="bad-math-environment-delimiter">bad math environment delimiter</h1>
+<h1 id="bad-math-environment-delimiter">bad math environment delimiter<a class="headerlink" href="#bad-math-environment-delimiter" title="Permanent link">¶</a></h1>
 <p>\begin{equation} 替换 $$, 不能嵌套</p>
-<h1 id="label">label 标签、公式交叉引用</h1>
-<div class="highlight"><pre><span></span>\begin{equation}
+<h1 id="label">label 标签、公式交叉引用<a class="headerlink" href="#label" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code>\begin{equation}
     \begin{aligned}
     p(y=c|x, D_{train}) = &amp; \int p(y=c|x,w)p(w|D_{train})dw \\
     \approx &amp; \int p(y=c|x,w)q^*_{\theta}(w)dw \\
@@ -161,11 +161,11 @@
 
 
 \ref{bayesian_posterior}
-</pre></div>
-<h1 id="no-positions-in-optional-float-specifier">No positions in optional float specifier.</h1>
+</code></pre></div>
+<h1 id="no-positions-in-optional-float-specifier">No positions in optional float specifier.<a class="headerlink" href="#no-positions-in-optional-float-specifier" title="Permanent link">¶</a></h1>
 <p>\begin{figure}[] or \begin{table}[]</p>
-<h1 id="_1">表格太宽</h1>
-<div class="highlight"><pre><span></span><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
+<h1 id="_1">表格太宽<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="nb">{</span>graphicx<span class="nb">}</span>
 <span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
 
@@ -173,62 +173,62 @@
 <span class="k">\resizebox</span><span class="nb">{</span><span class="k">\textwidth</span><span class="nb">}{</span>!<span class="nb">}</span>&lt;div class="process"&gt;&lt;input type="hidden" class="answers" value="<span class="nb">{</span><span class="c">%\begin{tabular}{cc}Knuth&amp;amp;Lamport\end{tabular}"/&gt;&lt;input type="hidden" class="comments" value="{%\begin{tabular}{cc}Knuth&amp;amp;Lamport\end{tabular}}"/&gt;&lt;button onclick="checkQuiz(this, 0)"&gt;submit&lt;/button&gt;&lt;br/&gt;&lt;/div&gt;</span>
 <span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
 <span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</pre></div>
-<h1 id="input-output">代码算法显示 input output</h1>
-<div class="highlight"><pre><span></span>\renewcommand{\algorithmicrequire}{\textbf{Input:}} % Use Input in the format of Algorithm
+</code></pre></div>
+<h1 id="input-output">代码算法显示 input output<a class="headerlink" href="#input-output" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code>\renewcommand{\algorithmicrequire}{\textbf{Input:}} % Use Input in the format of Algorithm
 \renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm
-</pre></div>
-<h1 id="aaai">疯狂吐槽AAAI模板</h1>
-<div class="highlight"><pre><span></span>\usepackage{amsmath,amsfonts}
-</pre></div>
+</code></pre></div>
+<h1 id="aaai">疯狂吐槽AAAI模板<a class="headerlink" href="#aaai" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="err">\</span><span class="nx">usepackage</span><span class="p">{</span><span class="nx">amsmath</span><span class="p">,</span><span class="nx">amsfonts</span><span class="p">}</span>
+</code></pre></div>
 <p>这两个ams包没有默认加入， 坑死我了。</p>
-<h1 id="_2">三段式表格</h1>
-<div class="highlight"><pre><span></span>\usepackage[flushleft]{threeparttable}
+<h1 id="_2">三段式表格<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="err">\</span><span class="n">usepackage</span><span class="o">[</span><span class="n">flushleft</span><span class="o">]</span><span class="err">{</span><span class="n">threeparttable</span><span class="err">}</span>
 
 
-\begin{center}
+<span class="err">\</span><span class="k">begin</span><span class="err">{</span><span class="n">center</span><span class="err">}</span>
 
-\begin{threeparttable}
+<span class="err">\</span><span class="k">begin</span><span class="err">{</span><span class="n">threeparttable</span><span class="err">}</span>
 
-\begin{tabular}{lc}
+<span class="err">\</span><span class="k">begin</span><span class="err">{</span><span class="n">tabular</span><span class="err">}{</span><span class="n">lc</span><span class="err">}</span>
 
-\toprule
+<span class="err">\</span><span class="n">toprule</span>
 
-\midrule
+<span class="err">\</span><span class="n">midrule</span>
 
-\midrule
+<span class="err">\</span><span class="n">midrule</span>
 
-\bottomrule
+<span class="err">\</span><span class="n">bottomrule</span>
 
-\end{tabular}
+<span class="err">\</span><span class="k">end</span><span class="err">{</span><span class="n">tabular</span><span class="err">}</span>
 
-\end{threeparttable}
+<span class="err">\</span><span class="k">end</span><span class="err">{</span><span class="n">threeparttable</span><span class="err">}</span>
 
-\end{center}
-</pre></div>
-<h1 id="newif">newif</h1>
+<span class="err">\</span><span class="k">end</span><span class="err">{</span><span class="n">center</span><span class="err">}</span>
+</code></pre></div>
+<h1 id="newif">newif<a class="headerlink" href="#newif" title="Permanent link">¶</a></h1>
 <p>使用newif定义一个逻辑（二值）变量<code>logvar</code> </p>
 <p>define a logical variable <code>logvar</code> as follows:</p>
-<div class="highlight"><pre><span></span><span class="k">\newif\iflogvar</span>
+<div class="codehilite"><pre><span></span><code><span class="k">\newif\iflogvar</span>
 <span class="k">\newif\iflogvar\logvarfalse</span>
 <span class="k">\newif\iflogvar\logvartrue</span>
-<span class="k">\newif\if</span>@logvar<span class="k">\@</span>logvarfalse
-</pre></div>
+<span class="k">\newif\if@logvar\@logvarfalse</span>
+</code></pre></div>
 <p>第一种</p>
 <p>By default, it is set to <code>false</code>. We can set it to <code>true</code> by:</p>
-<div class="highlight"><pre><span></span><span class="k">\logvartrue</span>
-</pre></div>
-<h1 id="_3">边缘空白过多</h1>
+<div class="codehilite"><pre><span></span><code><span class="k">\logvartrue</span>
+</code></pre></div>
+<h1 id="_3">边缘空白过多<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
 <p><a href="https://mylatexnotes.wordpress.com/2017/09/13/table-remove-white-space-after-table/">remove white space after table</a></p>
-<div class="highlight"><pre><span></span><span class="k">\vspace</span><span class="nb">{</span>-4mm<span class="nb">}</span>
+<div class="codehilite"><pre><span></span><code><span class="k">\vspace</span><span class="nb">{</span>-4mm<span class="nb">}</span>
 <span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
 <span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
-</pre></div>
+</code></pre></div>
 <p>But the instruction in AAAI said that don't use vspace. 但AAAI的模板里明确说了不要用vspace。</p>
-<h1 id="sty">sty</h1>
-<div class="highlight"><pre><span></span>sudo yum -y install 'tex(multirow.sty)'
-</pre></div>
-<h1 id="synctex">synctex</h1>
+<h1 id="sty">sty<a class="headerlink" href="#sty" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code>sudo yum -y install 'tex(multirow.sty)'
+</code></pre></div>
+<h1 id="synctex">synctex<a class="headerlink" href="#synctex" title="Permanent link">¶</a></h1>
 <p>vscode latex-workshop</p>
 <p>tex -&gt; PDF: CTRL+ALT+J</p>
 <p>PDF -&gt; tex: Ctrl+click</p>
@@ -242,45 +242,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/latex-tips.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'latex-tips.html';
-    var disqus_url = 'http://sndnyang.github.io/latex-tips.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -291,10 +253,10 @@
                     <h4>Tags</h4>
                     <ul class="list-of-tags tags-in-article">
                         <li><a href="/tags.html#gong-ju-ref">工具
-                            <span>5</span>
+                            <span>6</span>
 </a></li>
                         <li><a href="/tags.html#ke-yan-ref">科研
-                            <span>3</span>
+                            <span>4</span>
 </a></li>
                     </ul>
                     <h4>Stay in Touch</h4>
@@ -347,45 +309,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

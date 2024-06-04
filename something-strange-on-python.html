@@ -13,14 +13,14 @@
 <meta name="keywords" content="Python, Python, " />
 
 <meta property="og:title" content="python乱七八糟 "/>
-<meta property="og:url" content="http://sndnyang.github.io/something-strange-on-python.html" />
-<meta property="og:description" content="说明 一堆乱七八糟的东西 scipy 安装不了 windows下 scipy 安装有问题，报错~~~什么 MKL的，忘了，没记录 numpy 安装 pip 安装虽然也行，但好像不全 安装这里的 numpy http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy 不知道这个是什么 AttributeError: MSVCCompiler instance has no attribute &#39;compiler_so&#39; error: Unable to find vcvarsall.bat 似乎需要在 windows下指定 mingw的环境，所以 python setup.py build -c ..." />
+<meta property="og:url" content="/something-strange-on-python.html" />
+<meta property="og:description" content="说明¶ 一堆乱七八糟的东西 scipy 安装不了¶ windows下 scipy 安装有问题，报错~~~什么 MKL的，忘了，没记录 numpy 安装¶ pip 安装虽然也行，但好像不全 安装 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang sndnyang.github.io" />
 <meta property="og:article:published_time" content="2017-04-24T22:25:32+08:00" />
 <meta property="" content="2017-04-24T22:26:28+08:00" />
 <meta name="twitter:title" content="python乱七八糟 ">
-<meta name="twitter:description" content="说明 一堆乱七八糟的东西 scipy 安装不了 windows下 scipy 安装有问题，报错~~~什么 MKL的，忘了，没记录 numpy 安装 pip 安装虽然也行，但好像不全 安装这里的 numpy http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy 不知道这个是什么 AttributeError: MSVCCompiler instance has no attribute &#39;compiler_so&#39; error: Unable to find vcvarsall.bat 似乎需要在 windows下指定 mingw的环境，所以 python setup.py build -c ...">
+<meta name="twitter:description" content="说明¶ 一堆乱七八糟的东西 scipy 安装不了¶ windows下 scipy 安装有问题，报错~~~什么 MKL的，忘了，没记录 numpy 安装¶ pip 安装虽然也行，但好像不全 安装 …">
 
 
         <title>python乱七八糟  · 科探空谷
@@ -151,50 +151,50 @@
 
                         
                         
-<h1 id="_1">说明</h1>
+<h1 id="_1">说明<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>一堆乱七八糟的东西</p>
-<h1 id="scipy">scipy 安装不了</h1>
+<h1 id="scipy">scipy 安装不了<a class="headerlink" href="#scipy" title="Permanent link">¶</a></h1>
 <p>windows下 scipy 安装有问题，报错~~~什么 MKL的，忘了，没记录</p>
-<h1 id="numpy">numpy 安装</h1>
+<h1 id="numpy">numpy 安装<a class="headerlink" href="#numpy" title="Permanent link">¶</a></h1>
 <p>pip 安装虽然也行，但好像不全</p>
 <p>安装这里的 numpy</p>
-<div class="highlight"><pre><span></span>http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy
-</pre></div>
-<h1 id="_2">不知道这个是什么</h1>
+<div class="codehilite"><pre><span></span><code>http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy
+</code></pre></div>
+<h1 id="_2">不知道这个是什么<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>AttributeError: MSVCCompiler instance has no attribute 'compiler_so'</p>
 <p>error: Unable to find vcvarsall.bat</p>
 <p>似乎需要在 windows下指定 mingw的环境，所以 </p>
 <p>python setup.py build -c mingw32</p>
 <p>还需要安装mingw， 不然什么 gcc，及头文件都没有。</p>
-<h1 id="_3">文件格式不识别</h1>
+<h1 id="_3">文件格式不识别<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
 <p>Cython error: C:\Python27\libs/libpython27.a: error adding symbols: File format not recognized</p>
 <p>gendef c:/Windows/System32/python27.dll
 dlltool -U -d python27.def -l libpython27.dll.a
 cp libpython27.dll.a c:/Python27/libs</p>
-<h1 id="0kb">生成0KB文件</h1>
-<h2 id="gendef">gendef</h2>
+<h1 id="0kb">生成0KB文件<a class="headerlink" href="#0kb" title="Permanent link">¶</a></h1>
+<h2 id="gendef">gendef<a class="headerlink" href="#gendef" title="Permanent link">¶</a></h2>
 <p>放到 /mingw??/bin 下， 即可</p>
-<h2 id="dlltool">dlltool</h2>
+<h2 id="dlltool">dlltool<a class="headerlink" href="#dlltool" title="Permanent link">¶</a></h2>
 <p>我是这样解决的：
 通过cmd命令进入.dll和.def文件所在目录，再运行dlltool.exe，即可。注意，在命令行输入dlltool的完整路径名。如下图所示。</p>
 <p><a href="http://tieba.baidu.com/p/3804600448">百度贴吧</a></p>
-<h1 id="_imp-__py_initmodule4">_imp __Py_InitModule4</h1>
+<h1 id="_imp-__py_initmodule4">_imp __Py_InitModule4<a class="headerlink" href="#_imp-__py_initmodule4" title="Permanent link">¶</a></h1>
 <p>Python: undefined reference to `_imp __Py_InitModule4'</p>
 <p><a href="http://stackoverflow.com/questions/2842469/python-undefined-reference-to-imp-py-initmodule4">stackoverflow</a></p>
 <p>Look in:</p>
 <p>C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin</p>
-<h1 id="__pyx_t_5numpy_int32_t">__pyx_t_5numpy_int32_t</h1>
+<h1 id="__pyx_t_5numpy_int32_t">__pyx_t_5numpy_int32_t<a class="headerlink" href="#__pyx_t_5numpy_int32_t" title="Permanent link">¶</a></h1>
 <p>http://blog.csdn.net/jiajunlee/article/details/50373815#q9-invalid-conversion-from-const-int-to-int</p>
-<h1 id="_4"></h1>
+<h1 id="_4"><a class="headerlink" href="#_4" title="Permanent link">¶</a></h1>
 <p>compiler = os.path.basename(sysconfig.get_config_var("CC"))
 compiler = "C:\MinGW\bin\gcc.exe"</p>
 <p>https://github.com/pyne/pyne/issues/27</p>
-<h1 id="python-2-3-cpickle-and-pickle">python 2 3, cPickle and pickle</h1>
-<div class="highlight"><pre><span></span>python 3 pickle 'ascii' codec can't decode byte 0x8a in position 3: ordinal
-</pre></div>
+<h1 id="python-2-3-cpickle-and-pickle">python 2 3, cPickle and pickle<a class="headerlink" href="#python-2-3-cpickle-and-pickle" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code>python 3 pickle 'ascii' codec can't decode byte 0x8a in position 3: ordinal
+</code></pre></div>
 <p>解决方案： <a href="https://blog.csdn.net/qq_41185868/article/details/79039604">website</a></p>
-<div class="highlight"><pre><span></span><span class="na">.load</span><span class="p">(</span><span class="no">f</span><span class="p">,</span><span class="no">encoding</span><span class="err">='</span><span class="no">bytes</span><span class="err">'</span><span class="p">)</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">'bytes'</span><span class="p">)</span>
+</code></pre></div>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
                     <a href="#" class="bds_more" data-cmd="more"></a>
@@ -205,45 +205,7 @@ compiler = "C:\MinGW\bin\gcc.exe"</p>
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/something-strange-on-python.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'something-strange-on-python.html';
-    var disqus_url = 'http://sndnyang.github.io/something-strange-on-python.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -311,45 +273,7 @@ compiler = "C:\MinGW\bin\gcc.exe"</p>
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

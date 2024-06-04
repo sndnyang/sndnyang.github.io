@@ -13,7 +13,7 @@
 <meta name="keywords" content="论文, 论文, " />
 
 <meta property="og:title" content="Adversarial Examples Are Not Bugs, They Are Features "/>
-<meta property="og:url" content="http://sndnyang.github.io/adversarial-examples-are-not-bugs-they-are-features.html" />
+<meta property="og:url" content="/adversarial-examples-are-not-bugs-they-are-features.html" />
 <meta property="og:description" content="天天论文， 搞个频道" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
@@ -145,14 +145,14 @@
 <p>发表于NIPS 2019， <a href="http://arxiv.org/abs/1905.02175">Arxiv</a></p>
 <p>这组在 神经网络的稳健性上有大量的研究， 来研究下他们的研究品位</p>
 <div style="page-break-after: always;"></div>
-<h1 id="_1">问题</h1>
+<h1 id="_1">问题<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>感觉这篇<a href="https://www.zhihu.com/question/323836208/answer/1535946502">知乎回答</a> 讲得很精练。</p>
 <p>机器学习易受对抗样本攻击。 但对抗样本的普遍存在性仍是个谜</p>
 <p>在 <a href="http://arxiv.org/abs/1412.6572">Explaining and Harnessing Adversarial Examples</a> 导论第一段就提到了不同网络结构、用不同子集训练，会遇到相同的对抗样本，即对抗样本有迁移性<a href="https://www.zhihu.com/question/323836208/answer/1535946502">知乎回答</a>.</p>
 <p><img alt="image-20201024134119688" src="images/image-20201024134119688.png"/></p>
 <p>本文就研究对抗样本和数据本身的相关性</p>
 <p>通常，研究人员将对抗样本视作一种错误(aberrations), 由 高维输入空间或训练数据统计上的波动(fluctuations)引起。  由此， 对抗稳健性可以视作一个独立于准确率的优化目标。</p>
-<h1 id="_2">模型定义</h1>
+<h1 id="_2">模型定义<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>$feature$: 一个函数，将输入$\mathcal{x}-&gt;\mathcal{R}$ 映射成一个实数</p>
 <p>$\rho$度有用特征， $\gamma$度稳健有用特征，有用不稳健特征——这里“度”是概率， $\mathbb{E}_{(x, y)\sim D}[y \cdot f(x)] \ge \rho$ </p>
 <p>定义一个二分类的分类器$C=(F, w,b)$ 有一个特征集合$F$ ， 预测计算：
@@ -161,7 +161,7 @@ C(x) = sign(b + \sum_{f\in F} w_f \cdot f(x))
 $$
 则分类器$C$ 能学习到的特征集合为 $F_C$ 。 对深度神经网络来说即 倒数第二层（penultimate layer）的激活集合 (即最后全连接层前一层输出) —— 也就是神经网络作为特征提取器再到softmax进行分类，但作者把$F_C$是倒数第二层的激活这句话放到公式(6) 那段去了。</p>
 <p>常规训练， 风险最小化ERM(empirical risk minimization)， 对抗稳健训练</p>
-<h1 id="_3">特征寻找框架</h1>
+<h1 id="_3">特征寻找框架<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
 <p>假设原数据集$D$的数据可分解出两种特征数据集， 稳健集$\hat{D_R}$ 和 非稳健集$\hat{D_{NR}}$， 如下图示</p>
 <p><img alt="image-20201024155047495" src="images/image-20201024155047495.png"/></p>
 <p><img alt="image-20201024162159702" src="images/image-20201024162159702.png"/></p>
@@ -171,8 +171,8 @@ $$
 $$
 和
 $$
-x</em> = argmin_{|x'-x| \le\epsilon} L_C(x', y)
-$$</p>
+x</em> L_C(x', y)
+$$} = argmin_{|x'-x| \le\epsilon</p>
 <table>
 <thead>
 <tr>
@@ -188,9 +188,9 @@ $$</p>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
-<h1 id="_4">理论分析（下次再说）</h1>
+<h1 id="_4">理论分析（下次再说）<a class="headerlink" href="#_4" title="Permanent link">¶</a></h1>
 <div style="page-break-after: always;"></div>
-<h1 id="_5">结论</h1>
+<h1 id="_5">结论<a class="headerlink" href="#_5" title="Permanent link">¶</a></h1>
 <p>一篇现象观察、解释的论文，做的分析很多，各种解释，大段文字。只看结论又不算掌握。</p>
 <p>对抗脆弱性是因为 监督学习模型敏感于数据泛化良好的特征。</p>
 <ol>
@@ -209,45 +209,7 @@ $$</p>
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/adversarial-examples-are-not-bugs-they-are-features.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'adversarial-examples-are-not-bugs-they-are-features.html';
-    var disqus_url = 'http://sndnyang.github.io/adversarial-examples-are-not-bugs-they-are-features.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -258,7 +220,7 @@ $$</p>
                     <h4>Tags</h4>
                     <ul class="list-of-tags tags-in-article">
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                     </ul>
                     <h4>Stay in Touch</h4>
@@ -311,45 +273,7 @@ $$</p>
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

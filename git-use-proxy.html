@@ -13,7 +13,7 @@
 <meta name="keywords" content="git, 部署, ssh, 开发工具, " />
 
 <meta property="og:title" content="Git如何使用代理 "/>
-<meta property="og:url" content="http://sndnyang.github.io/git-use-proxy.html" />
+<meta property="og:url" content="/git-use-proxy.html" />
 <meta property="og:description" content="主要是 git如何用代理上传服务器， 特别是SSH方式" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang (sndnyangd@gmail.com)" />
@@ -141,44 +141,43 @@
 
                         
                         
-<h1 id="httphttps">http/https</h1>
+<h1 id="httphttps">http/https<a class="headerlink" href="#httphttps" title="Permanent link">¶</a></h1>
 <p>最简单</p>
-<div class="highlight"><pre><span></span>git config --global http.proxy 'socks5://127.0.0.1:1081'
+<div class="codehilite"><pre><span></span><code>git config --global http.proxy 'socks5://127.0.0.1:1081'
 git config --global https.proxy 'socks5://127.0.0.1:1081'
-</pre></div>
+</code></pre></div>
 <p>类似的</p>
-<div class="highlight"><pre><span></span>git config --global http.proxy 'http://127.0.0.1:1081'
+<div class="codehilite"><pre><span></span><code>git config --global http.proxy 'http://127.0.0.1:1081'
 git config --global https.proxy 'http://127.0.0.1:1081'
-</pre></div>
+</code></pre></div>
 <p>取消</p>
-<div class="highlight"><pre><span></span>git config --global --unset http.proxy
+<div class="codehilite"><pre><span></span><code>git config --global --unset http.proxy
 git config --global --unset https.proxy
-</pre></div>
-<h1 id="ssh">ssh</h1>
+</code></pre></div>
+<h1 id="ssh">ssh<a class="headerlink" href="#ssh" title="Permanent link">¶</a></h1>
 <p>首先， git push时可以用 GIT_SSH 来提供SSH隧道， 所以我们要写一个脚本。</p>
-<div class="highlight"><pre><span></span>export GIT_SSH="/g/project/map/socks5_proxy_ssh"
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">GIT_SSH</span><span class="o">=</span><span class="s2">"/g/project/map/socks5_proxy_ssh"</span>
+</code></pre></div>
 <p>脚本内容， 第一行显然是（我在 windows下用 git bash, cmd版本没看）</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
-</pre></div>
-</td></tr></table>
+<div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!/bin/sh</span>
+</code></pre></div></td></tr></table></div>
 <p>执行的命令当然是 ssh xxx， 建立 ssh连接， 不过我们需要提供参数(选项 option)，让它的连接经过代理。使用</p>
-<div class="highlight"><pre><span></span>ssh -h
-</pre></div>
+<div class="codehilite"><pre><span></span><code>ssh -h
+</code></pre></div>
 <p>看到 [-o option]， 详细的可配置项——我没找到官方文档， 总之，代理的选项叫 ProxyCommand。所以， 格式为：</p>
-<div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">o</span> <span class="n">ProxyCommand</span><span class="o">=</span><span class="s">"connect-to-proxy-命令"</span> <span class="s">"$@"</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">ProxyCommand</span><span class="o">=</span><span class="s">"connect-to-proxy-命令"</span><span class="w"> </span><span class="s">"$@"</span>
+</code></pre></div>
 <p>"$@" 是 shell脚本命令行全部参数的意思。</p>
 <p>接下来就是用命令连接到你的代理了。</p>
 <p>windows下，使用的是 connect 命令</p>
-<div class="highlight"><pre><span></span>connect -S 127.0.0.1:1081 %h %p
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="k">connect</span><span class="w"> </span><span class="o">-</span><span class="nv">S</span><span class="w"> </span><span class="mi">127</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">1</span>:<span class="mi">1081</span><span class="w"> </span><span class="o">%</span><span class="nv">h</span><span class="w"> </span><span class="o">%</span><span class="nv">p</span>
+</code></pre></div>
 <p>linux下则是 nc 命令</p>
-<div class="highlight"><pre><span></span>nc -x 127.0.0.1:3000 %h %p
-</pre></div>
+<div class="codehilite"><pre><span></span><code>nc -x 127.0.0.1:3000 %h %p
+</code></pre></div>
 <p>%h表示目标地址，%p是目标端口</p>
 <p>完成</p>
-<h2 id="_1">吐槽</h2>
+<h2 id="_1">吐槽<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>一开始看着http.proxy 没当回事， ssh上传一直不成功， 后来突然想通了， 这是 http/https， 不是 ssh协议， 难怪git一直push不上去， 初看 ssh 配置代理好像很麻烦（特别是一眼没看到 windows版本的，万一没有呢）， 于是研究了下 <a href="config-centOS-install-git-nginx-server.html">用Nginx配置git的HTTP服务器</a>， 一研究5个小时没结果。 回头再用 ssh配代理， 5分钟搞定， 这样浪费时间会死人的！！！</p>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
@@ -190,45 +189,7 @@ git config --global --unset https.proxy
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/git-use-proxy.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'git-use-proxy.html';
-    var disqus_url = 'http://sndnyang.github.io/git-use-proxy.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -298,45 +259,7 @@ git config --global --unset https.proxy
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

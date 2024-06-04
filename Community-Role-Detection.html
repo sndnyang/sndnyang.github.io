@@ -13,13 +13,13 @@
 <meta name="keywords" content="CS, 论文, 社区发现, 研究, " />
 
 <meta property="og:title" content="社区及角色发现 "/>
-<meta property="og:url" content="http://sndnyang.github.io/Community-Role-Detection.html" />
-<meta property="og:description" content="摘要 submit 再来一遍， 不权威定义：社区发现大概就是发现高密度的点群， 群内互连较多；连到群外的较少 submit 之前社区发现和role detection（作用检测）两个领域各玩各的， 本篇论文就是把这两个结合起来， 以一种统一的模型结合，来同时处理这两个任务， 并且要做到更好的效果。 基本观点 正确地划分出社区， 能促进对点的功能、角色的检测。 正确地识别点的功能，可以得到更好的网络模型，社区发现也就更好。 例子 如图： 两个群、 3种角色 主要贡献 写了三个 Studying a novel problem of integrating community and role detection in information networks. 这也能算 :( Proposing a unified probabilistic generative model that ..." />
+<meta property="og:url" content="/Community-Role-Detection.html" />
+<meta property="og:description" content="摘要¶ submit 再来一遍， 不权威定义：社区发现大概就是发现高密度的点群， 群内互连较多；连到群外的较少 submit 之前社区发现和role …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2016-06-21T15:51:58+08:00" />
 <meta name="twitter:title" content="社区及角色发现 ">
-<meta name="twitter:description" content="摘要 submit 再来一遍， 不权威定义：社区发现大概就是发现高密度的点群， 群内互连较多；连到群外的较少 submit 之前社区发现和role detection（作用检测）两个领域各玩各的， 本篇论文就是把这两个结合起来， 以一种统一的模型结合，来同时处理这两个任务， 并且要做到更好的效果。 基本观点 正确地划分出社区， 能促进对点的功能、角色的检测。 正确地识别点的功能，可以得到更好的网络模型，社区发现也就更好。 例子 如图： 两个群、 3种角色 主要贡献 写了三个 Studying a novel problem of integrating community and role detection in information networks. 这也能算 :( Proposing a unified probabilistic generative model that ...">
+<meta name="twitter:description" content="摘要¶ submit 再来一遍， 不权威定义：社区发现大概就是发现高密度的点群， 群内互连较多；连到群外的较少 submit 之前社区发现和role …">
 
 
         <title>社区及角色发现  · 科探空谷
@@ -153,20 +153,20 @@
 
                         
                         
-<h1 id="_1">摘要</h1>
+<h1 id="_1">摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <div class="process"><input class="answers" type="hidden" value="知道"/><input class="comments" type="hidden" value="不知道就尴尬了"/><button onclick="checkQuiz(this, 0)">submit</button><br/></div>
 <p>再来一遍， 不权威定义：社区发现大概就是发现高密度的点群， 群内互连较多；连到群外的较少</p>
 <div class="process"><input class="answers" type="hidden" value="知道"/><input class="comments" type="hidden" value="呃"/><button onclick="checkQuiz(this, 1)">submit</button><br/></div>
 <p>之前社区发现和role detection（作用检测）两个领域各玩各的， 本篇论文就是把这两个结合起来， 以一种统一的模型结合，来同时处理这两个任务， 并且要做到更好的效果。</p>
-<h2 id="_2">基本观点</h2>
+<h2 id="_2">基本观点<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <ol>
 <li>正确地划分出社区， 能促进对点的功能、角色的检测。</li>
 <li>正确地识别点的功能，可以得到更好的网络模型，社区发现也就更好。</li>
 </ol>
-<h3 id="_3">例子</h3>
+<h3 id="_3">例子<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <p>如图：</p>
 <p>两个群、 3种角色</p>
-<h3 id="_4">主要贡献</h3>
+<h3 id="_4">主要贡献<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>写了三个</p>
 <ol>
 <li>Studying a novel problem of integrating community and role detection in information networks. 这也能算 :(</li>
@@ -174,7 +174,7 @@
 <li>在三个人工数据和两个真实数据上实验， 证明了方法对社区/功能检测 和 链接预测上的有效性-- 这也能算？</li>
 </ol>
 <p>应该就第二条， 结合了社区、功能检测思想，提出了一个统一（通用）概率生成模型来定义链接生成概率， 并使用Gibbs采样算法（别人的）。</p>
-<h1 id="_5">正文</h1>
+<h1 id="_5">正文<a class="headerlink" href="#_5" title="Permanent link">¶</a></h1>
 <p>除掉实验和公式， 内容不多。</p>
 <p>没看过概率图模型的内容， 我估计以下步骤是概率图模型的内容</p>
 <p>就像MMDS(Mining Massive Datasets)课程或书里写的， 社区发现分两步：</p>
@@ -183,23 +183,23 @@
 <li>再根据某种统计推断方法， 确定生成模型里的各个参数</li>
 </ol>
 <p>因为本文使用的统计推断算法几乎就是别人原版吧， 所以也就是在生成模型上有点新意——可能也就各种凑合。</p>
-<h2 id="_6">定义生成模型</h2>
-<h3 id="_7">原模型</h3>
+<h2 id="_6">定义生成模型<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
+<h3 id="_7">原模型<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
 <p>基于 Mixed Membership Stochastic Blockmodel (MMSB) <a href="https://www.baidu.com/link?url=0hWpL1H88T3XJqIXC4Fs9pEC5wdWUlgHmOEpF5dMyEslDwBdz9j6ubYR4bKOOByRHsMka3Zwj5dXi1rH4etnbfPEzg8_LFwC_rl6zoDw6WsLqVynPUYG3axemysoEG7Nuk9O4cDs8gEbEQ3rfau3LK&amp;wd=&amp;eqid=bed192060008ba3300000003576903b6">4</a></p>
 <p>MMSB的连接生成过程（边生成）如下：</p>
-<div class="highlight"><pre><span></span>For each node i:
-    - Draw a group membership distribution vector πi ～ Dirichlet(α)
+<div class="codehilite"><pre><span></span><code><span class="nt">For</span><span class="w"> </span><span class="nt">each</span><span class="w"> </span><span class="nt">node</span><span class="w"> </span><span class="nt">i</span><span class="o">:</span>
+<span class="w">    </span><span class="nt">-</span><span class="w"> </span><span class="nt">Draw</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="nt">group</span><span class="w"> </span><span class="nt">membership</span><span class="w"> </span><span class="nt">distribution</span><span class="w"> </span><span class="nt">vector</span><span class="w"> </span><span class="nt">πi</span><span class="w"> </span><span class="err">～</span><span class="w"> </span><span class="nt">Dirichlet</span><span class="o">(</span><span class="nt">α</span><span class="o">)</span>
 
-For each node pair (i, j):
-    - Draw node i’s latent group Zij ～ Multinomial(πi)
-    - Draw node j’s latent group Zji ～ Multinomial(πj)
-    - Draw the link Eij ～ Bernoulli(SZij ;Zji)
-</pre></div>
+<span class="nt">For</span><span class="w"> </span><span class="nt">each</span><span class="w"> </span><span class="nt">node</span><span class="w"> </span><span class="nt">pair</span><span class="w"> </span><span class="o">(</span><span class="nt">i</span><span class="o">,</span><span class="w"> </span><span class="nt">j</span><span class="o">):</span>
+<span class="w">    </span><span class="nt">-</span><span class="w"> </span><span class="nt">Draw</span><span class="w"> </span><span class="nt">node</span><span class="w"> </span><span class="nt">i</span><span class="err">’</span><span class="nt">s</span><span class="w"> </span><span class="nt">latent</span><span class="w"> </span><span class="nt">group</span><span class="w"> </span><span class="nt">Zij</span><span class="w"> </span><span class="err">～</span><span class="w"> </span><span class="nt">Multinomial</span><span class="o">(</span><span class="nt">πi</span><span class="o">)</span>
+<span class="w">    </span><span class="nt">-</span><span class="w"> </span><span class="nt">Draw</span><span class="w"> </span><span class="nt">node</span><span class="w"> </span><span class="nt">j</span><span class="err">’</span><span class="nt">s</span><span class="w"> </span><span class="nt">latent</span><span class="w"> </span><span class="nt">group</span><span class="w"> </span><span class="nt">Zji</span><span class="w"> </span><span class="err">～</span><span class="w"> </span><span class="nt">Multinomial</span><span class="o">(</span><span class="nt">πj</span><span class="o">)</span>
+<span class="w">    </span><span class="nt">-</span><span class="w"> </span><span class="nt">Draw</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">link</span><span class="w"> </span><span class="nt">Eij</span><span class="w"> </span><span class="err">～</span><span class="w"> </span><span class="nt">Bernoulli</span><span class="o">(</span><span class="nt">SZij</span><span class="w"> </span><span class="o">;</span><span class="nt">Zji</span><span class="o">)</span>
+</code></pre></div>
 <p>S: group-group interaction probability matrix </p>
-<h3 id="_8">改进</h3>
+<h3 id="_8">改进<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
 <p>Mixed Membership Community and Role (MMCR) Model</p>
 <p>大概就是给点多加一个role功能的向量</p>
-<h1 id="_9">总结</h1>
+<h1 id="_9">总结<a class="headerlink" href="#_9" title="Permanent link">¶</a></h1>
 <p>本篇或许是比较新颖地把原本不相关的社区发现和功能检测进行了关联--假设他们是第一个吧。</p>
 <p>但给我感觉比较水， </p>
 <ol>
@@ -219,45 +219,7 @@ For each node pair (i, j):
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/Community-Role-Detection.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'Community-Role-Detection.html';
-    var disqus_url = 'http://sndnyang.github.io/Community-Role-Detection.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -271,7 +233,7 @@ For each node pair (i, j):
                             <span>22</span>
 </a></li>
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#she-qu-fa-xian-ref">社区发现
                             <span>11</span>
@@ -327,45 +289,7 @@ For each node pair (i, j):
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

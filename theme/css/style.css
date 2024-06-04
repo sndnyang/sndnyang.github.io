@@ -473,7 +473,7 @@ dt:hover > a.headerlink {
 }
 
 .table-nav {
-    position: absolute;
+    position: fixed;
 }
 
 .table-nav .active-current > a {

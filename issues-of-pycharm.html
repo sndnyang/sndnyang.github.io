@@ -13,7 +13,7 @@
 <meta name="keywords" content="PyCharm, 开发工具, " />
 
 <meta property="og:title" content="PyCharm的一些问题 "/>
-<meta property="og:url" content="http://sndnyang.github.io/issues-of-pycharm.html" />
+<meta property="og:url" content="/issues-of-pycharm.html" />
 <meta property="og:description" content="PyCharm使用时遇到的一些问题" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang (sndnyangd@gmail.com)" />
@@ -139,9 +139,9 @@
 
                         
                         
-<h1 id="cant-find-so-only-in-pycharm">can't find .so only in pycharm</h1>
-<div class="highlight"><pre><span></span><span class="n">ImportError</span><span class="o">:</span> <span class="n">libcudnn</span><span class="o">.</span><span class="na">so</span><span class="o">.</span><span class="mi">7</span><span class="o">:</span> <span class="n">cannot</span> <span class="n">open</span> <span class="n">shared</span> <span class="n">object</span> <span class="n">file</span><span class="o">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
-</pre></div>
+<h1 id="cant-find-so-only-in-pycharm">can't find .so only in pycharm<a class="headerlink" href="#cant-find-so-only-in-pycharm" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="n">ImportError</span><span class="o">:</span><span class="w"> </span><span class="n">libcudnn</span><span class="o">.</span><span class="na">so</span><span class="o">.</span><span class="mi">7</span><span class="o">:</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="n">open</span><span class="w"> </span><span class="n">shared</span><span class="w"> </span><span class="n">object</span><span class="w"> </span><span class="n">file</span><span class="o">:</span><span class="w"> </span><span class="n">No</span><span class="w"> </span><span class="n">such</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">directory</span>
+</code></pre></div>
 <ol>
 <li>
 <p>run pycharm from terminal.</p>
@@ -162,23 +162,23 @@ Exec = bash -i -c /...</code></p>
 <li>从命令行启动</li>
 <li>修改PyCharm 桌面应用文件， 在<code>/usr/share/applications/</code> 或 <code>~/.local/share/applications/</code>里面， 修改
         <code>Exec = /path/pycharm.sh</code>
-        改成<div class="highlight"><pre><span></span>```
-Exec = bash -i -c /path/pycharm.sh
+        改成<div class="codehilite"><pre><span></span><code>```
+<span class="k">Exec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">bash</span><span class="w"> </span><span class="o">-</span><span class="nv">i</span><span class="w"> </span><span class="o">-</span><span class="nv">c</span><span class="w"> </span><span class="o">/</span><span class="nv">path</span><span class="o">/</span><span class="nv">pycharm</span>.<span class="nv">sh</span>
 ```
-</pre></div>
+</code></pre></div>
 </li>
 </ol>
-<h1 id="ssh-nothing-to-show">ssh远端开发，找不到远端的包， nothing to show</h1>
+<h1 id="ssh-nothing-to-show">ssh远端开发，找不到远端的包， nothing to show<a class="headerlink" href="#ssh-nothing-to-show" title="Permanent link">¶</a></h1>
 <p>使用 2018.1 版本能显示， 不过 os, traceback 等一些也看不到， 2018.3 以上就开始无法显示， 有说使用ip地址、删除~/.pycharm_helper 可以解决这问题， 但我试了没成功。</p>
 <p>Using version 2018.1 can show most packages. But I can't find os,traceback etc. If I use the pycharm higher than 2018.3, it will show that nothing to show. In the forum, someone said using ip address, deleting ~/.pycharm_helper directory will solve this issue. However I tried both, neither works.</p>
-<h1 id="load-several-projects-in-one-directorywindows">Load several projects in one directory/windows 一个目录加载多个项目/工程</h1>
+<h1 id="load-several-projects-in-one-directorywindows">Load several projects in one directory/windows 一个目录加载多个项目/工程<a class="headerlink" href="#load-several-projects-in-one-directorywindows" title="Permanent link">¶</a></h1>
 <p><a href="https://www.cnblogs.com/mrgavin/p/6382406.html">方案来源</a></p>
 <p>PyCharm好用， 但一个比较麻烦的玩意是一个窗口最好只打开一个项目， 主目录要对应， 导入自己写的其他模块才不会有错误提示。 PyCharm is a very useful/helpful/pragmatic tool. But there's an issue that one PyCharm window should only open one project. And the working directory should be the root of the project. Then it won't raise error when loading other modules/packages in my project.</p>
 <p><img alt="img" src="https://images2015.cnblogs.com/blog/941639/201702/941639-20170209152610010-288461141.jpg"/> </p>
 <p>在一个窗口里想同时加载多个项目或主目录没对应上的话， 导入模块就会有错误提示， 虽然有时候有错误提示也能运行， 但对强迫症来说， 恨不得把所有错误警告都消灭掉， 有错误提示就非常不能忍， 而且多数情况下，也确实无法运行。</p>
 <p>之前也试过寻找方案，但没找到，这次随手一搜，居然就搜到了</p>
-<div class="highlight"><pre><span></span>Settings-&gt;Project-&gt;Project Structure-&gt;Add Content Root
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">Settings</span><span class="o">-&gt;</span><span class="nf">Project</span><span class="o">-&gt;</span><span class="nf">Project</span><span class="w"> </span><span class="n">Structure</span><span class="o">-&gt;</span><span class="n">Add</span><span class="w"> </span><span class="n">Content</span><span class="w"> </span><span class="n">Root</span>
+</code></pre></div>
 <p>不过不能使用</p>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
@@ -190,45 +190,7 @@ Exec = bash -i -c /path/pycharm.sh
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/issues-of-pycharm.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'issues-of-pycharm.html';
-    var disqus_url = 'http://sndnyang.github.io/issues-of-pycharm.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -292,45 +254,7 @@ Exec = bash -i -c /path/pycharm.sh
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

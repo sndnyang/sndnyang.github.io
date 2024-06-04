@@ -13,13 +13,13 @@
 <meta name="keywords" content="论文, 回归决策树, 时间序列分析, 研究, " />
 
 <meta property="og:title" content="视频欢迎度的生命期感知回归模型 "/>
-<meta property="og:url" content="http://sndnyang.github.io/lifetime-aware-regression-model-for-video-popularity.html" />
-<meta property="og:description" content="总结 目标：时间序列分析-预测视频欢迎度、点击量--用线性回归 不足：测试数据时间序列数据少（短），比如只有前10天数据，预测第100天数据，预测不准 预测不准是因为所有训练数据都用上，明显噪音过多， 解决： 对视频根据增长模式不同进行分类， 如电影的粉丝电影（初期暴增，后期缓慢），普通电影（稳定直线增长）、逆增长（初期缓慢，后期暴增），只使用同类增长模式的数据进行预测 测试数据时间序列数据不足， 只能在初期数据之外，添加其他特征，如作者人气、视频长度、视频内容类别、点赞、渠道信息等 有特征进行训练，就需要标签（监督学习）。 标签即本文新定义的生命期——$\alpha$-lifespan，点击达到$\alpha$=50%或80%时的时间——也就是第3点的增长模式，细节差别而已 用训练集的初期数据（点击量）、人气、视频长度、类别等特征与标签 ..." />
+<meta property="og:url" content="/lifetime-aware-regression-model-for-video-popularity.html" />
+<meta property="og:description" content="总结¶ 目标：时间序列分析-预测视频欢迎度、点击量--用线性回归 不足：测试数据时间序列数据少（短），比如只有前10天数据，预测第100天数据，预 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2017-10-16T20:35:30+08:00" />
 <meta name="twitter:title" content="视频欢迎度的生命期感知回归模型 ">
-<meta name="twitter:description" content="总结 目标：时间序列分析-预测视频欢迎度、点击量--用线性回归 不足：测试数据时间序列数据少（短），比如只有前10天数据，预测第100天数据，预测不准 预测不准是因为所有训练数据都用上，明显噪音过多， 解决： 对视频根据增长模式不同进行分类， 如电影的粉丝电影（初期暴增，后期缓慢），普通电影（稳定直线增长）、逆增长（初期缓慢，后期暴增），只使用同类增长模式的数据进行预测 测试数据时间序列数据不足， 只能在初期数据之外，添加其他特征，如作者人气、视频长度、视频内容类别、点赞、渠道信息等 有特征进行训练，就需要标签（监督学习）。 标签即本文新定义的生命期——$\alpha$-lifespan，点击达到$\alpha$=50%或80%时的时间——也就是第3点的增长模式，细节差别而已 用训练集的初期数据（点击量）、人气、视频长度、类别等特征与标签 ...">
+<meta name="twitter:description" content="总结¶ 目标：时间序列分析-预测视频欢迎度、点击量--用线性回归 不足：测试数据时间序列数据少（短），比如只有前10天数据，预测第100天数据，预 …">
 
 
         <title>视频欢迎度的生命期感知回归模型  · 科探空谷
@@ -150,7 +150,7 @@
 
                         
                         
-<h1 id="_1">总结</h1>
+<h1 id="_1">总结<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <ol>
 <li>目标：时间序列分析-预测视频欢迎度、点击量--用线性回归</li>
 <li>不足：测试数据时间序列数据少（短），比如只有前10天数据，预测第100天数据，预测不准</li>
@@ -165,15 +165,15 @@
 <p>OVER， 绕了半天， 总算绕出来了。 
 看的时候真不一定觉得是问题， 到自己来解释时才知道没理解透</p>
 <p>特别是要猜论文作者（理论提出者）是发现什么问题、怎么发现问题、 怎么想到解决思路。</p>
-<h1 id="_2">目标</h1>
+<h1 id="_2">目标<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>如何用少量历史数据预测视频的受欢迎程度——到未来某时间的总浏览量？</p>
 <p>现在的方法只能预测近期，不好预测远期</p>
 <p>所以， 作者（们）提出 生命期感知回归模型</p>
-<h1 id="_3">生命期感知回归模型</h1>
+<h1 id="_3">生命期感知回归模型<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
 <p>每个视频都有一定的生命期（寿命lifetime）模式， 或点击增长模式（popularity evolution paterns）， 比如不同上传者（知名度）、不同内容、质量是影响因素。更不用说不小心摊上什么大事这种不可控因素， 不过应该也可以测什么事件将会对什么视频产生什么影响——没差。</p>
 <p>朴素的 生命期是一个视频从上传（或某事件）到没人点击（一段时间内）的这段时间间隔。</p>
 <div class="process"><span><p>显然有什么问题？<input class="quiz" type="text"/></p></span><br/><input class="answers" type="hidden" value=""/><button onclick="checkQuiz(this, 0)">submit</button><br/></div>
-<h2 id="_4">太长</h2>
+<h2 id="_4">太长<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>有些视频常年有人看，等不到生命期的结束。 总之观察期不会那么久。而统计就是从无限数据中采样， 在自己观察到的样本总数里进行分析。</p>
 <p>所以， 改无限长的观察时间成固定时长， 比如总时长多少天或多少小时，每天或每小时获得一次数据。</p>
 <p>相应地， 生命期的计算也需要变化， 从以前的最终时间（等到没人看）， 改成最快达到 某个比例阈值的时间。</p>
@@ -182,13 +182,13 @@
 <p>$\alpha$取不同值对区别实际模型也有影响， 如图：</p>
 <p><img alt="Figure-2" src="http://7xt8es.com1.z0.glb.clouddn.com/%E8%A7%86%E9%A2%91%E6%AC%A2%E8%BF%8E%E5%BA%A6/figure2-patterns-examples.png"/></p>
 <p>D1与D3在50%时难以区别， 而80%则显然不同</p>
-<h2 id="_5">找规律</h2>
+<h2 id="_5">找规律<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>接下来就是用机器学习（之类的）方法来把特征与新生命期进行映射了。</p>
 <p>作者使用了10个特征， 包括视频类别（如果算标签就更复杂了）、视频长度、 播放量（访问量）、评论数等。</p>
 <div class="process"><span><p>用什么分类算法比较好？<input class="quiz" type="text"/></p></span><br/><input class="answers" type="hidden" value="回归树|决策树"/><input class="comments" type="hidden" value="视频类别是什么数据，应该？"/><button onclick="checkQuiz(this, 1)">submit</button><br/></div>
-<h2 id="_6">训练</h2>
+<h2 id="_6">训练<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p>训练后， 以后就能根据少量的历史数据（初始一天或一小时）和其他特征计算生命期， 用于预测欢迎度</p>
-<h1 id="_7">预测欢迎度</h1>
+<h1 id="_7">预测欢迎度<a class="headerlink" href="#_7" title="Permanent link">¶</a></h1>
 <p>定义视频的生命期为$L_v$， 访问量$N_v(t_i)$ 和 上个时间段增长量 $x_v(t_i)$</p>
 <p>目标就是用生命期$L_v$和至今$t_r$各段时间增长量$X_v(t_r) = (x_v (t_1),x_v (t_2 ),...,x_v (t_r ))$来预测 未来时间 $t_t$的访问量$N_v(t_t)$ —— 也是欢迎度</p>
 <p>因为这是时间序列总量， 所以公式为：</p>
@@ -198,13 +198,13 @@
 <p>而K代表了 不同增长模式的模型， 比如火红一时、 细水长流、 口碑发酵等等， 如果把所有数据都认为只遵从一种模式的话， 误差显然会较大， 同时跟 生命期$L_v$ 也就没什么关系了。</p>
 <p>根据机器学习求损失函数， 定义为以下优化问题：</p>
 <p><img alt="formula3-optimal" src="http://7xt8es.com1.z0.glb.clouddn.com/%E8%A7%86%E9%A2%91%E6%AC%A2%E8%BF%8E%E5%BA%A6/formula3-optimal.png" title="formula 3"/></p>
-<h2 id="k">K的选定</h2>
+<h2 id="k">K的选定<a class="headerlink" href="#k" title="Permanent link">¶</a></h2>
 <p>如何用生命期$L_v$选定K及划分数据集呢？</p>
 <p>首先， 用生命期$L_v$划分出K个子集， 每个子集有 生命期的下界（和上界）， 就是在总时间长度$t_t = N$的横坐标上划分K个区间， 或者说 在N个人中间放上K-1块木板（每个区间好歹有一个值吧）， 组合数的计算量很大</p>
 <p>因此， 需要更简单的聚类方法（数据没有标签，就是聚类）， 最简单的就是 KMeans。 聚类的特征就是训练数据的时间序列， 类似 Figure-2 每个数据集就分成了6种。</p>
 <p>作者实验后认为 分成 4类比较好。</p>
-<h1 id="_8">实验</h1>
-<h1 id="_9">原文</h1>
+<h1 id="_8">实验<a class="headerlink" href="#_8" title="Permanent link">¶</a></h1>
+<h1 id="_9">原文<a class="headerlink" href="#_9" title="Permanent link">¶</a></h1>
 <p>C. Ma, Z. Yan and C. W. Chen, "LARM: A Lifetime Aware Regression Model for Predicting YouTube Video Popularity", in ACM International Conference on Information and Knowledge Management (ACM CIKM), 2017. <a href="https://grid.cs.gsu.edu/~zyan/papers/larm_cikm17.pdf">[PDF]</a></p>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
@@ -216,45 +216,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/lifetime-aware-regression-model-for-video-popularity.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'lifetime-aware-regression-model-for-video-popularity.html';
-    var disqus_url = 'http://sndnyang.github.io/lifetime-aware-regression-model-for-video-popularity.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -268,7 +230,7 @@
                             <span>1</span>
 </a></li>
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#shi-jian-xu-lie-fen-xi-ref">时间序列分析
                             <span>1</span>
@@ -324,45 +286,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

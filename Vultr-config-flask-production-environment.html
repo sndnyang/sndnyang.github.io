@@ -13,7 +13,7 @@
 <meta name="keywords" content="flask, python, PostgreSQL, Redis, Nginx, git, web, web开发, " />
 
 <meta property="og:title" content="Vultr配置flask运行环境 "/>
-<meta property="og:url" content="http://sndnyang.github.io/Vultr-config-flask-production-environment.html" />
+<meta property="og:url" content="/Vultr-config-flask-production-environment.html" />
 <meta property="og:description" content="Vultr, flask, python27, SQLAlchemy, PostgreSQL, Redis, Supervisor, Gunicorn, Nginx, DNS, git, virtualenv 配置汇总" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang (sndnyangd@gmail.com)" />
@@ -150,7 +150,7 @@
 
                         
                         
-<h1 id="_1">总结</h1>
+<h1 id="_1">总结<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>花了1天半才配置成~~~</p>
 <p>从Openshift迁移到Vultr的 CentOS 7</p>
 <p>涉及内容：</p>
@@ -164,11 +164,11 @@
 <li>Supervisor+Gunicorn+gevent</li>
 <li>DNS</li>
 </ol>
-<h1 id="vultr">Vultr</h1>
+<h1 id="vultr">Vultr<a class="headerlink" href="#vultr" title="Permanent link">¶</a></h1>
 <p>1个月5美元， 1G内存，1核CPU， 1000G流量， 25G SSD硬盘， 洛杉矶（达拉斯也不错）</p>
-<h1 id="ss">ss配置</h1>
+<h1 id="ss">ss配置<a class="headerlink" href="#ss" title="Permanent link">¶</a></h1>
 <p>略</p>
-<h1 id="git">git</h1>
+<h1 id="git">git<a class="headerlink" href="#git" title="Permanent link">¶</a></h1>
 <p><a href="/config-centOS-install-git.html">git安装</a></p>
 <p>各种浪费时间</p>
 <ol>
@@ -180,53 +180,53 @@
 <li>在5之前，共享库配置好，本地上传失败，删了重新建 git init --bare， 后来发现是文件夹名多带.git的问题，服务器的共享库文件夹有.git就有，没有就没有，不要乱加</li>
 <li>共享库上传分支错误，删了重来~~~</li>
 </ol>
-<h1 id="postgresql">PostgreSQL</h1>
+<h1 id="postgresql">PostgreSQL<a class="headerlink" href="#postgresql" title="Permanent link">¶</a></h1>
 <p><a href="/config-centOS-install-postgresql.html">PostgreSQL安装</a></p>
 <p>命令没有执行（没发现要；）， 修改用户权限后没加载重启， 浪费了很多时间</p>
-<h2 id="_2">数据迁移</h2>
+<h2 id="_2">数据迁移<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p><a href="http://blog.zhimind.com/postgresql-migration.html">PostgreSQL数据迁移</a></p>
 <p>第一遍导出 PostgreSQL自定义格式文件， 结果拥有者用户等问题导入失败（应该是，反正就是停在那里不动了）， 因为 openshift用户名是随机的，我在 Vultr上换了新名字。</p>
 <p>之后导出无格式文件， 并把 owner及constraint语句去掉就成功了， 因为我之前执行过 flask 程序，里面已经 db.create_all()过， 所以数据表早就创建好了。</p>
-<h1 id="redis">Redis</h1>
+<h1 id="redis">Redis<a class="headerlink" href="#redis" title="Permanent link">¶</a></h1>
 <p><a href="/config-centOS-install-Redis%E5%AE%89%E8%A3%85.html">Redis安装</a></p>
 <p>安装一遍后， 忘记如何重启、 配置文件（找密码）</p>
-<h1 id="nginx">Nginx</h1>
+<h1 id="nginx">Nginx<a class="headerlink" href="#nginx" title="Permanent link">¶</a></h1>
 <p><a href="/config-centOS-install-Nginx.html">Nginx安装</a></p>
 <p>不知道文件(被nginx.conf include)的格式， 纠结了半天， 这个重启倒挺顺利， 导证书时</p>
-<h1 id="virtualenvflasksqlalchemy">virtualenv+flask+SQLAlchemy</h1>
+<h1 id="virtualenvflasksqlalchemy">virtualenv+flask+SQLAlchemy<a class="headerlink" href="#virtualenvflasksqlalchemy" title="Permanent link">¶</a></h1>
 <p>CentOS 7 自带 python2.7， 自带PIP， 所以很简单， 直接</p>
-<div class="highlight"><pre><span></span>pip install virtualenv
-</pre></div>
+<div class="codehilite"><pre><span></span><code>pip install virtualenv
+</code></pre></div>
 <p>先用git clone 或 init创建运行库文件夹production， 再：</p>
-<div class="highlight"><pre><span></span>virtualenv production
+<div class="codehilite"><pre><span></span><code>virtualenv production
 或
 cd production
 virtualenv .
-</pre></div>
+</code></pre></div>
 <p>flask等第三方库写在 requirements.txt里，激活虚拟环境 </p>
-<div class="highlight"><pre><span></span>source production/bin/activate
+<div class="codehilite"><pre><span></span><code>source production/bin/activate
 或
 source production Scripts/activate  // windows
-</pre></div>
+</code></pre></div>
 <p>运行</p>
-<div class="highlight"><pre><span></span>pip install -r requirements
-</pre></div>
+<div class="codehilite"><pre><span></span><code>pip install -r requirements
+</code></pre></div>
 <p><a href="https://github.com/sndnyang/zhimind/blob/master/requirements.txt">requirements文件</a></p>
 <p>有个 baidu-aip是百度大脑的接口外， 其他几个大概都能用， 不过版本不少不是最新的。</p>
-<h1 id="supervisorgunicorngevent">Supervisor+Gunicorn+gevent</h1>
+<h1 id="supervisorgunicorngevent">Supervisor+Gunicorn+gevent<a class="headerlink" href="#supervisorgunicorngevent" title="Permanent link">¶</a></h1>
 <p><a href="/Supervisor+Gunicorn+gevent.html">Supervisor+Gunicorn+gevent</a></p>
 <p>这个也非常费时， 一直没搞清楚哪个启动哪个的顺序关系， 改了配置文件、gunicorn运行文件gun.py却忘了重启，删了重装过几次，遇到连不上、已占用等问题。</p>
-<h1 id="dns">域名DNS</h1>
+<h1 id="dns">域名DNS<a class="headerlink" href="#dns" title="Permanent link">¶</a></h1>
 <p>Godaddy买的域名， Vultr有免费DNS， 于是我混乱过几分钟——DNS都免费，域名为什么这么贵，忘了要先注册域名，以为DNS随便填了。</p>
 <p>Godaddy之前主要是CNAME记录， 转到 openshift\github.io\google app engine等处</p>
 <p>对Godaddy DNS设置里的 @ 符号没认清， 如果它写成 "*" 号就不会认错了， 结果不知道是要修改A记录，而CNAME又不支持IP，又是一通好找。</p>
 <p>实际上就是，用子域名 sub.domain.com里的 sub 写记录， A记录连IP， CNAME则连域名（比如openshift\google app engine都有）， A记录优先级高于CNAME， 比如都有 www的话，发到A记录的IP。</p>
 <p>现在的问题是， 主域名 www 这个可以了， 但另一个连 google app engine的data失败了（本来是好的）， 尴尬。</p>
 <p>突然还发现了另一问题， 我之前为什么在 google app engine那边设置了DNS？它已经有 域名了， 我在 godaddy上直接设置CNAME就行了~~~</p>
-<h1 id="debug-2-threads">debug 2 threads</h1>
+<h1 id="debug-2-threads">debug 2 threads<a class="headerlink" href="#debug-2-threads" title="Permanent link">¶</a></h1>
 <p>怎么只调用一次</p>
-<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'WERKZEUG_RUN_MAIN'</span><span class="p">)</span> <span class="o">==</span> <span class="s1">'true'</span><span class="p">:</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'WERKZEUG_RUN_MAIN'</span><span class="p">)</span> <span class="o">==</span> <span class="s1">'true'</span><span class="p">:</span>
+</code></pre></div>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
                     <a href="#" class="bds_more" data-cmd="more"></a>
@@ -237,45 +237,7 @@ source production Scripts/activate  // windows
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/Vultr-config-flask-production-environment.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'Vultr-config-flask-production-environment.html';
-    var disqus_url = 'http://sndnyang.github.io/Vultr-config-flask-production-environment.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -357,45 +319,7 @@ source production Scripts/activate  // windows
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

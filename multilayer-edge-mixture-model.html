@@ -13,13 +13,13 @@
 <meta name="keywords" content="论文, CS, 社区发现, CS, " />
 
 <meta property="og:title" content="多层边混合模型 "/>
-<meta property="og:url" content="http://sndnyang.github.io/multilayer-edge-mixture-model.html" />
-<meta property="og:description" content="摘要 本文针对多层的网络数据--可能主要是对它进行社区发现--做了以下工作： 提出多层边混合模型(multilayer edge mixture model MEMM)，从边组合的视角（观点），探索一种通用的社区结构评估器 展示了从MEMM可以推导出多层颗粒度(multilayer modularity)和随机块模型(stochastic blockmodel) 探索以MMEM的形式，对特定形式的社区结构评估器进行分解。这样可以发现评估器的新的解释。 社区发现的说明： 多层图（多层图）的说明： 本文使用的是柱式多层图， 各层点相同。 导论 MEMM(multiply edge mixture model)： 是基于边（的贡献）的线性组合。 超模型(hyper model)，能为现存的多层社区结构评估器提供新的解释。 帮助推导出新的质量函数。 正文 基础 Reichardt and Bornholdt提出的 边反馈方案(rewarding scheme of edges ..." />
+<meta property="og:url" content="/multilayer-edge-mixture-model.html" />
+<meta property="og:description" content="摘要¶ 本文针对多层的网络数据--可能主要是对它进行社区发现--做了以下工作： 提出多层边混合模型(multilayer edge mixture model MEMM)，从边组合 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2016-07-05T16:52:13+08:00" />
 <meta name="twitter:title" content="多层边混合模型 ">
-<meta name="twitter:description" content="摘要 本文针对多层的网络数据--可能主要是对它进行社区发现--做了以下工作： 提出多层边混合模型(multilayer edge mixture model MEMM)，从边组合的视角（观点），探索一种通用的社区结构评估器 展示了从MEMM可以推导出多层颗粒度(multilayer modularity)和随机块模型(stochastic blockmodel) 探索以MMEM的形式，对特定形式的社区结构评估器进行分解。这样可以发现评估器的新的解释。 社区发现的说明： 多层图（多层图）的说明： 本文使用的是柱式多层图， 各层点相同。 导论 MEMM(multiply edge mixture model)： 是基于边（的贡献）的线性组合。 超模型(hyper model)，能为现存的多层社区结构评估器提供新的解释。 帮助推导出新的质量函数。 正文 基础 Reichardt and Bornholdt提出的 边反馈方案(rewarding scheme of edges ...">
+<meta name="twitter:description" content="摘要¶ 本文针对多层的网络数据--可能主要是对它进行社区发现--做了以下工作： 提出多层边混合模型(multilayer edge mixture model MEMM)，从边组合 …">
 
 
         <title>多层边混合模型  · 科探空谷
@@ -150,7 +150,7 @@
 
                         
                         
-<h1 id="_1">摘要</h1>
+<h1 id="_1">摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>本文针对多层的网络数据--可能主要是对它进行社区发现--做了以下工作：</p>
 <ol>
 <li>提出多层边混合模型(multilayer edge mixture model MEMM)，从边组合的视角（观点），探索一种通用的社区结构评估器</li>
@@ -160,15 +160,15 @@
 <p>社区发现的说明：</p>
 <p>多层图（多层图）的说明：</p>
 <p>本文使用的是柱式多层图， 各层点相同。</p>
-<h1 id="_2">导论</h1>
+<h1 id="_2">导论<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>MEMM(multiply edge mixture model)：  </p>
 <ol>
 <li>是基于边（的贡献）的线性组合。</li>
 <li>超模型(hyper model)，能为现存的多层社区结构评估器提供新的解释。</li>
 <li>帮助推导出新的质量函数。</li>
 </ol>
-<h1 id="_3">正文</h1>
-<h2 id="_4">基础</h2>
+<h1 id="_3">正文<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
+<h2 id="_4">基础<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>Reichardt and Bornholdt提出的 边反馈方案(rewarding scheme of edges), 应用于单层网络</p>
 <ol>
 <li>奖励社区内存在的边</li>
@@ -187,7 +187,7 @@
 <li>该评估器代表了被发现社区结构的质量，进而得到最优社区分配。</li>
 </ol>
 <p>这样的模型命名为 超模型（hyper model）</p>
-<h2 id="memm">MEMM</h2>
+<h2 id="memm">MEMM<a class="headerlink" href="#memm" title="Permanent link">¶</a></h2>
 <p>在边反馈方案的基础上：</p>
 <ol>
 <li>添加层间边的情况</li>
@@ -202,7 +202,7 @@
 <li>P是两点同属一社区的概率， 支持模糊划分 fuzzy partition.</li>
 <li>lambda(w)函数， 大于w，返回1， 否则 -1</li>
 </ol>
-<h3 id="hyper-parameter">hyper parameter的设定</h3>
+<h3 id="hyper-parameter">hyper parameter的设定<a class="headerlink" href="#hyper-parameter" title="Permanent link">¶</a></h3>
 <p>策略：</p>
 <ol>
 <li>固定值</li>
@@ -213,7 +213,7 @@
 <li>根据边的贡献比例， 选择固定值（贡献比例怎么求？）</li>
 <li>网络变更后，重算参数</li>
 </ol>
-<h2 id="_5">推导</h2>
+<h2 id="_5">推导<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>之后的工作是从MEMM来推导：</p>
 <ol>
 <li>模块性(Modularity)</li>
@@ -222,15 +222,15 @@
 <p>这部分可以理解成拟合、 泰勒展示、 逼近、 近似什么的。</p>
 <p>通过设定超参数 hyper parameters 的值就可以做到， 所以MEMM是个更加通用的模型</p>
 <p>具体表达涉及 模块性、SBM的定义， 就不在这里展开了。（也还没看）</p>
-<h2 id="_6">分解评估器</h2>
+<h2 id="_6">分解评估器<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p>不太理解这块和上一块推导有多少区别。 模块性和随机块模型是否也算是评估器。</p>
 <p>看起来没太多区别。</p>
 <p>意义在于：</p>
 <p>decomposition of an evaluator reveals the preference of the evaluator</p>
 <p>但evaluator是什么和如何decompose 都没讲好的感觉</p>
-<h1 id="_7">实验部分</h1>
+<h1 id="_7">实验部分<a class="headerlink" href="#_7" title="Permanent link">¶</a></h1>
 <p>内容很多~~~</p>
-<h1 id="_8">总结</h1>
+<h1 id="_8">总结<a class="headerlink" href="#_8" title="Permanent link">¶</a></h1>
 <ol>
 <li>复杂，长</li>
 <li>语言也比较复杂~~~介绍部分大段文本看着眼花缭乱</li>
@@ -246,45 +246,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/multilayer-edge-mixture-model.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'multilayer-edge-mixture-model.html';
-    var disqus_url = 'http://sndnyang.github.io/multilayer-edge-mixture-model.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -298,7 +260,7 @@
                             <span>22</span>
 </a></li>
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#she-qu-fa-xian-ref">社区发现
                             <span>11</span>
@@ -354,45 +316,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -13,7 +13,7 @@
 <meta name="keywords" content="tool, 开发工具, " />
 
 <meta property="og:title" content="conda给虚拟环境配置环境变量 "/>
-<meta property="og:url" content="http://sndnyang.github.io/conda-config-environment-variable.html" />
+<meta property="og:url" content="/conda-config-environment-variable.html" />
 <meta property="og:description" content="conda在所创建的环境里配置环境变量" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang (sndnyangd@gmail.com)" />
@@ -137,7 +137,7 @@
 
                         
                         
-<h1 id="_1">配置</h1>
+<h1 id="_1">配置<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>网上找到的中文介绍都是给整个conda配置环境变量， 但如何给 conda创建的虚拟环境设置单独的环境变量， 基本没找到中文的（virtualenv 那个直接在activate文件里添加环境变量 export var_name="abcde")</p>
 <p>英文官网关于管理虚拟环境的 <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#updating-an-environment">manage environment</a></p>
 <p>在激活了某个conda的虚拟环境之后, 进行如下管理：</p>
@@ -145,11 +145,11 @@
 <li>找到并进入该conda环境的主文件夹（目录） echo $CONDA_PREFIX ; cd $CONDA_PREFIX</li>
 <li>创建如下子文件夹和文件：  </li>
 </ol>
-<div class="highlight"><pre><span></span>mkdir -p ./etc/conda/activate.d  
-mkdir -p ./etc/conda/deactivate.d  
-touch ./etc/conda/activate.d/env_vars.sh  
-touch ./etc/conda/deactivate.d/env_vars.sh  
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">./</span><span class="n">etc</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">activate</span><span class="o">.</span><span class="n">d</span><span class="w">  </span>
+<span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">./</span><span class="n">etc</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">deactivate</span><span class="o">.</span><span class="n">d</span><span class="w">  </span>
+<span class="n">touch</span><span class="w"> </span><span class="o">./</span><span class="n">etc</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">activate</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">env_vars</span><span class="o">.</span><span class="n">sh</span><span class="w">  </span>
+<span class="n">touch</span><span class="w"> </span><span class="o">./</span><span class="n">etc</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">deactivate</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">env_vars</span><span class="o">.</span><span class="n">sh</span><span class="w">  </span>
+</code></pre></div>
 <ol>
 <li>在activate.d/env_vars.sh文件里添加、修改环境变量， 在deactivate.d/env_vars.sh恢复原环境变量或注销你新加的变量  </li>
 </ol>
@@ -163,45 +163,7 @@ touch ./etc/conda/deactivate.d/env_vars.sh
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/conda-config-environment-variable.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'conda-config-environment-variable.html';
-    var disqus_url = 'http://sndnyang.github.io/conda-config-environment-variable.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -265,45 +227,7 @@ touch ./etc/conda/deactivate.d/env_vars.sh
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

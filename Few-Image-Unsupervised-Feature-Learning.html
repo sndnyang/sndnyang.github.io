@@ -13,13 +13,13 @@
 <meta name="keywords" content="论文, 无监督学习, 自监督学习, 表示学习, 论文, " />
 
 <meta property="og:title" content="极少量图片的无监督特征学习 "/>
-<meta property="og:url" content="http://sndnyang.github.io/Few-Image-Unsupervised-Feature-Learning.html" />
-<meta property="og:description" content="Summary概述 有趣的新发现，没有引入新方法 神经网络的较浅层（前几层）可以仅用极少量数据、图片进行无监督学习， 仅用一张也行（进行大量数据扩充）， 学习到的特征、权重不亚于用大量数据的监督学习。 问题： 如作者所述，少量图片就能把较浅层训练得足够好， 这里的“足够好”是怎么比较的？ 比如类似迁移学习transfer learning？但替换较浅几层的权重？ 回答： linear probes， 线性探测， 基于学习好的神经网络（比如前1-k层， k&lt;&lt;n)，训练一个线性分类器， 比较线性分类器的分类正确率。 推论(证实)：神经网络浅较层的泛化本质、内在(the very generic nature)， 不需要使用大数据集进行训练。 目标 自监督学习下的极端低（少）数据情形(regime）， 即数据扩充（data augmentation）方法 研究哪些自监督、无监督学习方法能应用于少数据情形 ..." />
+<meta property="og:url" content="/Few-Image-Unsupervised-Feature-Learning.html" />
+<meta property="og:description" content="Summary概述¶ 有趣的新发现，没有引入新方法 神经网络的较浅层（前几层）可以仅用极少量数据、图片进行无监督学习， 仅用一张也行（进 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2019-05-02T15:20:20+08:00" />
 <meta name="twitter:title" content="极少量图片的无监督特征学习 ">
-<meta name="twitter:description" content="Summary概述 有趣的新发现，没有引入新方法 神经网络的较浅层（前几层）可以仅用极少量数据、图片进行无监督学习， 仅用一张也行（进行大量数据扩充）， 学习到的特征、权重不亚于用大量数据的监督学习。 问题： 如作者所述，少量图片就能把较浅层训练得足够好， 这里的“足够好”是怎么比较的？ 比如类似迁移学习transfer learning？但替换较浅几层的权重？ 回答： linear probes， 线性探测， 基于学习好的神经网络（比如前1-k层， k&lt;&lt;n)，训练一个线性分类器， 比较线性分类器的分类正确率。 推论(证实)：神经网络浅较层的泛化本质、内在(the very generic nature)， 不需要使用大数据集进行训练。 目标 自监督学习下的极端低（少）数据情形(regime）， 即数据扩充（data augmentation）方法 研究哪些自监督、无监督学习方法能应用于少数据情形 ...">
+<meta name="twitter:description" content="Summary概述¶ 有趣的新发现，没有引入新方法 神经网络的较浅层（前几层）可以仅用极少量数据、图片进行无监督学习， 仅用一张也行（进 …">
 
 
         <title>极少量图片的无监督特征学习  · 科探空谷
@@ -159,19 +159,19 @@
 
                         
                         
-<h1 id="summary">Summary概述</h1>
+<h1 id="summary">Summary概述<a class="headerlink" href="#summary" title="Permanent link">¶</a></h1>
 <p><strong>有趣的新发现，没有引入新方法</strong></p>
 <p>神经网络的较浅层（前几层）可以仅用极少量数据、图片进行无监督学习， 仅用一张也行（进行大量数据扩充）， 学习到的特征、权重不亚于用大量数据的监督学习。</p>
 <p><strong>问题：</strong> 如作者所述，少量图片就能把较浅层训练得足够好， 这里的“足够好”是怎么比较的？ 比如类似迁移学习transfer learning？但替换较浅几层的权重？</p>
 <p><strong>回答：</strong> linear probes， 线性探测， 基于学习好的神经网络（比如前1-k层， k&lt;&lt;n)，训练一个线性分类器， 比较线性分类器的分类正确率。</p>
 <p>推论(证实)：神经网络浅较层的泛化本质、内在(the very generic nature)， 不需要使用大数据集进行训练。</p>
-<h2 id="_1">目标</h2>
+<h2 id="_1">目标<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <ol>
 <li>自监督学习下的极端低（少）数据情形(regime）， 即数据扩充（data augmentation）方法</li>
 <li>研究哪些自监督、无监督学习方法能应用于少数据情形</li>
 </ol>
-<h1 id="_2">方法</h1>
-<h2 id="_3">数据扩充</h2>
+<h1 id="_2">方法<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
+<h2 id="_3">数据扩充<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>原使用 $d$ 张图片训练， 现在定义 $N \ll d$  张图片， 其他的 $d-N$ 张都是扩充图片。目标是 $N=1$ </p>
 <ol>
 <li>
@@ -190,25 +190,25 @@
 <p>色彩噪音</p>
 </li>
 </ol>
-<h3 id="_4">实例</h3>
+<h3 id="_4">实例<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>并不是限定使用原数据集里的一张或几张图片， 比如 CIFAR10 的图片非常小， 就没法进行小块扩充。 作者测试了两张图， 还有一组10张图：</p>
 <p><img alt="single-image-unsupervised-a" src="images/single-image-unsupervised-a.png"/></p>
 <p><img alt="single-image-unsupervised-b" src="images/single-image-unsupervised-b.png"/></p>
 <p><img alt="10-image-unsupervised" src="images/10-image-unsupervised.png"/></p>
-<h2 id="_5">表示学习方法</h2>
-<h3 id="_6">生成模型</h3>
+<h2 id="_5">表示学习方法<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
+<h3 id="_6">生成模型<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
 <p>Bidirectional Generative Adversarial Networks (BiGAN) </p>
-<h3 id="_7">旋转</h3>
+<h3 id="_7">旋转<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
 <p>RotNet</p>
-<h3 id="_8">聚类</h3>
+<h3 id="_8">聚类<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
 <p>DeepCluster</p>
-<h1 id="_9">实验</h1>
-<h2 id="_10">线性探测</h2>
+<h1 id="_9">实验<a class="headerlink" href="#_9" title="Permanent link">¶</a></h1>
+<h2 id="_10">线性探测<a class="headerlink" href="#_10" title="Permanent link">¶</a></h2>
 <p>基于固定的训练好的特征表示，训练线性分类器。 显然， 学习到的特征表示决定了分类质量。</p>
 <p><img alt="1556825057402" src="images/unsupervised-linear-probe-cifar10.png"/></p>
 <p><img alt="1556824867963" src="images/unsupervised-linear-probe.png"/></p>
 <p>结果显示， 无监督学习得到的 Conv1 第一个卷积层甚至比监督学习还好， 前两三层有提高， 然后下滑， 说明无监督学习对高抽象的特征学习不佳。</p>
-<h1 id="_11">未来方向</h1>
+<h1 id="_11">未来方向<a class="headerlink" href="#_11" title="Permanent link">¶</a></h1>
 <ol>
 <li>0图学习， 使用生成的不规则零碎图片学习</li>
 <li>找出或优化出更完美的单图，可以称之为原型图</li>
@@ -219,7 +219,7 @@
 <li>能否不用这么多扩充的图片， 卷积层本身就应该自动匹配到各局部特征， 而且应该色彩变化不敏感， 旋转角度能否就-30、-15、0、15、30 这么5张， 为什么要这么多。</li>
 <li>与监督学习的高层特征区别在哪里</li>
 </ol>
-<h1 id="_12">对照</h1>
+<h1 id="_12">对照<a class="headerlink" href="#_12" title="Permanent link">¶</a></h1>
 <p>data augmentation： 数据扩充、数据增强、数据增广</p>
 <p>low-data regime: 对不上号， 瞎猜一个 低（少）数据情形</p>
 <p>linear probes: 线性探测</p>
@@ -233,45 +233,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/Few-Image-Unsupervised-Feature-Learning.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'Few-Image-Unsupervised-Feature-Learning.html';
-    var disqus_url = 'http://sndnyang.github.io/Few-Image-Unsupervised-Feature-Learning.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -285,7 +247,7 @@
                             <span>1</span>
 </a></li>
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#wu-jian-du-xue-xi-ref">无监督学习
                             <span>1</span>
@@ -344,45 +306,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

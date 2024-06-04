@@ -13,13 +13,13 @@
 <meta name="keywords" content="深度学习, 机器学习, 人工智能, 深度学习, " />
 
 <meta property="og:title" content="PyTorch问题 "/>
-<meta property="og:url" content="http://sndnyang.github.io/PyTorch-issues.html" />
-<meta property="og:description" content="复现 CuDNN When running on the CuDNN backend, two further options must be set: torch.backends.cudnn.deterministic = True torch.backends.cudnn.benchmark = False 如： def set_framework_seed(seed, debug=False): if debug: torch.backends.cudnn.deterministic = True torch.backends.cudnn.benchmark = False random.seed(seed) np.random.seed(seed) _ ..." />
+<meta property="og:url" content="/PyTorch-issues.html" />
+<meta property="og:description" content="复现¶ CuDNN When running on the CuDNN backend, two further options must be set: torch.backends.cudnn.deterministic = True torch.backends.cudnn.benchmark = False 如： def set_framework_seed(seed, debug=False): if debug: torch.backends.cudnn.deterministic = True torch.backends.cudnn.benchmark = False random.seed(seed) np.random.seed(seed …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2018-12-19T22:18:30+08:00" />
 <meta name="twitter:title" content="PyTorch问题 ">
-<meta name="twitter:description" content="复现 CuDNN When running on the CuDNN backend, two further options must be set: torch.backends.cudnn.deterministic = True torch.backends.cudnn.benchmark = False 如： def set_framework_seed(seed, debug=False): if debug: torch.backends.cudnn.deterministic = True torch.backends.cudnn.benchmark = False random.seed(seed) np.random.seed(seed) _ ...">
+<meta name="twitter:description" content="复现¶ CuDNN When running on the CuDNN backend, two further options must be set: torch.backends.cudnn.deterministic = True torch.backends.cudnn.benchmark = False 如： def set_framework_seed(seed, debug=False): if debug: torch.backends.cudnn.deterministic = True torch.backends.cudnn.benchmark = False random.seed(seed) np.random.seed(seed …">
 
 
         <title>PyTorch问题  · 科探空谷
@@ -145,14 +145,14 @@
 
                         
                         
-<h1 id="_1">复现</h1>
+<h1 id="_1">复现<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>CuDNN
 When running on the CuDNN backend, two further options must be set:</p>
-<div class="highlight"><pre><span></span>torch.backends.cudnn.deterministic = True
+<div class="codehilite"><pre><span></span><code>torch.backends.cudnn.deterministic = True
 torch.backends.cudnn.benchmark = False
-</pre></div>
+</code></pre></div>
 <p>如：</p>
-<div class="highlight"><pre><span></span>def set_framework_seed(seed, debug=False):
+<div class="codehilite"><pre><span></span><code>def set_framework_seed(seed, debug=False):
     if debug:
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False
@@ -161,11 +161,11 @@ torch.backends.cudnn.benchmark = False
     _ = torch.manual_seed(seed)
     if torch.cuda.is_available():
         _ = torch.cuda.manual_seed(seed)
-</pre></div>
+</code></pre></div>
 <p>​            </p>
-<h1 id="_2">函数里的内存占用不释放</h1>
+<h1 id="_2">函数里的内存占用不释放<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>比如, 使用的函数</p>
-<div class="highlight"><pre><span></span>def pairwise_distances(x, y=None):
+<div class="codehilite"><pre><span></span><code>def pairwise_distances(x, y=None):
     """
     Input: x is a Nxd matrix
         y is an optional Mxd matrix
@@ -184,46 +184,46 @@ torch.backends.cudnn.benchmark = False
 
     dist = torch.pow(x_expand - y_expand, 2).sum(2).cpu()
     return dist
-</pre></div>
+</code></pre></div>
 <p>如果不在倒数第二行使用 .cpu()， 经常出现，函数返回后，占用的GPU内存不被释放, 有时是覆盖掉，有时干脆累加， 分分钟撑爆GPU内存</p>
-<h1 id="torch-10041">torch 1.0/0.4.1</h1>
-<div class="highlight"><pre><span></span>libtorch_python.so: undefined symbol: _Z11libshm_initPKc
-</pre></div>
+<h1 id="torch-10041">torch 1.0/0.4.1<a class="headerlink" href="#torch-10041" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code>libtorch_python.so: undefined symbol: _Z11libshm_initPKc
+</code></pre></div>
 <p>When I installed the torch 1.0,  there's a libshm.so in the $LD_LIBRARY_PATH.</p>
 <p>Just remove the path from $LD_LIBRARY_PATH, and reinstall. </p>
 <p>安装torch时， 之前因某原因（不记得）给LD_LIBRARY_PATH多加了一个带libshm.so文件的路径， 导致torch加载版本不对， 删掉路径， 刷新LD_LIBRARY_PATH， 重装 torch即可。</p>
-<h1 id="_3">初始化权重</h1>
+<h1 id="_3">初始化权重<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
 <p>因为PyTorch初始化不是使用 numpy， 与其他框架跨框架比较时， 需要使用 numpy 来初始化， 才能一致。</p>
-<div class="highlight"><pre><span></span>def normal_(tensor, mean=0, std=1):
+<div class="codehilite"><pre><span></span><code>def normal_(tensor, mean=0, std=1):
     with torch.no_grad():
         return tensor.normal_(mean, std)
-</pre></div>
+</code></pre></div>
 <p>使用方法：</p>
-<div class="highlight"><pre><span></span>model.apply(weight_init)
-</pre></div>
-<h1 id="scalar">对非scalar求导</h1>
+<div class="codehilite"><pre><span></span><code>model.apply(weight_init)
+</code></pre></div>
+<h1 id="scalar">对非scalar求导<a class="headerlink" href="#scalar" title="Permanent link">¶</a></h1>
 <p>grad on non-scalar/tensor</p>
-<div class="highlight"><pre><span></span>torch.autograd.grad(f_x[:, 0], logits, grad_outputs=torch.ones_like(f_x[:, 0]))
-</pre></div>
-<h1 id="batchnorm-affine">BatchNorm affine</h1>
+<div class="codehilite"><pre><span></span><code>torch.autograd.grad(f_x[:, 0], logits, grad_outputs=torch.ones_like(f_x[:, 0]))
+</code></pre></div>
+<h1 id="batchnorm-affine">BatchNorm affine<a class="headerlink" href="#batchnorm-affine" title="Permanent link">¶</a></h1>
 <p>It seems TF/chainer most frameworks works with affine=False(affine = True will introduce some randomness)</p>
 <p>不知道为什么， TF/CHAINER等框架的batchnorm 都是固定的， 就PyTorch 默认有随机。</p>
-<h1 id="different-momentum">different momentum</h1>
+<h1 id="different-momentum">different momentum<a class="headerlink" href="#different-momentum" title="Permanent link">¶</a></h1>
 <p><a href="https://pytorch.org/docs/stable/optim.html#torch.optim.SGD">momentum SGD</a></p>
 <p>PyTorch的momentum实现和别的不太一样。。。最终效果应该接近， 但训练过程中， 损失值会匹配不上， 对用不同框架重现会造成一小点困惑。</p>
 <p>PyTorch uses:</p>
-<div class="highlight"><pre><span></span>v = ρ * v + g
-p = p − lr * v
-</pre></div>
+<div class="codehilite"><pre><span></span><code>v = ρ <span class="gs">* v + g</span>
+<span class="gs">p = p − lr *</span> v
+</code></pre></div>
 <p>Other frameworks may use:</p>
-<div class="highlight"><pre><span></span>v = ρ * v + lr * g
+<div class="codehilite"><pre><span></span><code>v = ρ <span class="gs">* v + lr *</span> g
 p = p − v
 
 or
-v = ρ * v + lr * (1 - ρ) g
+v = ρ <span class="gs">* v + lr *</span> (1 - ρ) g
 p = p − v
-</pre></div>
-<h1 id="memory-usage">Memory usage</h1>
+</code></pre></div>
+<h1 id="memory-usage">Memory usage<a class="headerlink" href="#memory-usage" title="Permanent link">¶</a></h1>
 <p>初始状态， 仅向GPU传入一个tensor， 占用内存如下</p>
 <p><img alt="tensor size" src="images/tensor_size.png"/></p>
 <p><img alt="init memory" src="images/init.png"/></p>
@@ -232,7 +232,7 @@ p = p − v
 <p>实际占用内存数约为： </p>
 <p>$(973 - 793) * 1024 * 1024 = 188743680 \approx 187846400$</p>
 <p>所以， 有大约  $(793-180) =613$MB 内存被初始化占用。</p>
-<h1 id="device-side-error">device-side error</h1>
+<h1 id="device-side-error">device-side error<a class="headerlink" href="#device-side-error" title="Permanent link">¶</a></h1>
 <p>好像就是除了0</p>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
@@ -244,45 +244,7 @@ p = p − v
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/PyTorch-issues.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'PyTorch-issues.html';
-    var disqus_url = 'http://sndnyang.github.io/PyTorch-issues.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -352,45 +314,7 @@ p = p − v
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

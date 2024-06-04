@@ -13,7 +13,7 @@
 <meta name="keywords" content="软件开发, 调试, Python, 软件开发, " />
 
 <meta property="og:title" content="交互式调试器-第一部分 "/>
-<meta property="og:url" content="http://sndnyang.github.io/python-interactive-debugger-part1.html" />
+<meta property="og:url" content="/python-interactive-debugger-part1.html" />
 <meta property="og:description" content="用settrace来跟踪调试程序" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang sndnyang.github.io" />
@@ -146,11 +146,11 @@
 
                         
                         
-<h1 id="_1">调试器</h1>
+<h1 id="_1">调试器<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>调试课第一单元的编程练习，就是建一个蟒蛇版的蜘蛛网，Sorry，是Python版的捉虫调试器。</p>
 <p>建一个简单的、交互式的调试器，来帮助我们捉虫，既然要诚心诚意地建这么个工具，我们就在发慈悲地给它起个名字——spyder，simple python debugger，一语N关，此名得之。</p>
 <p>spyder调试器是个命令行调试器，想到gdb了是吧？当然没法跟人家比了，哪怕是自家孩子，咱们也要有自知之明嘛。如果你愿意给它打扮一下，武装到牙齿，上装备(gui)的话，就可以变成图形界面调试器了。无聊的话，每次调试还可以配个蜘蛛爬的动画……</p>
-<h2 id="_2">主要功能</h2>
+<h2 id="_2">主要功能<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <ol>
 <li>交互式调试</li>
 <li>增加断点(break)</li>
@@ -158,9 +158,9 @@
 <li>输出(print)等等</li>
 </ol>
 <p>后面还会再补充其他的。</p>
-<h1 id="_3">如何实现</h1>
+<h1 id="_3">如何实现<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
 <p>这样一个调试器的实现，最重要的当然还是如何使得程序的执行听从指挥，而不是默认的嗯一撸到底。就像Linux下的c语言有ptrace函数一样（我没用过），python同样有自己的骄傲，sys模块里的settrace函数可以助我们一臂之力。</p>
-<h1 id="syssetrace">sys.setrace()</h1>
+<h1 id="syssetrace">sys.setrace()<a class="headerlink" href="#syssetrace" title="Permanent link">¶</a></h1>
 <p>sys.settrace(trace_function) 函数可以设置全局调试跟踪函数，在参数trace_function每次调用时，它也会被调用到，而与之搭档的function (此处起名traceit)也有一定的模式</p>
 <p>traceit就相当于一个回调callback函数， Python代码在每执行一行后，就会调用这个函
 数， 所以会给这个函数传相应的程序信息， 归类如下：</p>
@@ -183,8 +183,8 @@
 <li>外界参数</li>
 </ol>
 <p>所以，我们设计的 traceit函数将接收如上三个参数， 并做出一番处理</p>
-<h2 id="traceit">traceit</h2>
-<div class="highlight"><pre><span></span>def traceit(frame, event, trace_arg):
+<h2 id="traceit">traceit<a class="headerlink" href="#traceit" title="Permanent link">¶</a></h2>
+<div class="codehilite"><pre><span></span><code>def traceit(frame, event, trace_arg):
     # 全局变量定义，对应命令行的控制参数
     global stepping
 
@@ -197,7 +197,7 @@
                 command = input_command()
                 resume = debug(command, frame.f_locals)
     return traceit
-</pre></div>
+</code></pre></div>
 <p>因为太久了， 已经忘记内容了~~~还算清楚，但也解释下</p>
 <ol>
 <li>stepping是 单步调试标志</li>
@@ -215,45 +215,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/python-interactive-debugger-part1.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'python-interactive-debugger-part1.html';
-    var disqus_url = 'http://sndnyang.github.io/python-interactive-debugger-part1.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -327,45 +289,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

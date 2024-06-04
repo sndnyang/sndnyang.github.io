@@ -13,7 +13,7 @@
 <meta name="keywords" content="论文, 主动学习, 深度学习, 计算机视觉, 人工智能, 论文, " />
 
 <meta property="og:title" content="Deep Bayesian Active Learning with Image Data "/>
-<meta property="og:url" content="http://sndnyang.github.io/Deep Bayesian Active Learning with Image Data.html" />
+<meta property="og:url" content="/Deep Bayesian Active Learning with Image Data.html" />
 <meta property="og:description" content="" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang sndnyang.github.io" />
@@ -145,17 +145,17 @@
 
                         
                         
-<h1 id="_1">摘要</h1>
+<h1 id="_1">摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <ol>
 <li>深度学习对大数据的依赖</li>
 <li>主动学习 active learning 的获取函数（acquisition function）是基于模型不确定性的（model uncertainty）， 而深度学习的方法在模型不确定性上应用不多</li>
 </ol>
 <p>所以本文用 Bayesian贝叶斯深度学习来做主动学习， 贝叶斯深度学习可以评估模型不确定性， 进而用不确定性选点</p>
-<h1 id="active-learning">主动学习 Active Learning</h1>
+<h1 id="active-learning">主动学习 Active Learning<a class="headerlink" href="#active-learning" title="Permanent link">¶</a></h1>
 <p>从少量数据中学习， 不仅能做预测（分类、回归）， 同时能预测自己预测的结果的准确性（不确定性）， 不确定性高的数据则需要专家来进行标注——不确定性高的数据标注后，又有一批数据的预测结果更可信了， 所以能提高数据有效性， 减少人工标注的工作量。 这就是 active learning 的目标、定义。</p>
 <p>代码实现中， 从少量训练数据开始，没问题， 比如 MNIST 取20、100、 1000个作为初始数据， 专家标注过程则需要用训练数据的另一部分来代替， 因为不可能在实验中真的弹窗出来请人标注。</p>
 <p>代码框架：</p>
-<div class="highlight"><pre><span></span>主动学习框架过程
+<div class="codehilite"><pre><span></span><code>主动学习框架过程
 输入： 初始选定的小训练数据集T， 和 未标注数据集P（pool data set） —— 即，将原始训练集划分成小训练数据集、 未标注集， 有需要的话， 还可以有验证集 validation data set）
 
 使用 T 训练初始模型C（分类或回归都行）
@@ -164,13 +164,13 @@ repeat:
     2. 计算未标注数据集 U 中数据标注结果的不确定性，不确定性高，比如可以用 熵 Entropy 表现， 选择若干 最大熵的数据， 要求人工标注
     3. 把这些数据移到训练集L中， 即用原始训练集里已有的标注 label, 代表 专家人工标注的过程
     4. 使用 L 训练模型C ， 好像一般是训练一个新的， 但也不一定需要重新 训练初始模型C（分类或回归都行）
-</pre></div>
-<h1 id="bayesian-cnn">Bayesian CNN</h1>
+</code></pre></div>
+<h1 id="bayesian-cnn">Bayesian CNN<a class="headerlink" href="#bayesian-cnn" title="Permanent link">¶</a></h1>
 <p>主要是采样， 采样才有近似后验概率， 不确定性、熵主要用同一数据多次预测结果的后验概率来表示， 所以也需要采样， 需要在 测试阶段也使用 dropout， 进而用 monte carlo 的方式算概率， 所以这叫 MC dropout。 而标准dropout在测试阶段不生效， 同一数据跑多少次结果都相同</p>
-<h1 id="acquisition-function">获取函数 Acquisition Function</h1>
-<h2 id="_2">回归问题</h2>
+<h1 id="acquisition-function">获取函数 Acquisition Function<a class="headerlink" href="#acquisition-function" title="Permanent link">¶</a></h1>
+<h2 id="_2">回归问题<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>使用predictive variance， 即多次MC dropout误差范围</p>
-<h2 id="_3">分类问题：</h2>
+<h2 id="_3">分类问题：<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <ol>
 <li>
 <p>最大熵 Max Entropy:  $$H[y|x, D_{train}] = - \sum_c p(y=c|x, D_{train}) log(y=c|x,D_{train})$$</p>
@@ -196,45 +196,7 @@ $f_x = \sum_tI[y^t=c^<em>]$ and $c^</em>$ 是 ${y^t}$的模 mode</p>
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/Deep Bayesian Active Learning with Image Data.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'Deep Bayesian Active Learning with Image Data.html';
-    var disqus_url = 'http://sndnyang.github.io/Deep Bayesian Active Learning with Image Data.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -252,7 +214,7 @@ $f_x = \sum_tI[y^t=c^<em>]$ and $c^</em>$ 是 ${y^t}$的模 mode</p>
                             <span>5</span>
 </a></li>
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#ren-gong-zhi-neng-ref">人工智能
                             <span>30</span>
@@ -314,45 +276,7 @@ $f_x = \sum_tI[y^t=c^<em>]$ and $c^</em>$ 是 ${y^t}$的模 mode</p>
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

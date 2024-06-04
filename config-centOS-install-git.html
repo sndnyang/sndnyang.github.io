@@ -13,7 +13,7 @@
 <meta name="keywords" content="Linux, CentOS, git, 配置, " />
 
 <meta property="og:title" content="CentOS配置-git安装 "/>
-<meta property="og:url" content="http://sndnyang.github.io/config-centOS-install-git.html" />
+<meta property="og:url" content="/config-centOS-install-git.html" />
 <meta property="og:description" content="centos yum的GIT版本太老，从源代码安装最新的" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
@@ -119,39 +119,34 @@
                     <div class="span8 offset2 article-content">
 
                         
-                        <h1 id="_1">卸载旧版本</h1>
-<div class="highlight"><pre><span></span>git –version // 最新版本2.X.X， 而服务器上只有1.8
+                        <h1 id="_1">卸载旧版本<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><code>git –version // 最新版本2.X.X， 而服务器上只有1.8
 
 yum remove git
-</pre></div>
+</code></pre></div>
 
-
-<h1 id="_2">下载获取解压源码</h1>
-<div class="highlight"><pre><span></span>wget https://github.com/git/git/archive/v2.12.2.tar.gz
+<h1 id="_2">下载获取解压源码<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><code>wget https://github.com/git/git/archive/v2.12.2.tar.gz
 tar -zxvf v2.12.2.tar.gz
-</pre></div>
+</code></pre></div>
 
+<h1 id="_3">安装依赖的包<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="nx">yum</span><span class="w"> </span><span class="nx">update</span>
+<span class="nx">yum</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="nx">curl</span><span class="o">-</span><span class="nx">devel</span><span class="w"> </span><span class="nx">expat</span><span class="o">-</span><span class="nx">devel</span><span class="w"> </span><span class="nx">gettext</span><span class="o">-</span><span class="nx">devel</span><span class="w"> </span><span class="nx">openssl</span><span class="o">-</span><span class="nx">devel</span><span class="w"> </span><span class="nx">zlib</span><span class="o">-</span><span class="nx">devel</span><span class="w"> </span><span class="nx">perl</span><span class="o">-</span><span class="nx">ExtUtils</span><span class="o">-</span><span class="nx">MakeMaker</span><span class="w"> </span><span class="kn">package</span><span class="w"> </span><span class="c1">// 缺什么补什么</span>
+</code></pre></div>
 
-<h1 id="_3">安装依赖的包</h1>
-<div class="highlight"><pre><span></span>yum update
-yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-ExtUtils-MakeMaker package // 缺什么补什么
-</pre></div>
-
-
-<h1 id="_4">编译安装</h1>
-<div class="highlight"><pre><span></span>make configure
+<h1 id="_4">编译安装<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><code>make configure
 ./configure --prefix=/usr // prefix=/usr 或  prefix=/usr/local
 make  // 没有上两行，直接  make prefix=/usr 好像不行
 make install
-</pre></div>
+</code></pre></div>
 
+<h1 id="_5">完成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><code>git --version
+</code></pre></div>
 
-<h1 id="_5">完成</h1>
-<div class="highlight"><pre><span></span>git --version
-</pre></div>
-
-
-<h1 id="_6">后续使用</h1>
+<h1 id="_6">后续使用<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h1>
 <p><a href="use-git-upload-deploy-project">使用git在服务器上传部署代码</a></p>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
@@ -163,45 +158,7 @@ make install
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/config-centOS-install-git.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'config-centOS-install-git.html';
-    var disqus_url = 'http://sndnyang.github.io/config-centOS-install-git.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -271,45 +228,7 @@ make install
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

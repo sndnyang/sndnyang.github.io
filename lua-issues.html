@@ -13,14 +13,14 @@
 <meta name="keywords" content="软件开发, 编译, 软件开发, " />
 
 <meta property="og:title" content="lua问题 "/>
-<meta property="og:url" content="http://sndnyang.github.io/lua-issues.html" />
-<meta property="og:description" content="windows编译缺头文件 问题描述： 在win7系统， 使用 luarocks install luasocket 时报错： src/mime.c(5): fatal error C1083: Cannot open include file: &#39;string.h&#39;: No such file or directory 注：已经安装过 VS20XX(VS2013开始有社区版，之前的express是免费的，2017年已经是VS2017，真丫的大)，所以不会存在真没有头文件的问题。 解决方案 stackoverflow 前两步是安装 LuaRocks（更之前是安装Lua），明显的。关键是报这个错，就意味着头文件、库文件的路径没找到，所以要把路径加进来。 给出的方案是使用 Visual Studio Command Prompt， 也就是 ..." />
+<meta property="og:url" content="/lua-issues.html" />
+<meta property="og:description" content="windows编译缺头文件¶ 问题描述：¶ 在win7系统， 使用 luarocks install luasocket 时报错： src/mime.c(5): fatal error C1083: Cannot open include file: &#39;string.h&#39;: No such file or directory 注：已经安装过 VS20XX(VS2013开始有社区版，之前的express是免费的，2017年已经是VS2017，真丫的大 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang sndnyang.github.io" />
 <meta property="og:article:published_time" content="2017-05-22T08:58:11+08:00" />
 <meta property="" content="2017-05-22T09:01:38+08:00" />
 <meta name="twitter:title" content="lua问题 ">
-<meta name="twitter:description" content="windows编译缺头文件 问题描述： 在win7系统， 使用 luarocks install luasocket 时报错： src/mime.c(5): fatal error C1083: Cannot open include file: &#39;string.h&#39;: No such file or directory 注：已经安装过 VS20XX(VS2013开始有社区版，之前的express是免费的，2017年已经是VS2017，真丫的大)，所以不会存在真没有头文件的问题。 解决方案 stackoverflow 前两步是安装 LuaRocks（更之前是安装Lua），明显的。关键是报这个错，就意味着头文件、库文件的路径没找到，所以要把路径加进来。 给出的方案是使用 Visual Studio Command Prompt， 也就是 ...">
+<meta name="twitter:description" content="windows编译缺头文件¶ 问题描述：¶ 在win7系统， 使用 luarocks install luasocket 时报错： src/mime.c(5): fatal error C1083: Cannot open include file: &#39;string.h&#39;: No such file or directory 注：已经安装过 VS20XX(VS2013开始有社区版，之前的express是免费的，2017年已经是VS2017，真丫的大 …">
 
 
         <title>lua问题  · 科探空谷
@@ -144,29 +144,29 @@
 
                         
                         
-<h1 id="windows">windows编译缺头文件</h1>
-<h2 id="_1">问题描述：</h2>
+<h1 id="windows">windows编译缺头文件<a class="headerlink" href="#windows" title="Permanent link">¶</a></h1>
+<h2 id="_1">问题描述：<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>在win7系统， 使用 luarocks install luasocket 时报错：</p>
-<div class="highlight"><pre><span></span>src/mime.c(5): fatal error C1083: Cannot open include file: 'string.h': No such file or directory
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="nv">src</span><span class="o">/</span><span class="nv">mime</span>.<span class="nv">c</span><span class="ss">(</span><span class="mi">5</span><span class="ss">)</span>:<span class="w"> </span><span class="nv">fatal</span><span class="w"> </span><span class="nv">error</span><span class="w"> </span><span class="nv">C1083</span>:<span class="w"> </span><span class="nv">Cannot</span><span class="w"> </span><span class="nv">open</span><span class="w"> </span><span class="k">include</span><span class="w"> </span><span class="nv">file</span>:<span class="w"> </span><span class="s1">'string.h'</span>:<span class="w"> </span><span class="nv">No</span><span class="w"> </span><span class="nv">such</span><span class="w"> </span><span class="nv">file</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="nv">directory</span>
+</code></pre></div>
 <p>注：已经安装过 VS20XX(VS2013开始有社区版，之前的express是免费的，2017年已经是VS2017，真丫的大)，所以不会存在真没有头文件的问题。</p>
-<h2 id="_2">解决方案</h2>
+<h2 id="_2">解决方案<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p><a href="http://stackoverflow.com/questions/33006269/compiling-luasocket-cannot-open-file-string-h">stackoverflow</a></p>
 <p>前两步是安装 LuaRocks（更之前是安装Lua），明显的。关键是报这个错，就意味着头文件、库文件的路径没找到，所以要把路径加进来。</p>
 <p>给出的方案是使用 Visual Studio Command Prompt， 也就是 一个CMD 或 windows版的shell， 它里面会设置好库文件路径。</p>
 <p>所以找到你安装的 Microsoft Visual C++ Build Tools 路径——如果是安装了整个 VS20XX，不知道 Microsoft Visual C++ Build Tools 文件夹会怎么安排，但肯定也有。本人实际路径是 C:\Program Files (x86)\Microsoft Visual C++ Build Tools。</p>
 <p>实际上就是找到 Visual C++ 20XX x86 Native Build Tools Command Prompt 这个文件（好像真没后缀名），x86是32位，看你的程序要32位还是64位的， 2017年5月份下载的Lua好像还是32位的（我猜的，因为它安装时，路径自动选择了Program Files(x86)）。</p>
 <p>右键-以管理员身份运行，即可打开命令行窗口， 再重新执行 install 命令，看你的luarocks.bat有没有加入到PATH环境变量中， 有则直接运行 luarocks.bat install luasocket, 没有则需要写完整路径，例：</p>
-<div class="highlight"><pre><span></span>"C:\Program Files (x86)\LuaRocks\luarocks.bat" install luasocket
-</pre></div>
+<div class="codehilite"><pre><span></span><code>"C:\Program Files (x86)\LuaRocks\luarocks.bat" install luasocket
+</code></pre></div>
 <p>双引号是因为路径里有空格。</p>
-<h2 id="_3">延伸</h2>
+<h2 id="_3">延伸<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>其实 Lua语言在安装时已经自带 luasocket了， 后来我安装成功时发现它里面已经带有了， 在Lua的安装目录的 clibs 文件夹里有socket文件夹。</p>
 <p>windows下类似缺头文件的编译错误估计都跟这个有关系， 就是头文件、库文件路径没有正确地添加到各种路径中， 添加也确实麻烦的话， 都可以试试这个方式， 使用 Microsoft Visual C++ Build Tools。</p>
-<h1 id="socketlua">socket.lua</h1>
+<h1 id="socketlua">socket.lua<a class="headerlink" href="#socketlua" title="Permanent link">¶</a></h1>
 <p>使用 fceux加载一个文件，要调用到 socket库 </p>
-<div class="highlight"><pre><span></span>local socket = require("socket")
-</pre></div>
+<div class="codehilite"><pre><span></span><code>local socket = require("socket")
+</code></pre></div>
 <p>我下载编译好的dll，不起作用（程序崩溃），最后从 lua目录下拷了一个 socket.lua 过去(拷到 fceux.exe目录）， 成了~~~ </p>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
@@ -178,45 +178,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/lua-issues.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'lua-issues.html';
-    var disqus_url = 'http://sndnyang.github.io/lua-issues.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -287,45 +249,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

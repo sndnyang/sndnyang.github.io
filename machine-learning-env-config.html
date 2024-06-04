@@ -13,14 +13,14 @@
 <meta name="keywords" content="CS, 机器学习, 人工智能, 机器学习, " />
 
 <meta property="og:title" content="机器学习练习环境配置 "/>
-<meta property="og:url" content="http://sndnyang.github.io/machine-learning-env-config.html" />
-<meta property="og:description" content="为了节省环境配置工作， 可以使用网上配置好的虚拟机——个人使用足够。 数据科学工具箱 链接见： 数据科学工具箱 下载安装步骤 下载安装vbox 链接地址 下载安装vagrant 链接地址 下载和启动数据科学工具箱，使用的是命令行方式 登录，在Vagrantfile所在路径，输入： vagrant ssh 如果是windows用户， 网站推荐使用putty，但我推荐 mysy-git 给右键菜单添加git bash。 设置ipython notebook环境，补充说明： 在运行dst setup base，自定一个密码后，要exit，才能继续执行vagrant load(vagrant 命令是在windows下的，而vagrant ssh意味着已经连入虚拟机内)，不过先完成后续步骤，再exit和reload 安装额外工具包，如果采用下方网盘中的box（太老旧了），起码需要sudo pip install -U pip ipython jupyter ..." />
+<meta property="og:url" content="/machine-learning-env-config.html" />
+<meta property="og:description" content="为了节省环境配置工作， 可以使用网上配置好的虚拟机——个人使用足够。 数据科学工具箱¶ 链接见： 数据科学工具箱 下载安装 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2016-10-20T12:53:50+08:00" />
 <meta property="" content="2016-10-20T17:53:50+08:00" />
 <meta name="twitter:title" content="机器学习练习环境配置 ">
-<meta name="twitter:description" content="为了节省环境配置工作， 可以使用网上配置好的虚拟机——个人使用足够。 数据科学工具箱 链接见： 数据科学工具箱 下载安装步骤 下载安装vbox 链接地址 下载安装vagrant 链接地址 下载和启动数据科学工具箱，使用的是命令行方式 登录，在Vagrantfile所在路径，输入： vagrant ssh 如果是windows用户， 网站推荐使用putty，但我推荐 mysy-git 给右键菜单添加git bash。 设置ipython notebook环境，补充说明： 在运行dst setup base，自定一个密码后，要exit，才能继续执行vagrant load(vagrant 命令是在windows下的，而vagrant ssh意味着已经连入虚拟机内)，不过先完成后续步骤，再exit和reload 安装额外工具包，如果采用下方网盘中的box（太老旧了），起码需要sudo pip install -U pip ipython jupyter ...">
+<meta name="twitter:description" content="为了节省环境配置工作， 可以使用网上配置好的虚拟机——个人使用足够。 数据科学工具箱¶ 链接见： 数据科学工具箱 下载安装 …">
 
 
         <title>机器学习练习环境配置  · 科探空谷
@@ -158,9 +158,9 @@
                         
                         
 <p>为了节省环境配置工作， 可以使用网上配置好的虚拟机——个人使用足够。</p>
-<h1 id="_1">数据科学工具箱</h1>
+<h1 id="_1">数据科学工具箱<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>链接见： <a href="http://datasciencetoolbox.org/#local">数据科学工具箱</a></p>
-<h2 id="_2">下载安装步骤</h2>
+<h2 id="_2">下载安装步骤<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <ol>
 <li>下载安装vbox <a href="https://www.virtualbox.org/wiki/Downloads">链接地址</a></li>
 <li>下载安装vagrant <a href="http://www.vagrantup.com/downloads.html">链接地址</a></li>
@@ -171,7 +171,7 @@
     在运行dst setup base，自定一个密码后，要exit，才能继续执行vagrant load(vagrant 命令是在windows下的，而vagrant ssh意味着已经连入虚拟机内)，不过先完成后续步骤，再exit和reload</li>
 <li>安装额外工具包，如果采用下方网盘中的box（太老旧了），起码需要sudo pip install -U pip ipython jupyter notebook</li>
 </ol>
-<h2 id="_3">网盘下载</h2>
+<h2 id="_3">网盘下载<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>由于网络原因，若网站上的命令下载过慢，可使用我已经下载好的文件 <a href="http://pan.baidu.com/s/1pLjKNpx">链接</a> 密码: 6jei ，使用方法:</p>
 <ol>
 <li>vagrant init data-science-toolbox/dst // 这一步和网站上所写一致， 应该是生成Vagrantfile</li>
@@ -179,42 +179,42 @@
 <li>vagrant.exe box add ./data-science-tool.box --name datascience //即vagrant box添加一个名字叫datascience的box， 对应路径是你下载文件所在路径</li>
 <li>在Vagrantfile中找 config.vm.network "forwarded_port", guest: 8888, host: 8888， 没有则添加这一行</li>
 </ol>
-<h2 id="_4">安装工具包</h2>
+<h2 id="_4">安装工具包<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>这块有点复杂， 主要是网络状况影响（没办法）， 需要自行研究各路软件的更新方式。</p>
 <p>比如我现在的网络访问 pypi就很不方便，需要设置pip 的访问路径, 参考<a href="http://blog.csdn.net/langb2014/article/details/52413834">pip配置</a> 建议使用豆瓣源</p>
 <p>然而好像还是有问题</p>
-<h1 id="spark">spark工具包</h1>
+<h1 id="spark">spark工具包<a class="headerlink" href="#spark" title="Permanent link">¶</a></h1>
 <p>同理，可使用edx课程的spark.box <a href="http://pan.baidu.com/s/1o77Tiki">spark.box</a> 密码: cjpm， 带一个现成的vagrantfile，只需要box add， 即可使用。虚拟机里若缺什么工具包，请用vagrant ssh 登录安装。</p>
-<h1 id="vagrant">vagrant 简要使用</h1>
+<h1 id="vagrant">vagrant 简要使用<a class="headerlink" href="#vagrant" title="Permanent link">¶</a></h1>
 <ol>
 <li>vagrant up，启动虚拟机，之前设置好的话， 可以用浏览器访问 localhost:指定端口 访问 ipython notebook， 也是主要的练习方式。不过 ipython notebook是否自动启动，我也不太清楚</li>
 <li>vagrant ssh，登录虚拟机，如果要安装什么新软件的话</li>
 <li>vagrant halt， 有up就要有down</li>
 <li>vagrant -h， 帮助。</li>
 </ol>
-<h1 id="_5">一些问题</h1>
+<h1 id="_5">一些问题<a class="headerlink" href="#_5" title="Permanent link">¶</a></h1>
 <p>data-science-toolbox升级ipython 到 jupyter后，外部访问会有问题， 网站的命令不管用了，要使用</p>
-<div class="highlight"><pre><span></span>jupyter notebook --no-browser --ip=0.0.0.0
-</pre></div>
+<div class="codehilite"><pre><span></span><code>jupyter notebook --no-browser --ip=0.0.0.0
+</code></pre></div>
 <p>最好是在 Vagrantfile 里添加 </p>
-<div class="highlight"><pre><span></span>  config.vm.provision "shell", run: "always", inline: &lt;&lt;-SHELL
+<div class="codehilite"><pre><span></span><code>  config.vm.provision "shell", run: "always", inline: &lt;&lt;-SHELL
     jupyter notebook --notebook-dir=/vagrant/notebook --no-browser --ip=0.0.0.0 &amp;
   SHELL
-</pre></div>
+</code></pre></div>
 <p>这样应该能在vagrant up时，自动运行 jupyter notebook了</p>
-<h1 id="notebook">notebook使用</h1>
+<h1 id="notebook">notebook使用<a class="headerlink" href="#notebook" title="Permanent link">¶</a></h1>
 <p>打开浏览器后， 会有上传功能， ipynb和其他文件都可以在这里上传</p>
 <p>配置部分大概这么些</p>
 <p>另外有个网站 <a href="https://www.shiyanlou.com/">实验楼</a> 也不错，可以推荐</p>
-<h1 id="_6">深度学习环境的配置</h1>
-<h2 id="vagrant_1">方案一 vagrant</h2>
+<h1 id="_6">深度学习环境的配置<a class="headerlink" href="#_6" title="Permanent link">¶</a></h1>
+<h2 id="vagrant_1">方案一 vagrant<a class="headerlink" href="#vagrant_1" title="Permanent link">¶</a></h2>
 <p><a href="https://github.com/dimchansky/tensorflow-udacity-vagrant">github</a></p>
 <p>不熟悉github，可以点页面中绿色按钮clone or download , 选download zip。 下载解压， 然后和上面一样，vagrant up 或先下载box（<a href="http://pan.baidu.com/s/1jIhTlS6">链接</a> 密码: sfde）后 vagrant box add</p>
 <p>但网络不通， 最起码我下不来， 设置了代理也成</p>
-<h2 id="docker">方案二 docker 直接</h2>
+<h2 id="docker">方案二 docker 直接<a class="headerlink" href="#docker" title="Permanent link">¶</a></h2>
 <p><a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/README.md">github</a></p>
 <p>同上， 下不来。</p>
-<h2 id="daocloud">方案三 使用daocloud加速器</h2>
+<h2 id="daocloud">方案三 使用daocloud加速器<a class="headerlink" href="#daocloud" title="Permanent link">¶</a></h2>
 <p><a href="http://chuansong.me/n/341282551745">指南</a></p>
 <ol>
 <li>注册daocloud帐号 http://www.daocloud.io/</li>
@@ -227,16 +227,16 @@
     注意，下载之前可能要先 docker-machine ssh 名字，不然好像也是连不上。</li>
 <li>docker pull kyoungrok0517/tensorflow-udacity（感觉这个比较好）</li>
 </ol>
-<h2 id="daocloud_1">方案四 使用daocloud在线环境</h2>
+<h2 id="daocloud_1">方案四 使用daocloud在线环境<a class="headerlink" href="#daocloud_1" title="Permanent link">¶</a></h2>
 <p><a href="http://blog.csdn.net/hangzhouhao/article/details/50011401">博客</a></p>
 <p>没试过</p>
-<h2 id="cloud9">方案五 使用cloud9在线环境</h2>
+<h2 id="cloud9">方案五 使用cloud9在线环境<a class="headerlink" href="#cloud9" title="Permanent link">¶</a></h2>
 <p><a href="https://github.com/hpssjellis/fourth-tensorflow">指南</a></p>
 <p>也没试过</p>
-<h2 id="_7">方案六 大学镜像</h2>
+<h2 id="_7">方案六 大学镜像<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
 <p><a href="https://lug.ustc.edu.cn/wiki/mirrors/help/docker">指南</a></p>
 <p>但步骤不是很明确，操作不太明白。</p>
-<h2 id="_8">执行</h2>
+<h2 id="_8">执行<a class="headerlink" href="#_8" title="Permanent link">¶</a></h2>
 <p>windows: winpty docker run -p 8888:8888 --name 名字 -it kyoungrok0517/tensorflow-udacity</p>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
@@ -248,45 +248,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/machine-learning-env-config.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'machine-learning-env-config.html';
-    var disqus_url = 'http://sndnyang.github.io/machine-learning-env-config.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -360,45 +322,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -13,13 +13,13 @@
 <meta name="keywords" content="论文, CS, 软件工程, 软件工程, " />
 
 <meta property="og:title" content="FindBugs总结 "/>
-<meta property="og:url" content="http://sndnyang.github.io/findbugs_summary.html" />
-<meta property="og:description" content="原文: Finding Bugs is Easy by David Hovemeyer, William Pugh 摘要 旧方法基于 formal methods 和 复杂程序分析， 难用， 无作用 bug patterns - detectors 简单的自动技术在遇到常规错误和难解特性时都有用 导论 conclusion 不存在这种bug, 过于明显，以至于在实际代码中没有找到例子——发现的bug中，有些十分明显， 让我们吃惊， 即使是在生产应用和库里 现代OO语言的高度复杂性， 对语言特性及API的滥用是屡见不鲜的。 自动bug检测可以在 程序正确性 上起到巨大作用" />
+<meta property="og:url" content="/findbugs_summary.html" />
+<meta property="og:description" content="原文: Finding Bugs is Easy by David Hovemeyer, William Pugh 摘要¶ 旧方法基于 formal methods 和 复杂程序分析， 难用， 无作用 bug patterns - detectors 简单的自动技术在遇到常规错误和 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2016-03-03T21:20:20+08:00" />
 <meta name="twitter:title" content="FindBugs总结 ">
-<meta name="twitter:description" content="原文: Finding Bugs is Easy by David Hovemeyer, William Pugh 摘要 旧方法基于 formal methods 和 复杂程序分析， 难用， 无作用 bug patterns - detectors 简单的自动技术在遇到常规错误和难解特性时都有用 导论 conclusion 不存在这种bug, 过于明显，以至于在实际代码中没有找到例子——发现的bug中，有些十分明显， 让我们吃惊， 即使是在生产应用和库里 现代OO语言的高度复杂性， 对语言特性及API的滥用是屡见不鲜的。 自动bug检测可以在 程序正确性 上起到巨大作用">
+<meta name="twitter:description" content="原文: Finding Bugs is Easy by David Hovemeyer, William Pugh 摘要¶ 旧方法基于 formal methods 和 复杂程序分析， 难用， 无作用 bug patterns - detectors 简单的自动技术在遇到常规错误和 …">
 
 
         <title>FindBugs总结  · 科探空谷
@@ -142,12 +142,12 @@
                         
                         
 <p>原文: Finding Bugs is Easy by David Hovemeyer, William Pugh</p>
-<h1 id="_1">摘要</h1>
+<h1 id="_1">摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>旧方法基于 formal methods 和 复杂程序分析， 难用， 无作用</p>
 <p>bug patterns  -  detectors</p>
 <p>简单的自动技术在遇到常规错误和难解特性时都有用</p>
-<h1 id="_2">导论</h1>
-<h2 id="conclusion">conclusion</h2>
+<h1 id="_2">导论<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
+<h2 id="conclusion">conclusion<a class="headerlink" href="#conclusion" title="Permanent link">¶</a></h2>
 <ol>
 <li>不存在这种bug, 过于明显，以至于在实际代码中没有找到例子——发现的bug中，有些十分明显， 让我们吃惊， 即使是在生产应用和库里</li>
 <li>现代OO语言的高度复杂性， 对语言特性及API的滥用是屡见不鲜的。 </li>
@@ -163,45 +163,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/findbugs_summary.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'findbugs_summary.html';
-    var disqus_url = 'http://sndnyang.github.io/findbugs_summary.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -215,7 +177,7 @@
                             <span>22</span>
 </a></li>
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#ruan-jian-gong-cheng-ref">软件工程
                             <span>1</span>
@@ -271,45 +233,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -13,7 +13,7 @@
 <meta name="keywords" content="Linux, postgresql, web, 数据库, " />
 
 <meta property="og:title" content="CentOS配置-PostgreSQL安装 "/>
-<meta property="og:url" content="http://sndnyang.github.io/config-centOS-install-postgresql.html" />
+<meta property="og:url" content="/config-centOS-install-postgresql.html" />
 <meta property="og:description" content="CentOS postgresql 安装 配置 和 运行" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang (sndnyangd@gmail.com)" />
@@ -155,91 +155,91 @@
 
                         
                         
-<h1 id="_1">下载安装</h1>
-<div class="highlight"><pre><span></span>curl -O https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm //视版本而定
-rpm -ivh pgdg-centos96-9.6-3.noarch.rpm
-yum -y install postgresql96-server postgresql96-contrib
-</pre></div>
-<h1 id="_2">初始化</h1>
-<div class="highlight"><pre><span></span>/usr/pgsql-9.6/bin/postgresql96-setup initdb
+<h1 id="_1">下载安装<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="n">curl</span><span class="w"> </span><span class="o">-</span><span class="n">O</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">postgresql</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">yum</span><span class="o">/</span><span class="mf">9.6</span><span class="o">/</span><span class="n">redhat</span><span class="o">/</span><span class="n">rhel</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/</span><span class="n">pgdg</span><span class="o">-</span><span class="n">centos96</span><span class="o">-</span><span class="mf">9.6</span><span class="o">-</span><span class="mf">3.</span><span class="n">noarch</span><span class="o">.</span><span class="n">rpm</span><span class="w"> </span><span class="o">//</span><span class="err">视版本而定</span>
+<span class="n">rpm</span><span class="w"> </span><span class="o">-</span><span class="n">ivh</span><span class="w"> </span><span class="n">pgdg</span><span class="o">-</span><span class="n">centos96</span><span class="o">-</span><span class="mf">9.6</span><span class="o">-</span><span class="mf">3.</span><span class="n">noarch</span><span class="o">.</span><span class="n">rpm</span>
+<span class="n">yum</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">postgresql96</span><span class="o">-</span><span class="n">server</span><span class="w"> </span><span class="n">postgresql96</span><span class="o">-</span><span class="n">contrib</span>
+</code></pre></div>
+<h1 id="_2">初始化<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code>/usr/pgsql-9.6/bin/postgresql96-setup initdb
 或
 service postgresql-9.6 initdb  //好像成功率不高，推荐上面那条
-</pre></div>
+</code></pre></div>
 <p>修改</p>
-<div class="highlight"><pre><span></span>/etc/sysconfig/pgsql/postgresql-9.6 端口和数据路径，
-</pre></div>
+<div class="codehilite"><pre><span></span><code>/etc/sysconfig/pgsql/postgresql-9.6 端口和数据路径，
+</code></pre></div>
 <p>例：</p>
-<div class="highlight"><pre><span></span>PGPORT=5432
+<div class="codehilite"><pre><span></span><code>PGPORT=5432
 PGDATA=/pgdata96
-</pre></div>
-<h1 id="_3">启动</h1>
-<div class="highlight"><pre><span></span>service postgresql-9.6 start
+</code></pre></div>
+<h1 id="_3">启动<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code>service postgresql-9.6 start
 chkconfig postgresql-9.6 on
 service postgresql-9.6 restart // 我之前就忘了加版本
-</pre></div>
-<h1 id="_4">配置</h1>
-<div class="highlight"><pre><span></span>vi /var/lib/pgsql/9.6/datapostgresql.conf
-listen_addresses = '*' // 如果要远程连接的话，需要重启
-#port = 5432 // 默认不用动
-</pre></div>
-<h1 id="_5">防火墙</h1>
-<div class="highlight"><pre><span></span>firewall-cmd --add-service=postgresql --permanent
-firewall-cmd --reload
-</pre></div>
-<h1 id="_6">用户</h1>
-<h2 id="_7">连接数据库</h2>
-<div class="highlight"><pre><span></span>su - postgres
+</code></pre></div>
+<h1 id="_4">配置<a class="headerlink" href="#_4" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="n">vi</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="mf">9.6</span><span class="o">/</span><span class="n">datapostgresql</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">listen_addresses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'*'</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="err">如果要远程连接的话，需要重启</span>
+<span class="c1">#port = 5432 // 默认不用动</span>
+</code></pre></div>
+<h1 id="_5">防火墙<a class="headerlink" href="#_5" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span><span class="w"> </span><span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">service</span><span class="o">=</span><span class="n">postgresql</span><span class="w"> </span><span class="o">--</span><span class="n">permanent</span>
+<span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span><span class="w"> </span><span class="o">--</span><span class="n">reload</span>
+</code></pre></div>
+<h1 id="_6">用户<a class="headerlink" href="#_6" title="Permanent link">¶</a></h1>
+<h2 id="_7">连接数据库<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
+<div class="codehilite"><pre><span></span><code>su - postgres
 psql
-</pre></div>
+</code></pre></div>
 <p>或</p>
-<div class="highlight"><pre><span></span>psql -U postgres -h localhost
-</pre></div>
-<h2 id="_8">用户密码</h2>
-<div class="highlight"><pre><span></span>CREATE USER sndnyang WITH PASSWORD 'yourpassword';
+<div class="codehilite"><pre><span></span><code>psql -U postgres -h localhost
+</code></pre></div>
+<h2 id="_8">用户密码<a class="headerlink" href="#_8" title="Permanent link">¶</a></h2>
+<div class="codehilite"><pre><span></span><code>CREATE USER sndnyang WITH PASSWORD 'yourpassword';
 ALTER USER sndnyang PASSWORD 'yournewpassword';
-</pre></div>
-<h1 id="_9">注意</h1>
+</code></pre></div>
+<h1 id="_9">注意<a class="headerlink" href="#_9" title="Permanent link">¶</a></h1>
 <ol>
 <li>关键字推荐用大写（小写可能出错？）</li>
 <li>记住要用 ; 结束一句命令，psql提示符对换行很不明显：<br/>
         postgres=# ALTER USER sndnyang PASSWORD '没有分号结尾'
         postgres-# 左边变化确实不明显，^C</li>
 </ol>
-<h1 id="_10">用户权限文件</h1>
-<div class="highlight"><pre><span></span>vi /var/lib/pgsql/9.6/data/pg_hba.conf
-</pre></div>
-<h2 id="_11">示例</h2>
-<div class="highlight"><pre><span></span>local   all             postgres                                ident(peer也行)  // 建议保留一行这个
+<h1 id="_10">用户权限文件<a class="headerlink" href="#_10" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="n">vi</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="mf">9.6</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">pg_hba</span><span class="o">.</span><span class="n">conf</span>
+</code></pre></div>
+<h2 id="_11">示例<a class="headerlink" href="#_11" title="Permanent link">¶</a></h2>
+<div class="codehilite"><pre><span></span><code>local   all             postgres                                ident(peer也行)  // 建议保留一行这个
 local   all             all                                     md5
 host    all             all             127.0.0.1/32            md5
 # IPv6 local connections:
 host    all             all             ::1/128                 md5
-</pre></div>
+</code></pre></div>
 <p>修改后，重启服务</p>
-<div class="highlight"><pre><span></span>service postgresql-9.6 restart
-</pre></div>
-<h2 id="_12">简短说明</h2>
+<div class="codehilite"><pre><span></span><code>service postgresql-9.6 restart
+</code></pre></div>
+<h2 id="_12">简短说明<a class="headerlink" href="#_12" title="Permanent link">¶</a></h2>
 <p>MD5 表示密码用 md5 登陆(推荐这个而不是 password)， <br/>
 sqlalchemy 自动使用md5, psycopg2 不会自动，所以会出现各种认证问题， </p>
-<div class="highlight"><pre><span></span>sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) FATAL:  password authentication failed for user "postgres" // 密码错误
+<div class="codehilite"><pre><span></span><code>sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) FATAL:  password authentication failed for user "postgres" // 密码错误
 ident authentication failed for user "postgres" // 忘了
 fe_sendauth: no password supplied  // 没给密码
-</pre></div>
-<h1 id="_13">创建数据库</h1>
-<div class="highlight"><pre><span></span> CREATE DATABASE dbname WITH OWNER=sndnyang ENCODING='UTF8';
-</pre></div>
-<h1 id="_14">配置文件</h1>
-<div class="highlight"><pre><span></span>/var/lib/pgsql/9.6/datapostgresql.conf // 远程连接侦听
-/var/lib/pgsql/9.6/data/pg_hba.conf    // 用户权限
-/etc/sysconfig/pgsql/postgresql-9.6    // 初始配置
-</pre></div>
-<h1 id="_15">本地端口转发</h1>
+</code></pre></div>
+<h1 id="_13">创建数据库<a class="headerlink" href="#_13" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code> CREATE DATABASE dbname WITH OWNER=sndnyang ENCODING='UTF8';
+</code></pre></div>
+<h1 id="_14">配置文件<a class="headerlink" href="#_14" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="mf">9.6</span><span class="o">/</span><span class="n">datapostgresql</span><span class="o">.</span><span class="n">conf</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="err">远程连接侦听</span>
+<span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="mf">9.6</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">pg_hba</span><span class="o">.</span><span class="n">conf</span><span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="err">用户权限</span>
+<span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysconfig</span><span class="o">/</span><span class="n">pgsql</span><span class="o">/</span><span class="n">postgresql</span><span class="o">-</span><span class="mf">9.6</span><span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="err">初始配置</span>
+</code></pre></div>
+<h1 id="_15">本地端口转发<a class="headerlink" href="#_15" title="Permanent link">¶</a></h1>
 <p>port forward利用SSH</p>
-<div class="highlight"><pre><span></span>ssh -L &lt;local port&gt;:&lt;remote host&gt;:&lt;remote port&gt; &lt;SSH hostname&gt;
-</pre></div>
+<div class="codehilite"><pre><span></span><code>ssh -L &lt;local port&gt;:&lt;remote host&gt;:&lt;remote port&gt; &lt;SSH hostname&gt;
+</code></pre></div>
 <p>例：</p>
-<div class="highlight"><pre><span></span>ssh -L 5433(想在本地侦听的端口):your_host_ip(远程IP或域名):5432(远程端口，这里指服务器上PostgreSQL的端口)  user@your_host_ip(远程IP或域名)
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">5433</span><span class="p">(</span><span class="n">想在本地侦听的端口</span><span class="p">)</span><span class="err">:</span><span class="n">your_host_ip</span><span class="p">(</span><span class="n">远程IP或域名</span><span class="p">)</span><span class="err">:</span><span class="mi">5432</span><span class="p">(</span><span class="n">远程端口</span><span class="err">，</span><span class="n">这里指服务器上PostgreSQL的端口</span><span class="p">)</span><span class="w">  </span><span class="k">user</span><span class="nv">@your_host_ip</span><span class="p">(</span><span class="n">远程IP或域名</span><span class="p">)</span>
+</code></pre></div>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
                     <a href="#" class="bds_more" data-cmd="more"></a>
@@ -250,45 +250,7 @@ fe_sendauth: no password supplied  // 没给密码
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/config-centOS-install-postgresql.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'config-centOS-install-postgresql.html';
-    var disqus_url = 'http://sndnyang.github.io/config-centOS-install-postgresql.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -358,45 +320,7 @@ fe_sendauth: no password supplied  // 没给密码
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

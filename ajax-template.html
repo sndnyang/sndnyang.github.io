@@ -13,7 +13,7 @@
 <meta name="keywords" content="jquery, ajax, web, web开发, " />
 
 <meta property="og:title" content="Ajax模板 "/>
-<meta property="og:url" content="http://sndnyang.github.io/ajax-template.html" />
+<meta property="og:url" content="/ajax-template.html" />
 <meta property="og:description" content="用JQuery的ajax给服务器传数据的模板代码" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang (sndnyangd@gmail.com)" />
@@ -137,29 +137,29 @@
 
                         
                         
-<h1 id="js">JS</h1>
-<div class="highlight"><pre><span></span>$.ajax({  
-    type: "post", //请求方式  
-    url: "getResearchProgress", //发送请求地址  
-    timeout: 30000,//超时时间：30秒
-    contentType: 'application/json',
-    dataType: "json",
-    data: JSON.stringify({"url": url}),
-    //请求成功后的回调函数 data为json格式  
-    success:function(data){
-        if (data.error) {
-            window.clearInterval(timerId);
-            alert(data.error);
-            return;
-        }
+<h1 id="js">JS<a class="headerlink" href="#js" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span><span class="w">  </span>
+<span class="w">    </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="s">"post"</span><span class="p">,</span><span class="w"> </span><span class="c1">//请求方式  </span>
+<span class="w">    </span><span class="nx">url</span><span class="p">:</span><span class="w"> </span><span class="s">"getResearchProgress"</span><span class="p">,</span><span class="w"> </span><span class="c1">//发送请求地址  </span>
+<span class="w">    </span><span class="nx">timeout</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="c1">//超时时间：30秒</span>
+<span class="w">    </span><span class="nx">contentType</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="err">'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">dataType</span><span class="p">:</span><span class="w"> </span><span class="s">"json"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">data</span><span class="p">:</span><span class="w"> </span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="s">"url"</span><span class="p">:</span><span class="w"> </span><span class="nx">url</span><span class="p">}),</span>
+<span class="w">    </span><span class="c1">//请求成功后的回调函数 data为json格式  </span>
+<span class="w">    </span><span class="nx">success</span><span class="p">:</span><span class="nx">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">window</span><span class="p">.</span><span class="nx">clearInterval</span><span class="p">(</span><span class="nx">timerId</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 
-    },  
-    //请求出错的处理  
-    error: function(){  
-        alert("请求出错");  
-    }
-});
-</pre></div>
+<span class="w">    </span><span class="p">},</span><span class="w">  </span>
+<span class="w">    </span><span class="c1">//请求出错的处理  </span>
+<span class="w">    </span><span class="nx">error</span><span class="p">:</span><span class="w"> </span><span class="nx">function</span><span class="p">(){</span><span class="w">  </span>
+<span class="w">        </span><span class="nx">alert</span><span class="p">(</span><span class="s">"请求出错"</span><span class="p">);</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
                     <a href="#" class="bds_more" data-cmd="more"></a>
@@ -170,45 +170,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/ajax-template.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'ajax-template.html';
-    var disqus_url = 'http://sndnyang.github.io/ajax-template.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -278,45 +240,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

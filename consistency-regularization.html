@@ -13,7 +13,7 @@
 <meta name="keywords" content="论文, 人工智能, 神经网络, " />
 
 <meta property="og:title" content="一致性正则化 "/>
-<meta property="og:url" content="http://sndnyang.github.io/consistency-regularization.html" />
+<meta property="og:url" content="/consistency-regularization.html" />
 <meta property="og:description" content="简要介绍一致性正则化方法" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang sndnyang.github.io" />
@@ -143,14 +143,14 @@
 
                         
                         
-<h1 id="_1">摘要</h1>
+<h1 id="_1">摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>深度学习神经网络甚至于多数的机器学习方法都有几个问题：</p>
 <ol>
 <li>易于过拟合，泛化能力不强</li>
 <li>不稳定，极小的扰动噪音就会改变模型的预测结果</li>
 </ol>
 <p>本文介绍若干基于预测一致性原则的正则化方法。所谓一致性，是指输出、预测的一致性， 如前所述， 给输入添加极小的扰动后， 神经网络的预测就会发生很大的变化， 所以提高一致性后就能提高模型的泛化能力， 同时， 因为这些方法往往基于模型输出的预测向量，不需要具体的标签，所以基于一致性的正则化方法基本能应用于半监督学习。</p>
-<h1 id="_2">核心思想</h1>
+<h1 id="_2">核心思想<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>简单来说， 预测的一致性就是希望两个预测结果尽可能的接近， 数学化描述如下：</p>
 <p>$$D [p(y | \text{Augment}(x), \mathbf{\theta}) - p(y | \text{Augment}(x), \mathbf{\theta})]$$</p>
 <p>$D[p, q]$ 是距离的度量函数， 比如$|p-q|^2_2 $ 或 KL散度（KL-divergence）$\sum p_i \log \frac{p_i}{q_i}$</p>
@@ -165,23 +165,23 @@
 <li>高级数据增强（基于强化学习或自监督学习）</li>
 <li>数据线性混合</li>
 </ol>
-<h1 id="_3">基于常规的数据增强</h1>
+<h1 id="_3">基于常规的数据增强<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
 <p><a href="https://arxiv.org/pdf/1610.02242.pdf">$\Pi$-model</a> </p>
 <p><a href="https://arxiv.org/abs/1606.04586">Regularization with stochastic transformations and perturbations</a></p>
-<h1 id="_4">基于时序移动平均</h1>
+<h1 id="_4">基于时序移动平均<a class="headerlink" href="#_4" title="Permanent link">¶</a></h1>
 <p><a href="https://arxiv.org/pdf/1610.02242.pdf">Temporal Ensembling</a></p>
 <p><a href="https://arxiv.org/abs/1703.01780">Mean Teacher</a></p>
 <p><a href="https://arxiv.org/abs/1806.05594">Stochastic Weight Averaging</a></p>
-<h1 id="_5">基于对抗扰动</h1>
+<h1 id="_5">基于对抗扰动<a class="headerlink" href="#_5" title="Permanent link">¶</a></h1>
 <p><a href="https://arxiv.org/abs/1412.6572">Adversarial Training</a></p>
 <p><a href="https://arxiv.org/abs/1511.06385">Unified Adversarial Examples</a></p>
 <p><a href="https://arxiv.org/abs/1704.03976">Virtual Adversarial Training</a></p>
 <p><a href="https://arxiv.org/abs/1707.03631">Adversarial Dropout</a></p>
 <p><a href="https://arxiv.org/abs/1711.01575">Adversarial Dropout GAN</a></p>
-<h1 id="_6">基于高级数据增强</h1>
+<h1 id="_6">基于高级数据增强<a class="headerlink" href="#_6" title="Permanent link">¶</a></h1>
 <p><a href="https://arxiv.org/abs/1904.12848">unsupervised data augmentation</a></p>
 <p><a href="https://arxiv.org/abs/1905.03670">Self-supervised SSL</a></p>
-<h1 id="_7">基于数据线性混合</h1>
+<h1 id="_7">基于数据线性混合<a class="headerlink" href="#_7" title="Permanent link">¶</a></h1>
 <p><a href="https://arxiv.org/abs/1710.09412">Mixup</a></p>
 <p><a href="https://arxiv.org/abs/1905.02249">MixMatch</a></p>
                         
@@ -194,45 +194,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/consistency-regularization.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'consistency-regularization.html';
-    var disqus_url = 'http://sndnyang.github.io/consistency-regularization.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -243,7 +205,7 @@
                     <h4>Tags</h4>
                     <ul class="list-of-tags tags-in-article">
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#ren-gong-zhi-neng-ref">人工智能
                             <span>30</span>
@@ -299,45 +261,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -13,13 +13,13 @@
 <meta name="keywords" content="web, flask, sql, web开发, " />
 
 <meta property="og:title" content="flask开发问题汇总 "/>
-<meta property="og:url" content="http://sndnyang.github.io/flask-problem-summary.html" />
-<meta property="og:description" content="sqlalchemy 更新数据问题 要替换，特别是json类型数据，不能在原数据上添加， 没法更新。 需要新建变量，遍历原json数据。 如： stored_data = word_dict.data new_data = data for k in stored_data: if k not in new_data: new_data[k] = {} for e in stored_data[k]: if e not in new_data[k]: new_data[k][e] = stored_data[k][e] word_dict.data = new_data 注： 使用 copy.deepcopy() flask上传文件" />
+<meta property="og:url" content="/flask-problem-summary.html" />
+<meta property="og:description" content="sqlalchemy 更新数据问题¶ 要替换，特别是json类型数据，不能在原数据上添加， 没法更新。 需要新建变量，遍历原json数据。 如： stored_data = word_dict.data new_data = data for k in stored_data: if k not …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2016-11-07T10:34:35+08:00" />
 <meta name="twitter:title" content="flask开发问题汇总 ">
-<meta name="twitter:description" content="sqlalchemy 更新数据问题 要替换，特别是json类型数据，不能在原数据上添加， 没法更新。 需要新建变量，遍历原json数据。 如： stored_data = word_dict.data new_data = data for k in stored_data: if k not in new_data: new_data[k] = {} for e in stored_data[k]: if e not in new_data[k]: new_data[k][e] = stored_data[k][e] word_dict.data = new_data 注： 使用 copy.deepcopy() flask上传文件">
+<meta name="twitter:description" content="sqlalchemy 更新数据问题¶ 要替换，特别是json类型数据，不能在原数据上添加， 没法更新。 需要新建变量，遍历原json数据。 如： stored_data = word_dict.data new_data = data for k in stored_data: if k not …">
 
 
         <title>flask开发问题汇总  · 科探空谷
@@ -138,24 +138,24 @@
 
                         
                         
-<h1 id="sqlalchemy">sqlalchemy 更新数据问题</h1>
+<h1 id="sqlalchemy">sqlalchemy 更新数据问题<a class="headerlink" href="#sqlalchemy" title="Permanent link">¶</a></h1>
 <p>要替换，特别是json类型数据，不能在原数据上添加， 没法更新。 需要新建变量，遍历原json数据。</p>
 <p>如：</p>
-<div class="highlight"><pre><span></span>stored_data = word_dict.data
-new_data = data
-for k in stored_data:
-    if k not in new_data:
-        new_data[k] = {}
-    for e in stored_data[k]:
-        if e not in new_data[k]:
-            new_data[k][e] = stored_data[k][e]
+<div class="codehilite"><pre><span></span><code><span class="n">stored_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">word_dict</span><span class="p">.</span><span class="k">data</span>
+<span class="n">new_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">data</span>
+<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">stored_data</span><span class="p">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">new_data</span><span class="p">:</span>
+<span class="w">        </span><span class="n">new_data</span><span class="o">[</span><span class="n">k</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">stored_data</span><span class="o">[</span><span class="n">k</span><span class="o">]</span><span class="err">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">new_data</span><span class="o">[</span><span class="n">k</span><span class="o">]</span><span class="err">:</span>
+<span class="w">            </span><span class="n">new_data</span><span class="o">[</span><span class="n">k</span><span class="o">][</span><span class="n">e</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stored_data</span><span class="o">[</span><span class="n">k</span><span class="o">][</span><span class="n">e</span><span class="o">]</span>
 
-word_dict.data = new_data
-</pre></div>
+<span class="n">word_dict</span><span class="p">.</span><span class="k">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_data</span>
+</code></pre></div>
 <p>注：</p>
-<div class="highlight"><pre><span></span>使用 copy.deepcopy()
-</pre></div>
-<h1 id="flask">flask上传文件</h1>
+<div class="codehilite"><pre><span></span><code>使用 copy.deepcopy()
+</code></pre></div>
+<h1 id="flask">flask上传文件<a class="headerlink" href="#flask" title="Permanent link">¶</a></h1>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
                     <a href="#" class="bds_more" data-cmd="more"></a>
@@ -166,45 +166,7 @@ word_dict.data = new_data
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/flask-problem-summary.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'flask-problem-summary.html';
-    var disqus_url = 'http://sndnyang.github.io/flask-problem-summary.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -274,45 +236,7 @@ word_dict.data = new_data
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

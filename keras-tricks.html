@@ -13,14 +13,14 @@
 <meta name="keywords" content="深度学习 机器学习, 人工智能, 深度学习, " />
 
 <meta property="og:title" content="Keras技巧 "/>
-<meta property="og:url" content="http://sndnyang.github.io/keras-tricks.html" />
-<meta property="og:description" content="显卡使用问题 python设置系统变量的方法 os.environ[&#34;CUDA_VISIBLE_DEVICES&#34;] = &#34;8,9,10,11,12,13,14,15&#34; 注意，在代码中指定设备时，重新从0开始计，而不是从8开始。 显存使用问题 显卡内存默认占用几乎全部, 可以通过重设backend的GPU占用情况来进行调节 import tensorflow as tf from keras.backend.tensorflow_backend import set_session config = tf.ConfigProto() config.gpu_options.per_process_gpu_memory_fraction = 0.3 set_session(tf.Session(config=config)) 引用CSDN" />
+<meta property="og:url" content="/keras-tricks.html" />
+<meta property="og:description" content="显卡使用问题¶ python设置系统变量的方法 os.environ[&#34;CUDA_VISIBLE_DEVICES&#34;] = &#34;8,9,10,11,12,13,14,15&#34; 注意，在代码中指定设备时，重新从0开始计，而不是从8开始。 显存使用问题¶ 显卡内存默认 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2018-04-25T22:18:30+08:00" />
 <meta property="" content="2018-04-25T22:18:30+08:00" />
 <meta name="twitter:title" content="Keras技巧 ">
-<meta name="twitter:description" content="显卡使用问题 python设置系统变量的方法 os.environ[&#34;CUDA_VISIBLE_DEVICES&#34;] = &#34;8,9,10,11,12,13,14,15&#34; 注意，在代码中指定设备时，重新从0开始计，而不是从8开始。 显存使用问题 显卡内存默认占用几乎全部, 可以通过重设backend的GPU占用情况来进行调节 import tensorflow as tf from keras.backend.tensorflow_backend import set_session config = tf.ConfigProto() config.gpu_options.per_process_gpu_memory_fraction = 0.3 set_session(tf.Session(config=config)) 引用CSDN">
+<meta name="twitter:description" content="显卡使用问题¶ python设置系统变量的方法 os.environ[&#34;CUDA_VISIBLE_DEVICES&#34;] = &#34;8,9,10,11,12,13,14,15&#34; 注意，在代码中指定设备时，重新从0开始计，而不是从8开始。 显存使用问题¶ 显卡内存默认 …">
 
 
         <title>Keras技巧  · 科探空谷
@@ -139,12 +139,12 @@
 
                         
                         
-<h1 id="_1">显卡使用问题</h1>
+<h1 id="_1">显卡使用问题<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>python设置系统变量的方法</p>
-<div class="highlight"><pre><span></span>os.environ["CUDA_VISIBLE_DEVICES"] = "8,9,10,11,12,13,14,15"
-</pre></div>
+<div class="codehilite"><pre><span></span><code>os.environ["CUDA_VISIBLE_DEVICES"] = "8,9,10,11,12,13,14,15"
+</code></pre></div>
 <p>注意，在代码中指定设备时，重新从0开始计，而不是从8开始。</p>
-<h1 id="_2">显存使用问题</h1>
+<h1 id="_2">显存使用问题<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>显卡内存默认占用几乎全部, 可以通过重设backend的GPU占用情况来进行调节</p>
 <p>import tensorflow as tf
 from keras.backend.tensorflow_backend import set_session
@@ -162,45 +162,7 @@ set_session(tf.Session(config=config))</p>
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/keras-tricks.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'keras-tricks.html';
-    var disqus_url = 'http://sndnyang.github.io/keras-tricks.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -271,45 +233,7 @@ set_session(tf.Session(config=config))</p>
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

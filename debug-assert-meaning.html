@@ -13,14 +13,14 @@
 <meta name="keywords" content="软件开发, 调试, 软件开发, " />
 
 <meta property="og:title" content="Udacity调试课笔记之断言的意义 "/>
-<meta property="og:url" content="http://sndnyang.github.io/debug-assert-meaning.html" />
-<meta property="og:description" content="为什么要用断言异常 C/C++和Python里虽然断言默认是打开、支持的，但我很少用过。而Java里更是默认不使用断言异常。就像上面说的，可以用if或try...catch 来代替断言。断言可有两个缺点，一是影响性能，二是对用户不友好，你看，一旦触发断言，程序90%跟你说不玩了，这太不友好了。 先列Zeller教授举的断言三优点： 程序及时退出，哪怕只是小错误而退出，也比坏数据好，因为坏数据不知道会造成什么样的后果。很多人说的史上最昂贵的bug，阿丽亚纳五号运载火箭，就因为惯性制导系统无法将一个64位的数据转换到16位格式而烧掉了5亿美元。 Zeller教授说，本来开发时是有对格式转换进行检查的断言的，结果产品中因为考虑性能问题，能关掉了这些断言。另外即使断言被触发，这火箭的软件系统也有足够优秀的异常处理机制来继续工作。所以可能就因为节省了这么一些断言，而创造了世上最奢侈的烟花。 断言可以让调试更简单。理由之前说过，更早地发现错误，更少的bug位置。 方便回溯缺陷。从出错断言开始，往回找，和2差不多的。 不过，Zeller教授也承认可以关闭一些影响性能的断言。 拿红黑树来说，没必要在一次时间复杂度O(log n) 的插入操作的前面 ..." />
+<meta property="og:url" content="/debug-assert-meaning.html" />
+<meta property="og:description" content="为什么要用断言异常¶ C/C++和Python里虽然断言默认是打开、支持的，但我很少用过。而Java里更是默认不使用断言异常。就像上面说的，可以用if或try...catch 来代替断言。断言可有两个缺点，一是 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang sndnyang.github.io" />
 <meta property="og:article:published_time" content="2016-04-18T19:21:38+08:00" />
 <meta property="" content="2017-04-18T19:29:20+08:00" />
 <meta name="twitter:title" content="Udacity调试课笔记之断言的意义 ">
-<meta name="twitter:description" content="为什么要用断言异常 C/C++和Python里虽然断言默认是打开、支持的，但我很少用过。而Java里更是默认不使用断言异常。就像上面说的，可以用if或try...catch 来代替断言。断言可有两个缺点，一是影响性能，二是对用户不友好，你看，一旦触发断言，程序90%跟你说不玩了，这太不友好了。 先列Zeller教授举的断言三优点： 程序及时退出，哪怕只是小错误而退出，也比坏数据好，因为坏数据不知道会造成什么样的后果。很多人说的史上最昂贵的bug，阿丽亚纳五号运载火箭，就因为惯性制导系统无法将一个64位的数据转换到16位格式而烧掉了5亿美元。 Zeller教授说，本来开发时是有对格式转换进行检查的断言的，结果产品中因为考虑性能问题，能关掉了这些断言。另外即使断言被触发，这火箭的软件系统也有足够优秀的异常处理机制来继续工作。所以可能就因为节省了这么一些断言，而创造了世上最奢侈的烟花。 断言可以让调试更简单。理由之前说过，更早地发现错误，更少的bug位置。 方便回溯缺陷。从出错断言开始，往回找，和2差不多的。 不过，Zeller教授也承认可以关闭一些影响性能的断言。 拿红黑树来说，没必要在一次时间复杂度O(log n) 的插入操作的前面 ...">
+<meta name="twitter:description" content="为什么要用断言异常¶ C/C++和Python里虽然断言默认是打开、支持的，但我很少用过。而Java里更是默认不使用断言异常。就像上面说的，可以用if或try...catch 来代替断言。断言可有两个缺点，一是 …">
 
 
         <title>Udacity调试课笔记之断言的意义  · 科探空谷
@@ -139,7 +139,7 @@
 
                         
                         
-<h1 id="_1">为什么要用断言异常</h1>
+<h1 id="_1">为什么要用断言异常<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>C/C++和Python里虽然断言默认是打开、支持的，但我很少用过。而Java里更是默认不使用断言异常。就像上面说的，可以用if或try...catch 来代替断言。断言可有两个缺点，一是影响性能，二是对用户不友好，你看，一旦触发断言，程序90%跟你说不玩了，这太不友好了。</p>
 <p>先列Zeller教授举的断言三优点：</p>
 <ol>
@@ -150,7 +150,7 @@
 </ol>
 <p>不过，Zeller教授也承认可以关闭一些影响性能的断言。</p>
 <p>拿红黑树来说，没必要在一次时间复杂度O(log n) 的插入操作的前面，进行时间复杂度为O(n)的遍历操作，就为了检查是否存在环这一性质。这样的断言没必要。</p>
-<h1 id="_2">个人理解</h1>
+<h1 id="_2">个人理解<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>再来说说我的理解。</p>
 <p>首先是为什么if和try...catch不能代替断言，也就是为什么还要用断言，这么一个不友好的语句。</p>
 <p>个人理解，因为一个最简单的断言函数大概就是，如果断言条件为假，则抛出异常。其实也就是一个if语句能完成的事。但是一个简单的if语句抛出的异常所能显示的信息，不如标准的断言异常的信息多。而一个assert(condition)在很多时候从便捷上、作用上都高于一个if (condition) throw XXX; 所以If 不能代替断言。</p>
@@ -167,45 +167,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/debug-assert-meaning.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'debug-assert-meaning.html';
-    var disqus_url = 'http://sndnyang.github.io/debug-assert-meaning.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -276,45 +238,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

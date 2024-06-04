@@ -13,14 +13,14 @@
 <meta name="keywords" content="虚拟机, 开发工具, " />
 
 <meta property="og:title" content="docker使用 "/>
-<meta property="og:url" content="http://sndnyang.github.io/notes-on-using-docker.html" />
-<meta property="og:description" content="启动下载 boot2docker失败 从输出的日志中，找到地址(github.com/xxxxx)，使用下载工具下载， 并存放到 用户主 目录/.docker/machine/cache文件夹下 配置镜像地址 新版的 Docker 使用 /etc/docker/daemon.json（Linux） 或者 %programdata%\docker\config\daemon.json（Windows） 来配置 Daemon。 请在该配置文件中加入（没有该文件的话，请先建一个）： { &#34;registry-mirrors&#34;: [&#34;https://docker.mirrors.ustc.edu.cn&#34;] } 备选： DaoCloud 和 阿里云， 但都要注册 配置存储路径 镜像images, 容器Container ..." />
+<meta property="og:url" content="/notes-on-using-docker.html" />
+<meta property="og:description" content="启动下载 boot2docker失败¶ 从输出的日志中，找到地址(github.com/xxxxx)，使用下载工具下载， 并存放到 用户主 目录/.docker/machine/cache文件夹下 配置镜像地址¶ 新版的 Docker 使 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang sndnyang.github.io" />
 <meta property="og:article:published_time" content="2017-05-06T23:43:29+08:00" />
 <meta property="" content="2017-05-18T18:10:01+08:00" />
 <meta name="twitter:title" content="docker使用 ">
-<meta name="twitter:description" content="启动下载 boot2docker失败 从输出的日志中，找到地址(github.com/xxxxx)，使用下载工具下载， 并存放到 用户主 目录/.docker/machine/cache文件夹下 配置镜像地址 新版的 Docker 使用 /etc/docker/daemon.json（Linux） 或者 %programdata%\docker\config\daemon.json（Windows） 来配置 Daemon。 请在该配置文件中加入（没有该文件的话，请先建一个）： { &#34;registry-mirrors&#34;: [&#34;https://docker.mirrors.ustc.edu.cn&#34;] } 备选： DaoCloud 和 阿里云， 但都要注册 配置存储路径 镜像images, 容器Container ...">
+<meta name="twitter:description" content="启动下载 boot2docker失败¶ 从输出的日志中，找到地址(github.com/xxxxx)，使用下载工具下载， 并存放到 用户主 目录/.docker/machine/cache文件夹下 配置镜像地址¶ 新版的 Docker 使 …">
 
 
         <title>docker使用  · 科探空谷
@@ -140,25 +140,25 @@
 
                         
                         
-<h1 id="boot2docker">启动下载 boot2docker失败</h1>
+<h1 id="boot2docker">启动下载 boot2docker失败<a class="headerlink" href="#boot2docker" title="Permanent link">¶</a></h1>
 <p>从输出的日志中，找到地址(github.com/xxxxx)，使用下载工具下载， 并存放到 用户主
 目录/.docker/machine/cache文件夹下</p>
-<h1 id="_1">配置镜像地址</h1>
+<h1 id="_1">配置镜像地址<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>新版的 Docker 使用 /etc/docker/daemon.json（Linux） 或者 %programdata%\docker\config\daemon.json（Windows） 来配置 Daemon。</p>
 <p>请在该配置文件中加入（没有该文件的话，请先建一个）：</p>
 <p>{
   "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
 }</p>
 <p>备选： DaoCloud 和 阿里云， 但都要注册</p>
-<h1 id="_2">配置存储路径</h1>
+<h1 id="_2">配置存储路径<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>镜像images, 容器Container 的路径， 不要放在C盘</p>
 <p>文件同上</p>
-<div class="highlight"><pre><span></span>{ "graph": "E:\\vm\\docker" }
-</pre></div>
+<div class="codehilite"><pre><span></span><code>{ "graph": "E:\\vm\\docker" }
+</code></pre></div>
 <p>据另一篇文章 <a href="http://www.linuxidc.com/Linux/2016-07/133506.htm">Windows下安装docker</a>描述：</p>
 <p>需要在 .bash_profile 或 .bashrc 里配置环境变量：</p>
-<div class="highlight"><pre><span></span>export MACHINE_STORAGE_PATH='H:\docker'
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">MACHINE_STORAGE_PATH</span><span class="o">=</span><span class="s1">'H:\docker'</span>
+</code></pre></div>
 <p>关闭后，在H盘创建名为docker的文件夹，在其下创建名为cache的文件夹，将安装文件下的boot2docker.iso拷贝到该文件夹：</p>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
@@ -170,45 +170,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/notes-on-using-docker.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'notes-on-using-docker.html';
-    var disqus_url = 'http://sndnyang.github.io/notes-on-using-docker.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -276,45 +238,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

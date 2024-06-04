@@ -13,13 +13,13 @@
 <meta name="keywords" content="vim, 开发工具, " />
 
 <meta property="og:title" content="vi-vim小技巧 "/>
-<meta property="og:url" content="http://sndnyang.github.io/vi-vim-tips.html" />
-<meta property="og:description" content="vi 小技巧 部分 vi +xx 文件名，可以直接跳到位置的， 和vim一样。xx代表行数 查找时， \&lt;xxx&gt; 代表全词匹配——vim也一样，而且更先进的是，当光标在该单词上时，vim快捷键shift+8 -- * 就是向下全词查找，shift+3 -- # 就是向上全词查找。 D 删除到行尾， C 删除到行尾并进入插入模式 inner word/around word, diw/ciw, daw/caw iw 当前词， cw 含前后空格， as/is sentence, ap/ip 段落 period &#34;.&#34; 重复上一个操作， 不过要注意操作的原子性， 比如 dw 后 insert ..." />
+<meta property="og:url" content="/vi-vim-tips.html" />
+<meta property="og:description" content="vi 小技巧¶ 部分¶ vi +xx 文件名，可以直接跳到位置的， 和vim一样。xx代表行数 查找时， \&lt;xxx&gt; 代表全词匹配——vim也一样，而且更先进的是，当光标在该单词上时 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2014-05-06T00:00:00+08:00" />
 <meta name="twitter:title" content="vi-vim小技巧 ">
-<meta name="twitter:description" content="vi 小技巧 部分 vi +xx 文件名，可以直接跳到位置的， 和vim一样。xx代表行数 查找时， \&lt;xxx&gt; 代表全词匹配——vim也一样，而且更先进的是，当光标在该单词上时，vim快捷键shift+8 -- * 就是向下全词查找，shift+3 -- # 就是向上全词查找。 D 删除到行尾， C 删除到行尾并进入插入模式 inner word/around word, diw/ciw, daw/caw iw 当前词， cw 含前后空格， as/is sentence, ap/ip 段落 period &#34;.&#34; 重复上一个操作， 不过要注意操作的原子性， 比如 dw 后 insert ...">
+<meta name="twitter:description" content="vi 小技巧¶ 部分¶ vi +xx 文件名，可以直接跳到位置的， 和vim一样。xx代表行数 查找时， \&lt;xxx&gt; 代表全词匹配——vim也一样，而且更先进的是，当光标在该单词上时 …">
 
 
         <title>vi-vim小技巧  · 科探空谷
@@ -152,8 +152,8 @@
 
                         
                         
-<h1 id="vi">vi 小技巧</h1>
-<h2 id="_1">部分</h2>
+<h1 id="vi">vi 小技巧<a class="headerlink" href="#vi" title="Permanent link">¶</a></h1>
+<h2 id="_1">部分<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <ol>
 <li>vi +xx 文件名，可以直接跳到位置的， 和vim一样。xx代表行数</li>
 <li>查找时， \&lt;xxx&gt; 代表全词匹配——vim也一样，而且更先进的是，当光标在该单词上时，vim快捷键shift+8 -- * 就是向下全词查找，shift+3 -- # 就是向上全词查找。</li>
@@ -161,25 +161,25 @@
 <li>inner word/around word, diw/ciw, daw/caw  iw 当前词， cw 含前后空格， as/is sentence, ap/ip 段落</li>
 <li>period "." 重复上一个操作， 不过要注意操作的原子性， 比如 dw 后 insert 是两个操作， ciw 修改就是一个操作</li>
 </ol>
-<h1 id="vim">vim 技巧</h1>
-<h2 id="_2">模式</h2>
+<h1 id="vim">vim 技巧<a class="headerlink" href="#vim" title="Permanent link">¶</a></h1>
+<h2 id="_2">模式<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <ol>
 <li>ctrl-v 或 ctrl-q 进入可视块状态， 即 列编辑模式。</li>
 </ol>
-<h2 id="_3">页面跳转</h2>
+<h2 id="_3">页面跳转<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <ol>
 <li>gg 文件首行 G 文件末尾</li>
 <li>H M L 光标跳转页顶，页中，页底</li>
 <li>zt zz zb 光标所在行置顶、置中、置底</li>
 <li>gj, gk 段落行移动</li>
 </ol>
-<h2 id="_4">排版缩进</h2>
+<h2 id="_4">排版缩进<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <ol>
 <li>按v进入visual状态，选择多行，用&gt;或&lt;缩进或缩出 等效于 x &gt;&gt;/&lt;&lt; x行缩进</li>
 <li>通常根据语言特征使用自动缩进排版：在命令状态下对当前行用== （连按=两次）, 或对多行用n==（n是自然数）表示自动缩进从当前行起的下面n行。你可以试试把代码缩进任意打乱再用n==排版，相当于一般IDE里的code format。使用gg=G可对整篇代码进行排版</li>
 <li>至于如何针对自定义语言制订缩进规则，还有点问题，成功率不高。</li>
 </ol>
-<h2 id="_5">代码跳转</h2>
+<h2 id="_5">代码跳转<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <ol>
 <li>% 跳转到配对的括号去</li>
 <li>[[ 跳转到代码块的开头去(但要求代码块中'{'必须单独占一行)</li>
@@ -187,23 +187,23 @@
 <li>'' 跳转到光标上次停靠的地方, 是两个'单引号, 而不是一个" 双引号</li>
 <li>切换到上次修改的位置, 想知道你在文件中做的最后一次修改是在什么位置？切换到正常模式，输入 g; 来即可切换到上次修改的位置。 </li>
 </ol>
-<h2 id="_6">书签</h2>
+<h2 id="_6">书签<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <ol>
 <li>mx 设置书签,x只能是a-z的26个字母</li>
 <li>`x 跳转到书签处(""是1左边的键)</li>
 </ol>
-<h2 id="_7">复制粘贴</h2>
+<h2 id="_7">复制粘贴<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
 <ol>
 <li>全局复制， gg 文件首行， shift+v  或 V 列模式， G 文件尾行， 即可全选， 小写的 v 不能把最后一行弄下来。</li>
 <li>同理的一块代码复制，也是使用 列模式， 不需要预知行数了。</li>
 </ol>
-<h2 id="tag">标签tag</h2>
+<h2 id="tag">标签tag<a class="headerlink" href="#tag" title="Permanent link">¶</a></h2>
 <ol>
 <li>:tselect 显示列表</li>
 <li>:tn和:tp 显示后一个tag和前一个tag</li>
 </ol>
-<h2 id="read">读入read</h2>
-<h2 id="_8">编辑</h2>
+<h2 id="read">读入read<a class="headerlink" href="#read" title="Permanent link">¶</a></h2>
+<h2 id="_8">编辑<a class="headerlink" href="#_8" title="Permanent link">¶</a></h2>
 <ol>
 <li>caw/yaw/daw：change a word可以修改/复制/删除当前光标所在位置的单词。对于int count=0;的例子，如果此时光标在count中间某处，比如u处，直接键入caw可以达到同样的效果。所以caw更强大一些。</li>
 <li>ci"：change inside "可以用于修改当前位置附近，在相同配对的"中的内容。比如对于const char *str="hello world";。当在双引号中间的任意位置键入ci"可以直接清空字符串，并继续输入新的希望的字符串。</li>
@@ -222,45 +222,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/vi-vim-tips.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'vi-vim-tips.html';
-    var disqus_url = 'http://sndnyang.github.io/vi-vim-tips.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -324,45 +286,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

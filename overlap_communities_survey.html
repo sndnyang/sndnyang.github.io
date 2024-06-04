@@ -13,13 +13,13 @@
 <meta name="keywords" content="社区发现, CS, 算法, 数据挖掘, " />
 
 <meta property="og:title" content="社区覆盖问题总结 "/>
-<meta property="og:url" content="http://sndnyang.github.io/overlap_communities_survey.html" />
-<meta property="og:description" content="算法 1. Clique Percolation 中文名？派系过滤 假设 群落由 完全连通子图的重叠集合组成——a community consists of overlapping sets of fully connected subgraphs 思路 detects communities by searching for adjacent cliques 扩展内容 派系(Cliques)。在一个无向网络图中，“派系”指的是至少包含3个点的最大完备子图。这个概念包含3层含义：①一个派系至少包含三个点。②派系是完备的，根据完备图的定义，派系中任何两点之间都存在直接联系。③派系是“最大”的，即向这个子图中增加任何一点，将改变其“完备”的性质。 n-派系(n-Cliques)。对于一个总图来说，如果其中的一个子图满足如下条件，就称之为n-派系 ..." />
+<meta property="og:url" content="/overlap_communities_survey.html" />
+<meta property="og:description" content="算法¶ 1. Clique Percolation¶ 中文名？派系过滤 假设¶ 群落由 完全连通子图的重叠集合组成——a community consists of overlapping sets of fully connected subgraphs 思路¶ detects communities by searching for adjacent cliques 扩 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2016-03-04T00:00:00+08:00" />
 <meta name="twitter:title" content="社区覆盖问题总结 ">
-<meta name="twitter:description" content="算法 1. Clique Percolation 中文名？派系过滤 假设 群落由 完全连通子图的重叠集合组成——a community consists of overlapping sets of fully connected subgraphs 思路 detects communities by searching for adjacent cliques 扩展内容 派系(Cliques)。在一个无向网络图中，“派系”指的是至少包含3个点的最大完备子图。这个概念包含3层含义：①一个派系至少包含三个点。②派系是完备的，根据完备图的定义，派系中任何两点之间都存在直接联系。③派系是“最大”的，即向这个子图中增加任何一点，将改变其“完备”的性质。 n-派系(n-Cliques)。对于一个总图来说，如果其中的一个子图满足如下条件，就称之为n-派系 ...">
+<meta name="twitter:description" content="算法¶ 1. Clique Percolation¶ 中文名？派系过滤 假设¶ 群落由 完全连通子图的重叠集合组成——a community consists of overlapping sets of fully connected subgraphs 思路¶ detects communities by searching for adjacent cliques 扩 …">
 
 
         <title>社区覆盖问题总结  · 科探空谷
@@ -171,57 +171,57 @@
 
                         
                         
-<h1 id="_1">算法</h1>
-<h2 id="1-clique-percolation">1. Clique Percolation</h2>
+<h1 id="_1">算法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<h2 id="1-clique-percolation">1. Clique Percolation<a class="headerlink" href="#1-clique-percolation" title="Permanent link">¶</a></h2>
 <p>中文名？派系过滤</p>
-<h3 id="_2">假设</h3>
+<h3 id="_2">假设<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <p>群落由 完全连通子图的重叠集合组成——a community consists of overlapping sets of fully connected subgraphs</p>
-<h3 id="_3">思路</h3>
+<h3 id="_3">思路<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <p>detects communities by searching for adjacent cliques</p>
-<h3 id="_4">扩展内容</h3>
+<h3 id="_4">扩展内容<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <ol>
 <li>派系(Cliques)。在一个无向网络图中，“派系”指的是至少包含3个点的最大完备子图。这个概念包含3层含义：①一个派系至少包含三个点。②派系是完备的，根据完备图的定义，派系中任何两点之间都存在直接联系。③派系是“最大”的，即向这个子图中增加任何一点，将改变其“完备”的性质。</li>
 <li>n-派系(n-Cliques)。对于一个总图来说，如果其中的一个子图满足如下条件，就称之为n-派系：在该子图中，任何两点之间在总图中的距离(即捷径的长度)最大不超过n。从形式化角度说，令d(i,j)代表两点和n在总图中的距离，那么一个n-派系的形式化定义就是一个满足如下条件的拥有点集的子图，即：d(i,J)\le n，对于所有的，n_i,n_j\in N,来说，在总图中不存在与子图中的任何点的距离不超过n的点。</li>
 <li>n-宗派(n—Clan)。所谓n-宗派(n—Clan)是指满足以下条件的n-派系，即其中任何两点之间的捷径的距离都不超过n。可见，所有的n-宗派都是n-派系。</li>
 <li>k-丛(k-Plex)。一个k-丛就是满足下列条件的一个凝聚子群，即在这样一个子群中，每个点都至少与除了k个点之外的其他点直接相连。也就是说，当这个凝聚子群的规模为n时，其中每个点至少都与该凝聚子群中n-k个点有直接联系，即每个点的度数都至少为n—k。</li>
 </ol>
-<h3 id="_5">某个的步骤之一</h3>
+<h3 id="_5">某个的步骤之一<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
 <ol>
 <li>begins by identifying all cliques of size k in a network, a new graph is constructed such that each vertex represents one of these k-cliques</li>
 </ol>
-<h3 id="_6">结论</h3>
+<h3 id="_6">结论<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
 <p>more like pattern matching rather than finding communities since they aim to find specific, localized structure in a network.</p>
-<h2 id="2-line-graph-and-link-partitioning">2. Line Graph and Link Partitioning</h2>
+<h2 id="2-line-graph-and-link-partitioning">2. Line Graph and Link Partitioning<a class="headerlink" href="#2-line-graph-and-link-partitioning" title="Permanent link">¶</a></h2>
 <p>中文名？连接划分</p>
-<h3 id="_7">思路</h3>
+<h3 id="_7">思路<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
 <ol>
 <li>partitioning links</li>
 <li>A node in the original graph is called overlapping if links connected to it are put in more than one cluster.</li>
 </ol>
-<h2 id="3-local-expansion-and-optimization">3. Local Expansion and Optimization</h2>
+<h2 id="3-local-expansion-and-optimization">3. Local Expansion and Optimization<a class="headerlink" href="#3-local-expansion-and-optimization" title="Permanent link">¶</a></h2>
 <p>中文名？局部增广和优化</p>
-<h3 id="_8">思路</h3>
+<h3 id="_8">思路<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
 <ol>
 <li>based on growing a natural community or a partial community</li>
 <li>rely on a local benefit function that characterizes the quality of a densely connected group of nodes</li>
 </ol>
-<h2 id="4-fuzzy-detection">4. Fuzzy Detection</h2>
+<h2 id="4-fuzzy-detection">4. Fuzzy Detection<a class="headerlink" href="#4-fuzzy-detection" title="Permanent link">¶</a></h2>
 <p>中文名？模糊检测</p>
-<h3 id="_9">思路</h3>
+<h3 id="_9">思路<a class="headerlink" href="#_9" title="Permanent link">¶</a></h3>
 <p>quantify the strength of association between all pairs of nodes and communities</p>
-<h3 id="_10">例子</h3>
+<h3 id="_10">例子<a class="headerlink" href="#_10" title="Permanent link">¶</a></h3>
 <p>Non-negative Matrix Factorization </p>
-<h2 id="5-agent-based-and-dynamical-algorithms">5. Agent-Based and Dynamical Algorithms</h2>
+<h2 id="5-agent-based-and-dynamical-algorithms">5. Agent-Based and Dynamical Algorithms<a class="headerlink" href="#5-agent-based-and-dynamical-algorithms" title="Permanent link">¶</a></h2>
 <p>中文名？基于啥的动态算法</p>
-<h3 id="_11">思路</h3>
+<h3 id="_11">思路<a class="headerlink" href="#_11" title="Permanent link">¶</a></h3>
 <p>label propagation algorithm by allowing a node to have multiple labels</p>
-<h2 id="6-others">6. others</h2>
+<h2 id="6-others">6. others<a class="headerlink" href="#6-others" title="Permanent link">¶</a></h2>
 <p>中文名——无法分类 :)</p>
-<h1 id="_12">评估方法</h1>
-<h2 id="1-normalized-mutual-information">1. Normalized Mutual Information</h2>
+<h1 id="_12">评估方法<a class="headerlink" href="#_12" title="Permanent link">¶</a></h1>
+<h2 id="1-normalized-mutual-information">1. Normalized Mutual Information<a class="headerlink" href="#1-normalized-mutual-information" title="Permanent link">¶</a></h2>
 <p>中文名？标准互信息</p>
-<h2 id="2-omega-index">2. Omega Index</h2>
-<h1 id="_13">结论</h1>
+<h2 id="2-omega-index">2. Omega Index<a class="headerlink" href="#2-omega-index" title="Permanent link">¶</a></h2>
+<h1 id="_13">结论<a class="headerlink" href="#_13" title="Permanent link">¶</a></h1>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
                     <a href="#" class="bds_more" data-cmd="more"></a>
@@ -232,45 +232,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/overlap_communities_survey.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'overlap_communities_survey.html';
-    var disqus_url = 'http://sndnyang.github.io/overlap_communities_survey.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -340,45 +302,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

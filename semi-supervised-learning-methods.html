@@ -13,14 +13,14 @@
 <meta name="keywords" content="深度学习, 机器学习, 人工智能, 深度学习, " />
 
 <meta property="og:title" content="半监督学习方法汇总 "/>
-<meta property="og:url" content="http://sndnyang.github.io/semi-supervised-learning-methods.html" />
-<meta property="og:description" content="概述 目前我了解的方法基本上采用 有标记数据上的监督学习（如CrossEntropy) + 无标记数据上的无监督学习， 即: $$ loss_{semi} = loss_{labelled data} + loss_{unlabelled data} $$ 有标记数据可使用通用的监督学习方法求LOSS， 而无标记数据一般是要使得噪音noise、扰动pertubation造成的输出变化最小。 VAT 论文 扰动大小、幅度受限$||r|| &lt; \eps$， 找到输出变化最大的扰动（方向） Regularization With Stochastic 论文 temporal ensembling 论文 TO READ" />
+<meta property="og:url" content="/semi-supervised-learning-methods.html" />
+<meta property="og:description" content="概述¶ 目前我了解的方法基本上采用 有标记数据上的监督学习（如CrossEntropy) + 无标记数据上的无监督学习， 即: $$ loss_{semi} = loss_{labelled data} + loss_{unlabelled data} $$ 有 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2018-11-15T22:18:30+08:00" />
 <meta property="" content="2018-11-25T22:18:30+08:00" />
 <meta name="twitter:title" content="半监督学习方法汇总 ">
-<meta name="twitter:description" content="概述 目前我了解的方法基本上采用 有标记数据上的监督学习（如CrossEntropy) + 无标记数据上的无监督学习， 即: $$ loss_{semi} = loss_{labelled data} + loss_{unlabelled data} $$ 有标记数据可使用通用的监督学习方法求LOSS， 而无标记数据一般是要使得噪音noise、扰动pertubation造成的输出变化最小。 VAT 论文 扰动大小、幅度受限$||r|| &lt; \eps$， 找到输出变化最大的扰动（方向） Regularization With Stochastic 论文 temporal ensembling 论文 TO READ">
+<meta name="twitter:description" content="概述¶ 目前我了解的方法基本上采用 有标记数据上的监督学习（如CrossEntropy) + 无标记数据上的无监督学习， 即: $$ loss_{semi} = loss_{labelled data} + loss_{unlabelled data} $$ 有 …">
 
 
         <title>半监督学习方法汇总  · 科探空谷
@@ -142,18 +142,18 @@
 
                         
                         
-<h1 id="_1">概述</h1>
+<h1 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>目前我了解的方法基本上采用 有标记数据上的监督学习（如CrossEntropy) + 无标记数据上的无监督学习， 即:</p>
 <p>$$ loss_{semi} = loss_{labelled data} + loss_{unlabelled data} $$</p>
 <p>有标记数据可使用通用的监督学习方法求LOSS， 而无标记数据一般是要使得噪音noise、扰动pertubation造成的输出变化最小。</p>
-<h1 id="vat">VAT</h1>
+<h1 id="vat">VAT<a class="headerlink" href="#vat" title="Permanent link">¶</a></h1>
 <p><a href="http://arxiv.org/abs/1704.03976" title="Miyato, Takeru, Shin-ichi Maeda, Masanori Koyama, and Shin Ishii. 2017. “Virtual Adversarial Training: A Regularization Method for Supervised and Semi-Supervised Learning.” : 1–14.">论文</a></p>
 <p>扰动大小、幅度受限$||r|| &lt; \eps$， 找到输出变化最大的扰动（方向）</p>
-<h1 id="regularization-with-stochastic">Regularization With Stochastic</h1>
+<h1 id="regularization-with-stochastic">Regularization With Stochastic<a class="headerlink" href="#regularization-with-stochastic" title="Permanent link">¶</a></h1>
 <p><a href="http://arxiv.org/abs/1606.04586" title="Sajjadi, Mehdi, Mehran Javanmardi, and Tolga Tasdizen. 2016. “Regularization With Stochastic Transformations and Perturbations for Deep Semi-Supervised Learning.” ">论文</a></p>
-<h1 id="temporal-ensembling">temporal ensembling</h1>
+<h1 id="temporal-ensembling">temporal ensembling<a class="headerlink" href="#temporal-ensembling" title="Permanent link">¶</a></h1>
 <p><a href="http://arxiv.org/abs/1610.02242" title="Laine, Samuli, and Timo Aila. 2016. “Temporal Ensembling for Semi-Supervised Learning.” (2015): 1–13.">论文</a></p>
-<h1 id="to-read">TO READ</h1>
+<h1 id="to-read">TO READ<a class="headerlink" href="#to-read" title="Permanent link">¶</a></h1>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
                     <a href="#" class="bds_more" data-cmd="more"></a>
@@ -164,45 +164,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/semi-supervised-learning-methods.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'semi-supervised-learning-methods.html';
-    var disqus_url = 'http://sndnyang.github.io/semi-supervised-learning-methods.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -276,45 +238,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

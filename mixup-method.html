@@ -13,7 +13,7 @@
 <meta name="keywords" content="论文, 深度学习, 论文, " />
 
 <meta property="og:title" content="Mixup "/>
-<meta property="og:url" content="http://sndnyang.github.io/mixup-method.html" />
+<meta property="og:url" content="/mixup-method.html" />
 <meta property="og:description" content="" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang sndnyang.github.io" />
@@ -148,7 +148,7 @@
 
                         
                         
-<h1 id="_1">方法</h1>
+<h1 id="_1">方法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>$$
 \begin{array}{l}
 \tilde{x}=\lambda x_{i}+(1-\lambda) x_{j} \
@@ -158,7 +158,7 @@ $$</p>
 <p><strong>Mixup</strong> extends the training distribution by incorporating the prior knowledge that **linear</p>
 <p>interpolations** of feature vectors should lead to linear interpolations of the associated targets.</p>
 <p><img alt="image-20200504233144918" src="E:\project\blog\content\cs\论文\其他\images\mixup"/>`</p>
-<h2 id="_2">其他</h2>
+<h2 id="_2">其他<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>这篇论文方法非常简单， 不过细看下发现还有很多内容被忽略。</p>
 <p>目的是解决以下问题：</p>
 <ul>
@@ -172,14 +172,14 @@ $$</p>
 <li>训练数据越多， 神经网络规模就应该越大 -&gt; 矛盾是： 要保证ERM的可收敛性， 则网络（模型）的规模（size）不能随训练数据的增加一起变大</li>
 </ol>
 <p>Vicinal Risk Minimization (VRM) 邻域风险最小化, 进行数据增广（data augmentation)</p>
-<h1 id="_3">个人总结</h1>
-<h2 id="_4">疑问：</h2>
+<h1 id="_3">个人总结<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
+<h2 id="_4">疑问：<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>The size of these state-of-theart neural networks scales linearly with the number of training examples. ？？？ 还有这回事？</p>
-<h2 id="_5">有意思的</h2>
+<h2 id="_5">有意思的<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>learning theory</p>
 <p>VC-complexity 不变， the convergence of ERM is guaranteed as long as the size of the learning machine (e.g., the neural network) does not increase with the number of training data. </p>
-<h2 id="_6"></h2>
-<h1 id="_7">相关</h1>
+<h2 id="_6"><a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
+<h1 id="_7">相关<a class="headerlink" href="#_7" title="Permanent link">¶</a></h1>
 <ol>
 <li>
 <p>Mixup ICLR 2018</p>
@@ -262,45 +262,7 @@ $$</p>
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/mixup-method.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'mixup-method.html';
-    var disqus_url = 'http://sndnyang.github.io/mixup-method.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -315,7 +277,7 @@ $$</p>
                     <h4>Tags</h4>
                     <ul class="list-of-tags tags-in-article">
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#shen-du-xue-xi-ref">深度学习
                             <span>11</span>
@@ -371,45 +333,7 @@ $$</p>
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

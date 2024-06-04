@@ -13,13 +13,13 @@
 <meta name="keywords" content="计算机科学, 算法, 自动机, 计算机科学, " />
 
 <meta property="og:title" content="自动机作业1-正则表达式 "/>
-<meta property="og:url" content="http://sndnyang.github.io/automata-hw1.html" />
-<meta property="og:description" content="编程容易，笔算不易，且写且珍惜 开篇语 第二周的编程练习非常简单——前两轮开课时不知道是不是会难很多， 总之这次把代码框架都搭好了， 顺利的话， 10分钟就OK了。 不顺利的地方在哪儿——我使用的是python版本， 里面有个小bug，我看不懂输出。 在源文件里找了半天代码结构没明白， 最后打算从main开始吧， 一看， 代码里面是这样写的 def main(filepath): return Start(&#39;testRE.in&#39;) if __name__ == &#39;__main__&#39;: main(sys.argv[1]) 好吧，难怪我的文件名参数没用——剩下的在看懂他输出是什么内容后很快就解决了。 无耻的分界线 你以为我就想说这个？ NO！ 最起码笔算不易还没说呢！！！ 本周第一个视频讲的是正则表达式基础，从定义到正则表达式转换成NFA CUT！！！ 概念没兴趣， RE转NFA 学过的内容，看到那张图就OK了， 主要是确实so easy. CONTINUE！！！ 然后就到DFA转RE了， 说实话吧 ..." />
+<meta property="og:url" content="/automata-hw1.html" />
+<meta property="og:description" content="编程容易，笔算不易，且写且珍惜 开篇语¶ 第二周的编程练习非常简单——前两轮开课时不知道是不是会难很多， 总之这次把代 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2014-09-08T00:00:00+08:00" />
 <meta name="twitter:title" content="自动机作业1-正则表达式 ">
-<meta name="twitter:description" content="编程容易，笔算不易，且写且珍惜 开篇语 第二周的编程练习非常简单——前两轮开课时不知道是不是会难很多， 总之这次把代码框架都搭好了， 顺利的话， 10分钟就OK了。 不顺利的地方在哪儿——我使用的是python版本， 里面有个小bug，我看不懂输出。 在源文件里找了半天代码结构没明白， 最后打算从main开始吧， 一看， 代码里面是这样写的 def main(filepath): return Start(&#39;testRE.in&#39;) if __name__ == &#39;__main__&#39;: main(sys.argv[1]) 好吧，难怪我的文件名参数没用——剩下的在看懂他输出是什么内容后很快就解决了。 无耻的分界线 你以为我就想说这个？ NO！ 最起码笔算不易还没说呢！！！ 本周第一个视频讲的是正则表达式基础，从定义到正则表达式转换成NFA CUT！！！ 概念没兴趣， RE转NFA 学过的内容，看到那张图就OK了， 主要是确实so easy. CONTINUE！！！ 然后就到DFA转RE了， 说实话吧 ...">
+<meta name="twitter:description" content="编程容易，笔算不易，且写且珍惜 开篇语¶ 第二周的编程练习非常简单——前两轮开课时不知道是不是会难很多， 总之这次把代 …">
 
 
         <title>自动机作业1-正则表达式  · 科探空谷
@@ -142,23 +142,23 @@
                         
                         
 <p><strong>编程容易，笔算不易，且写且珍惜</strong></p>
-<h1 id="_1">开篇语</h1>
+<h1 id="_1">开篇语<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>第二周的编程练习非常简单——前两轮开课时不知道是不是会难很多， 总之这次把代码框架都搭好了， 顺利的话， 10分钟就OK了。</p>
 <p>不顺利的地方在哪儿——我使用的是python版本， 里面有个小bug，我看不懂输出。 在源文件里找了半天代码结构没明白， 最后打算从main开始吧， 一看， 代码里面是这样写的</p>
-<div class="highlight"><pre><span></span>def main(filepath):
+<div class="codehilite"><pre><span></span><code>def main(filepath):
      return Start('testRE.in')
 if __name__ == '__main__':
      main(sys.argv[1])
-</pre></div>
+</code></pre></div>
 <p>好吧，难怪我的文件名参数没用——剩下的在看懂他输出是什么内容后很快就解决了。</p>
-<h1 id="_2">无耻的分界线</h1>
+<h1 id="_2">无耻的分界线<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>你以为我就想说这个？ NO！ 最起码笔算不易还没说呢！！！</p>
 <p>本周第一个视频讲的是正则表达式基础，从定义到正则表达式转换成NFA</p>
 <p>CUT！！！</p>
 <p>概念没兴趣， RE转NFA 学过的内容，看到那张图就OK了， 主要是确实so easy.</p>
 <p>CONTINUE！！！</p>
 <p>然后就到DFA转RE了， 说实话吧， 过程不是很复杂，对于我这种人来说，就一个公式（虽然后面不停地修正自己对过程理解上的缺陷）， 套公式，谁不会呢？！</p>
-<h1 id="_3">转折</h1>
+<h1 id="_3">转折<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
 <p>我还真不会了， 小测第一题就是DFA转RE, 4个状态之间的转换，</p>
 <p>套用公式简单</p>
 <p>$$ R^k_{ij} =R^{k-1}{ij} + R^{k-1}(R^{k-1}{kk})* R^{k-1} $$</p>
@@ -166,24 +166,24 @@ if __name__ == '__main__':
 <p>在纸上推导被绕的过程中， 顺手写代码，模拟一下这个公式， 就是个递归的公式，用nnn 的数组来记录状态嘛。</p>
 <p>初始版的数组下标就不对，不经过额外状态的路径（直接连结或无连结）被我忽略了， 另外也没有组织好正则表达式的表达形式，括号没用好。 输出的结果自然是无效的。</p>
 <p>最后第二周的第一个小测是我经过7次连蒙带猜后，总算拿到5分。 第一题纸算太难，第二题花费很长时间来理解题意，后3题时不时拖后腿，几次前两题答对（后几次已经不是猜了），后三题不小心出错。</p>
-<h1 id="_4">万万没想到（其实不至于）</h1>
+<h1 id="_4">万万没想到（其实不至于）<a class="headerlink" href="#_4" title="Permanent link">¶</a></h1>
 <p>到晚上， 做其他事耐心缺失之下， 又打开了代码， 决定调整好数组下标， 再组织好括号的输出。很快修改完毕， 随意运行之后，输出结果居然就这么达到预期 因 honor code， 只摘取与题目要求无关的输出部分</p>
-<div class="highlight"><pre><span></span>k i j regular expression
-4 1 1 1(11+0(01+10))*(1+00)
-4 1 2 1(11+0(01+10))*01
-4 1 3 1(11+0(01+10))*0
-4 1 4 1+1(11+0(01+10))*(11+0(01+10))
-4 2 1 0(11+0(01+10))*(1+00)
-4 2 2 0(11+0(01+10))*01
-4 2 3 0(11+0(01+10))*0
-4 2 4 0+0(11+0(01+10))*(11+0(01+10))
-4 3 1 0+(01+10)(11+0(01+10))*(1+00)
-4 3 2 1+(01+10)(11+0(01+10))*01
-4 3 3 (01+10)(11+0(01+10))*0
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="n">k</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="n">regular</span><span class="w"> </span><span class="n">expression</span>
+<span class="mh">4</span><span class="w"> </span><span class="mh">1</span><span class="w"> </span><span class="mh">1</span><span class="w"> </span><span class="mh">1</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mh">1</span><span class="o">+</span><span class="mh">00</span><span class="p">)</span>
+<span class="mh">4</span><span class="w"> </span><span class="mh">1</span><span class="w"> </span><span class="mh">2</span><span class="w"> </span><span class="mh">1</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="mh">01</span>
+<span class="mh">4</span><span class="w"> </span><span class="mh">1</span><span class="w"> </span><span class="mh">3</span><span class="w"> </span><span class="mh">1</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="mh">0</span>
+<span class="mh">4</span><span class="w"> </span><span class="mh">1</span><span class="w"> </span><span class="mh">4</span><span class="w"> </span><span class="mh">1</span><span class="o">+</span><span class="mh">1</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span>
+<span class="mh">4</span><span class="w"> </span><span class="mh">2</span><span class="w"> </span><span class="mh">1</span><span class="w"> </span><span class="mh">0</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mh">1</span><span class="o">+</span><span class="mh">00</span><span class="p">)</span>
+<span class="mh">4</span><span class="w"> </span><span class="mh">2</span><span class="w"> </span><span class="mh">2</span><span class="w"> </span><span class="mh">0</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="mh">01</span>
+<span class="mh">4</span><span class="w"> </span><span class="mh">2</span><span class="w"> </span><span class="mh">3</span><span class="w"> </span><span class="mh">0</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="mh">0</span>
+<span class="mh">4</span><span class="w"> </span><span class="mh">2</span><span class="w"> </span><span class="mh">4</span><span class="w"> </span><span class="mh">0</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span>
+<span class="mh">4</span><span class="w"> </span><span class="mh">3</span><span class="w"> </span><span class="mh">1</span><span class="w"> </span><span class="mh">0</span><span class="o">+</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">)(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mh">1</span><span class="o">+</span><span class="mh">00</span><span class="p">)</span>
+<span class="mh">4</span><span class="w"> </span><span class="mh">3</span><span class="w"> </span><span class="mh">2</span><span class="w"> </span><span class="mh">1</span><span class="o">+</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">)(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="mh">01</span>
+<span class="mh">4</span><span class="w"> </span><span class="mh">3</span><span class="w"> </span><span class="mh">3</span><span class="w"> </span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">)(</span><span class="mh">11</span><span class="o">+</span><span class="mh">0</span><span class="p">(</span><span class="mh">01</span><span class="o">+</span><span class="mh">10</span><span class="p">))</span><span class="o">*</span><span class="mh">0</span>
+</code></pre></div>
 <p>虽然没有经过完全化简——也不确认全部正确，但形式上是没问题了。 测验第一题对应的结果也是正确的。</p>
 <p>根据输出的结果， 回顾题目， 我去， 选项怎么这么明显啊， 我之前的推导都在为了什么？</p>
-<h1 id="_5">结论</h1>
+<h1 id="_5">结论<a class="headerlink" href="#_5" title="Permanent link">¶</a></h1>
 <p>个人经验， 手工推导DFA到RE 非常容易错乱，而老师题目中的几个选项稍认真分析下，可以直接判断正误， 我之前是有多不认真呢。</p>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
@@ -195,45 +195,7 @@ if __name__ == '__main__':
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/automata-hw1.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'automata-hw1.html';
-    var disqus_url = 'http://sndnyang.github.io/automata-hw1.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -303,45 +265,7 @@ if __name__ == '__main__':
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

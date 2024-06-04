@@ -13,7 +13,7 @@
 <meta name="keywords" content="论文, 算法, 研究, " />
 
 <meta property="og:title" content="基于语义的二进制代码相似度比较 "/>
-<meta property="og:url" content="http://sndnyang.github.io/Semantics-Based_Obfuscation-Resilient_Binary_Code_Similarity_Comparison.html" />
+<meta property="og:url" content="/Semantics-Based_Obfuscation-Resilient_Binary_Code_Similarity_Comparison.html" />
 <meta property="og:description" content="" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang sndnyang.github.io" />
@@ -149,7 +149,7 @@
 
                         
                         
-<h1 id="_1">摘要</h1>
+<h1 id="_1">摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>论文[^1]</p>
 <ol>
 <li>语义等价的代码块：  <ol>
@@ -170,7 +170,7 @@
 <li>路径的定义是什么， 二进制代码的一次执行？</li>
 </ol>
 <p>对我来说，最没概念的就是反向工程reverse engineering这块了</p>
-<h1 id="_2">导论</h1>
+<h1 id="_2">导论<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>三个层次的语义：</p>
 <ol>
 <li>基本代码块</li>
@@ -179,8 +179,8 @@
 </ol>
 <p>symbolic execution technique 获得 一组符号公式， 以表示代码块的输入输出关系。</p>
 <p>导论和摘要永远差不多的~~~</p>
-<h1 id="_3">总览</h1>
-<h2 id="_4">方法论</h2>
+<h1 id="_3">总览<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
+<h2 id="_4">方法论<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>给两段程序（原告和被告）， 要判断抄袭、重复的话， 不只是整段相似， 可能是其中一段、核心部分抄袭。</p>
 <p>现有的方法中，基于程序语法 syntax, 和 基于系统调用依赖图 system call dependency graphs的方法都不是很靠谱</p>
 <p>所以提出基于 formal program semantics 的方法， 但问题是 formal
@@ -192,17 +192,17 @@ logic 有相等而少相似</p>
 验证 一些输出公式是否在嫌疑代码中也等价存在。</p>
 <p>定义两个基本代码块的语义相似程度， 大于阈值， 则为等价</p>
 <p>进而在LCS计算过程中使用。</p>
-<h1 id="_5">块相似</h1>
-<h2 id="_6">严格语义等价</h2>
+<h1 id="_5">块相似<a class="headerlink" href="#_5" title="Permanent link">¶</a></h1>
+<h2 id="_6">严格语义等价<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p>At the binary code level, these variables are represented as
 registers and memory cells</p>
 <p>所以 binary code 其实是汇编语言？</p>
 <p>Via symbolic execution, we get two symbolic formulas</p>
 <p>但没有解释  theorem prover 是什么</p>
-<h2 id="_7">相似度</h2>
+<h2 id="_7">相似度<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
 <p>严格等价很容易被糊弄过去，比如随便加个新变量</p>
 <p>所以， 作者提出对原告代码的每个输出变量进行独立检验， 验证嫌疑代码中是否存在一个对应。</p>
-<h2 id="_8">形式化</h2>
+<h2 id="_8">形式化<a class="headerlink" href="#_8" title="Permanent link">¶</a></h2>
 <p>定义两组变量X和Y， 定义X和Y 变量对等价公式Pair-wise Equivalence Formulas of Input Variables</p>
 <p>$$ p(X, \pi(Y)) = \Lambda_{i=0}^{n} (X_i = \pi_i(Y))$$</p>
 <p>Let π(Y ) be a permutation of the variables in Y</p>
@@ -219,45 +219,7 @@ p(X 1 ,π(X 2 )) =⇒ y 1 = y </p>
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/Semantics-Based_Obfuscation-Resilient_Binary_Code_Similarity_Comparison.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'Semantics-Based_Obfuscation-Resilient_Binary_Code_Similarity_Comparison.html';
-    var disqus_url = 'http://sndnyang.github.io/Semantics-Based_Obfuscation-Resilient_Binary_Code_Similarity_Comparison.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -272,7 +234,7 @@ p(X 1 ,π(X 2 )) =⇒ y 1 = y </p>
                     <h4>Tags</h4>
                     <ul class="list-of-tags tags-in-article">
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#suan-fa-ref">算法
                             <span>6</span>
@@ -328,45 +290,7 @@ p(X 1 ,π(X 2 )) =⇒ y 1 = y </p>
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

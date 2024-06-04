@@ -13,7 +13,7 @@
 <meta name="keywords" content="git, 部署, 开发工具, " />
 
 <meta property="og:title" content="使用git在服务器上传部署代码 "/>
-<meta property="og:url" content="http://sndnyang.github.io/use-git-upload-deploy-project.html" />
+<meta property="og:url" content="/use-git-upload-deploy-project.html" />
 <meta property="og:description" content="如何在服务器上创建GIT库，使得git push之后能自动化部署" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang (sndnyangd@gmail.com)" />
@@ -157,29 +157,29 @@
 
                         
                         
-<h1 id="_1">本地创建</h1>
-<h2 id="git">安装GIT</h2>
+<h1 id="_1">本地创建<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<h2 id="git">安装GIT<a class="headerlink" href="#git" title="Permanent link">¶</a></h2>
 <p><a href="config-centOS-install-git">CentOS配置-git安装</a></p>
-<h2 id="_2">本地创建</h2>
-<div class="highlight"><pre><span></span>git init // 略
-git remote add 你给远程服务器起的名字 远程服务器链接（例ssh://username@hostname_or_ip/path/to/you/project , 不要乱加 .git后缀）
-</pre></div>
+<h2 id="_2">本地创建<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">init</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">略</span>
+<span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="k">add</span><span class="w"> </span><span class="n">你给远程服务器起的名字</span><span class="w"> </span><span class="n">远程服务器链接</span><span class="err">（</span><span class="nl">例ssh</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="nv">@hostname_or_ip</span><span class="o">/</span><span class="k">path</span><span class="o">/</span><span class="k">to</span><span class="o">/</span><span class="n">you</span><span class="o">/</span><span class="n">project</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">不要乱加</span><span class="w"> </span><span class="p">.</span><span class="n">git后缀</span><span class="err">）</span>
+</code></pre></div>
 <p>或</p>
-<div class="highlight"><pre><span></span>git clone ssh://username@hostname_or_ip/path/to/you/project [指定文件夹名，默认用远程文件夹名]
-</pre></div>
-<h1 id="_3">服务器安装</h1>
+<div class="codehilite"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="nl">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="nv">@hostname_or_ip</span><span class="o">/</span><span class="k">path</span><span class="o">/</span><span class="k">to</span><span class="o">/</span><span class="n">you</span><span class="o">/</span><span class="n">project</span><span class="w"> </span><span class="o">[</span><span class="n">指定文件夹名，默认用远程文件夹名</span><span class="o">]</span>
+</code></pre></div>
+<h1 id="_3">服务器安装<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
 <p>见<a href="http://sndnyang.github.io/config-centOS-install-git.html">CentOS配置-git安装</a></p>
-<h1 id="sshkey">SSHKEY密钥配置</h1>
+<h1 id="sshkey">SSHKEY密钥配置<a class="headerlink" href="#sshkey" title="Permanent link">¶</a></h1>
 <p>见<a href="http://sndnyang.github.io/config-centOS-config-sshkey.html">CentOS配置-SSHKEY密钥配置</a></p>
-<h1 id="_4">创建共享裸仓库</h1>
-<div class="highlight"><pre><span></span>// 先创建文件夹
-git init --bare
-</pre></div>
-<h1 id="_5">创建运行库</h1>
+<h1 id="_4">创建共享裸仓库<a class="headerlink" href="#_4" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="c1">// 先创建文件夹</span>
+<span class="n">git</span><span class="w"> </span><span class="n">init</span><span class="w"> </span><span class="o">--</span><span class="n">bare</span>
+</code></pre></div>
+<h1 id="_5">创建运行库<a class="headerlink" href="#_5" title="Permanent link">¶</a></h1>
 <p>同本地创建， 本地库、共享裸库、运行库执行顺序不限</p>
 <p>创建完毕后， 运行库一定要从共享库中获取一次（比如clone来创建，或pull一次）</p>
-<h1 id="hooks">配置挂钩hooks</h1>
-<h2 id="_6">介绍</h2>
+<h1 id="hooks">配置挂钩hooks<a class="headerlink" href="#hooks" title="Permanent link">¶</a></h1>
+<h2 id="_6">介绍<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p>在共享库文件夹的 hooks 文件夹下有几个.sample 文件， 含义为(随便一个词典搜一下就知道)：</p>
 <ul>
 <li>pre-, 在...之前</li>
@@ -188,44 +188,43 @@ git init --bare
 <li>commit, 对应 git commit</li>
 <li>update 或 receive 或 push, 对应 git push，不是所有版本都有 post-receive, 那么post-update也能用</li>
 </ul>
-<h2 id="_7">配置</h2>
+<h2 id="_7">配置<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
 <p>选择代表在 git push之后执行的.sample文件， 如 post-update.sample 或 post-receive.sample</p>
-<div class="highlight"><pre><span></span>copy it post-update(或post-receive)
-</pre></div>
+<div class="codehilite"><pre><span></span><code>copy it post-update(或post-receive)
+</code></pre></div>
 <p>并修改文件内容</p>
-<h1 id="post">post文件</h1>
-<h2 id="_8">操作说明</h2>
+<h1 id="post">post文件<a class="headerlink" href="#post" title="Permanent link">¶</a></h1>
+<h2 id="_8">操作说明<a class="headerlink" href="#_8" title="Permanent link">¶</a></h2>
 <p>我们要在从本地git push到服务器共享库后， 自动把代码更新给运行库， 并重启程序</p>
 <ol>
 <li>自动导出到运行库  <br/>
         git --work-tree=/path/to/you/运行库 --git-dir=/path/to/you/共享库 checkout -f</li>
 <li>执行更新、重启命令</li>
 </ol>
-<h2 id="_9">示例</h2>
+<h2 id="_9">示例<a class="headerlink" href="#_9" title="Permanent link">¶</a></h2>
 <p>以python flask建的站为例</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
-git --work-tree<span class="o">=</span>/var/www-site/sndnyang --git-dir<span class="o">=</span>/var/www-git/sndnyang.git checkout -f
-/var/www-site/sndnyang/bin/pip install -r /var/www-site/sndnyang/requirements.txt   // 导出后， 安装程序所需第三方库
-<span class="nb">cd</span> /var/www-site/sndnyang/XXX  // 不知道有没有意义~~~
-/var/www-site/sndnyang/bin/supervisorctl -c /var/www-site/sndnyang/supervisor.conf restart sndnyang // 用supervisor重启sndnyang程序
-</pre></div>
-</td></tr></table>
-<h2 id="_10">执行</h2>
+<div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!/bin/sh</span>
+git<span class="w"> </span>--work-tree<span class="o">=</span>/var/www-site/sndnyang<span class="w"> </span>--git-dir<span class="o">=</span>/var/www-git/sndnyang.git<span class="w"> </span>checkout<span class="w"> </span>-f
+/var/www-site/sndnyang/bin/pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>/var/www-site/sndnyang/requirements.txt<span class="w">   </span>//<span class="w"> </span>导出后，<span class="w"> </span>安装程序所需第三方库
+<span class="nb">cd</span><span class="w"> </span>/var/www-site/sndnyang/XXX<span class="w">  </span>//<span class="w"> </span>不知道有没有意义~~~
+/var/www-site/sndnyang/bin/supervisorctl<span class="w"> </span>-c<span class="w"> </span>/var/www-site/sndnyang/supervisor.conf<span class="w"> </span>restart<span class="w"> </span>sndnyang<span class="w"> </span>//<span class="w"> </span>用supervisor重启sndnyang程序
+</code></pre></div></td></tr></table></div>
+<h2 id="_10">执行<a class="headerlink" href="#_10" title="Permanent link">¶</a></h2>
 <p>必须手工运行一次</p>
-<div class="highlight"><pre><span></span>./hooks/post-update(receive)
-</pre></div>
+<div class="codehilite"><pre><span></span><code>./hooks/post-update(receive)
+</code></pre></div>
 <p>git push后才会自动执行</p>
-<h1 id="_11">本地上传</h1>
-<div class="highlight"><pre><span></span>git push 你给远程服务器起的名字 master(或其他分支？)
-</pre></div>
+<h1 id="_11">本地上传<a class="headerlink" href="#_11" title="Permanent link">¶</a></h1>
+<div class="codehilite"><pre><span></span><code>git push 你给远程服务器起的名字 master(或其他分支？)
+</code></pre></div>
 <p>示例的观察结果：</p>
-<div class="highlight"><pre><span></span>会有 pip install -r requirements.txt 一大堆的提示  
+<div class="codehilite"><pre><span></span><code>会有 pip install -r requirements.txt 一大堆的提示  
 会有 supervisorctl 运行结果提示
-</pre></div>
+</code></pre></div>
 <p>成功</p>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
@@ -237,45 +236,7 @@ git --work-tree<span class="o">=</span>/var/www-site/sndnyang --git-dir<span cla
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/use-git-upload-deploy-project.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'use-git-upload-deploy-project.html';
-    var disqus_url = 'http://sndnyang.github.io/use-git-upload-deploy-project.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -342,45 +303,7 @@ git --work-tree<span class="o">=</span>/var/www-site/sndnyang --git-dir<span cla
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

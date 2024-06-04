@@ -13,14 +13,14 @@
 <meta name="keywords" content="深度学习 机器学习, 人工智能, 深度学习, " />
 
 <meta property="og:title" content="Theano-Chainer "/>
-<meta property="og:url" content="http://sndnyang.github.io/Theano-Chainer-issues.html" />
-<meta property="og:description" content="Chainer Installation to use GPU 安装 The backend is based on cupy. Choose the right version of cuda. Chainer 后端用的是cupy，需要根据cuda版本选择。 If your cudnn path is not in the $CUDA_PATH directory, you must set: 如果你的 cudnn 安装位置和 cuda不是同一个文件夹， 安装前必须设置以下环境变量： export CFLAGS=-I/path/to/cudnn/include export LDFLAGS=-L/path ..." />
+<meta property="og:url" content="/Theano-Chainer-issues.html" />
+<meta property="og:description" content="Chainer¶ Installation to use GPU 安装¶ The backend is based on cupy. Choose the right version of cuda. Chainer 后端用的是cupy，需要根据cuda版本选择。 If your cudnn path is not in the $CUDA_PATH directory, you must set: 如果你的 cudnn 安 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2019-02-19T22:18:30+08:00" />
 <meta property="" content="2019-12-19T22:18:30+08:00" />
 <meta name="twitter:title" content="Theano-Chainer ">
-<meta name="twitter:description" content="Chainer Installation to use GPU 安装 The backend is based on cupy. Choose the right version of cuda. Chainer 后端用的是cupy，需要根据cuda版本选择。 If your cudnn path is not in the $CUDA_PATH directory, you must set: 如果你的 cudnn 安装位置和 cuda不是同一个文件夹， 安装前必须设置以下环境变量： export CFLAGS=-I/path/to/cudnn/include export LDFLAGS=-L/path ...">
+<meta name="twitter:description" content="Chainer¶ Installation to use GPU 安装¶ The backend is based on cupy. Choose the right version of cuda. Chainer 后端用的是cupy，需要根据cuda版本选择。 If your cudnn path is not in the $CUDA_PATH directory, you must set: 如果你的 cudnn 安 …">
 
 
         <title>Theano-Chainer  · 科探空谷
@@ -149,26 +149,26 @@
 
                         
                         
-<h1 id="chainer">Chainer</h1>
-<h2 id="installation-to-use-gpu">Installation to use GPU 安装</h2>
+<h1 id="chainer">Chainer<a class="headerlink" href="#chainer" title="Permanent link">¶</a></h1>
+<h2 id="installation-to-use-gpu">Installation to use GPU 安装<a class="headerlink" href="#installation-to-use-gpu" title="Permanent link">¶</a></h2>
 <p>The backend is based on cupy. Choose the right version of cuda.</p>
 <p>Chainer 后端用的是cupy，需要根据cuda版本选择。</p>
 <p>If your cudnn path is not in the $CUDA_PATH directory, you must set:</p>
 <p>如果你的 cudnn 安装位置和 cuda不是同一个文件夹， 安装前必须设置以下环境变量：</p>
-<div class="highlight"><pre><span></span>export CFLAGS=-I/path/to/cudnn/include
-export LDFLAGS=-L/path/to/cudnn/lib
-export LD_LIBRARY_PATH=/path/to/cudnn/lib:$LD_LIBRARY_PATH
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">CFLAGS</span><span class="o">=-</span><span class="n">I</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">cudnn</span><span class="o">/</span><span class="n">include</span>
+<span class="k">export</span><span class="w"> </span><span class="n">LDFLAGS</span><span class="o">=-</span><span class="n">L</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">cudnn</span><span class="o">/</span><span class="n">lib</span>
+<span class="k">export</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">cudnn</span><span class="o">/</span><span class="n">lib</span><span class="p">:</span><span class="o">$</span><span class="n">LD_LIBRARY_PATH</span>
+</code></pre></div>
 <p>Refer to these two links: <a href="https://docs-cupy.chainer.org/en/latest/install.html#install-cupy">install cupy</a>, and <a href="https://docs-cupy.chainer.org/en/latest/install.html#installing-cudnn-and-nccl">install cudnn</a></p>
-<h2 id="initializeupdate-the-weight-by-numpy">initialize/update the weight by numpy</h2>
+<h2 id="initializeupdate-the-weight-by-numpy">initialize/update the weight by numpy<a class="headerlink" href="#initializeupdate-the-weight-by-numpy" title="Permanent link">¶</a></h2>
 <p>Reference to <a href="https://github.com/chainer/chainer/blob/v5.2.0/chainer/initializers/normal.py#L10">normal initializer</a></p>
 <p>Its implementation is different from PyTorch. </p>
-<h1 id="theano">Theano</h1>
+<h1 id="theano">Theano<a class="headerlink" href="#theano" title="Permanent link">¶</a></h1>
 <p>要使用 GPU 的话， 需要 pygpu 库， 好像只能用 conda 安装， pip 是找不到这个库的.</p>
 <p>We need pygpu library to utilize GPU, so it seems that only conda support pygpu, I can't find the library by pip.</p>
 <p>但是 tensorboardx 是不能用conda装的</p>
 <p>tensorboardX need to use pip to install.</p>
-<h2 id="suggestion">安装建议 suggestion</h2>
+<h2 id="suggestion">安装建议 suggestion<a class="headerlink" href="#suggestion" title="Permanent link">¶</a></h2>
 <p>python 2.7 直接使用 conda install theano pygpu </p>
 <p>python 3 可能更有效方式， </p>
 <p>conda install pygpu  libgpuarray numpy==1.15.4 theano   -c mila-udem</p>
@@ -177,7 +177,7 @@ export LD_LIBRARY_PATH=/path/to/cudnn/lib:$LD_LIBRARY_PATH
 <li>conda install pygpu  or  conda install theano pygpu</li>
 <li>update theano using pip. pip install theano==1.0.4</li>
 </ol>
-<h3 id="error-information">Error information</h3>
+<h3 id="error-information">Error information<a class="headerlink" href="#error-information" title="Permanent link">¶</a></h3>
 <ol>
 <li>Mixed dnn version. The header is version xxx  while the library is version  yyyy</li>
 <li>theano seems not work &gt; 3.5</li>
@@ -193,45 +193,7 @@ export LD_LIBRARY_PATH=/path/to/cudnn/lib:$LD_LIBRARY_PATH
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/Theano-Chainer-issues.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'Theano-Chainer-issues.html';
-    var disqus_url = 'http://sndnyang.github.io/Theano-Chainer-issues.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -302,45 +264,7 @@ export LD_LIBRARY_PATH=/path/to/cudnn/lib:$LD_LIBRARY_PATH
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

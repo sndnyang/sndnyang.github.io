@@ -13,7 +13,7 @@
 <meta name="keywords" content="Python, 代码阅读, Python, " />
 
 <meta property="og:title" content="pelican内容生成器 "/>
-<meta property="og:url" content="http://sndnyang.github.io/pelican-generator.html" />
+<meta property="og:url" content="/pelican-generator.html" />
 <meta property="og:description" content="pelican是如何解析文件的，生成器generator" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang sndnyang.github.io" />
@@ -145,7 +145,7 @@
 
                         
                         
-<h1 id="_1">引入</h1>
+<h1 id="_1">引入<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>接上回 &gt;<a href="learn-python-by-opensource-project-pelican.html#_8">Pelican主程序调用</a></p>
 <ol>
 <li>调用内容生成器，生成 <a href="pelican-generator.html">pelican内容生成器</a>
@@ -157,16 +157,16 @@
 </ol>
 <p>得到一个 generator 列表， 再去生成内容</p>
 <p>所以我们来看 Genertator 类</p>
-<h1 id="generator">Generator</h1>
+<h1 id="generator">Generator<a class="headerlink" href="#generator" title="Permanent link">¶</a></h1>
 <p>基础类</p>
-<h2 id="init"><strong>init</strong></h2>
+<h2 id="init"><strong>init</strong><a class="headerlink" href="#init" title="Permanent link">¶</a></h2>
 <p>关键，调用 &lt;<a href="pelican-reader.html">pelican-Readers类</a>，读取内容</p>
-<div class="highlight"><pre><span></span>    self.readers = Readers(self.settings, readers_cache_name)
-</pre></div>
+<div class="codehilite"><pre><span></span><code>    self.readers = Readers(self.settings, readers_cache_name)
+</code></pre></div>
 <p>读取文件系统</p>
-<div class="highlight"><pre><span></span>    simple_loader = FileSystemLoader(os.path.join(theme_path,
-                                     "themes", "simple", "templates"))
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">simple_loader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">theme_path</span><span class="p">,</span>
+<span class="w">                                     </span><span class="s2">"themes"</span><span class="p">,</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w"> </span><span class="s2">"templates"</span><span class="p">))</span>
+</code></pre></div>
 <p>其他函数暂略，</p>
 <p>完成了 Generator的初始化， 我们来看 generate_context(), Generator类中没有该函
 数，直接出现成几个子类中， 所以我们要看看几个子类。</p>
@@ -175,17 +175,17 @@
 <li>&lt;<a href="pelican-ArticlesGenerator.html#generate_context">博客文章生成类</a></li>
 <li>&lt;<a href="pelican-PagesGenerator.html#generate_context">其他页面生成</a></li>
 </ol>
-<h2 id="writer">选择writer</h2>
+<h2 id="writer">选择writer<a class="headerlink" href="#writer" title="Permanent link">¶</a></h2>
 <blockquote>
 <p><a href="pelican-writer.html">pelican-writer</a></p>
 </blockquote>
-<h2 id="_2">输出</h2>
+<h2 id="_2">输出<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>generate_output函数也是只在子类中存在</p>
 <ol>
 <li>&lt;<a href="pelican-ArticlesGenerator.html#generate_output">博客文章生成类</a></li>
 <li>&lt;<a href="pelican-PagesGenerator.html#generate_output">其他页面生成</a></li>
 </ol>
-<h1 id="_3">结束</h1>
+<h1 id="_3">结束<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
 <p>重要细节后续补充</p>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
@@ -197,45 +197,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/pelican-generator.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'pelican-generator.html';
-    var disqus_url = 'http://sndnyang.github.io/pelican-generator.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -306,45 +268,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

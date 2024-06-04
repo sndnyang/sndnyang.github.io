@@ -13,13 +13,13 @@
 <meta name="keywords" content="CS, 算法, MOOC, 算法, " />
 
 <meta property="og:title" content="连通性问题 "/>
-<meta property="og:url" content="http://sndnyang.github.io/algo_connectivity.html" />
-<meta property="og:description" content="问题定义： 给定 N个物体（点） 存在两种操作： 连接： 连接两点 查询连通性： 两点间是否存在路径 问题建模： 对象建模： 简单就是个点， 然后用个数组下标0 —— N-1来表示 连通性建模： &#39;连接到&#39; 等价于以下数学表示： 反射： 自身是连通的。 对称： 如果p连接到q，则q也连接到p 传递： 如果p连接到q，q又连通r， 则p 也连通r. 连通分量(connected component) 相互连通的物体的最大集合 操作的实现: Find查询: 查询两点是否在同一分量 Union连接：" />
+<meta property="og:url" content="/algo_connectivity.html" />
+<meta property="og:description" content="问题定义：¶ 给定 N个物体（点） 存在两种操作： 连接： 连接两点 查询连通性： 两点间是否存在路径 问题建模：¶ 对象建模：¶ 简单就是个点， 然后 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2014-08-16T00:00:00+08:00" />
 <meta name="twitter:title" content="连通性问题 ">
-<meta name="twitter:description" content="问题定义： 给定 N个物体（点） 存在两种操作： 连接： 连接两点 查询连通性： 两点间是否存在路径 问题建模： 对象建模： 简单就是个点， 然后用个数组下标0 —— N-1来表示 连通性建模： &#39;连接到&#39; 等价于以下数学表示： 反射： 自身是连通的。 对称： 如果p连接到q，则q也连接到p 传递： 如果p连接到q，q又连通r， 则p 也连通r. 连通分量(connected component) 相互连通的物体的最大集合 操作的实现: Find查询: 查询两点是否在同一分量 Union连接：">
+<meta name="twitter:description" content="问题定义：¶ 给定 N个物体（点） 存在两种操作： 连接： 连接两点 查询连通性： 两点间是否存在路径 问题建模：¶ 对象建模：¶ 简单就是个点， 然后 …">
 
 
         <title>连通性问题  · 科探空谷
@@ -144,28 +144,28 @@
 
                         
                         
-<h1 id="_1">问题定义：</h1>
+<h1 id="_1">问题定义：<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>给定 N个物体（点）</p>
 <p>存在两种操作：</p>
 <ol>
 <li>连接： 连接两点</li>
 <li>查询连通性： 两点间是否存在路径</li>
 </ol>
-<h1 id="_2">问题建模：</h1>
-<h2 id="_3">对象建模：</h2>
+<h1 id="_2">问题建模：<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
+<h2 id="_3">对象建模：<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <blockquote>
 <p>简单就是个点， 然后用个数组下标0 —— N-1来表示</p>
 </blockquote>
-<h2 id="_4">连通性建模：</h2>
+<h2 id="_4">连通性建模：<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>'连接到' 等价于以下数学表示：</p>
 <ol>
 <li>反射： 自身是连通的。 </li>
 <li>对称： 如果p连接到q，则q也连接到p </li>
 <li>传递： 如果p连接到q，q又连通r， 则p 也连通r.</li>
 </ol>
-<h2 id="connected-component">连通分量(connected component)</h2>
+<h2 id="connected-component">连通分量(connected component)<a class="headerlink" href="#connected-component" title="Permanent link">¶</a></h2>
 <p>相互连通的物体的最大集合</p>
-<h2 id="_5">操作的实现:</h2>
+<h2 id="_5">操作的实现:<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>Find查询: 查询两点是否在同一分量
 Union连接：</p>
                         
@@ -178,45 +178,7 @@ Union连接：</p>
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/algo_connectivity.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'algo_connectivity.html';
-    var disqus_url = 'http://sndnyang.github.io/algo_connectivity.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -286,45 +248,7 @@ Union连接：</p>
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

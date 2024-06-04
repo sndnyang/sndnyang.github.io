@@ -13,13 +13,13 @@
 <meta name="keywords" content="论文, CS, 社区发现, CS, " />
 
 <meta property="og:title" content="Unsupervised Feature Selection on Networks: A Generative View "/>
-<meta property="og:url" content="http://sndnyang.github.io/Generative-Feature-Selection.html" />
-<meta property="og:description" content="摘要 现在的网络数据（社交网络或信息网络），不仅有链接信息， 还会有一些或噪声或重要的高维内容，比如点的属性。 也就是说，不单纯是个图数据，每个点还有若干个特性、属性。 那些对网络数据进行机器学习的任务，比如社区发现和链接预测，如果能够利用上这些附加的、额外的信息，想必会有一定的效果。 但这些点的属性或特征往往是高维度数据，对效率上影响比较大。 所以， 本文的目标就两个zhi： 降维 就是对点的特征进行选取 (feature selection) 再根据前人工作中的两个问题， 选取特征时没考虑数据的网络、图特性（存在边、连接）。 网络数据没有标准的标签（label)，一般不适合监督学习的方法。但却用聚类等方法强行给标签，强行使用监督学习，准确性很差。 所以本文提出的特征选取方法： 非监督的 用生成模型（generative model)来整合连接和内容信息（即边和属性） 导论 和摘要差不多， 重复不提。 主要思想： 从点的所有特征中，选取重要的、关键的特征，记为 ..." />
+<meta property="og:url" content="/Generative-Feature-Selection.html" />
+<meta property="og:description" content="摘要¶ 现在的网络数据（社交网络或信息网络），不仅有链接信息， 还会有一些或噪声或重要的高维内容，比如点的属性。 也就是 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2016-07-04T15:47:19+08:00" />
 <meta name="twitter:title" content="Unsupervised Feature Selection on Networks: A Generative View ">
-<meta name="twitter:description" content="摘要 现在的网络数据（社交网络或信息网络），不仅有链接信息， 还会有一些或噪声或重要的高维内容，比如点的属性。 也就是说，不单纯是个图数据，每个点还有若干个特性、属性。 那些对网络数据进行机器学习的任务，比如社区发现和链接预测，如果能够利用上这些附加的、额外的信息，想必会有一定的效果。 但这些点的属性或特征往往是高维度数据，对效率上影响比较大。 所以， 本文的目标就两个zhi： 降维 就是对点的特征进行选取 (feature selection) 再根据前人工作中的两个问题， 选取特征时没考虑数据的网络、图特性（存在边、连接）。 网络数据没有标准的标签（label)，一般不适合监督学习的方法。但却用聚类等方法强行给标签，强行使用监督学习，准确性很差。 所以本文提出的特征选取方法： 非监督的 用生成模型（generative model)来整合连接和内容信息（即边和属性） 导论 和摘要差不多， 重复不提。 主要思想： 从点的所有特征中，选取重要的、关键的特征，记为 ...">
+<meta name="twitter:description" content="摘要¶ 现在的网络数据（社交网络或信息网络），不仅有链接信息， 还会有一些或噪声或重要的高维内容，比如点的属性。 也就是 …">
 
 
         <title>Unsupervised Feature Selection on Networks: A Generative View  · 科探空谷
@@ -159,7 +159,7 @@
 
                         
                         
-<h1 id="_1">摘要</h1>
+<h1 id="_1">摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>现在的网络数据（社交网络或信息网络），不仅有链接信息， 还会有一些或噪声或重要的高维内容，比如点的属性。</p>
 <p>也就是说，不单纯是个图数据，每个点还有若干个特性、属性。</p>
 <p>那些对网络数据进行机器学习的任务，比如社区发现和链接预测，如果能够利用上这些附加的、额外的信息，想必会有一定的效果。</p>
@@ -177,19 +177,19 @@
 <li>非监督的</li>
 <li>用生成模型（generative model)来整合连接和内容信息（即边和属性）</li>
 </ol>
-<h1 id="_2">导论</h1>
+<h1 id="_2">导论<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>和摘要差不多， 重复不提。</p>
 <p>主要思想：</p>
 <p>从点的所有特征中，选取重要的、关键的特征，记为 <em>预特征</em>（oracle features，叫圣特征、神谕特征都不好吧）</p>
-<h2 id="_3">对于边来说</h2>
+<h2 id="_3">对于边来说<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>边不是边~~~而是两个点在预特征上的亲密度（就相似度）来决定两个点是不是该相连。</p>
 <p>首先，非预特征对边没有影响。就像自然语言处理里肯定要把停用词过滤掉， 这种数据没有作用。</p>
 <p>其次， 想说什么来着？忘了</p>
-<h2 id="_4">对于点的属性特征来说</h2>
+<h2 id="_4">对于点的属性特征来说<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>首先， 很多属性也是没用、没影响的，只占空间不干活。</p>
 <p>其次， 还有很多的属性或特征 本质上是重复的。就像线性方程组消元，发现一些方程可能是另外方程的线性组合。</p>
 <p>所以，原本比较大的点属性集合就可以用比较小的 预特征 集合来代替（还可以存在映射关系）</p>
-<h2 id="_5">结论</h2>
+<h2 id="_5">结论<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>就可以用点的预特征集合 来同时表示连接和内容信息。</p>
 <p>这样，就得到了一个模型， 类似于线性回归的那个线性方程的模型， 后面会写模型具体的形式</p>
 <p>然后，再去定义这个模型对应的：</p>
@@ -198,41 +198,41 @@
 <li>算法。 如何进行优化。</li>
 </ol>
 <p>*模型、策略、算法，机器学习三要素，《统计学习方法》的描述方法</p>
-<h2 id="_6">题外话</h2>
+<h2 id="_6">题外话<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p>生成图模型，generative graph model， 比如AGM 都是先定义模型、模型表达式，再定义策略、损失函数，最后才用算法来求出模型解空间里 最优的每个参数</p>
-<h1 id="_7">正文</h1>
-<h2 id="_8">定义</h2>
+<h1 id="_7">正文<a class="headerlink" href="#_7" title="Permanent link">¶</a></h1>
+<h2 id="_8">定义<a class="headerlink" href="#_8" title="Permanent link">¶</a></h2>
 <p>Attributed Network 属性网络：</p>
 <p>G = (V; E; X)， X是n个点的D维属性、特征向量</p>
 <p>s 是D维01向量， 1代表该位置是预特征， 0则否</p>
 <p>diag(s) 则是把s 拉成对角矩阵， 后面计算用得到--光点积不够用</p>
 <p>目标是求出 预特征 集合</p>
-<h2 id="_9">对连接信息建模</h2>
+<h2 id="_9">对连接信息建模<a class="headerlink" href="#_9" title="Permanent link">¶</a></h2>
 <p>如之前所说：</p>
 <p>probability of a link is determined by the oracle affinity between two nodes </p>
 <p>所以要定义 Oracle Affinity</p>
-<h3 id="oracle-affinity">Oracle Affinity</h3>
+<h3 id="oracle-affinity">Oracle Affinity<a class="headerlink" href="#oracle-affinity" title="Permanent link">¶</a></h3>
 <p>dot product of oracle features of two nodes</p>
 <p>$$
 a_{ij}=x^T_i diag(s) x_j
 $$</p>
-<h3 id="_10">边生成概率定义</h3>
+<h3 id="_10">边生成概率定义<a class="headerlink" href="#_10" title="Permanent link">¶</a></h3>
 <p>用某个转换函数（比如sigmoid）将上面的 $a_ij$转成个概率值</p>
 <p>概率值再用伯努利分布来决定边是生成还是不生成， 如下：</p>
 <p>$$
 p_{ij}=F_g(a_{ij}) \
 E_{ij} \sim Bernoulli(p_{ij})
 $$</p>
-<h3 id="_11">整个图的概率</h3>
+<h3 id="_11">整个图的概率<a class="headerlink" href="#_11" title="Permanent link">¶</a></h3>
 <p>从定义上， 在给定 预特征 oracle features时， 整个网络的概率为：</p>
 <p>$$
 P(G|s) = \prod_{(i,j)\in E}p_{ij}\cdot \prod_{(i,j)\notin E}(1-p_{ij})
 $$</p>
-<h3 id="_12">最终式</h3>
+<h3 id="_12">最终式<a class="headerlink" href="#_12" title="Permanent link">¶</a></h3>
 <p>把$a_{ij},F_g$代入上式， 求个-log, 化简得：</p>
 <p>$\cal{L_G}=xxxx$</p>
 <p>省略~~~</p>
-<h2 id="_13">对内容建模</h2>
+<h2 id="_13">对内容建模<a class="headerlink" href="#_13" title="Permanent link">¶</a></h2>
 <p>关键就是得到一个 预特征向量 和 原特征向量的映射关系。</p>
 <p>所以可以是：（也可以使用和边相似的建模）</p>
 <p>$$
@@ -244,14 +244,14 @@ $$</p>
 <p>$$
 \cal{L}_C=||X^Tdiag(s)W - X^T||^2_F + \beta||W||^2_F
 $$</p>
-<h2 id="_14">二者结合</h2>
+<h2 id="_14">二者结合<a class="headerlink" href="#_14" title="Permanent link">¶</a></h2>
 <p>就是</p>
 <p>$$
 \min \limits_{s,b,W} \cal{L}_G + \cal{L}_C
 $$</p>
 <p>限制条件有， s向量里取值0或1，长度D，向量和=d</p>
 <p>对齐还没掌握~~~</p>
-<h1 id="_15">优化</h1>
+<h1 id="_15">优化<a class="headerlink" href="#_15" title="Permanent link">¶</a></h1>
 <p>出于优化难度，改写优化式：</p>
 <p>$$
 \begin{eqnarray}
@@ -263,7 +263,7 @@ $$</p>
 <p>先固定W， 优化方程的s和b</p>
 <p>再固定s和b， 优化方程的W</p>
 <p>偏导方程就不写了。</p>
-<h1 id="_16">总结</h1>
+<h1 id="_16">总结<a class="headerlink" href="#_16" title="Permanent link">¶</a></h1>
 <ol>
 <li>本文定义、 概念描述准确，逻辑清晰，没有太复杂的东西。</li>
 </ol>
@@ -279,45 +279,7 @@ $$</p>
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/Generative-Feature-Selection.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'Generative-Feature-Selection.html';
-    var disqus_url = 'http://sndnyang.github.io/Generative-Feature-Selection.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -331,7 +293,7 @@ $$</p>
                             <span>22</span>
 </a></li>
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>40</span>
+                            <span>41</span>
 </a></li>
                         <li><a href="/tags.html#she-qu-fa-xian-ref">社区发现
                             <span>11</span>
@@ -387,45 +349,7 @@ $$</p>
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

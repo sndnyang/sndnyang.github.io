@@ -13,14 +13,14 @@
 <meta name="keywords" content="深度学习 机器学习, 人工智能, 深度学习, " />
 
 <meta property="og:title" content="TensorBoard "/>
-<meta property="og:url" content="http://sndnyang.github.io/TensorBoard-tricks.html" />
-<meta property="og:description" content="Load tfevents file 如何读取tfevents文件， 太多内容似是而非、过时、不准确， 只会把人弄晕。 现总结如下： TF不同版本的接口变动太大， 为保证准确性， 给出我当前版本: tensorflow-gpu==1.10.1 如果只是为了读tfevents文件， 有这一个版本就好了， 但以后2.0稳定了，甚至搞3.0了， 可能会觉得这个版本太老。。。以后再说吧， 现在能用就好， 估计 前后几个版本的接口应该是一致的。 读取方式： EventAccumulator from tensorboard.backend.event_processing import event_accumulator event_acc = event_accumulator.EventAccumulator(p) event_acc.Reload() print(event_acc.Tags()[&#34;scalars&#34;]) l = event_acc.Scalars(&#39;Test/Acc ..." />
+<meta property="og:url" content="/TensorBoard-tricks.html" />
+<meta property="og:description" content="Load tfevents file¶ 如何读取tfevents文件， 太多内容似是而非、过时、不准确， 只会把人弄晕。 现总结如下： TF不同版本的接口变动太大， 为保证准确性， 给出我当前版本: tensorflow-gpu==1.10.1 …" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
 <meta property="og:article:published_time" content="2019-07-25T22:18:30+08:00" />
 <meta property="" content="2019-07-25T22:18:30+08:00" />
 <meta name="twitter:title" content="TensorBoard ">
-<meta name="twitter:description" content="Load tfevents file 如何读取tfevents文件， 太多内容似是而非、过时、不准确， 只会把人弄晕。 现总结如下： TF不同版本的接口变动太大， 为保证准确性， 给出我当前版本: tensorflow-gpu==1.10.1 如果只是为了读tfevents文件， 有这一个版本就好了， 但以后2.0稳定了，甚至搞3.0了， 可能会觉得这个版本太老。。。以后再说吧， 现在能用就好， 估计 前后几个版本的接口应该是一致的。 读取方式： EventAccumulator from tensorboard.backend.event_processing import event_accumulator event_acc = event_accumulator.EventAccumulator(p) event_acc.Reload() print(event_acc.Tags()[&#34;scalars&#34;]) l = event_acc.Scalars(&#39;Test/Acc ...">
+<meta name="twitter:description" content="Load tfevents file¶ 如何读取tfevents文件， 太多内容似是而非、过时、不准确， 只会把人弄晕。 现总结如下： TF不同版本的接口变动太大， 为保证准确性， 给出我当前版本: tensorflow-gpu==1.10.1 …">
 
 
         <title>TensorBoard  · 科探空谷
@@ -142,21 +142,21 @@
 
                         
                         
-<h1 id="load-tfevents-file">Load tfevents file</h1>
+<h1 id="load-tfevents-file">Load tfevents file<a class="headerlink" href="#load-tfevents-file" title="Permanent link">¶</a></h1>
 <p>如何读取tfevents文件， 太多内容似是而非、过时、不准确， 只会把人弄晕。</p>
 <p>现总结如下：</p>
 <p>TF不同版本的接口变动太大， 为保证准确性， 给出我当前版本: tensorflow-gpu==1.10.1 </p>
 <p>如果只是为了读tfevents文件， 有这一个版本就好了， 但以后2.0稳定了，甚至搞3.0了， 可能会觉得这个版本太老。。。以后再说吧， 现在能用就好， 估计 前后几个版本的接口应该是一致的。</p>
 <p>读取方式：</p>
-<h2 id="eventaccumulator">EventAccumulator</h2>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorboard.backend.event_processing</span> <span class="kn">import</span> <span class="n">event_accumulator</span>
+<h2 id="eventaccumulator">EventAccumulator<a class="headerlink" href="#eventaccumulator" title="Permanent link">¶</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">tensorboard.backend.event_processing</span> <span class="kn">import</span> <span class="n">event_accumulator</span>
 <span class="n">event_acc</span> <span class="o">=</span> <span class="n">event_accumulator</span><span class="o">.</span><span class="n">EventAccumulator</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 <span class="n">event_acc</span><span class="o">.</span><span class="n">Reload</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">event_acc</span><span class="o">.</span><span class="n">Tags</span><span class="p">()[</span><span class="s2">"scalars"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event_acc</span><span class="o">.</span><span class="n">Tags</span><span class="p">()[</span><span class="s2">"scalars"</span><span class="p">])</span>
 <span class="n">l</span> <span class="o">=</span> <span class="n">event_acc</span><span class="o">.</span><span class="n">Scalars</span><span class="p">(</span><span class="s1">'Test/Acc'</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">step</span><span class="p">,</span> <span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-</pre></div>
-<h2 id="summary_iterator">summary_iterator</h2>
+<span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">step</span><span class="p">,</span> <span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="summary_iterator">summary_iterator<a class="headerlink" href="#summary_iterator" title="Permanent link">¶</a></h2>
 <p>tf.train.summary_iterator， 但不好用， 都不知道遍历了什么样的数据类型， 怎么拿到具体值</p>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
@@ -168,45 +168,7 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
-<!-- UY END -->
-<section>
-<p id="comment-message">this man is lazy, nothing left </p>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://sndnyang.github.io/TensorBoard-tricks.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'sndnyang';
-        var disqus_identifier = 'TensorBoard-tricks.html';
-    var disqus_url = 'http://sndnyang.github.io/TensorBoard-tricks.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+                    
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -277,45 +239,7 @@
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'sndnyang';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
