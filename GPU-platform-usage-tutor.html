@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sndnyang" />
+        <meta name="copyright" content="sndnyang" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="科研, 工具, 科研, " />
+
+<meta property="og:title" content="GPU租用平台及使用介绍 "/>
+<meta property="og:url" content="/GPU-platform-usage-tutor.html" />
+<meta property="og:description" content="如题" />
+<meta property="og:site_name" content="科探空谷" />
+<meta property="og:article:author" content="sndnyang" />
+<meta property="og:article:published_time" content="2024-06-02T00:00:00+08:00" />
+<meta name="twitter:title" content="GPU租用平台及使用介绍 ">
+<meta name="twitter:description" content="如题">
+
+
+        <title>GPU租用平台及使用介绍  · 科探空谷
+</title>
+
+        <style>
+            body { padding-top: 50px; padding-bottom: 10px; }
+        </style>
+
+        <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+        <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+		<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
+        <script src="/theme/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                backToTop();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>科探空谷</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="/">Home</a></li>
+                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">工具</li>
+                                    <li><a href="/gpa_calculator.html">GPA计算器</a></li>
+                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                </ul>
+                            </li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+
+        <link rel="stylesheet" type="text/css" href="static/css/tutorial.css">
+        <script type="text/javascript" src="/theme/js/scrollspy.js"> </script>
+        <script type="text/javascript" src="/theme/js/jQuery.md5.js"> </script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+            initScrollSpy();
+		});
+      
+    	</script>
+        
+        <div class="hint">
+            <ul class="flashes">
+            </ul>
+        </div>
+        
+        <article>
+            <header class="page-header span12 text-center">
+                <h1>
+                    <a href="/GPU-platform-usage-tutor.html">
+                        GPU租用平台及使用介绍  
+                    </a>
+                </h1>
+            </header>
+
+            <div class="row-fluid article-inner">
+                <div class="span2 table-of-content">
+                    <nav class="bs-docs-sidebar hidden-print hidden-xs
+                        hidden-sm nav table-nav">
+                        <div class="table-collapse panel-collapse collapse">
+                            <h4 style="text-align: center;">目录</h4>
+                            <div class="toc">
+<ul>
+<li><a href="#_1">一、主要平台</a><ul>
+<li><a href="#11">1.1 收费</a></li>
+<li><a href="#12">1.2 免费</a><ul>
+<li><a href="#_2">国外</a></li>
+<li><a href="#_3">国内</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_4">二、 主要使用流程 （以潞晨云为例）</a><ul>
+<li><a href="#1">1. 注册</a></li>
+<li><a href="#2">2. 登陆选卡新建主机</a></li>
+<li><a href="#3">3. 镜像（默认环境）选择</a></li>
+<li><a href="#4-ssh">4. 配置ssh连接</a><ul>
+<li><a href="#41-jupyterlab">4.1 使用jupyterLab 打开进行配置。</a></li>
+<li><a href="#42">4.2 生成密钥</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#5-vs-code">5 VS Code 远程开发</a><ul>
+<li><a href="#51-remote-ssh">5.1 基于remote-ssh的远程开发</a></li>
+<li><a href="#52-sftp">5.2 基于 sftp同步 （本地开发，同步服务器）</a></li>
+</ul>
+</li>
+<li><a href="#6-vs-code-jupyter-notebook">6. VS Code 连接 远程服务器上的 Jupyter notebook</a><ul>
+<li><a href="#61-jupyter-notebook">6.1 打开远程jupyter notebook</a></li>
+<li><a href="#62">6.2 本地代码连接远程</a></li>
+</ul>
+</li>
+<li><a href="#7">7 结束</a></li>
+</ul>
+</div>
+                        </div>
+                    </nav>
+                </div>
+                <a class="btn btn-success btn-table" data-toggle="collapse"
+                    data-target=".table-collapse">
+                    目录
+                </a>
+                <div class="span8 article-content">
+
+                        
+                        
+<h1 id="_1">一、主要平台<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<p>主要都是基于在线 jupyter notebook， 收费平台都具有在线 ssh命令行界面</p>
+<h2 id="11">1.1 收费<a class="headerlink" href="#11" title="Permanent link">¶</a></h2>
+<p>（1） 潞晨云 <a href="https://cloud.luchentech.com/">https://cloud.luchentech.com/</a></p>
+<p>价格最优。</p>
+<p>（2）  <a href="https://www.deepln.com/#/home/tabel2">https://www.deepln.com/#/home/tabel2 </a></p>
+<p>在读学生可 免费使用 8G P4显卡。</p>
+<p>（3） AutoDL <a href="https://www.autodl.com/">https://www.autodl.com/</a></p>
+<p>曾经价格最优， 使用的人最多， 有时租不到。</p>
+<h2 id="12">1.2 免费<a class="headerlink" href="#12" title="Permanent link">¶</a></h2>
+<h3 id="_2">国外<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
+<p>（1） google colab <a href="https://colab.research.google.com/">https://colab.research.google.com/</a></p>
+<p>示例一、 <a href="https://colab.research.google.com/github/sndnyang/LearnIsFun/blob/master/educhat/TryEduchat-qwen.ipynb">https://colab.research.google.com/github/sndnyang/LearnIsFun/blob/master/educhat/TryEduchat-qwen.ipynb</a> 使用 EduChat Qwen 1.8B 模型</p>
+<p>示例二、 待更新</p>
+<p>不足： 连续运行最高不能超过12小时（即使开pro/pro+)，只能用于编写和调试代码</p>
+<p>（2） Kaggle <a href="https://kaggle.com/">https://kaggle.com/</a></p>
+<p>每周30小时免费GPU</p>
+<h3 id="_3">国内<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<p>（1）中国移动 九天毕昇 <a href="https://jiutian.10086.cn/edu/">https://jiutian.10086.cn/edu/</a></p>
+<p>直接在线 jupyter notebook 或 vscode开发， 可传输文件。</p>
+<p>缺点：很难申请到完整的一张GPU， 基本都是虚拟化后的GPU， 速度较常规慢。</p>
+<p>（2）OpenI 启智社区 <a href="https://openi.pcl.ac.cn/">https://openi.pcl.ac.cn/ </a></p>
+<p>缺点：相比别的平台， 难用， 死板， 切换配置很不方便， 调试限制4小时， 长时间训练配置麻烦。</p>
+<h1 id="_4">二、 主要使用流程 （以潞晨云为例）<a class="headerlink" href="#_4" title="Permanent link">¶</a></h1>
+<h2 id="1">1. 注册<a class="headerlink" href="#1" title="Permanent link">¶</a></h2>
+<h2 id="2">2. 登陆选卡新建主机<a class="headerlink" href="#2" title="Permanent link">¶</a></h2>
+<p><img alt="market" src="./images/market.png"/></p>
+<h2 id="3">3. 镜像（默认环境）选择<a class="headerlink" href="#3" title="Permanent link">¶</a></h2>
+<p>选择 相应的计费方式</p>
+<p>点击 选择一个镜像（建议pytorch 2.1）</p>
+<p>充值</p>
+<p>创建</p>
+<p><img alt="20240604-selectimg" src="./images/20240604-selectimg.png"/></p>
+<p>等待几分钟后</p>
+<p><img alt="20240604-cloudins" src="./images/20240604-cloudins.png"/></p>
+<h2 id="4-ssh">4. 配置ssh连接<a class="headerlink" href="#4-ssh" title="Permanent link">¶</a></h2>
+<h3 id="41-jupyterlab">4.1 使用jupyterLab 打开进行配置。<a class="headerlink" href="#41-jupyterlab" title="Permanent link">¶</a></h3>
+<h3 id="42">4.2 生成密钥<a class="headerlink" href="#42" title="Permanent link">¶</a></h3>
+<p>私钥在个人电脑， 公钥写入服务器  <a href="https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5">https://git-scm.com/book/zh/v2/服务器上的-Git-生成-SSH-公钥</a></p>
+<p>(1) 使用任意 shell (Linux环境的shell 或  windows平台安装 git bash) 查看  ~/.ssh 文件夹</p>
+<p>```Plain Text
+cd ~/.ssh  ;  ls</p>
+<div class="codehilite"><pre><span></span><code><span class="n">主要是看</span><span class="w"> </span><span class="n n-Quoted">`id_rsa.pub`</span><span class="w"> </span><span class="n">和</span><span class="w"> </span><span class="n n-Quoted">`id_rsa`</span><span class="w"> </span><span class="n">两个文件</span>
+
+<span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">若不存在</span><span class="w"> </span><span class="n">，</span><span class="w"> </span><span class="n">使用</span><span class="w"> </span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span><span class="w"> </span><span class="n">生成（</span><span class="w"> </span><span class="n">Linux</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="n">自带，</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">bash</span><span class="w"> </span><span class="n">也自带），</span><span class="w"> </span><span class="n">示例：</span>
+
+<span class="n n-Quoted">`</span><span class="n n-Quoted n-Quoted-Escape">``</span><span class="n n-Quoted">Plain Text</span>
+<span class="n n-Quoted">$ ssh-keygen -o</span>
+<span class="n n-Quoted">Generating public/private rsa key pair.</span>
+<span class="n n-Quoted">Enter file in which to save the key (/home/schacon/.ssh/id_rsa):</span>
+<span class="n n-Quoted">Created directory '/home/schacon/.ssh'.</span>
+<span class="n n-Quoted">Enter passphrase (empty for no passphrase):</span>
+<span class="n n-Quoted">Enter same passphrase again:</span>
+<span class="n n-Quoted">Your identification has been saved in /home/schacon/.ssh/id_rsa.</span>
+<span class="n n-Quoted">Your public key has been saved in /home/schacon/.ssh/id_rsa.pub.</span>
+<span class="n n-Quoted">The key fingerprint is:</span>
+<span class="n n-Quoted">d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</span>
+</code></pre></div>
+<p>3、4行：保存的文件名，默认即可。  5、6行：个人习惯不用。</p>
+<p>（3）检查本地电脑生成的 <code>~/.ssh/id_rsa.pub</code>  文件 （Windows在 C:\Users\用户名.ssh）， 将该文件上传到 服务器端 id_rsa.pub （潞晨默认路径 /root/notebook/）</p>
+<p>（4）<code>cat /root/notebook/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code> 将 公钥写入系统， 以后个人电脑上有私钥， 访问服务器时就能自动登陆了。</p>
+<p><img alt="20240604-uploadkey" src="./images/20240604-uploadkey.png"/></p>
+<h1 id="5-vs-code">5 VS Code 远程开发<a class="headerlink" href="#5-vs-code" title="Permanent link">¶</a></h1>
+<p>基于 remote-ssh （直接在服务器端编辑， 方便调试）， 和 基于 sftp同步（文件在本地）</p>
+<h2 id="51-remote-ssh">5.1 基于remote-ssh的远程开发<a class="headerlink" href="#51-remote-ssh" title="Permanent link">¶</a></h2>
+<p>(1) 搜索并安装 Remote Development</p>
+<p><img alt="20240604-remdev" src="./images/20240604-remdev.png"/></p>
+<p>(2) 配置 ssh 地址
+1）获取 ssh 地址 
+点击复制，  得到的格式大概是 ssh root@12.34.56.78  -p 910</p>
+<p><img alt="20240604-sshaddr" src="./images/20240604-sshaddr.png"/></p>
+<p>2）点击添加</p>
+<p><img alt="20240604-add_remote" src="./images/20240604-add_remote.png"/></p>
+<p>3）粘贴地址</p>
+<p><img alt="20240604-pastesshaddr" src="./images/20240604-pastesshaddr.png"/></p>
+<p>Config 使用 主目录 （Windows下 你的用户主目录 在 C:\Users\用户名\，  同上文）</p>
+<p><img alt="20240604-sshconfig" src="./images/20240604-sshconfig.png"/></p>
+<p>添加成功后会增加一行新的</p>
+<p><img alt="20240604-remaddfinish" src="./images/20240604-remaddfinish.png"/></p>
+<p>4） id_rsa too open， bad permissions.  (windows 可能存在 问题）
+<a href="https://stackoverflow.com/questions/48888365/openssh-using-private-key-on-windows-unprotected-private-key-file-error">https://stackoverflow.com/questions/48888365/openssh-using-private-key-on-windows-unprotected-private-key-file-error</a></p>
+<p>打开  command prompt 或 PowerShell 运行能看到报错信息</p>
+<p><img alt="20240604-winkeypermit" src="./images/20240604-winkeypermit.png"/></p>
+<p>Command prompt 输入(PowerShell 略有不同，见链接）:</p>
+<div class="codehilite"><pre><span></span><code>cd C:\Users\用户名\.ssh
+C:                                                     # command prompt的特点， 专门切换盘符
+icacls .\id_rsa /inheritance:r
+icacls .\id_rsa /grant:r "%username%":"(R)"
+</code></pre></div>
+<p>（3）打开指定目录，即可， 潞晨云应该是 /root/notebook</p>
+<p><img alt="20240604-workdir" src="./images/20240604-workdir.png"/></p>
+<p>（4） 调试
+编写任意代码文件， 比如编写python文件时， （会提示）安装 Python 插件（有些网络不好， 安装老半天不成功）</p>
+<h2 id="52-sftp">5.2 基于 sftp同步 （本地开发，同步服务器）<a class="headerlink" href="#52-sftp" title="Permanent link">¶</a></h2>
+<p>优点， 本地有代码，  缺点， 不能调试（得靠5.1的方法） —— 5.3 用pycharm， 但好像会把远程环境下载到本地（初始化很慢）， 且需要学生的教育邮箱。
+打开本地项目， 安装 sftp 插件， <code>ctrl-shift-p</code>  输入 SFTP:Config， 该操作 等价于创建 .vscode/sftp.json 文件， 填写相关字段， uploadOnSave 习惯设置为True。</p>
+<p><img alt="20240604-sftpsync" src="./images/20240604-sftpsync.png"/></p>
+<p><img alt="20240604-sftpconf" src="./images/20240604-sftpconf.png"/></p>
+<p>可右键上传下载</p>
+<p><img alt="20240604-sftpoper" src="./images/20240604-sftpoper.png"/></p>
+<h1 id="6-vs-code-jupyter-notebook">6. VS Code 连接 远程服务器上的 Jupyter notebook<a class="headerlink" href="#6-vs-code-jupyter-notebook" title="Permanent link">¶</a></h1>
+<h2 id="61-jupyter-notebook">6.1 打开远程jupyter notebook<a class="headerlink" href="#61-jupyter-notebook" title="Permanent link">¶</a></h2>
+<p>在5.1 配置成功后， 在VS Code中创建新的 jupyter notebook 文件，即 .ipynb文件。
+初次使用时， 右上角点击 选择核心 select kernel， VS Code会自动提示是否安装插件， 选择安装Python和Jupyter， 安装成功后，即可开始使用。</p>
+<p><img alt="20240604-selectkernel" src="./images/20240604-selectkernel.png"/></p>
+<h2 id="62">6.2 本地代码连接远程<a class="headerlink" href="#62" title="Permanent link">¶</a></h2>
+<p>需要在终端运行一个新的 jupyter notebook --ip 0.0.0.0 --port 8889 --allow-root
+（例如）服务器上运行得到： <code>http://127.0.0.1:8889/tree?token=b6ffa4376c70f992839a1f70ca7480ddfb7e0698b50f4cce</code>
+在本地电脑使用ssh命令创建隧道（如下）， 即可在浏览器直接打开进行编辑（文件在远程）或在VS Code中连接远程（代码在本地，如下图）</p>
+<p><code>Plain Text
+ssh -N -L 8889:localhost:8889  root@12.34.56.78     
+// 说明   本地端口：服务器地址：服务器端口   服务器用户名：IP</code></p>
+<p><img alt="20240604-selectremkernel" src="./images/20240604-selectremkernel.png"/></p>
+<p><img alt="20240604-selectjupyterserver" src="./images/20240604-selectjupyterserver.png"/></p>
+<h1 id="7">7 结束<a class="headerlink" href="#7" title="Permanent link">¶</a></h1>
+<p>其他平台类似</p>
+<p>AutoDL 参考 https://www.autodl.com/docs/vscode/</p>
+<p>潞晨云参考  https://cloud.luchentech.com/doc/docs/examples/llama</p>
+                        
+                        <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                </div>
+
+                    
+                    <hr/>
+                </div>
+                <div class="span2 right-side" style="float:right;font-size:0.9em;">
+                    <h4>Published</h4>
+                    <time pubdate="pubdate" datetime="2024-06-02T00:00:00+08:00">6月 2, 2024</time>
+                    <h4>Category</h4>
+                    <a class="category-link" href="/categories.html#ke-yan-ref">科研</a>
+                    <h4>Tags</h4>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#gong-ju-ref">工具
+                            <span>6</span>
+</a></li>
+                        <li><a href="/tags.html#ke-yan-ref">科研
+                            <span>4</span>
+</a></li>
+                    </ul>
+                    <h4>Stay in Touch</h4>
+                    <a href="http://weibo.com/u/2405149384" title="My weibo Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-weibo sidebar-social-links"></i></a>
+                    <a href="http://github.com/sndnyang" title="My Github Profile" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>
+                    <a href="http://blog.csdn.net/sndnyangd" title="My csdn blog" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-github sidebar-social-links"></i></a>    
+                    <a href="mailto:sndnyangd@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+                        <i class="fa fa-envelope sidebar-social-links"></i></a>
+                </div>
+            </div>
+        </article>
+        <script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+              },
+            });
+        </script>
+        <script>
+            $(function (){
+                renderQuoteTip();
+            });
+        </script>
+                </div>
+            </div>
+        </div>
+        <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+        <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+        <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74494551-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </body>
+</html>
