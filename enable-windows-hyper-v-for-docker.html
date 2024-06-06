@@ -155,7 +155,7 @@
 <li>最后还要设置一下什么东东</li>
 <li>完成</li>
 </ol>
-<p>最后发现 <a href="https://www.zhihu.com/question/67882155/answer/2903900947" title="Docker 的 Hyper-V问题 知乎回答">docker Hyper V问题解决</a> 这篇很完整了， 但最后有错误， 并且 安装 Hyper-V的命令行文件要关注公众号去领取， 比较坑。</p>
+<p>最后发现 docker Hyper V问题解决<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> 这篇很完整了， 但最后有错误， 并且 安装 Hyper-V的命令行文件要关注公众号去领取， 比较坑。</p>
 <h1 id="bios-enable">BIOS enable<a class="headerlink" href="#bios-enable" title="Permanent link">¶</a></h1>
 <p>各平台的 BIOS 对 VT Virtualization technology/x 的支持方式不同。</p>
 <p>幸运的是， 我用的三星 Samsung 电脑默认支持， 不幸的是， 也就是不能改， 我白白重启好几次， 里面就写了个 CPU VT-x support</p>
@@ -166,7 +166,7 @@
 <h1 id="windows-hyper-v">Windows功能 Hyper-V<a class="headerlink" href="#windows-hyper-v" title="Permanent link">¶</a></h1>
 <p>又搜了一圈， 看到说 Hyper-V 要勾选上， 终于看到一个 电脑上缺的玩意， 官方说 家庭版没有， 但总有人解决问题的。</p>
 <p><img alt="image-20240606164403080" src="./images/20240606-hyperv.png"/></p>
-<p>见链接 <a href="https://zhuanlan.zhihu.com/p/356396288" title="Win10家庭中文版安装Hyper-V">Win10家庭中文版安装Hyper-V</a></p>
+<p>见链接 [Win10家庭中文版安装Hyper-V]<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
 <ol>
 <li>创建 hyperv.cmd 文件，添加以下内容。 <strong>注意</strong> 后缀名是 .cmd，创建成hyperv.cmd.txt 文件 就没法直接运行了 。 </li>
 </ol>
@@ -197,6 +197,17 @@
 </ol>
 <p>知乎回答里最后给的 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All bcdedit /set hypervisorlaunchtype auto  是有问题的， 把powershell 和 command prompt 混在一起了。</p>
 <h1 id="_1">本文参考文献（不全）<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:1">
+<p><a href="https://www.zhihu.com/question/67882155/answer/2903900947">Docker 的 Hyper-V问题 知乎回答</a> <a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://zhuanlan.zhihu.com/p/356396288">Win10家庭中文版安装Hyper-V</a> <a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+</ol>
+</div>
                         
                         <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
                     <a href="#" class="bds_more" data-cmd="more"></a>
