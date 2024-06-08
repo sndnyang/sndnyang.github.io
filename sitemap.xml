@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/</loc>
-<lastmod>2024-06-08T19:11:51-00:00</lastmod>
+<lastmod>2024-06-08T21:46:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/archives.html</loc>
-<lastmod>2024-06-08T19:11:51-00:00</lastmod>
+<lastmod>2024-06-08T21:46:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/tags.html</loc>
-<lastmod>2024-06-08T19:11:51-00:00</lastmod>
+<lastmod>2024-06-08T21:46:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/categories.html</loc>
-<lastmod>2024-06-08T19:11:51-00:00</lastmod>
+<lastmod>2024-06-08T21:46:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -46,7 +46,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>/smiles_molecule_to_2d_3d.html</loc>
+<loc>/js_python_molecule_2d_3d.html</loc>
 <lastmod>2024-06-06T23:43:29+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>

@@ -50,7 +50,7 @@
                 backToTop();
             });
         </script>
-        <!-- <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script> -->
+        <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
     </head>
     <body>
         <div id="content-sans-footer">
@@ -169,15 +169,15 @@
 <p><img alt="image-20240606164403080" src="./images/20240606-hyperv.png"/></p>
 <p>见链接 [Win10家庭中文版安装Hyper-V]<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
 <ol>
-<li>创建 hyperv.cmd 文件，添加以下内容。 <strong>注意</strong> 后缀名是 .cmd，创建成hyperv.cmd.txt 文件 就没法直接运行了 。 </li>
-</ol>
-<p><code>cmd
-   pushd "%~dp0"
-   dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum &gt;hyper-v.txt
-   for /f %%i in ('findstr /i . hyper-v.txt 2^&gt;nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
-   del hyper-v.txt
-   Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL</code></p>
-<ol>
+<li>
+<p>创建 hyperv.cmd 文件，添加以下内容。 <strong>注意</strong> 后缀名是 .cmd，创建成hyperv.cmd.txt 文件 就没法直接运行了 。 </p>
+<div class="codehilite"><pre><span></span><code><span class="nx">pushd</span><span class="w"> </span><span class="s">"%~dp0"</span>
+<span class="nx">dir</span><span class="w"> </span><span class="o">/</span><span class="nx">b</span><span class="w"> </span><span class="o">%</span><span class="nx">SystemRoot</span><span class="o">%</span><span class="err">\</span><span class="nx">servicing</span><span class="err">\</span><span class="nx">Packages</span><span class="err">\</span><span class="o">*</span><span class="nx">Hyper</span><span class="o">-</span><span class="nx">V</span><span class="o">*</span><span class="p">.</span><span class="nx">mum</span><span class="w"> </span><span class="p">&gt;</span><span class="nx">hyper</span><span class="o">-</span><span class="nx">v</span><span class="p">.</span><span class="nx">txt</span>
+<span class="k">for</span><span class="w"> </span><span class="o">/</span><span class="nx">f</span><span class="w"> </span><span class="o">%%</span><span class="nx">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="err">'</span><span class="nx">findstr</span><span class="w"> </span><span class="o">/</span><span class="nx">i</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="nx">hyper</span><span class="o">-</span><span class="nx">v</span><span class="p">.</span><span class="nx">txt</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="p">&gt;</span><span class="nx">nul</span><span class="err">'</span><span class="p">)</span><span class="w"> </span><span class="nx">do</span><span class="w"> </span><span class="nx">dism</span><span class="w"> </span><span class="o">/</span><span class="nx">online</span><span class="w"> </span><span class="o">/</span><span class="nx">norestart</span><span class="w"> </span><span class="o">/</span><span class="nx">add</span><span class="o">-</span><span class="kn">package</span><span class="p">:</span><span class="s">"%SystemRoot%\servicing\Packages\%%i"</span>
+<span class="nx">del</span><span class="w"> </span><span class="nx">hyper</span><span class="o">-</span><span class="nx">v</span><span class="p">.</span><span class="nx">txt</span>
+<span class="nx">Dism</span><span class="w"> </span><span class="o">/</span><span class="nx">online</span><span class="w"> </span><span class="o">/</span><span class="nx">enable</span><span class="o">-</span><span class="nx">feature</span><span class="w"> </span><span class="o">/</span><span class="nx">featurename</span><span class="p">:</span><span class="nx">Microsoft</span><span class="o">-</span><span class="nx">Hyper</span><span class="o">-</span><span class="nx">V</span><span class="o">-</span><span class="nx">All</span><span class="w"> </span><span class="o">/</span><span class="nx">LimitAccess</span><span class="w"> </span><span class="o">/</span><span class="nx">ALL</span>
+</code></pre></div>
+</li>
 <li>
 <p>右键菜单，以管理员身份运行 -- 另外，你也可以在 cmd 里将上面代码逐行运行，不用建文件。</p>
 </li>
