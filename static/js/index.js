@@ -115,11 +115,12 @@ function renderQuoteTip() {
     }
     container.html(html);
 
-    $("[data-toggle='popover']").popover({
-        html: true,
-        title: "",
-        delay: {show:100, hide:100}
-    });  
+    if ($("[data-toggle='popover']").length > 0)
+        $("[data-toggle='popover']").popover({
+            html: true,
+            title: "",
+            delay: {show:100, hide:100}
+        });  
     
     // .popover();
 }
