@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PPT 播放演示</title>
+  <style>
+    html, body {
+      margin: 0;
+      background-color: #000;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #main-container {
+      display: flex;
+      /* width: 100%; */
+      height: calc(100% - 60px); /* 留出标题和按钮 */
+    }
+
+    #ppt {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      background-color: black;
+    }
+
+    #ppt-wrapper {
+      width: 80%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #live2d-wrapper {
+      position: fixed;
+      right: 5px;
+      bottom: 20px;
+      width: 30%;
+      height: 40%;
+      z-index: 10;
+    }
+
+    #live2d-canvas {
+      width: 100%;
+      height: 100%;
+      background-color: transparent !important;
+      pointer-events: none;
+    }
+
+    /* 全屏模式下 */
+    .fullscreen-mode #main-container {
+      display: block;
+    }
+
+    .fullscreen-mode #ppt-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .fullscreen-mode #ppt {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .fullscreen-mode #live2d-wrapper {
+      position: fixed;
+      right: 5px;
+      bottom: 20px;
+      width: 24%;
+      height: 32%;
+      background-color: transparent;
+      z-index: 10;
+    }
+
+    #controls, #title {
+      color: white;
+      text-align: center;
+      margin: 10px;
+      z-index: 20;
+    }
+
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #live2d-controls {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      display: none;
+      z-index: 11;
+    }
+
+    #live2d-controls button {
+      font-size: 18px;
+      margin-left: 4px;
+      padding: 4px 8px;
+      border: none;
+      border-radius: 6px;
+      background-color: rgba(255,255,255,0.8);
+      cursor: pointer;
+    }
+
+    .fullscreen-mode #live2d-controls {
+      display: block;
+    }
+  </style>
+
+  <!-- Live2D 样式和脚本 -->
+  <script src="http://cst.zhimind.com/pptv/static/js/jquery-3.1.1.min.js"></script>
+  <script src="http://cst.zhimind.com/pptv/static/js/pixi.min.js"></script>
+  <script src="http://cst.zhimind.com/pptv/static/js/live2dcubismcore.min.js"></script>
+  <script src="http://cst.zhimind.com/pptv/static/js/cubism4.min.js"></script>
+  <script src="http://cst.zhimind.com/pptv/static/js/live2d.min.js"></script>
+</head>
+<body>
+  <h2 id="title">Web PPT 播放演示</h2>
+  <div id="controls">
+    <button onclick="toggleFullscreen()">⛶ 全屏</button>
+    <button class='start_play'>▶️ 播放</button>
+    <button class='stop'>⏸️ 暂停</button>
+  </div>
+
+  <div id="main-container">
+    <div id="ppt-wrapper">
+      <img id="ppt" src="" />
+    </div>
+    <div id="live2d-wrapper">
+      <div id="live2d-controls">
+        <button class="start_play">▶️ </button>
+        <button class="stop">⏸️</button>
+      </div>
+      <canvas id="live2d-canvas"></canvas>
+    </div>
+  </div>
+
+  <script>
+    let images = [], current = 0;
+    let model;
+    images = ['slide01_step01.png', 'slide02_step01.png', 'slide03_step01.png', 'slide03_step02.png', 'slide03_step03.png', 'slide04_step01.png', 'slide04_step02.png', 'slide05_step01.png', 'slide05_step02.png', 'slide06_step01.png', 'slide07_step01.png', 'slide08_step01.png', 'slide09_step01.png', 'slide09_step02.png', 'slide09_step03.png', 'slide10_step01.png', 'slide10_step02.png', 'slide10_step03.png', 'slide10_step04.png', 'slide11_step01.png', 'slide11_step02.png', 'slide11_step03.png', 'slide11_step04.png', 'slide12_step01.png', 'slide13_step01.png', 'slide13_step02.png', 'slide13_step03.png', 'slide13_step04.png', 'slide14_step01.png', 'slide14_step02.png', 'slide14_step03.png', 'slide14_step04.png', 'slide15_step01.png', 'slide15_step02.png', 'slide15_step03.png', 'slide15_step04.png', 'slide16_step01.png', 'slide16_step02.png', 'slide16_step03.png', 'slide17_step01.png', 'slide17_step02.png', 'slide18_step01.png'];
+
+    show();
+
+    function show() {
+      document.getElementById("ppt").src = "http://cst.zhimind.com/pptv/ppt_images/name1.pptx/" + images[current];
+    }
+
+    function next() {
+      if (current < images.length - 1) current++;
+      show();
+    }
+
+    function prev() {
+      if (current > 0) current--;
+      show();
+    }
+
+    function toggleFullscreen() {
+      const docEl = document.documentElement;
+      if (!document.fullscreenElement) {
+        docEl.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    document.addEventListener("fullscreenchange", () => {
+      const isFull = document.fullscreenElement !== null;
+      document.getElementById("title").classList.toggle("hidden", isFull);
+      document.getElementById("controls").classList.toggle("hidden", isFull);
+      document.body.classList.toggle("fullscreen-mode", isFull);
+      if (model) {
+        model.y = isFull ? 150 : 200;
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      switch (event.key) {
+        case 'ArrowUp':
+        case 'ArrowLeft':
+        case 'PageUp':
+          prev();
+          break;
+        case 'ArrowDown':
+        case 'ArrowRight':
+        case 'PageDown':
+          next();
+          break;
+        case 'Escape':
+          if (document.fullscreenElement) {
+            document.exitFullscreen();
+          }
+          break;
+      }
+    });
+
+    // 加载 Live2D 模型
+    const live2d = PIXI.live2d;
+    (async function initLive2D() {
+      const app = new PIXI.Application({
+        view: document.getElementById("live2d-canvas"),
+        autoStart: true,
+        transparent: true,
+        backgroundAlpha: 0,
+        resizeTo: window,
+      });
+
+      model = await live2d.Live2DModel.from(
+        "http://cst.zhimind.com/pptv/models/敖丙_DLC2_Live2D/敖丙_DLC2_Live2D.model3.json",
+        { autoInteract: false }
+      );
+      model.scale.set(1);
+      model.x = 400;
+      // model.y = 200;
+      draggable(model);
+      app.stage.addChild(model);
+
+      $(".start_play").click(async function () {
+
+        let currentModel = 0;  // 当前说话的模型
+        let isPlaying = false;  // 防止并行播放多个音频
+        let audioQueue = [
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-001-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-002-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-003-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-003-01.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-003-02.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-004-01.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-004-02.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-005-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-005-01.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-006-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-007-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-008-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-009-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-009-01.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-009-02.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-010-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-010-01.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-010-02.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-010-03.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-011-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-011-01.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-011-02.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-011-03.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-012-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-013-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-013-01.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-013-02.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-013-03.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-014-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-014-01.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-014-02.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-014-03.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-015-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-015-01.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-015-02.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-015-03.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-016-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-016-01.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-016-02.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-017-00.mp3',
+          'http://cst.zhimind.com/pptv/ppt_audio/algorithm/9-dp/1-intro/question-017-01.mp3'
+        ]; // 存储音频播放队列
+
+        async function startConversation(texts) {
+
+          for (const audioUrl of audioQueue) {
+            audioQueue.push(audioUrl);  // 添加到播放队列
+            playNextAudio();  // 立即尝试播放下一个
+
+          }
+        }
+
+        // 播放队列中的下一个音频
+        async function playNextAudio() {
+            if (isPlaying || audioQueue.length === 0) return;
+            
+            isPlaying = true;
+            const audioUrl = audioQueue.shift();  // 取出队列中的第一个音频
+            
+            await talk(model, audioUrl);  // 让当前模型播放语音
+            isPlaying = false;
+            
+            playNextAudio();  // 递归调用，继续播放下一个
+        }
+      
+        startConversation([]);
+
+
+      });
+
+      $(".stop").click(function () {
+        model.stopSpeaking();
+      });
+
+    })();
+
+    function talk(model, audio) {
+      return new Promise((resolve) => {
+        var audio_link = audio; 
+        var volume = 1; 
+        var expression = 8;
+        var resetExpression = true; 
+        var crossOrigin = "anonymous";
+
+        model.speak(audio_link, { volume: volume, expression: expression, resetExpression: resetExpression, crossOrigin: crossOrigin,
+            onFinish: () => {
+                resolve();
+                $("#start_stream").css("color", "green");
+                next();
+            },
+            onError: (err) => {
+                console.error("播放失败:", err);
+                resolve();
+            }
+        })
+      });
+    }
+    
+    function draggable(model) {
+      model.buttonMode = true;
+      model.on("pointerdown", (e) => {
+        model.dragging = true;
+        model._pointerX = e.data.global.x - model.x;
+        model._pointerY = e.data.global.y - model.y;
+      });
+      model.on("pointermove", (e) => {
+        if (model.dragging) {
+          model.position.x = e.data.global.x - model._pointerX;
+          model.position.y = e.data.global.y - model._pointerY;
+        }
+      });
+      model.on("pointerupoutside", () => (model.dragging = false));
+      model.on("pointerup", () => (model.dragging = false));
+    }
+  </script>
+</body>
+</html>
