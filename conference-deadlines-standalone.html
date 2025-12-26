@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conference Deadlines - 会议截止日期</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(to bottom right, #f8fafc, #f1f5f9);
+            min-height: 100vh;
+            color: #1e293b;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1.5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        h1 {
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        .filter-section {
+            margin-bottom: 2rem;
+        }
+
+        .filter-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 1rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #cbd5e1;
+            background: white;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: #f1f5f9;
+        }
+
+        .filter-btn.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+
+        .conference-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .conference-card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.2s;
+        }
+
+        .conference-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .conference-card.expired {
+            opacity: 0.7;
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .card-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .conference-info {
+            flex: 1;
+        }
+
+        .conference-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.75rem;
+        }
+
+        .conference-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0f172a;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .badge-ccf-a { background: #ef4444; }
+        .badge-ccf-b { background: #f59e0b; }
+        .badge-ccf-c { background: #10b981; }
+        .badge-edutop { background: #3b82f6; }
+        .badge-edu { background: #8b5cf6; }
+        .badge-other { background: #6b7280; }
+
+        .conference-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        @media (min-width: 640px) {
+            .conference-details {
+                flex-direction: row;
+                gap: 1rem;
+            }
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .icon {
+            width: 1rem;
+            height: 1rem;
+            flex-shrink: 0;
+        }
+
+        .conference-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .conference-link:hover {
+            text-decoration: underline;
+        }
+
+        .countdown-box {
+            flex-shrink: 0;
+            background: linear-gradient(to bottom right, #eff6ff, #e0e7ff);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            min-width: 160px;
+        }
+
+        .countdown-label {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-bottom: 0.25rem;
+        }
+
+        .countdown-value {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #3b82f6;
+        }
+
+        .countdown-value.expired {
+            color: #ef4444;
+        }
+
+        .stats {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .empty-state {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 3rem;
+            text-align: center;
+            color: #64748b;
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding: 1.5rem 0;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Conference Deadlines</h1>
+            <p class="subtitle">计算机会议截止日期跟踪 - 自动按时间排序</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="filter-section">
+                <h2 class="filter-title">筛选类别</h2>
+                <div class="filter-buttons" id="filterButtons"></div>
+            </div>
+
+            <div class="conference-list" id="conferenceList"></div>
+
+            <div class="stats" id="stats"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>数据仅供参考，请以官方网站为准</p>
+        </div>
+    </footer>
+
+    <script>
+        // 会议数据配置
+        // 修改这里来添加或更新会议信息
+        const conferences = [
+            {
+                name: "CVPR",
+                year: 2026,
+                deadline: "2025-11-15",
+                conferenceDate: "2026-06-19",
+                link: "https://cvpr2026.thecvf.com/",
+                location: "Seattle, USA",
+                category: "CCF A"
+            },
+            {
+                name: "ICCV",
+                year: 2025,
+                deadline: "2025-03-17",
+                conferenceDate: "2025-10-19",
+                link: "https://iccv2025.thecvf.com/",
+                location: "Honolulu, USA",
+                category: "CCF A"
+            },
+            {
+                name: "NeurIPS",
+                year: 2025,
+                deadline: "2025-05-21",
+                conferenceDate: "2025-12-09",
+                link: "https://neurips.cc/",
+                location: "Vancouver, Canada",
+                category: "CCF A"
+            },
+            {
+                name: "AAAI",
+                year: 2026,
+                deadline: "2025-08-15",
+                conferenceDate: "2026-02-23",
+                link: "https://aaai.org/conference/aaai/",
+                location: "Philadelphia, USA",
+                category: "CCF A"
+            },
+            {
+                name: "ECCV",
+                year: 2026,
+                deadline: "2026-03-07",
+                conferenceDate: "2026-09-20",
+                link: "https://eccv2026.ecva.net/",
+                location: "Milan, Italy",
+                category: "CCF B"
+            },
+            {
+                name: "ICML",
+                year: 2025,
+                deadline: "2025-02-01",
+                conferenceDate: "2025-07-13",
+                link: "https://icml.cc/",
+                location: "Vienna, Austria",
+                category: "CCF A"
+            },
+            {
+                name: "ACM MM",
+                year: 2025,
+                deadline: "2025-04-13",
+                conferenceDate: "2025-10-28",
+                link: "https://www.acmmm2025.org/",
+                location: "Melbourne, Australia",
+                category: "CCF A"
+            },
+            {
+                name: "SIGIR",
+                year: 2025,
+                deadline: "2025-01-23",
+                conferenceDate: "2025-07-14",
+                link: "https://sigir-2025.github.io/",
+                location: "Madrid, Spain",
+                category: "CCF A"
+            },
+            {
+                name: "WSDM",
+                year: 2026,
+                deadline: "2025-08-16",
+                conferenceDate: "2026-03-09",
+                link: "https://www.wsdm-conference.org/",
+                location: "Singapore",
+                category: "CCF B"
+            },
+            {
+                name: "CIKM",
+                year: 2025,
+                deadline: "2025-05-22",
+                conferenceDate: "2025-10-21",
+                link: "https://cikm2025.org/",
+                location: "Madrid, Spain",
+                category: "CCF B"
+            },
+            {
+                name: "ICLR",
+                year: 2026,
+                deadline: "2025-10-01",
+                conferenceDate: "2026-04-24",
+                link: "https://iclr.cc/",
+                location: "Singapore",
+                category: "AI顶会"
+            },
+            {
+                name: "CSTE",
+                year: 2026,
+                deadline: "2025-12-30",
+                conferenceDate: "2026-04-17",
+                link: "https://cste.net/",
+                location: "Wuhan",
+                category: "教育EI会"
+            },
+            {
+                name: "ICASSP",
+                year: 2026,
+                deadline: "2025-09-30",
+                conferenceDate: "2026-05-04",
+                link: "https://2026.ieeeicassp.org/",
+                location: "Dallas, USA",
+                category: "CCF B"
+            },
+            {
+                name: "ICPR",
+                year: 2026,
+                deadline: "2026-03-01",
+                conferenceDate: "2026-09-01",
+                link: "https://icpr2026.org/",
+                location: "Montreal, Canada",
+                category: "CCF C"
+            },
+            {
+                name: "BMVC",
+                year: 2025,
+                deadline: "2025-05-02",
+                conferenceDate: "2025-11-24",
+                link: "https://bmvc2025.org/",
+                location: "London, UK",
+                category: "CCF C"
+            },
+            {
+                name: "ACCV",
+                year: 2026,
+                deadline: "2026-07-01",
+                conferenceDate: "2026-12-01",
+                link: "https://accv2026.org/",
+                location: "Hanoi, Vietnam",
+                category: "CCF C"
+            }
+        ];
+
+        // 状态管理
+        let selectedCategory = "全部";
+
+        // 获取所有类别
+        function getCategories() {
+            const categories = new Set(conferences.map(c => c.category));
+            return ["全部", ...Array.from(categories)];
+        }
+
+        // 获取类别对应的徽章样式
+        function getBadgeClass(category) {
+            if (category === "CCF A") return "badge-ccf-a";
+            if (category === "CCF B") return "badge-ccf-b";
+            if (category === "CCF C") return "badge-ccf-c";
+            if (category === "教育顶会") return "badge-edutop";
+            if (category === "教育EI会") return "badge-edu";
+            return "badge-other";
+        }
+
+        // 计算倒计时
+        function getCountdown(deadline) {
+            const now = new Date().getTime();
+            const target = new Date(deadline).getTime();
+            const diff = target - now;
+
+            if (diff < 0) {
+                return { text: "已截止", expired: true };
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+            if (days > 0) {
+                return { text: `${days} 天 ${hours} 小时`, expired: false };
+            } else {
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                return { text: `${hours} 小时 ${minutes} 分钟`, expired: false };
+            }
+        }
+
+        // 筛选和排序会议
+        function getFilteredConferences() {
+            let filtered = conferences;
+
+            // 按类别筛选
+            if (selectedCategory !== "全部") {
+                filtered = filtered.filter(c => c.category === selectedCategory);
+            }
+
+            // 按截止日期排序：未截止的按时间排在前，已截止的排在后
+            const now = new Date().getTime();
+            return [...filtered].sort((a, b) => {
+                const aTime = new Date(a.deadline).getTime();
+                const bTime = new Date(b.deadline).getTime();
+                const aExpired = aTime < now;
+                const bExpired = bTime < now;
+
+                // 如果一个截止了，一个没截止，未截止的排前面
+                if (aExpired !== bExpired) {
+                    return aExpired ? 1 : -1;
+                }
+
+                // 如果都未截止或都已截止，按时间排序
+                return aTime - bTime;
+            });
+        }
+
+        // 渲染筛选按钮
+        function renderFilterButtons() {
+            const container = document.getElementById('filterButtons');
+            const categories = getCategories();
+
+            container.innerHTML = categories.map(cat => `
+                <button 
+                    class="filter-btn ${cat === selectedCategory ? 'active' : ''}"
+                    onclick="handleCategoryChange('${cat}')"
+                >
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        // 渲染会议列表
+        function renderConferenceList() {
+            const container = document.getElementById('conferenceList');
+            const filtered = getFilteredConferences();
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <p>没有找到符合条件的会议</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(conf => {
+                const countdown = getCountdown(conf.deadline);
+                return `
+                    <div class="conference-card ${countdown.expired ? 'expired' : ''}">
+                        <div class="card-content">
+                            <div class="conference-info">
+                                <div class="conference-header">
+                                    <h3 class="conference-name">${conf.name} ${conf.year}</h3>
+                                    <span class="badge ${getBadgeClass(conf.category)}">${conf.category}</span>
+                                </div>
+                                <div class="conference-details">
+                                    <div class="detail-item">
+                                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span>截止: ${conf.deadline}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                        </svg>
+                                        <span>会议: ${conf.conferenceDate}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        </svg>
+                                        <span>${conf.location}</span>
+                                    </div>
+                                </div>
+                                ${conf.link ? `
+                                    <a href="${conf.link}" target="_blank" rel="noopener noreferrer" class="conference-link">
+                                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                        </svg>
+                                        访问会议网站
+                                    </a>
+                                ` : ''}
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-label">倒计时</div>
+                                <div class="countdown-value ${countdown.expired ? 'expired' : ''}">
+                                    ${countdown.text}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 渲染统计信息
+        function renderStats() {
+            const container = document.getElementById('stats');
+            const filtered = getFilteredConferences();
+            const categoryText = selectedCategory !== "全部" ? ` (筛选: ${selectedCategory})` : '';
+            container.textContent = `共 ${filtered.length} 个会议${categoryText}`;
+        }
+
+        // 处理类别切换
+        function handleCategoryChange(category) {
+            selectedCategory = category;
+            render();
+        }
+
+        // 渲染整个应用
+        function render() {
+            renderFilterButtons();
+            renderConferenceList();
+            renderStats();
+        }
+
+        // 初始化
+        render();
+
+        // 每分钟更新一次倒计时
+        setInterval(() => {
+            renderConferenceList();
+        }, 60000);
+    </script>
+</body>
+</html>
