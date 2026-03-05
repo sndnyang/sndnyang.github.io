@@ -3,3 +3,5 @@ CCF中国信息系统及应用大会(WISA)--2026--2026-04-21--2026-08-07--https:
 计算机科学与技术在教育中的应用国际会议（CSTE)--2026--2026-03-05--2026-04-17--https://www.cste.net/--武汉--EI会
 中国高校计算机教育大会（CCEC）--2026--2026-05-10--2026-07-10--https://conf.ccf.org.cn/ccec2026--成都--教育顶会
 全球华人计算机教育应用大会（GCCCE）--2026--2026-01-23--2026-05-30--https://clst.fed.cuhk.edu.hk/gccce2026/zh/--香港--教育顶会
+中国计算机应用大会(NCCA)--2026--2026-08-07--https://conf.ccf.org.cn/ncca2025--武汉--EI会
+AIED--2026--2026-02-02--https://aied-conference.org/2026/call-for-paper--首尔--教育顶会
