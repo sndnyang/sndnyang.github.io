@@ -13,7 +13,7 @@
 <meta name="keywords" content="web, html, css, js, 前端, " />
 
 <meta property="og:title" content="web简单进度条\加载中实现 "/>
-<meta property="og:url" content="/a-simple-web-loader.html" />
+<meta property="og:url" content="http://sndnyang.github.io/a-simple-web-loader.html" />
 <meta property="og:description" content="web简单进度条\加载中实现及调用, loader, loading" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang" />
@@ -49,7 +49,6 @@
                 backToTop();
             });
         </script>
-        <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
     </head>
     <body>
         <div id="content-sans-footer">
@@ -65,21 +64,21 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
                             <li ><a href="/">Home</a></li>
-                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="https://www.aiedu.cn">zhimind home</a></li>
                             <li ><a href="/categories.html">Categories</a></li>
                             <li ><a href="/tags.html">Tags</a></li>
                             <li ><a href="/archives.html">Archives</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
-                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
-                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li ><a href="https://www.aiedu.cn/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.aiedu.cn/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.aiedu.cn/oversea/research.html">研究方向与招生</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li class="dropdown-header">工具</li>
                                     <li><a href="/gpa_calculator.html">GPA计算器</a></li>
-                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
-                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                    <li><a href="http://www.aiedu.cn/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.aiedu.cn/talkerchu/index.html">脱口而出</a></li>
                                 </ul>
                             </li>
                             <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
@@ -120,16 +119,16 @@
                     <div class="span8 offset2 article-content">
 
                         
-                        <h1 id="js">js<a class="headerlink" href="#js" title="Permanent link">&para;</a></h1>
-<h2 id="call">call<a class="headerlink" href="#call" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="o">$</span><span class="p">(</span><span class="s2">&quot;#loadingDiv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">remove</span><span class="p">();</span>
+                        <h1>js</h1>
+<h2>call</h2>
+<div class="highlight"><pre><span></span><code><span class="o">$</span><span class="p">(</span><span class="s2">&quot;#loadingDiv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">remove</span><span class="p">();</span>
 <span class="k">var</span><span class="w"> </span><span class="n">loadingDiv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createLoadingDiv</span><span class="p">(</span><span class="s1">&#39;想写什么写什么&#39;</span><span class="p">)</span><span class="w">                    </span>
 <span class="o">//</span><span class="err">呈现</span><span class="n">loading效果</span>
 <span class="o">$</span><span class="p">(</span><span class="s2">&quot;#learning&gt;.container-fluid&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loadingDiv</span><span class="p">);</span>
 </code></pre></div>
 
-<h2 id="implement">implement<a class="headerlink" href="#implement" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="n">function</span><span class="w"> </span><span class="n">createLoadingDiv</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<h2>implement</h2>
+<div class="highlight"><pre><span></span><code><span class="n">function</span><span class="w"> </span><span class="n">createLoadingDiv</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">_PageWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">document</span><span class="o">.</span><span class="n">documentElement</span><span class="o">.</span><span class="n">clientWidth</span><span class="p">,</span>
 <span class="w">            </span><span class="n">_PageHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">document</span><span class="o">.</span><span class="n">documentElement</span><span class="o">.</span><span class="n">clientHeight</span><span class="p">,</span>
 <span class="w">            </span><span class="n">_LoadingTop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_PageHeight</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
@@ -141,13 +140,13 @@
 <span class="p">}</span>
 </code></pre></div>
 
-<h1 id="html">html<a class="headerlink" href="#html" title="Permanent link">&para;</a></h1>
-<div class="codehilite"><pre><span></span><code><span class="nt">&lt;script</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;//www.zhimind.com/static/js/global.js&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<h1>html</h1>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;script</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;//www.zhimind.com/static/js/global.js&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;link</span><span class="w"> </span><span class="na">href=</span><span class="s">&quot;//www.zhimind.com/static/css/loader.css&quot;</span><span class="w"> </span><span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="w"> </span><span class="na">media=</span><span class="s">&quot;screen&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 
-<h1 id="css">css<a class="headerlink" href="#css" title="Permanent link">&para;</a></h1>
-<div class="codehilite"><pre><span></span><code><span class="c1">#loadingDiv {</span>
+<h1>css</h1>
+<div class="highlight"><pre><span></span><code><span class="c1">#loadingDiv {</span>
 <span class="w">    </span><span class="n">position</span><span class="p">:</span><span class="w"> </span><span class="n">fixed</span><span class="p">;</span>
 <span class="w">    </span><span class="n">cursor1</span><span class="p">:</span><span class="w"> </span><span class="n">wait</span><span class="p">;</span>
 <span class="w">    </span><span class="n">left</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="p">;</span>
@@ -177,7 +176,45 @@
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+<section>
+<p id="comment-message">this man is lazy, nothing left </p>
+<div class="accordion" id="accordion2">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
+                href="http://sndnyang.github.io/a-simple-web-loader.html#disqus_thread">
+                Comments
+            </a>
+        </div>
+        <div id="disqus_thread" class="accordion-body collapse">
+            <div class="accordion-inner">
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'sndnyang';
+        var disqus_identifier = 'a-simple-web-loader.html';
+    var disqus_url = 'http://sndnyang.github.io/a-simple-web-loader.html';
+
+    (function() {
+         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -250,7 +287,45 @@
             }
         </script>
 
-    
+            <script type="text/javascript">
+var disqus_shortname = 'sndnyang';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+<script  language="javascript" type="text/javascript">
+function uncollapse() {
+    if (window.location.hash.match(/^#comment-\d+$/)) {
+        $('#disqus_thread').collapse('show');
+    }
+}
+</script>
+<script type="text/javascript" language="JavaScript">
+uncollapse();
+window.onhashchange=function(){
+    if (window.location.hash.match(/^#comment-\d+$/))
+        window.location.reload(true);
+}
+</script>
+<script>
+$('#disqus_thread').on('shown', function () {
+    var link = document.getElementsByClassName('accordion-toggle');
+    var old_innerHTML = link[0].innerHTML;
+    $(link[0]).fadeOut(500, function() {
+        $(this).text('Click here to hide comments').fadeIn(500);
+    });
+    $('#disqus_thread').on('hidden', function () {
+        $(link[0]).fadeOut(500, function() {
+            $(this).text(old_innerHTML).fadeIn(500);
+        });
+    })
+})
+</script>
+
+
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

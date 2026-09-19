@@ -13,7 +13,7 @@
 <meta name="keywords" content="Linux, Redis, web, 数据库, " />
 
 <meta property="og:title" content="CentOS配置-Redis安装 "/>
-<meta property="og:url" content="/config-centOS-install-Redis安装.html" />
+<meta property="og:url" content="http://sndnyang.github.io/config-centOS-install-Redis安装.html" />
 <meta property="og:description" content="CentOS Redis 安装 配置 和 运行" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang (sndnyangd@gmail.com)" />
@@ -49,7 +49,6 @@
                 backToTop();
             });
         </script>
-        <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
     </head>
     <body>
         <div id="content-sans-footer">
@@ -65,21 +64,21 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
                             <li ><a href="/">Home</a></li>
-                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="https://www.aiedu.cn">zhimind home</a></li>
                             <li ><a href="/categories.html">Categories</a></li>
                             <li ><a href="/tags.html">Tags</a></li>
                             <li ><a href="/archives.html">Archives</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
-                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
-                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li ><a href="https://www.aiedu.cn/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.aiedu.cn/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.aiedu.cn/oversea/research.html">研究方向与招生</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li class="dropdown-header">工具</li>
                                     <li><a href="/gpa_calculator.html">GPA计算器</a></li>
-                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
-                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                    <li><a href="http://www.aiedu.cn/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.aiedu.cn/talkerchu/index.html">脱口而出</a></li>
                                 </ul>
                             </li>
                             <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
@@ -117,58 +116,30 @@
             </header>
 
             <div class="row-fluid article-inner">
-                <div class="span2 table-of-content">
-                    <nav class="bs-docs-sidebar hidden-print hidden-xs
-                        hidden-sm nav table-nav">
-                        <div class="table-collapse panel-collapse collapse">
-                            <h4 style="text-align: center;">目录</h4>
-                            <div class="toc">
-<ul>
-<li><a href="#_1">来源</a></li>
-<li><a href="#_2">下载</a></li>
-<li><a href="#_3">安装</a></li>
-<li><a href="#_4">配置</a><ul>
-<li><a href="#redisconf">配置文件redis.conf</a><ul>
-<li><a href="#unix-sockets">Unix sockets</a></li>
-</ul>
-</li>
-<li><a href="#_5">开机启动服务</a></li>
-<li><a href="#_6">内容</a></li>
-</ul>
-</li>
-<li><a href="#_7">启动运行</a></li>
-<li><a href="#_8">配置文件</a></li>
-</ul>
-</div>
-                        </div>
-                    </nav>
-                </div>
-                <a class="btn btn-success btn-table" data-toggle="collapse"
-                    data-target=".table-collapse">
-                    目录
-                </a>
-                <div class="span8 article-content">
+                    <div class="span8 offset2 article-content">
 
                         
-                        
-<h1 id="_1">来源<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+                        <p>[TOC]</p>
+<h1>来源</h1>
 <p>实践内容主要来自 <a href="https://linux.cn/article-6719-1.html">如何在 CentOS 7 上安装 Redis 服务器</a></p>
-<h1 id="_2">下载<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
-<div class="codehilite"><pre><span></span><code><span class="n">version</span><span class="o">=</span><span class="s2">"4.0.1"</span>
+<h1>下载</h1>
+<div class="highlight"><pre><span></span><code><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.0.1&quot;</span>
 <span class="n">curl</span><span class="w"> </span><span class="o">-</span><span class="n">O</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">redis</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">redis</span><span class="o">-$</span><span class="n">version</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">tar</span><span class="w"> </span><span class="n">zxvf</span><span class="w"> </span><span class="n">redis</span><span class="o">-$</span><span class="n">version</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">cd</span><span class="w"> </span><span class="n">redis</span><span class="o">-$</span><span class="n">version</span>
 </code></pre></div>
-<h1 id="_3">安装<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
-<div class="codehilite"><pre><span></span><code>yum -y install gcc g++ make         // -y不要提示是否安装
+
+<h1>安装</h1>
+<div class="highlight"><pre><span></span><code>yum -y install gcc g++ make         // -y不要提示是否安装
 make MALLOC=libc                    // MALLOC 很重要
 make install                        // 似乎可要可不要
 cd src/                             // 可执行文件在 src/ 下
 cp redis-server redis-cli /usr/bin
 cp redis-sentinel redis-benchmark redis-check-aof redis-check-dump /usr/bin 2/dev/null                      // 以防某个文件redis-check-dump 不存在
 </code></pre></div>
-<h1 id="_4">配置<a class="headerlink" href="#_4" title="Permanent link">¶</a></h1>
-<div class="codehilite"><pre><span></span><code><span class="n">port</span><span class="o">=</span><span class="mi">6379</span><span class="w">                           </span><span class="o">//</span><span class="w"> </span><span class="n">redis默认端口</span>
+
+<h1>配置</h1>
+<div class="highlight"><pre><span></span><code><span class="n">port</span><span class="o">=</span><span class="mi">6379</span><span class="w">                           </span><span class="o">//</span><span class="w"> </span><span class="n">redis默认端口</span>
 <span class="n">mkdir</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">redis</span><span class="w">                    </span><span class="o">//</span><span class="w"> </span><span class="n">redis</span><span class="w"> </span><span class="err">配置文件夹</span>
 <span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">redis</span><span class="o">/$</span><span class="n">port</span><span class="w">       </span><span class="o">//</span><span class="w"> </span><span class="err">创建有效的保存数据的目录</span>
 
@@ -180,27 +151,31 @@ cp redis-sentinel redis-benchmark redis-check-aof redis-check-dump /usr/bin 2/de
 <span class="n">cp</span><span class="w"> </span><span class="n">redis</span><span class="o">.</span><span class="n">conf</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">redis</span><span class="o">/</span><span class="mf">6379.</span><span class="n">conf</span>
 <span class="n">cp</span><span class="w"> </span><span class="n">utils</span><span class="o">/</span><span class="n">redis_init_script</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">redis_</span><span class="o">$</span><span class="n">port</span>
 </code></pre></div>
-<h2 id="redisconf">配置文件redis.conf<a class="headerlink" href="#redisconf" title="Permanent link">¶</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="n">vi</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">redis</span><span class="o">/</span><span class="mf">6379.</span><span class="n">conf</span>
+
+<h2>配置文件redis.conf</h2>
+<div class="highlight"><pre><span></span><code><span class="n">vi</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">redis</span><span class="o">/</span><span class="mf">6379.</span><span class="n">conf</span>
 <span class="n">daemonize</span><span class="w"> </span><span class="n">no</span><span class="w">                    </span><span class="o">//</span><span class="err">设置</span><span class="w"> </span><span class="n">daemonize</span><span class="w"> </span><span class="err">为</span><span class="w"> </span><span class="n">no</span><span class="err">，</span><span class="n">systemd</span><span class="w"> </span><span class="err">需要它运行在前台，否则</span><span class="w"> </span><span class="n">redis</span><span class="w"> </span><span class="err">会突然挂掉</span>
 <span class="n">pidfile</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">redis_6379</span><span class="o">.</span><span class="n">pid</span>
 <span class="n">port</span><span class="w"> </span><span class="mi">6379</span><span class="w">                       </span><span class="o">//</span><span class="w"> </span><span class="err">默认不用改</span>
 <span class="n">loglevel</span><span class="w"> </span><span class="n">notice</span>
 <span class="n">logfile</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">redis_6379</span><span class="o">.</span><span class="n">log</span>
 <span class="n">dir</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">redis</span><span class="o">/</span><span class="mi">6379</span>
-<span class="n">requirepass</span><span class="w"> </span><span class="s2">"bTFBx1NYYWRMTUEyNHhsCg"</span><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="err">密码</span>
+<span class="n">requirepass</span><span class="w"> </span><span class="s2">&quot;bTFBx1NYYWRMTUEyNHhsCg&quot;</span><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="err">密码</span>
 </code></pre></div>
-<h3 id="unix-sockets">Unix sockets<a class="headerlink" href="#unix-sockets" title="Permanent link">¶</a></h3>
+
+<h3>Unix sockets</h3>
 <p>客户端程序和服务器端程序运行在同一个机器上，所以不需要监听网络上的 socket, 使用 unix socket 替代网络 socket</p>
-<div class="codehilite"><pre><span></span><code>port = 0
+<div class="highlight"><pre><span></span><code>port = 0
 unixsocket /tmp/redis.sock
 unixsocketperm 700
 </code></pre></div>
-<h2 id="_5">开机启动服务<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
-<div class="codehilite"><pre><span></span><code>vi /etc/systemd/system/redis_$port.service     // 使用 systemd，所以在 /etc/systems/system 下创建一个单位文件, 不要 _$port 也挺好，免得搞错，但如果要多个的话， 可能还是用来区分的好
+
+<h2>开机启动服务</h2>
+<div class="highlight"><pre><span></span><code>vi /etc/systemd/system/redis_$port.service     // 使用 systemd，所以在 /etc/systems/system 下创建一个单位文件, 不要 _$port 也挺好，免得搞错，但如果要多个的话， 可能还是用来区分的好
 </code></pre></div>
-<h2 id="_6">内容<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="k">[Unit]</span>
+
+<h2>内容</h2>
+<div class="highlight"><pre><span></span><code><span class="k">[Unit]</span>
 <span class="na">Description</span><span class="o">=</span><span class="s">Redis on port $port</span>
 <span class="k">[Service]</span>
 <span class="na">Type</span><span class="o">=</span><span class="s">forking</span>
@@ -214,13 +189,15 @@ unixsocketperm 700
 
 <span class="err">echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled  放到 /etc/rc.local 的结尾</span>
 </code></pre></div>
-<h1 id="_7">启动运行<a class="headerlink" href="#_7" title="Permanent link">¶</a></h1>
-<div class="codehilite"><pre><span></span><code>service redis_$port start
+
+<h1>启动运行</h1>
+<div class="highlight"><pre><span></span><code>service redis_$port start
 service redis_$port restart
 service redis_$port stop
 </code></pre></div>
-<h1 id="_8">配置文件<a class="headerlink" href="#_8" title="Permanent link">¶</a></h1>
-<div class="codehilite"><pre><span></span><code>/etc/redis/6379.conf                        // 常规配置
+
+<h1>配置文件</h1>
+<div class="highlight"><pre><span></span><code>/etc/redis/6379.conf                        // 常规配置
 /etc/systemd/system/redis_$port.service     // 启动配置
 </code></pre></div>
                         
@@ -233,7 +210,45 @@ service redis_$port stop
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+<section>
+<p id="comment-message">this man is lazy, nothing left </p>
+<div class="accordion" id="accordion2">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
+                href="http://sndnyang.github.io/config-centOS-install-Redis安装.html#disqus_thread">
+                Comments
+            </a>
+        </div>
+        <div id="disqus_thread" class="accordion-body collapse">
+            <div class="accordion-inner">
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'sndnyang';
+        var disqus_identifier = 'config-centOS-install-Redis安装.html';
+    var disqus_url = 'http://sndnyang.github.io/config-centOS-install-Redis安装.html';
+
+    (function() {
+         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -303,7 +318,45 @@ service redis_$port stop
             }
         </script>
 
-    
+            <script type="text/javascript">
+var disqus_shortname = 'sndnyang';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+<script  language="javascript" type="text/javascript">
+function uncollapse() {
+    if (window.location.hash.match(/^#comment-\d+$/)) {
+        $('#disqus_thread').collapse('show');
+    }
+}
+</script>
+<script type="text/javascript" language="JavaScript">
+uncollapse();
+window.onhashchange=function(){
+    if (window.location.hash.match(/^#comment-\d+$/))
+        window.location.reload(true);
+}
+</script>
+<script>
+$('#disqus_thread').on('shown', function () {
+    var link = document.getElementsByClassName('accordion-toggle');
+    var old_innerHTML = link[0].innerHTML;
+    $(link[0]).fadeOut(500, function() {
+        $(this).text('Click here to hide comments').fadeIn(500);
+    });
+    $('#disqus_thread').on('hidden', function () {
+        $(link[0]).fadeOut(500, function() {
+            $(this).text(old_innerHTML).fadeIn(500);
+        });
+    })
+})
+</script>
+
+
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

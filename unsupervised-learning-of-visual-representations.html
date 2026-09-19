@@ -13,7 +13,7 @@
 <meta name="keywords" content="论文, 计算机视觉, 人工智能, 计算机视觉, " />
 
 <meta property="og:title" content="无监督视觉表示学习 "/>
-<meta property="og:url" content="/unsupervised-learning-of-visual-representations.html" />
+<meta property="og:url" content="http://sndnyang.github.io/unsupervised-learning-of-visual-representations.html" />
 <meta property="og:description" content="" />
 <meta property="og:site_name" content="科探空谷" />
 <meta property="og:article:author" content="sndnyang sndnyang.github.io" />
@@ -50,7 +50,6 @@
                 backToTop();
             });
         </script>
-        <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
     </head>
     <body>
         <div id="content-sans-footer">
@@ -66,21 +65,21 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
                             <li ><a href="/">Home</a></li>
-                            <li ><a href="https://www.zhimind.com">zhimind home</a></li>
+                            <li ><a href="https://www.aiedu.cn">zhimind home</a></li>
                             <li ><a href="/categories.html">Categories</a></li>
                             <li ><a href="/tags.html">Tags</a></li>
                             <li ><a href="/archives.html">Archives</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li ><a href="https://www.zhimind.com/oversea/college.html">学校库</a></li>
-                                    <li ><a href="https://www.zhimind.com/oversea/major.html">专业库</a></li>
-                                    <li ><a href="https://www.zhimind.com/oversea/research.html">研究方向与招生</a></li>
+                                    <li ><a href="https://www.aiedu.cn/oversea/college.html">学校库</a></li>
+                                    <li ><a href="https://www.aiedu.cn/oversea/major.html">专业库</a></li>
+                                    <li ><a href="https://www.aiedu.cn/oversea/research.html">研究方向与招生</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li class="dropdown-header">工具</li>
                                     <li><a href="/gpa_calculator.html">GPA计算器</a></li>
-                                    <li><a href="http://www.zhimind.com/reciteword/reciteWord.html">脑洞背单词</a></li>
-                                    <li><a href="https://www.zhimind.com/talkerchu/index.html">脱口而出</a></li>
+                                    <li><a href="http://www.aiedu.cn/reciteword/reciteWord.html">脑洞背单词</a></li>
+                                    <li><a href="https://www.aiedu.cn/talkerchu/index.html">脱口而出</a></li>
                                 </ul>
                             </li>
                             <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
@@ -118,48 +117,11 @@
             </header>
 
             <div class="row-fluid article-inner">
-                <div class="span2 table-of-content">
-                    <nav class="bs-docs-sidebar hidden-print hidden-xs
-                        hidden-sm nav table-nav">
-                        <div class="table-collapse panel-collapse collapse">
-                            <h4 style="text-align: center;">目录</h4>
-                            <div class="toc">
-<ul>
-<li><a href="#_1">摘要</a></li>
-<li><a href="#_2">导论</a></li>
-<li><a href="#overview">overview</a></li>
-<li><a href="#_3">视频帧挖掘</a></li>
-<li><a href="#_4">视频学习</a><ul>
-<li><a href="#siamese-triplet-network">Siamese Triplet Network</a></li>
-<li><a href="#ranking-loss-function">ranking loss function</a></li>
-<li><a href="#hard-negative-mining-for-triplet-sampling">Hard Negative Mining for Triplet Sampling</a><ul>
-<li><a href="#random-selection">random selection</a></li>
-<li><a href="#hard-negative-mining">Hard Negative Mining</a></li>
-</ul>
-</li>
-<li><a href="#adapting-for-supervised-tasks">Adapting for Supervised Tasks</a><ul>
-<li><a href="#_5"></a></li>
-</ul>
-</li>
-<li><a href="#model-ensemble">Model Ensemble</a></li>
-<li><a href="#_6">实现细节</a></li>
-</ul>
-</li>
-<li><a href="#_7">实验</a></li>
-</ul>
-</div>
-                        </div>
-                    </nav>
-                </div>
-                <a class="btn btn-success btn-table" data-toggle="collapse"
-                    data-target=".table-collapse">
-                    目录
-                </a>
-                <div class="span8 article-content">
+                    <div class="span8 offset2 article-content">
 
                         
-                        
-<h1 id="_1">摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+                        <p>[TOC]</p>
+<h1>摘要</h1>
 <p>论文<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
 <p>关键点： 视觉追踪能提供超视觉信息 visual tracking provides the supervision</p>
 <p>视觉追踪中的两帧在深度特征空间中，应该有着相似的视觉表示(visual representation)，因为它们很可能对应同一物体或物体部分</p>
@@ -169,11 +131,11 @@ they probably belong to the same object or object part</p>
 <p>所以，本文的初始目标是从视觉追踪的视频流中抽取两帧，计算相似度， 又为了对比效果（过拟合？），需要不相似的另一帧，组成 孪生(Siamese)三元组的数据，加上一个有序损失函数，用以训练CNN模型</p>
 <p>design a Siamese-triplet network with a ranking loss function
 to train this CNN representation</p>
-<h1 id="_2">导论<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
+<h1>导论</h1>
 <p>propose to exploit visual tracking for learning CNNs in an unsupervised manner</p>
 <p>two patches connected by a track should have similar visual representation in deep feature space since they probably belong to the same object</p>
 <p>和摘要重复了~~~</p>
-<h1 id="overview">overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h1>
+<h1>overview</h1>
 <p>使用 AlexNet架构 follow the AlexNet architecture to design our base
 network.</p>
 <p>从对物体或物体部分追踪的视频实例中选取开头、结尾两帧 first and last tracked frames correspond to the same instance of the moving object or object part</p>
@@ -184,9 +146,9 @@ network.</p>
 number of training triplets</p>
 <p>analogous to hard-negative mining, we select the
 third patch from multiple patches that violates the constraint</p>
-<h1 id="_3">视频帧挖掘<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
+<h1>视频帧挖掘</h1>
 <ol>
-<li>obtain SURF<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> interest points and use Improved Dense
+<li>obtain SURF<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">5</a></sup> interest points and use Improved Dense
 Trajectories (IDT)<sup id="fnref:50"><a class="footnote-ref" href="#fn:50">6</a></sup> to obtain motion of each SURF
 point. </li>
 <li>classify these points as moving if the flow
@@ -203,19 +165,19 @@ and we perform sliding window with it in the frame</li>
 </ol>
 <p>Tracking:</p>
 <p>Given the initial bounding box, we perform
-tracking using the KCF tracker<sup id="fnref:19"><a class="footnote-ref" href="#fn:19">4</a></sup>. After tracking along 30
+tracking using the KCF tracker<sup id="fnref:19"><a class="footnote-ref" href="#fn:19">2</a></sup>. After tracking along 30
 frames in the video, we obtain the second patch. This patch
 acts as the similar patch to the query patch in the triplet.
 Note that the KCF tracker does not use any supervised information
 except for the initial bounding box</p>
-<h1 id="_4">视频学习<a class="headerlink" href="#_4" title="Permanent link">¶</a></h1>
-<h2 id="siamese-triplet-network">Siamese Triplet Network<a class="headerlink" href="#siamese-triplet-network" title="Permanent link">¶</a></h2>
-<p>AlexNet architecture<sup id="fnref:24"><a class="footnote-ref" href="#fn:24">5</a></sup></p>
+<h1>视频学习</h1>
+<h2>Siamese Triplet Network</h2>
+<p>AlexNet architecture<sup id="fnref:24"><a class="footnote-ref" href="#fn:24">3</a></sup></p>
 <p>stack two fully connected layers on the pool5
 outputs, whose neuron numbers are 4096 and 1024 respectively.
 Thus the final output of each single network is 1024
 dimensional feature space f(·).</p>
-<h2 id="ranking-loss-function">ranking loss function<a class="headerlink" href="#ranking-loss-function" title="Permanent link">¶</a></h2>
+<h2>ranking loss function</h2>
 <p>to learn an image similarity model in the form
 of CNN</p>
 <p>define the distance of two image patches X1, X2
@@ -233,19 +195,19 @@ function for training can be represented as</p>
 for function f(·). N is the number of the triplets of
 samples. $\lambda$ is a constant representing weight decay, which
 is set to $\lambda$λ = 0.0005</p>
-<h2 id="hard-negative-mining-for-triplet-sampling">Hard Negative Mining for Triplet Sampling<a class="headerlink" href="#hard-negative-mining-for-triplet-sampling" title="Permanent link">¶</a></h2>
-<h3 id="random-selection">random selection<a class="headerlink" href="#random-selection" title="Permanent link">¶</a></h3>
+<h2>Hard Negative Mining for Triplet Sampling</h2>
+<h3>random selection</h3>
 <p>randomly sample K negative matches in the
 same batch,  e have K sets of triplet of samples</p>
-<h3 id="hard-negative-mining">Hard Negative Mining<a class="headerlink" href="#hard-negative-mining" title="Permanent link">¶</a></h3>
-<h2 id="adapting-for-supervised-tasks">Adapting for Supervised Tasks<a class="headerlink" href="#adapting-for-supervised-tasks" title="Permanent link">¶</a></h2>
+<h3>Hard Negative Mining</h3>
+<h2>Adapting for Supervised Tasks</h2>
 <p>apply our model
 to two different tasks including object detection and surface
 normal estimation</p>
-<h3 id="_5"><a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
+<h3></h3>
 <p>directly applying our
 ranking model as a pre-trained network for the target task</p>
-<p>very similar to the approach applied in RCNN<sup id="fnref:14"><a class="footnote-ref" href="#fn:14">3</a></sup></p>
+<p>very similar to the approach applied in RCNN<sup id="fnref:14"><a class="footnote-ref" href="#fn:14">4</a></sup></p>
 <p>we use an iterative finetuning
 scheme. Given the initial unsupervised network, we
 first fine-tune using the PASCAL VOC data. Given the new
@@ -256,32 +218,32 @@ fine-tuned on the VOC data yielding a better trained model.
 We show in the experiment that this circular approach gives
 improvement in performance. We also notice that after two
 iterations of this approach the network converges</p>
-<h2 id="model-ensemble">Model Ensemble<a class="headerlink" href="#model-ensemble" title="Permanent link">¶</a></h2>
-<h2 id="_6">实现细节<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
-<h1 id="_7">实验<a class="headerlink" href="#_7" title="Permanent link">¶</a></h1>
+<h2>Model Ensemble</h2>
+<h2>实现细节</h2>
+<h1>实验</h1>
 <p>目前还看不懂实验部分</p>
 <div class="footnote">
-<hr/>
+<hr>
 <ol>
 <li id="fn:1">
-<p>Unsupervised Learning of Visual Representations using Videos, Xiaolong Wang, Abhinav Gupta <a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
+<p>Unsupervised Learning of Visual Representations using Videos, Xiaolong Wang, Abhinav Gupta&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:19">
+<p>J. F. Henriques, R. Caseiro, P. Martins, and J. Batista. High-speed tracking with kernelized correlation filters. TPAMI, 2015&#160;<a class="footnote-backref" href="#fnref:19" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:24">
+<p>A. Krizhevsky, I. Sutskever, and G. E. Hinton. Imagenet classification with deep convolutional neural networks. In NIPS, 2012&#160;<a class="footnote-backref" href="#fnref:24" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>R. Girshick, J. Donahue, T. Darrell, and J. Malik. Rich feature hierarchies for accurate object detection and semantic segmentation. In CVPR&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
 <p>H. Bay, T. Tuytelaars, and L. V. Gool. Surf: Speeded up robust features. In ECCV, 2006
-features <a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">↩</a></p>
-</li>
-<li id="fn:14">
-<p>R. Girshick, J. Donahue, T. Darrell, and J. Malik. Rich feature hierarchies for accurate object detection and semantic segmentation. In CVPR <a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 3 in the text">↩</a></p>
-</li>
-<li id="fn:19">
-<p>J. F. Henriques, R. Caseiro, P. Martins, and J. Batista. High-speed tracking with kernelized correlation filters. TPAMI, 2015 <a class="footnote-backref" href="#fnref:19" title="Jump back to footnote 4 in the text">↩</a></p>
-</li>
-<li id="fn:24">
-<p>A. Krizhevsky, I. Sutskever, and G. E. Hinton. Imagenet classification with deep convolutional neural networks. In NIPS, 2012 <a class="footnote-backref" href="#fnref:24" title="Jump back to footnote 5 in the text">↩</a></p>
+features&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:50">
 <p>H. Wang and C. Schmid. Action recognition with improved trajectories.
-In ICCV, 2013 <a class="footnote-backref" href="#fnref:50" title="Jump back to footnote 6 in the text">↩</a></p>
+In ICCV, 2013&#160;<a class="footnote-backref" href="#fnref:50" title="Jump back to footnote 6 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -295,7 +257,45 @@ In ICCV, 2013 <a class="footnote-backref" href="#fnref:50" title="Jump back to 
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
 
-                    
+                    <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2130941"></script>
+<!-- UY END -->
+<section>
+<p id="comment-message">this man is lazy, nothing left </p>
+<div class="accordion" id="accordion2">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
+                href="http://sndnyang.github.io/unsupervised-learning-of-visual-representations.html#disqus_thread">
+                Comments
+            </a>
+        </div>
+        <div id="disqus_thread" class="accordion-body collapse">
+            <div class="accordion-inner">
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'sndnyang';
+        var disqus_identifier = 'unsupervised-learning-of-visual-representations.html';
+    var disqus_url = 'http://sndnyang.github.io/unsupervised-learning-of-visual-representations.html';
+
+    (function() {
+         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
                     <hr/>
                 </div>
                 <div class="span2 right-side" style="float:right;font-size:0.9em;">
@@ -313,7 +313,7 @@ In ICCV, 2013 <a class="footnote-backref" href="#fnref:50" title="Jump back to 
                             <span>5</span>
 </a></li>
                         <li><a href="/tags.html#lun-wen-ref">论文
-                            <span>39</span>
+                            <span>38</span>
 </a></li>
                         <li><a href="/tags.html#ren-gong-zhi-neng-ref">人工智能
                             <span>28</span>
@@ -369,7 +369,45 @@ In ICCV, 2013 <a class="footnote-backref" href="#fnref:50" title="Jump back to 
             }
         </script>
 
-    
+            <script type="text/javascript">
+var disqus_shortname = 'sndnyang';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+<script  language="javascript" type="text/javascript">
+function uncollapse() {
+    if (window.location.hash.match(/^#comment-\d+$/)) {
+        $('#disqus_thread').collapse('show');
+    }
+}
+</script>
+<script type="text/javascript" language="JavaScript">
+uncollapse();
+window.onhashchange=function(){
+    if (window.location.hash.match(/^#comment-\d+$/))
+        window.location.reload(true);
+}
+</script>
+<script>
+$('#disqus_thread').on('shown', function () {
+    var link = document.getElementsByClassName('accordion-toggle');
+    var old_innerHTML = link[0].innerHTML;
+    $(link[0]).fadeOut(500, function() {
+        $(this).text('Click here to hide comments').fadeIn(500);
+    });
+    $('#disqus_thread').on('hidden', function () {
+        $(link[0]).fadeOut(500, function() {
+            $(this).text(old_innerHTML).fadeIn(500);
+        });
+    })
+})
+</script>
+
+
         <script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

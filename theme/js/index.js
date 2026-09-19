@@ -44,20 +44,6 @@ function backToTop() {
         } else {
             $("#top").fadeOut(500);
         }
-        var tocSelector = '.table-of-content';
-        if ($(tocSelector + ' .active').length > 0) {
-            var $currentActiveElement = $(tocSelector + ' .active').last();
-            var top_shift = $(".toc").position().top;
-            var tocHeight = $(".toc").parent().position().top;
-
-            var eleHeight = $currentActiveElement.offset().top;
-            var parHeight = $(".toc").offset().top;
-            var act_shift = eleHeight - parHeight;
-            if (window.innerHeight / 2 - 150 - act_shift < 0)
-                $(".table-nav").css("top", (window.innerHeight / 2 - 150 - act_shift) +'px');
-            else if (eleHeight - parHeight < 150)
-                $(".table-nav").css("top", (150 - act_shift) +'px');
-        }
     });
     //点击回到顶部
     $("#top").click(function() {
@@ -189,12 +175,11 @@ function renderQuoteTip() {
     }
     container.html(html);
 
-    if ($("[data-toggle='popover']").length > 0)
-        $("[data-toggle='popover']").popover({
-            html: true,
-            title: "",
-            delay: {show:100, hide:100}
-        });  
+    $("[data-toggle='popover']").popover({
+        html: true,
+        title: "",
+        delay: {show:100, hide:100}
+    });  
     
     // .popover();
 }
